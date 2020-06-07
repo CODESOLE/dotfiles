@@ -1,0 +1,18 @@
+{
+   // "coc.preferences.formatOnSaveFiletypes": ["cpp"],
+   // explorer
+  "explorer.width": 30,
+  "clangd.enabled": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "clangd.semanticHighlighting": true,
+  "clangd.checkUpdates":true,
+  "explorer.keyMappings": {
+    "<cr>":[
+      "expandable?",
+      ["expanded?", "collapse", "expand"],
+      "open"
+    ],
+    "v": "open:vsplit"
+  }
+}
