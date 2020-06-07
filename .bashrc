@@ -131,3 +131,4 @@ alias ezs="vim ~/.zshrc"
 alias ebs="vim ~/.bashrc"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias c="clear"
+alias e="exit"
