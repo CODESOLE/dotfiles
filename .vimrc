@@ -12,7 +12,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'preservim/nerdcommenter'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
@@ -299,3 +298,7 @@ nmap <leader>gK 9999<leader>gk
 
 " namea-assign key-bindings
 vmap <leader>b <Plug>NameAssign
+
+"Files and RipGrep search key bindings
+nmap <C-f> :Rg<CR>
+nmap <C-p> :Files<CR>
