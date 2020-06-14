@@ -40,7 +40,6 @@ vmap <A-Up> [egv
 vmap <A-Down> ]egv
 
 " autoformat
-let g:formatterpath = ['/usr/share/clang/clang-format-10']
 noremap <F3> :Autoformat<CR>
 
 inoremap " ""<left>
@@ -302,3 +301,8 @@ vmap <leader>b <Plug>NameAssign
 "Files and RipGrep search key bindings
 nmap <C-f> :Rg<CR>
 nmap <C-p> :Files<CR>
+
+" Create Blank line
+nmap <leader>b <Plug>unimpairedBlankDown
+
+set is hlsearch

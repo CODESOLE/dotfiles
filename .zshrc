@@ -67,3 +67,4 @@ alias ebs="vim ~/.bashrc"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias c="clear"
 alias e="exit"
+alias genf="clang-format -style=microsoft -dump-config > .clang-format"
