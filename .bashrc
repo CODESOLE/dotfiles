@@ -134,3 +134,6 @@ alias c="clear"
 alias e="exit"
 alias genf="clang-format -style=microsoft -dump-config > .clang-format"
 set -o vi
+
+# Created by `userpath` on 2020-06-27 15:11:45
+export PATH="$PATH:/home/caner/.local/bin"
