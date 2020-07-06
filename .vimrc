@@ -96,6 +96,9 @@ let g:NERDDefaultAlign = 'left'
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
@@ -306,3 +309,4 @@ nmap <C-p> :Files<CR>
 nmap <leader>b <Plug>unimpairedBlankDown
 
 set is hlsearch
+nmap <silent> ./ :nohlsearch<CR>
