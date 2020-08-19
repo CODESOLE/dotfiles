@@ -5,7 +5,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'scrooloose/syntastic'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'da-x/name-assign.vim'
 Plug 'tpope/vim-surround'
@@ -33,6 +34,29 @@ call plug#end()
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
+let g:OmniSharp_server_use_mono = 1
+
+let g:syntastic_cs_checkers = ['code_checker']
+
+  autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>osfu <Plug>(omnisharp_find_usages)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>osfi <Plug>(omnisharp_find_implementations)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>ospd <Plug>(omnisharp_preview_definition)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>ospi <Plug>(omnisharp_preview_implementations)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>ost <Plug>(omnisharp_type_lookup)
+  autocmd FileType cs nmap <silent> <buffer> K <Plug>(omnisharp_documentation)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>osfs <Plug>(omnisharp_find_symbol)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>osfx <Plug>(omnisharp_fix_usings)
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 set encoding=UTF-8
 let g:airline_powerline_fonts = 1
 
@@ -47,6 +71,7 @@ vmap <A-Down> ]egv
 
 " autoformat
 noremap <F3> :Autoformat<CR>
+autocmd FileType cs noremap <F3> :OmniSharpCodeFormat<CR>
 
 inoremap " ""<left>
 inoremap ' ''<left>
