@@ -341,3 +341,4 @@ nmap <leader>b <Plug>unimpairedBlankDown
 
 set is hlsearch
 nmap <silent> ./ :nohlsearch<CR>
+nmap <leader>/ :SyntasticToggleMode<CR>
