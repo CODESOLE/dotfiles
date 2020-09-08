@@ -5,8 +5,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'scrooloose/syntastic'
+Plug 'habamax/vim-gruvbit'
+Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'da-x/name-assign.vim'
 Plug 'tpope/vim-surround'
@@ -30,6 +33,11 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
+
+set termguicolors
+colorscheme gruvbox
+set background=dark
+let g:gruvbox_contrast_dark = 'hard'
 
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
@@ -113,7 +121,6 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 
-colorscheme codedark
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -342,3 +349,7 @@ nmap <leader>b <Plug>unimpairedBlankDown
 set is hlsearch
 nmap <silent> ./ :nohlsearch<CR>
 nmap <leader>/ :SyntasticToggleMode<CR>
+nnoremap j gj
+nnoremap k gk
+nnoremap <Up> gk
+nnoremap <Down> gj
