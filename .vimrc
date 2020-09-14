@@ -347,7 +347,7 @@ nmap <C-p> :Files<CR>
 nmap <leader>b <Plug>unimpairedBlankDown
 
 set is hlsearch
-nmap <silent> ./ :nohlsearch<CR>
+nmap <CR> ./ :nohlsearch<CR>
 nmap <leader>/ :SyntasticToggleMode<CR>
 nnoremap j gj
 nnoremap k gk
