@@ -1,0 +1,13 @@
+;;; -*- coding: utf-8 -*-
+(("/home/caner/C++/SFML/sfmlimgui/app.cpp" . 393)
+ ("/home/caner/.spacemacs" . 2217)
+ ("/home/caner/.emacs.d/.cache/layouts/persp-auto-save" . 2545)
+ ("/home/caner/.emacs.d/.cache/recentf" . 555)
+ ("/home/caner/C/"
+  (dired-filename . "/home/caner/C/main.c"))
+ ("/home/caner/C++/"
+  (dired-filename . "/home/caner/C++/SFML"))
+ ("/home/caner/C++/SFML/"
+  (dired-filename . "/home/caner/C++/SFML/sfmlimgui"))
+ ("/home/caner/C++/SFML/sfmlimgui/"
+  (dired-filename . "/home/caner/C++/SFML/sfmlimgui/app.cpp")))
