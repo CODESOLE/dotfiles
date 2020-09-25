@@ -31,6 +31,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'ryanoasis/vim-devicons'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -80,13 +81,6 @@ vmap <A-Down> ]egv
 " autoformat
 noremap <F3> :Autoformat<CR>
 autocmd FileType cs noremap <F3> :OmniSharpCodeFormat<CR>
-
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap < <><left>
-inoremap [ []<left>
-inoremap { {}<left>
 
 nnoremap <c-Left> <c-w>h
 nnoremap <c-Right> <c-w>l
