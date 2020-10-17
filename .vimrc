@@ -40,6 +40,8 @@ colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark = 'medium'
 
+set mouse=a
+
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
@@ -68,6 +70,7 @@ let g:syntastic_check_on_wq = 0
 
 set encoding=UTF-8
 let g:airline_powerline_fonts = 1
+let g:airline#extension#tabline#enabled = 1
 
 " C/C++ highlight setting
 let g:lsp_cxx_hl_use_text_props = 1
