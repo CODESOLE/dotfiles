@@ -69,5 +69,7 @@ alias c="clear"
 alias e="exit"
 alias genfgnu="clang-format -style=gnu -dump-config > .clang-format"
 alias genfmic="clang-format -style=microsoft -dump-config > .clang-format"
-alias vi="vim"
+alias v="vim"
 set -o vi
+export EDITOR='vim'
+export VISUAL='vim'
