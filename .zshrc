@@ -73,3 +73,4 @@ alias v="vim"
 set -o vi
 export EDITOR='vim'
 export VISUAL='vim'
+source "$HOME/forgit.plugin.sh"

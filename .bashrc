@@ -141,3 +141,4 @@ export VISUAL='vim'
 
 # Created by `userpath` on 2020-06-27 15:11:45
 export PATH="$PATH:/home/caner/.local/bin"
+source "$HOME/forgit.plugin.sh"
