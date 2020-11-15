@@ -132,13 +132,20 @@ alias ebs="vim ~/.bashrc"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias c="clear"
 alias e="exit"
+alias ..="cd .."
+alias ..="cd ../../"
+alias ll="ls -alF"
+alias la="ls -A"
+alias l="ls -CF"
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+alias diff="colordiff"
 alias genfgnu="clang-format -style=gnu -dump-config > .clang-format"
 alias genfmic="clang-format -style=microsoft -dump-config > .clang-format"
 alias v="vim"
 set -o vi
 export EDITOR='vim'
 export VISUAL='vim'
-
-# Created by `userpath` on 2020-06-27 15:11:45
-export PATH="$PATH:/home/caner/.local/bin"
 source "$HOME/forgit.plugin.sh"
