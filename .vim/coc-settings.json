@@ -8,7 +8,7 @@
   "clangd.semanticHighlighting": true,
   "clangd.checkUpdates":true,
   "yaml.format.enable": true,
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "<cr>":[
       "expandable?",
       ["expanded?", "collapse", "expand"],
