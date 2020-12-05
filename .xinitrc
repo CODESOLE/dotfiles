@@ -48,14 +48,26 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-get_hour(){
+get_cpu(){
+  top -bn1 | sed -n '/Cpu/p' | awk '{print (100 - $8)}'
+}
+
+get_date(){
+  date | awk '{print $1, $2, $3, $4}'
+}
+
+get_ram(){
+echo "$(free -m | sed -n '/Mem/p' | awk '{print $3}')M"
+}
+
+get_status(){
 	while true;do
-	xsetroot -name "$(date +"%H:%M:%S")"
-	sleep 1
+	  xsetroot -name "CPU:%$(get_cpu) | RAM:$(get_ram) | $(get_date)"
+	  sleep 1
 	done
 }
 
-get_hour &
+get_status &
 xrandr -s 1366x768
 setxkbmap tr
 nitrogen --restore  &
