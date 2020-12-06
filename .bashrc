@@ -7,6 +7,8 @@
 
 PS1='[\u@\h \W]\$ '
 
+export PS1="\e[1;32m[\u@\h \W]\$ \e[m "
+
 alias evi='vim ~/.vimrc'
 alias ebs='vim ~/.bashrc'
 alias c='clear'
