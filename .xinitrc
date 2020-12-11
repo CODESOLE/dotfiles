@@ -52,12 +52,20 @@ get_cpu(){
   top -bn1 | sed -n '/Cpu/p' | awk '{print (100 - $8)}'
 }
 
-get_date(){
-  date | awk '{print $1, $2, $3, $4}'
+get_ram(){
+  echo "$(free -m | sed -n '/Mem/p' | awk '{print $3}')M"
 }
 
-get_ram(){
-echo "$(free -m | sed -n '/Mem/p' | awk '{print $3}')M"
+get_gpu(){
+  nvidia-smi | sed -n '/| N\//p' | awk '{print $13}'
+}
+
+get_vram(){
+  nvidia-smi | sed -n '/| N\//p' | awk '{print $9}'
+}
+
+get_date(){
+  date | awk '{print $1, $2, $3, $4}'
 }
 
 get_status(){
