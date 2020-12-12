@@ -10,6 +10,7 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'scrooloose/syntastic'
 Plug 'habamax/vim-gruvbit'
 Plug 'morhetz/gruvbox'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'da-x/name-assign.vim'
 Plug 'tpope/vim-surround'
@@ -35,7 +36,9 @@ Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
-colorscheme gruvbox
+let g:material_theme_style = 'darker-community'
+
+colorscheme material
 set background=dark
 let g:gruvbox_contrast_dark = 'hard'
 
