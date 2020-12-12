@@ -35,7 +35,6 @@ Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
-set termguicolors
 colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark = 'hard'
