@@ -52,6 +52,10 @@ get_date(){
   date | awk '{print $1, $2, $3, $4}'
 }
 
+get_vol(){
+  pactl list sinks | awk '/Volume: front-left/{print $5}'
+}
+
 get_status(){
 	while true;do
 	  xsetroot -name "CPU:%$(get_cpu) | RAM:$(get_ram) | $(get_date)"
