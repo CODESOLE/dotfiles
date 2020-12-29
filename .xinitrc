@@ -58,7 +58,7 @@ get_vol(){
 
 get_status(){
 	while true;do
-	  xsetroot -name "CPU:%$(get_cpu) | RAM:$(get_ram) | $(get_date)"
+	  xsetroot -name "VOL:$(get_vol) | CPU:%$(get_cpu) | RAM:$(get_ram) | $(get_date)"
 	  sleep 1
 	done
 }
