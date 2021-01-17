@@ -1,0 +1,42 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "gruvboxMaterial.colorfulSyntax": true,
+    "gruvboxMaterial.darkContrast": "hard",
+    "gruvboxMaterial.darkCursor": "blue",
+    "gruvboxMaterial.darkPalette": "mix",
+    "gruvboxMaterial.darkWorkbench": "high-contrast",
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+    "editor.fontFamily": "'Jetbrains Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "window.zoomLevel": -1,
+    "vim.hlsearch": true,
+    "vim.leader": " ",
+    "vim.useSystemClipboard": true,
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "$HOME/.vimrc",
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.enableExperiments": false,
+    "workbench.activityBar.visible": true,
+    "[cpp]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
+    "clangd.checkUpdates": true,
+    "editor.lineNumbers": "relative",
+    "clangd.path": "/usr/bin/clangd",
+    "vim.smartRelativeLine": true,
+    "vim.useCtrlKeys": false,
+    "[c]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
+    "clangd.arguments": [
+        "-header-insertion=never"
+    ],
+    "gruvboxMaterial.darkSelection": "blue",
+    "window.menuBarVisibility": "toggle",
+    "workbench.sideBar.location": "right",
+    "explorer.confirmDelete": false,
+    "editor.minimap.showSlider": "always",
+    "vim.autoindent": true,
+    "vim.highlightedyank.duration": 500,
+    "vim.highlightedyank.enable": true
+}
