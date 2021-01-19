@@ -39,4 +39,5 @@
     "vim.autoindent": true,
     "vim.highlightedyank.duration": 500,
     "vim.highlightedyank.enable": true
+    "gruvboxMaterial.diagnosticTextBackgroundOpacity": "50%"
 }
