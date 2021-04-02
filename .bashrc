@@ -26,6 +26,7 @@ alias diff='colordiff'
 alias genfgnu='clang-format -style=gnu -dump-config > .clang-format'
 alias genfmic='clang-format -style=microsoft -dump-config > .clang-format'
 alias v='vim'
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 set -o vi
 export EDITOR='vim'
 export VISUAL='vim'
