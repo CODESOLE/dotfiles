@@ -354,3 +354,7 @@ nnoremap <Up> gk
 nnoremap <Down> gj
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+" the separator used on the left side
+let g:airline_left_sep=''
+" the separator used on the right side 
+let g:airline_right_sep=''
