@@ -33,8 +33,6 @@ Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
-let g:material_theme_style = 'darker-community'
-
 colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark = 'hard'
