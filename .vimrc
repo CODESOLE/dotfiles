@@ -7,9 +7,11 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'machakann/vim-highlightedyank'
 Plug 'scrooloose/syntastic'
 Plug 'habamax/vim-gruvbit'
 Plug 'morhetz/gruvbox'
+Plug 'puremourning/vimspector'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'da-x/name-assign.vim'
 Plug 'tpope/vim-surround'
@@ -37,6 +39,8 @@ colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark = 'hard'
 
+let g:highlightedyank_highlight_duration = 500
+
 set mouse=a
 
 let g:indent_guides_start_level=2
@@ -46,15 +50,15 @@ let g:OmniSharp_server_use_mono = 1
 
 let g:syntastic_cs_checkers = ['code_checker']
 
-  autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
-  autocmd FileType cs nmap <silent> <buffer> <Leader>osfu <Plug>(omnisharp_find_usages)
-  autocmd FileType cs nmap <silent> <buffer> <Leader>osfi <Plug>(omnisharp_find_implementations)
-  autocmd FileType cs nmap <silent> <buffer> <Leader>ospd <Plug>(omnisharp_preview_definition)
-  autocmd FileType cs nmap <silent> <buffer> <Leader>ospi <Plug>(omnisharp_preview_implementations)
-  autocmd FileType cs nmap <silent> <buffer> <Leader>ost <Plug>(omnisharp_type_lookup)
-  autocmd FileType cs nmap <silent> <buffer> K <Plug>(omnisharp_documentation)
-  autocmd FileType cs nmap <silent> <buffer> <Leader>osfs <Plug>(omnisharp_find_symbol)
-  autocmd FileType cs nmap <silent> <buffer> <Leader>osfx <Plug>(omnisharp_fix_usings)
+autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osfu <Plug>(omnisharp_find_usages)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osfi <Plug>(omnisharp_find_implementations)
+autocmd FileType cs nmap <silent> <buffer> <Leader>ospd <Plug>(omnisharp_preview_definition)
+autocmd FileType cs nmap <silent> <buffer> <Leader>ospi <Plug>(omnisharp_preview_implementations)
+autocmd FileType cs nmap <silent> <buffer> <Leader>ost <Plug>(omnisharp_type_lookup)
+autocmd FileType cs nmap <silent> <buffer> K <Plug>(omnisharp_documentation)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osfs <Plug>(omnisharp_find_symbol)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osfx <Plug>(omnisharp_fix_usings)
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -90,7 +94,7 @@ nnoremap <c-Down> <c-w>j
 inoremap <silent><expr> <Tab> coc#refresh()
 
 set number
-set rnu
+"set rnu
 syntax on
 syntax enable
 set wildmenu
@@ -350,6 +354,7 @@ au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 let g:airline_left_sep=''
 " the separator used on the right side 
 let g:airline_right_sep=''
+
 
 let g:ale_sign_column_always = 1
 " Set this. Airline will handle the rest.
