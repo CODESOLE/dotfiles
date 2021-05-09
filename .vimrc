@@ -95,7 +95,7 @@ nnoremap <c-Down> <c-w>j
 inoremap <silent><expr> <Tab> coc#refresh()
 
 set number
-"set rnu
+set rnu
 syntax on
 syntax enable
 set wildmenu
