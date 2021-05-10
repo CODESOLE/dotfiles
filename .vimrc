@@ -96,6 +96,7 @@ inoremap <silent><expr> <Tab> coc#refresh()
 
 set number
 set rnu
+set nocompatible
 syntax on
 syntax enable
 set wildmenu
