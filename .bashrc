@@ -14,9 +14,6 @@ else
     git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 fi
 
-
-
-
 # Set config variables first
 GIT_PROMPT_ONLY_IN_REPO=1
 
@@ -39,11 +36,6 @@ GIT_PROMPT_SHOW_UNTRACKED_FILES=normal # can be no, normal or all; determines co
 # GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 source ~/.bash-git-prompt/gitprompt.sh
-
-
-
-
-
 
 export PS1="\e[1;32m[\u@\h \W]\$ \e[m "
 
