@@ -377,4 +377,20 @@ nnoremap <leader>d<space> :call vimspector#Continue()<CR>
 nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+
+"terminal open
 nmap <leader>t :ter<CR>
+
+"buffer switching
+nmap <leader>l :bn<CR>
+nmap <leader>h :bp<CR>
+
+"move around in insert mode
+inoremap <C-k> <C-o>gk
+inoremap <C-j> <C-o>gj
+inoremap <C-h> <C-o>h
+inoremap <C-l> <C-o>l
+cnoremap <C-k> <Up>
+cnoremap <C-j> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
