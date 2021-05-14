@@ -6,7 +6,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'OmniSharp/omnisharp-vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'scrooloose/syntastic'
 Plug 'habamax/vim-gruvbit'
@@ -23,6 +22,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'Chiel92/vim-autoformat'
+Plug 'OmniSharp/omnisharp-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'honza/vim-snippets'
@@ -42,7 +42,7 @@ let g:gruvbox_contrast_dark = 'hard'
 let g:highlightedyank_highlight_duration = 500
 
 set mouse=a
-set ttymouse=sgr
+set nocompatible
 
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
@@ -72,16 +72,17 @@ let g:syntastic_check_on_wq = 0
 
 set encoding=UTF-8
 let g:airline_powerline_fonts = 1
-let g:airline#extension#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
 
 " C/C++ highlight setting
 let g:lsp_cxx_hl_use_text_props = 1
 
-" move line(s) of code bindings
-nmap <A-Up> [e
-nmap <A-Down> ]e
-vmap <A-Up> [egv
-vmap <A-Down> ]egv
+" move line(s) of code
+nmap <M-Up> [e
+nmap <M-Down> ]e
+vmap <M-Up> [egv
+vmap <M-Down> ]egv
 
 " autoformat
 noremap <F3> :Autoformat<CR>
@@ -96,7 +97,6 @@ inoremap <silent><expr> <Tab> coc#refresh()
 
 set number
 set rnu
-set nocompatible
 syntax on
 syntax enable
 set wildmenu
@@ -173,11 +173,11 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=200
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -352,11 +352,6 @@ nnoremap <Up> gk
 nnoremap <Down> gj
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
-" the separator used on the left side
-let g:airline_left_sep=''
-" the separator used on the right side 
-let g:airline_right_sep=''
-
 
 let g:ale_sign_column_always = 1
 " Set this. Airline will handle the rest.
@@ -364,6 +359,8 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" Show 5 lines of errors (default: 10)
+let g:ale_list_window_size=5
 
 "debugging shortcuts
 nnoremap <leader>dd :call vimspector#Launch()<CR>
@@ -380,3 +377,4 @@ nnoremap <leader>d<space> :call vimspector#Continue()<CR>
 nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+nmap <leader>t :ter<CR>
