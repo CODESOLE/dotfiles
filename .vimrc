@@ -8,7 +8,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'machakann/vim-highlightedyank'
 Plug 'scrooloose/syntastic'
-Plug 'habamax/vim-gruvbit'
 Plug 'morhetz/gruvbox'
 Plug 'puremourning/vimspector'
 Plug 'nathanaelkane/vim-indent-guides'
