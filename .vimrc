@@ -67,6 +67,7 @@ autocmd FileType cs nmap <silent> <buffer> <Leader>osfx <Plug>(omnisharp_fix_usi
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set statusline+=%{FugitiveStatusline()}
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -391,7 +392,7 @@ nmap <leader>h :bp<CR>
 "move around in insert mode
 inoremap <C-k> <C-o>gk
 inoremap <C-j> <C-o>gj
-inoremap <C-h> <C-o>h
+imap <C-h> <C-o>h
 inoremap <C-l> <C-o>l
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
