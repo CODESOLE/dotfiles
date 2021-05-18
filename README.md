@@ -4,4 +4,4 @@ coc_extension => { coc-clangd, coc-highlight, coc-snippets, coc-vimlsp, coc-expl
 
  * zoxide
  * npm:     ```curl -sL install-node.now.sh/lts ​|​ bash```
- * Bash-git
+ * Bash-git ```git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1```
