@@ -7,7 +7,7 @@
 
 PS1='[\u@\h \W]\$ '
 
-eval "$(zoxide init bash)"
+eval "$(zoxide init bash --cmd j)"
 
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     GIT_PROMPT_ONLY_IN_REPO=1
