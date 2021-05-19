@@ -7,7 +7,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'machakann/vim-highlightedyank'
-Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'morhetz/gruvbox'
 Plug 'puremourning/vimspector'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -34,25 +34,36 @@ Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
+
 colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark = 'hard'
 
 let g:highlightedyank_highlight_duration = 500
 
-set mouse=a
-set nocompatible
-
-if has(“termguicolors”)
+if has('termguicolors')
 set termguicolors
 endif
+
+set mouse=a
+set nocompatible
 
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
 let g:OmniSharp_server_use_mono = 1
 
-let g:syntastic_cs_checkers = ['code_checker']
+let g:ale_sign_column_always = 1
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" Show 5 lines of errors (default: 10)
+let g:ale_list_window_size=5
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
 autocmd FileType cs nmap <silent> <buffer> <Leader>osfu <Plug>(omnisharp_find_usages)
@@ -69,10 +80,6 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%{FugitiveStatusline()}
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 set encoding=UTF-8
 let g:airline_powerline_fonts = 1
@@ -357,14 +364,6 @@ nnoremap <Down> gj
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
-let g:ale_sign_column_always = 1
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-" Show 5 lines of errors (default: 10)
-let g:ale_list_window_size=5
 
 "debugging shortcuts
 nnoremap <leader>dd :call vimspector#Launch()<CR>
@@ -392,8 +391,8 @@ nmap <leader>h :bp<CR>
 "move around in insert mode
 inoremap <C-k> <C-o>gk
 inoremap <C-j> <C-o>gj
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+inoremap <C-h> <C-o>h
+inoremap <C-l> <C-o>l
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
