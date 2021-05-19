@@ -392,8 +392,8 @@ nmap <leader>h :bp<CR>
 "move around in insert mode
 inoremap <C-k> <C-o>gk
 inoremap <C-j> <C-o>gj
-imap <C-h> <C-o>h
-inoremap <C-l> <C-o>l
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
