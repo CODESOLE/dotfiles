@@ -1,6 +1,7 @@
 {
   "explorer.width": 30,
   "clangd.enabled": true,
+  "clangd.arguments": ["-header-insertion=never"],
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
   "clangd.semanticHighlighting": true,
