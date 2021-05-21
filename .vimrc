@@ -84,7 +84,7 @@ set statusline+=%{FugitiveStatusline()}
 set encoding=UTF-8
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " C/C++ highlight setting
 let g:lsp_cxx_hl_use_text_props = 1
