@@ -381,14 +381,14 @@ nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
-"terminal open
+" terminal open
 nmap <leader>t :ter<CR>
 
-"buffer switching
+" buffer switching
 nmap <leader>l :bn<CR>
 nmap <leader>h :bp<CR>
 
-"move around in insert mode
+" move around in insert mode
 inoremap <C-k> <C-o>gk
 inoremap <C-j> <C-o>gj
 inoremap <C-h> <C-o>h
@@ -398,5 +398,8 @@ cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 
-"paste selected texts to vpaste.net
+" paste selected texts to vpaste.net
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
+
+" run git status
+nmap <leader>g :G<CR>
