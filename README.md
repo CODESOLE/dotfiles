@@ -6,4 +6,5 @@ coc_extension => { coc-clangd, coc-highlight, coc-snippets, coc-vimlsp, coc-expl
  * zoxide
  * Hack nerd complete font
  * npm
+ * ~/.local/bin/vpaste.sh
  * Bash-git ```git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1```
