@@ -333,8 +333,8 @@ let g:signify_sign_show_count = 0
 let g:signify_sign_show_text = 1
 
 " Jump though hunks
-nmap <leader>gj <plug>(signify-next-hunk)
-nmap <leader>gk <plug>(signify-prev-hunk)
+nmap <leader>jj <plug>(signify-next-hunk)
+nmap <leader>kk <plug>(signify-prev-hunk)
 nmap <leader>gJ 9999<leader>gJ
 nmap <leader>gK 9999<leader>gk
 
@@ -356,7 +356,6 @@ nmap <leader>b <Plug>unimpairedBlankDown
 
 set is hlsearch
 nmap <CR> :nohlsearch<CR>
-nmap <leader>/ :SyntasticToggleMode<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap <Up> gk
