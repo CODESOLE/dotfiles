@@ -4,7 +4,7 @@ coc_extension => { coc-clangd, coc-highlight, coc-snippets, coc-vimlsp, coc-expl
 
  * fzf
  * zoxide
- * dwm, st, slstatus
+ * dwm, st, dmenu, slstatus
  * Hack nerd complete font
  * npm
  * ~/.local/bin/vpaste.sh
