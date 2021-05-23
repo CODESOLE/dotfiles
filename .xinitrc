@@ -63,8 +63,8 @@ get_status(){
 	done
 }
 
-get_status &
+# get_status &
+slstatus &
 xrandr -s 1366x768
 setxkbmap tr
-nitrogen --restore  &
 exec dwm
