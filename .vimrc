@@ -400,3 +400,4 @@ vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 
 " run git status
 nmap <leader>g :G<CR>
+command! -nargs=0 Sw w !sudo tee % > /dev/null
