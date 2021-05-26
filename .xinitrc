@@ -32,38 +32,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-get_cpu(){
-  top -bn1 | sed -n '/Cpu/p' | awk '{print (100 - $8)}'
-}
-
-get_ram(){
-  echo "$(free -m | sed -n '/Mem/p' | awk '{print $3}')M"
-}
-
-get_gpu(){
-  nvidia-smi | sed -n '/| N\//p' | awk '{print $13}'
-}
-
-get_vram(){
-  nvidia-smi | sed -n '/| N\//p' | awk '{print $9}'
-}
-
-get_date(){
-  date | awk '{print $1, $2, $3, $4}'
-}
-
-get_vol(){
-  pactl list sinks | awk '/Volume: front-left/{print $5}'
-}
-
-get_status(){
-	while true;do
-	  xsetroot -name "VOL:$(get_vol) | CPU:%$(get_cpu) | RAM:$(get_ram) | $(get_date)"
-	  sleep 1
-	done
-}
-
-# get_status &
 slstatus &
 xrandr -s 1366x768
 setxkbmap tr
