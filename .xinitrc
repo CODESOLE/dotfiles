@@ -67,5 +67,4 @@ get_status(){
 slstatus &
 xrandr -s 1366x768
 setxkbmap tr
-exec dwm
-# exec dbus-run-session dwm
+exec dbus-run-session dwm
