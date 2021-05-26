@@ -76,7 +76,6 @@ autocmd FileType cs nmap <silent> <buffer> <Leader>osfs <Plug>(omnisharp_find_sy
 autocmd FileType cs nmap <silent> <buffer> <Leader>osfx <Plug>(omnisharp_fix_usings)
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%{FugitiveStatusline()}
 
