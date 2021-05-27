@@ -6,5 +6,6 @@ coc_extension => { coc-clangd, coc-highlight, coc-snippets, coc-vimlsp, coc-expl
  * zoxide
  * dwm, st, dmenu, slstatus
  * Hack nerd complete font
+ * sfm
  * npm
  * /usr/bin/vpaste.sh (install xclip)
