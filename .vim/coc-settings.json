@@ -1,18 +1,7 @@
 {
-  "explorer.width": 30,
   "clangd.enabled": true,
   "clangd.arguments": ["-header-insertion=never"],
-  "explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": false,
   "clangd.semanticHighlighting": true,
   "clangd.checkUpdates":true,
-  "yaml.format.enable": true,
-  "explorer.keyMappings.global": {
-    "<cr>":[
-      "expandable?",
-      ["expanded?", "collapse", "expand"],
-      "open"
-    ],
-    "v": "open:vsplit"
-  }
+  "yaml.format.enable": true
 }
