@@ -11,14 +11,11 @@ Plug 'dense-analysis/ale'
 Plug 'mg979/vim-visual-multi'
 Plug 'morhetz/gruvbox'
 Plug 'puremourning/vimspector'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'da-x/name-assign.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-unimpaired'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'Chiel92/vim-autoformat'
@@ -26,11 +23,8 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'honza/vim-snippets'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
@@ -46,9 +40,9 @@ if has('termguicolors')
 set termguicolors
 endif
 
-set noshowmode
 set mouse=a
 set nocompatible
+set noshowmode
 set path+=**
 set number
 set rnu
@@ -56,19 +50,36 @@ syntax on
 syntax enable
 set wildmenu
 let mapleader=" "
+set hidden
+set cmdheight=1
+set updatetime=200
+set shortmess+=c
+set signcolumn=yes " Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
+set nobackup
+set nowritebackup
+set noswapfile
+set clipboard=unnamedplus
+vmap <C-c> :w !xclip -i -sel c<CR><CR>
+noremap gl $
+noremap gh 0
+set cursorline
+set splitbelow splitright
 
 " netrw config
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_browse_split=4
-let g:netrw_preview=1
 let g:netrw_altv=1
+let g:netrw_preview=1
 let g:netrw_winsize=25
 autocmd FileType netrw setl bufhidden=delete
-
-set nobackup
-set nowritebackup
-set noswapfile
+nmap <leader><leader> :Vex<CR>
+" open files from netrw in a previous window, unless we're opening the current dir
+if argv(0) ==# '.'
+    let g:netrw_browse_split = 0
+else
+    let g:netrw_browse_split = 4
+endif
 
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
@@ -110,12 +121,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " C/C++ highlight setting
 let g:lsp_cxx_hl_use_text_props = 1
 
-" move line(s) of code
-nmap <M-Up> [e
-nmap <M-Down> ]e
-vmap <M-Up> [egv
-vmap <M-Down> ]egv
-
 " autoformat
 noremap <F3> :Autoformat<CR>
 autocmd FileType cs noremap <F3> :OmniSharpCodeFormat<CR>
@@ -128,15 +133,6 @@ nnoremap <c-Down> <c-w>j
 inoremap <silent><expr> <Tab> coc#refresh()
 
 map <F4> :CocCommand clangd.switchSourceHeader<CR>
-
-set clipboard=unnamedplus
-vmap <C-c> :w !xclip -i -sel c<CR><CR>
-
-noremap gl $
-noremap gh 0
-
-set cursorline
-set splitbelow splitright
 
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
@@ -185,23 +181,6 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
-
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Give more space for displaying messages.
-set cmdheight=1
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=200
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -323,10 +302,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" Explorer
-nmap <space><space> :CocCommand explorer<CR>
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
-
 "========== GIT STUFF ======================================
 " Change these if you want
 let g:signify_sign_add               = '+'
@@ -350,13 +325,6 @@ nmap <leader>kk <plug>(signify-prev-hunk)
 
 " namea-assign key-bindings
 vmap <leader>b <Plug>NameAssign
-
-"Files and RipGrep search key bindings
-nmap <C-f> :Rg<CR>
-nmap <C-p> :Files<CR>
-
-" Create Blank line
-nmap <leader>b <Plug>unimpairedBlankDown
 
 set is hlsearch
 nmap <leader><CR> :nohlsearch<CR>
@@ -409,11 +377,3 @@ nmap <leader>g :G<CR>
 
 " write read-only file trick shortcut
 command! -nargs=0 Sw w !sudo tee % > /dev/null
-
-nmap <leader><leader> :Vex<CR>
-" open files from netrw in a previous window, unless we're opening the current dir
-if argv(0) ==# '.'
-    let g:netrw_browse_split = 0
-else
-    let g:netrw_browse_split = 4
-endif
