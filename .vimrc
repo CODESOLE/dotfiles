@@ -359,7 +359,7 @@ nmap <C-p> :Files<CR>
 nmap <leader>b <Plug>unimpairedBlankDown
 
 set is hlsearch
-nmap <CR> :nohlsearch<CR>
+nmap <leader><CR> :nohlsearch<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap <Up> gk
