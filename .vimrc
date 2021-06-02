@@ -56,6 +56,13 @@ syntax enable
 set wildmenu
 let mapleader=" "
 
+" netrw config
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_winsize=25
+
 set nobackup
 set nowritebackup
 set noswapfile
@@ -399,3 +406,11 @@ nmap <leader>g :G<CR>
 
 " write read-only file trick shortcut
 command! -nargs=0 Sw w !sudo tee % > /dev/null
+
+nmap <leader><leader> :Vex<CR>
+" open files from netrw in a previous window, unless we're opening the current dir
+if argv(0) ==# '.'
+    let g:netrw_browse_split = 0
+else
+    let g:netrw_browse_split = 4
+endif
