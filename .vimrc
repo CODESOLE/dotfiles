@@ -45,6 +45,7 @@ if has('termguicolors')
 set termguicolors
 endif
 
+set noshowmode
 set mouse=a
 set nocompatible
 set path+=**
