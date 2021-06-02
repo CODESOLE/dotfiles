@@ -47,6 +47,17 @@ endif
 
 set mouse=a
 set nocompatible
+set path+=**
+set number
+set rnu
+syntax on
+syntax enable
+set wildmenu
+let mapleader=" "
+
+set nobackup
+set nowritebackup
+set noswapfile
 
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
@@ -104,17 +115,6 @@ nnoremap <c-Up> <c-w>k
 nnoremap <c-Down> <c-w>j
 
 inoremap <silent><expr> <Tab> coc#refresh()
-
-set number
-set rnu
-syntax on
-syntax enable
-set wildmenu
-let mapleader=" "
-
-set nobackup
-set nowritebackup
-set noswapfile
 
 map <F4> :CocCommand clangd.switchSourceHeader<CR>
 
