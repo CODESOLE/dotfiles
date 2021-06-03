@@ -21,7 +21,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'Chiel92/vim-autoformat'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-rooter'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -33,7 +33,7 @@ call plug#end()
 colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark = 'hard'
-
+set laststatus=2
 let g:highlightedyank_highlight_duration = 500
 
 if has('termguicolors')
@@ -108,15 +108,7 @@ autocmd FileType cs nmap <silent> <buffer> K <Plug>(omnisharp_documentation)
 autocmd FileType cs nmap <silent> <buffer> <Leader>osfs <Plug>(omnisharp_find_symbol)
 autocmd FileType cs nmap <silent> <buffer> <Leader>osfx <Plug>(omnisharp_fix_usings)
 
-set statusline+=%#warningmsg#
-set statusline+=%*
-set statusline+=%{FugitiveStatusline()}
-
-
 set encoding=UTF-8
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " C/C++ highlight setting
 let g:lsp_cxx_hl_use_text_props = 1
