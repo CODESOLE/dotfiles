@@ -87,10 +87,6 @@ let g:indent_guides_guide_size=1
 let g:OmniSharp_server_use_mono = 1
 
 let g:ale_sign_column_always = 1
-" Set this. Airline will handle the rest.
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " Show 5 lines of errors (default: 10)
 let g:ale_list_window_size=5
 
