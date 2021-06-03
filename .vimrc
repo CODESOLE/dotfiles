@@ -44,6 +44,12 @@ set mouse=a
 set nocompatible
 set noshowmode
 set path+=**
+filetype on
+filetype plugin on
+set ignorecase
+set smartcase
+set showmatch
+set wildmode=list:longest
 set number
 set rnu
 syntax on
