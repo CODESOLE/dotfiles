@@ -105,9 +105,6 @@ autocmd FileType cs nmap <silent> <buffer> <Leader>osfx <Plug>(omnisharp_fix_usi
 
 set encoding=UTF-8
 
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-
 " C/C++ highlight setting
 let g:lsp_cxx_hl_use_text_props = 1
 
