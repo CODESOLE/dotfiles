@@ -11,7 +11,6 @@ Plug 'dense-analysis/ale'
 Plug 'mg979/vim-visual-multi'
 Plug 'morhetz/gruvbox'
 Plug 'puremourning/vimspector'
-Plug 'da-x/name-assign.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'mhinz/vim-signify'
@@ -21,7 +20,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'Chiel92/vim-autoformat'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'itchyny/lightline.vim'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-rooter'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -33,7 +31,6 @@ call plug#end()
 colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark = 'hard'
-set laststatus=2
 let g:highlightedyank_highlight_duration = 500
 
 if has('termguicolors')
@@ -52,7 +49,6 @@ set showmatch
 set wildmode=list:longest
 set number
 set rnu
-syntax on
 syntax enable
 set wildmenu
 let mapleader=" "
@@ -272,19 +268,86 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
+
+set laststatus=2
+set statusline=
+set statusline+=%2*
+set statusline+=%{StatuslineMode()}
+set statusline+=%1*
+set statusline+=\ 
+set statusline+=<
+set statusline+=<
+set statusline+=\ 
+set statusline+=%f
+set statusline+=\ 
+set statusline+=>
+set statusline+=>
+set statusline+=%=
+set statusline+=%m
+set statusline+=%h
+set statusline+=%r
+set statusline+=\ 
+set statusline+=%3*
+set statusline+=%{b:gitbranch}
+set statusline+=%1*
+set statusline+=\ 
+set statusline+=%4*
+set statusline+=%F
+set statusline+=:
+set statusline+=:
+set statusline+=%5*
+set statusline+=%l
+set statusline+=/
+set statusline+=%L
+set statusline+=%1*
+set statusline+=|
+set statusline+=%y
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
+hi User2 ctermbg=lightgreen ctermfg=black guibg=lightgreen guifg=black
+hi User1 ctermbg=black ctermfg=white guibg=black guifg=white
+hi User3 ctermbg=black ctermfg=lightblue guibg=black guifg=lightblue
+hi User4 ctermbg=black ctermfg=lightgreen guibg=black guifg=lightgreen
+hi User5 ctermbg=black ctermfg=magenta guibg=black guifg=magenta
+
+function! StatuslineMode()
+  let l:mode=mode()
+  if l:mode==#"n"
+    return "NORMAL"
+  elseif l:mode==?"v"
+    return "VISUAL"
+  elseif l:mode==#"i"
+    return "INSERT"
+  elseif l:mode==#"R"
+    return "REPLACE"
+  elseif l:mode==?"s"
+    return "SELECT"
+  elseif l:mode==#"t"
+    return "TERMINAL"
+  elseif l:mode==#"c"
+    return "COMMAND"
+  elseif l:mode==#"!"
+    return "SHELL"
+  endif
+endfunction
+
+function! StatuslineGitBranch()
+  let b:gitbranch=""
+  if &modifiable
+    try
+      let l:dir=expand('%:p:h')
+      let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
+      if !v:shell_error
+        let b:gitbranch="(".substitute(l:gitrevparse, '\n', '', 'g').") "
+      endif
+    catch
+    endtry
+  endif
+endfunction
+
+augroup GetGitBranch
+  autocmd!
+  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
+augroup END
 
 " Mappings using CoCList:
 " Show all diagnostics.
