@@ -37,8 +37,8 @@ if has('termguicolors')
 set termguicolors
 endif
 
-set mouse=a
 set nocompatible
+set mouse=a
 set noshowmode
 set path+=**
 filetype on
@@ -302,7 +302,6 @@ set statusline+=%L
 set statusline+=%1*
 set statusline+=|
 set statusline+=%y
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 hi User2 ctermbg=lightgreen ctermfg=black guibg=lightgreen guifg=black
 hi User1 ctermbg=black ctermfg=white guibg=black guifg=white
 hi User3 ctermbg=black ctermfg=lightblue guibg=black guifg=lightblue
