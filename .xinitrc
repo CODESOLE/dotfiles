@@ -34,5 +34,6 @@ fi
 
 slstatus &
 xrandr -s 1366x768
+bgs -R ~/Pictures/lotr.jpg
 setxkbmap tr
 exec dbus-run-session dwm
