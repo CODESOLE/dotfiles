@@ -37,6 +37,7 @@ nnoremap gc :YcmCompleter GoToDeclaration<CR>
 nnoremap gr :YcmCompleter GoToReferences<CR>
 nnoremap <F3> :YcmCompleter Format<CR>
 nnoremap <leader>f :YcmCompleter FixIt<CR>
+noremap <F4> :YcmDiags<CR>
 
 let g:ycm_clangd_binary_path='/usr/bin/clangd'
 let g:ycm_clangd_args=['-header-insertion=never']
