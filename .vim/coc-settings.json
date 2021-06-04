@@ -1,7 +1,0 @@
-{
-  "clangd.enabled": true,
-  "clangd.arguments": ["-header-insertion=never"],
-  "clangd.semanticHighlighting": true,
-  "clangd.checkUpdates":true,
-  "yaml.format.enable": true
-}
