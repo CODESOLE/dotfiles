@@ -225,12 +225,6 @@ let g:signify_sign_show_text = 1
 nmap <leader>jj <plug>(signify-next-hunk)
 nmap <leader>kk <plug>(signify-prev-hunk)
 
-" If you like colors instead
-" highlight SignifySignAdd                  ctermbg=green                guibg=#00ff00
-" highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff guibg=#ff0000
-" highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00
-" ======================================================================================================
-
 set is hlsearch
 nmap <leader><CR> :nohlsearch<CR>
 nnoremap j gj
