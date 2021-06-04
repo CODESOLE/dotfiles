@@ -71,5 +71,5 @@ static const struct arg args[] = {
     { cpu_perc, "|CPU:%s%%|", NULL },
     { run_command, "RAM:%s|", "echo \"$(free -h | sed -n '/Mem/p' | awk '{print $3}')\"" },
     { disk_free, "STORAGE:%s|", "/" },
-    { datetime, "%s", "%F %T" },
+    { datetime, "%s", "%a %b %d %T" },
 };
