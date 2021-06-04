@@ -16,7 +16,6 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'preservim/nerdcommenter'
-Plug 'airblade/vim-rooter'
 Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
@@ -59,6 +58,9 @@ let g:ycm_semantic_triggers =  {
   \   'erlang': [':'],
   \ }
 
+" CDC = Change to Directory of Current file
+command CDC cd %:p:h
+
 set nocompatible
 set mouse=a
 set noshowmode
@@ -68,11 +70,12 @@ filetype plugin on
 set ignorecase
 set smartcase
 set showmatch
-set wildmode=list:longest
+set wildmode=list,full
+set wildmenu
+set wildignore=*/builddir/*,*/build/*
 set number
 set rnu
 syntax enable
-set wildmenu
 let mapleader=" "
 set hidden
 set cmdheight=1
@@ -137,15 +140,14 @@ set statusline+=%2*
 set statusline+=%{StatuslineMode()}
 set statusline+=%1*
 set statusline+=\ 
-set statusline+=<
-set statusline+=<
 set statusline+=\ 
 set statusline+=%f
+set statusline+=%1*
 set statusline+=\ 
-set statusline+=>
-set statusline+=>
-set statusline+=%=
+set statusline+=\ 
 set statusline+=%m
+set statusline+=\ 
+set statusline+=%=
 set statusline+=%h
 set statusline+=%r
 set statusline+=\ 
@@ -155,7 +157,6 @@ set statusline+=%1*
 set statusline+=\ 
 set statusline+=%4*
 set statusline+=%F
-set statusline+=:
 set statusline+=:
 set statusline+=%5*
 set statusline+=%l
@@ -224,6 +225,12 @@ let g:signify_sign_show_text = 1
 " Jump though hunks
 nmap <leader>jj <plug>(signify-next-hunk)
 nmap <leader>kk <plug>(signify-prev-hunk)
+
+" If you like colors instead
+" highlight SignifySignAdd                  ctermbg=green                guibg=#00ff00
+" highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff guibg=#ff0000
+" highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00
+" ======================================================================================================
 
 set is hlsearch
 nmap <leader><CR> :nohlsearch<CR>
