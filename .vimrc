@@ -14,7 +14,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'puremourning/vimspector'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 
