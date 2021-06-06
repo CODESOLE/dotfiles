@@ -33,6 +33,7 @@ set shortmess+=c
 set nobackup
 set nowritebackup
 set noswapfile
+set completeopt+=menuone
 set clipboard=unnamedplus
 noremap gl $
 noremap gh 0
