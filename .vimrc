@@ -49,12 +49,6 @@ let g:netrw_preview=1
 let g:netrw_winsize=25
 autocmd FileType netrw setl bufhidden=delete
 nmap <leader><leader> :Vex<CR>
-" open files from netrw in a previous window, unless we're opening the current dir
-if argv(0) ==# '.'
-    let g:netrw_browse_split = 0
-else
-    let g:netrw_browse_split = 4
-endif
 
 set encoding=UTF-8
 
