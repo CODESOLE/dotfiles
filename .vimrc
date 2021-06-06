@@ -1,62 +1,10 @@
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin('~/.vim/plugged')
-
-Plug 'machakann/vim-highlightedyank'
-Plug 'ycm-core/YouCompleteMe'
-Plug 'mg979/vim-visual-multi'
-Plug 'morhetz/gruvbox'
-Plug 'sheerun/vim-polyglot'
-Plug 'puremourning/vimspector'
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-Plug 'preservim/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
-
-call plug#end()
-
-colorscheme gruvbox
-set background=dark
-let g:gruvbox_contrast_dark = 'hard'
-let g:highlightedyank_highlight_duration = 500
-
 if has('termguicolors')
 set termguicolors
 endif
-
-nnoremap gd :YcmCompleter GoTo<CR>
-nnoremap gs :YcmCompleter GoToSymbol<CR>
-nnoremap gi :YcmCompleter GoToInclude<CR>
-nnoremap gf :YcmCompleter GoToDefinition<CR>
-nnoremap gc :YcmCompleter GoToDeclaration<CR>
-nnoremap gr :YcmCompleter GoToReferences<CR>
-nnoremap <F3> :YcmCompleter Format<CR>
-nnoremap <leader>f :YcmCompleter FixIt<CR>
-noremap <F4> :YcmDiags<CR>
-
-let g:ycm_clangd_binary_path='/usr/bin/clangd'
-let g:ycm_clangd_args=['-header-insertion=never']
-let g:ycm_always_populate_location_list=1
-let g:ycm_disable_for_files_larger_than_kb = 0
-let g:ycm_max_diagnostics_to_display = 0
-let g:ycm_warning_symbol = '--'
-let g:ycm_semantic_triggers =  {
-  \   'c': ['->', '.'],
-  \   'objc': ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
-  \            're!\[.*\]\s'],
-  \   'ocaml': ['.', '#'],
-  \   'cpp,cuda,objcpp': ['->', '.', '::'],
-  \   'perl': ['->'],
-  \   'php': ['->', '::'],
-  \   'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'],
-  \   'ruby,rust': ['.', '::'],
-  \   'lua': ['.', ':'],
-  \   'erlang': [':'],
-  \ }
+colorscheme default
+set background=dark
+hi CursorLine term=bold cterm=bold guibg=Grey40
+hi CursorLineNr    term=bold cterm=bold ctermfg=012
 
 " CDC = Change to Directory of Current file
 command CDC cd %:p:h
@@ -81,7 +29,6 @@ set hidden
 set cmdheight=1
 set updatetime=200
 set shortmess+=c
-set signcolumn=yes " Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
 set nobackup
 set nowritebackup
 set noswapfile
@@ -108,26 +55,6 @@ else
 endif
 
 set encoding=UTF-8
-
-nnoremap <c-Left> <c-w>h
-nnoremap <c-Right> <c-w>l
-nnoremap <c-Up> <c-w>k
-nnoremap <c-Down> <c-w>j
-
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-" Enable NERDCommenterToggle to check all selected lines is commented or not
-let g:NERDToggleCheckAllLines = 1
 
 set laststatus=2
 set statusline=
@@ -206,27 +133,6 @@ augroup GetGitBranch
   autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
 
-"========== GIT STUFF ======================================
-" Change these if you want
-let g:signify_sign_add               = '+'
-let g:signify_sign_delete            = '_'
-let g:signify_sign_delete_first_line = '‾'
-let g:signify_sign_change            = '~'
-
-" I find the numbers disctracting
-let g:signify_sign_show_count = 0
-let g:signify_sign_show_text = 1
-
-" Jump though hunks
-nmap <leader>jj <plug>(signify-next-hunk)
-nmap <leader>kk <plug>(signify-prev-hunk)
-
-" If you like colors instead
-" highlight SignifySignAdd                  ctermbg=green                guibg=#00ff00
-" highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff guibg=#ff0000
-" highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00
-" ======================================================================================================
-
 set is hlsearch
 nmap <leader><CR> :nohlsearch<CR>
 nnoremap j gj
@@ -235,22 +141,6 @@ nnoremap <Up> gk
 nnoremap <Down> gj
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
-
-"debugging shortcuts
-nnoremap <leader>dd :call vimspector#Launch()<CR>
-nnoremap <leader>de :call vimspector#Reset()<CR>
-
-nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
-
-nmap <leader>dl <Plug>VimspectorStepInto
-nmap <leader>dj <Plug>VimspectorStepOver
-nmap <leader>dk <Plug>VimspectorStepOut
-nmap <leader>d_ <Plug>VimspectorRestart
-nnoremap <leader>d<space> :call vimspector#Continue()<CR>
-
-nmap <leader>drc <Plug>VimspectorRunToCursor
-nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
-nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 " terminal open
 nmap <leader>t :ter<CR>
@@ -271,9 +161,6 @@ cnoremap <C-l> <Right>
 
 " paste selected texts to vpaste.net
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
-
-" run git status
-nmap <leader>g :G<CR>
 
 " write read-only file trick shortcut
 command! -nargs=0 Sw w !sudo tee % > /dev/null
