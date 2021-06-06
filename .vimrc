@@ -10,6 +10,7 @@ hi CursorLineNr    term=bold cterm=bold ctermfg=012
 command CDC cd %:p:h
 
 set nocompatible
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 set mouse=a
 set noshowmode
 set path+=**
