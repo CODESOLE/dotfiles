@@ -21,9 +21,7 @@ set smartcase
 set showmatch
 set wildmode=list,full
 set wildmenu
-set wildignore=*/builddir/*,*/build/*
-set number
-set rnu
+set wildignore=*/builddir/*,*/build/*,tags
 syntax enable
 let mapleader=" "
 set hidden
@@ -72,11 +70,6 @@ set statusline+=%r
 set statusline+=\ 
 set statusline+=%3*
 set statusline+=%{b:gitbranch}
-set statusline+=%1*
-set statusline+=\ 
-set statusline+=%4*
-set statusline+=%F
-set statusline+=:
 set statusline+=%5*
 set statusline+=%l
 set statusline+=/
