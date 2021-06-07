@@ -31,9 +31,10 @@ set cmdheight=1
 set updatetime=200
 set shortmess+=c
 set nobackup
+set omnifunc=syntaxcomplete#Complete
 set nowritebackup
 set noswapfile
-set completeopt+=menuone
+set completeopt=menuone,menu,longest,preview
 set clipboard=unnamedplus
 noremap gl $
 noremap gh 0
@@ -49,6 +50,12 @@ let g:netrw_preview=1
 let g:netrw_winsize=25
 autocmd FileType netrw setl bufhidden=delete
 nmap <leader><leader> :Vex<CR>
+" open files from netrw in a previous window, unless we're opening the current dir
+if argv(0) ==# '.'
+    let g:netrw_browse_split = 0
+else
+    let g:netrw_browse_split = 4
+endif
 
 set encoding=UTF-8
 
@@ -160,3 +167,6 @@ vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 
 " write read-only file trick shortcut
 command! -nargs=0 Sw w !sudo tee % > /dev/null
+
+" create tags
+map <F3> :!ctags -R *<CR>
