@@ -153,7 +153,7 @@ cnoremap <C-l> <Right>
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 
 " write read-only file trick shortcut
-command! -nargs=0 Sw w !sudo tee % > /dev/null
+cnoremap Sw execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " create tags
 map <F3> :!ctags -R *<CR>
