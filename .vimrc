@@ -157,3 +157,7 @@ cnoremap Sw execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " create tags
 map <F3> :!ctags -R *<CR>
+
+inoremap ( ()<++><Esc>F)i
+inoremap [ []<++><Esc>F]i
+inoremap { {}<++><Esc>F}i
