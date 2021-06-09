@@ -4,7 +4,6 @@ endif
 colorscheme default
 set background=dark
 hi CursorLine term=bold cterm=bold guibg=Grey40
-hi CursorLineNr    term=bold cterm=bold ctermfg=012
 
 " CDC = Change to Directory of Current file
 command CDC cd %:p:h
@@ -39,7 +38,6 @@ noremap gh 0
 set cursorline
 set splitbelow splitright
 
-" netrw config
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_browse_split=4
@@ -132,14 +130,11 @@ nnoremap <Down> gj
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
-" terminal open
 nmap <leader>t :ter<CR>
 
-" buffer switching
 nmap <leader>l :bn<CR>
 nmap <leader>h :bp<CR>
 
-" move around in insert mode
 inoremap <C-k> <C-o>gk
 inoremap <C-j> <C-o>gj
 inoremap <C-h> <C-o>h
@@ -152,36 +147,27 @@ cnoremap <C-l> <Right>
 " paste selected texts to vpaste.net
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 
-" write read-only file trick shortcut
 cnoremap Sw execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
-" create tags
-map <F3> :!ctags -R *<CR>
+map <F3> :!ctags -R --kinds-c++=+p --fields=+iaS --extras=+q .<CR>
 
 nnoremap n nzz
 nnoremap N Nzz
 
 iabbrev __cc /*<CR><CR>/<Up>
 
-inoremap ( ()<++><Esc>F)i
-inoremap [ []<++><Esc>F]i
-inoremap { {}<++><Esc>F}i
+au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 
-iabbrev #i #include <><Left>
-iabbrev #I #include ""<Left>
-iabbrev #d #define
+set tags+=~/tags/tags
 
-autocmd FileType c iabbrev intmain #include <stdio.h>
-                                     \<CR>
-                                     \#include <stdlib.h>
-                                     \<CR>
-                                     \#include <stdbool.h>
-                                     \<CR>
-                                     \<CR>
-                                     \int main() {
-                                     \<CR>
-                                     \  printf("hello\n");
-                                     \<CR>
-                                     \  return 0;
-                                     \<CR>
-                                     \}}<Esc>D<Up><Up>
+" OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
