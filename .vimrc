@@ -184,4 +184,4 @@ autocmd FileType c iabbrev intmain #include <stdio.h>
                                      \<CR>
                                      \  return 0;
                                      \<CR>
-                                     \}
+                                     \}}<Esc>D<Up><Up>
