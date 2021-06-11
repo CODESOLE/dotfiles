@@ -135,10 +135,10 @@ nmap <leader>t :ter<CR>
 nmap <leader>l :bn<CR>
 nmap <leader>h :bp<CR>
 
-inoremap <C-k> <C-o>gk
-inoremap <C-j> <C-o>gj
-inoremap <C-h> <C-o>h
-inoremap <C-l> <C-o>l
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
