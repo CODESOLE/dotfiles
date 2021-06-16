@@ -1,0 +1,23 @@
+! do not scroll with output
+URxvt.scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt.scrollWithBuffer: true
+
+! disable scrollbar
+URxvt.scrollBar: false
+
+! scroll back to the bottom on keypress
+URxvt.scrollTtyKeypress: true
+
+URxvt.font: xft:HackNerdFont:size=8
+URxvt.background: black
+URxvt.foreground: white
+
+URxvt.perl-ext-common: default,url-select,keyboard-select
+
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
