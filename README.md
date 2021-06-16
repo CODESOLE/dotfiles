@@ -4,7 +4,7 @@ My Dotfiles </br>
  * fzf
  * zoxide
  * bgs
- * dwm, st, dmenu, slstatus
+ * dwm, rxvt-unicode, urxvt-perls, dmenu, slstatus
  * Hack nerd complete font
  * sfm
  * go mono nodejs openjdk openjdk-jre base-devel cmake python3-dev
