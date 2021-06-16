@@ -4,7 +4,7 @@ endif
 colorscheme default
 set background=dark
 hi CursorLine term=bold cterm=bold guibg=Grey40
-
+set t_Co=256
 " CDC = Change to Directory of Current file
 command CDC cd %:p:h
 
