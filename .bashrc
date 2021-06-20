@@ -1,11 +1,5 @@
-#
-# ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
-PS1='[\u@\h \W]\$ '
 
 eval "$(zoxide init bash --cmd j)"
 
@@ -39,7 +33,7 @@ GIT_PROMPT_SHOW_UNTRACKED_FILES=normal # can be no, normal or all; determines co
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 source ~/.bash-git-prompt/gitprompt.sh
 
-export PS1="\e[1;32m[\u@\h \W]\$ \e[m "
+PS1="\e[1;32m[\u@\h \w]\$\e[m "
 
 alias evi='vim ~/.vimrc'
 alias ebs='vim ~/.bashrc'
@@ -54,11 +48,13 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias diff='colordiff'
-alias gs='git status'
 alias genfgnu='clang-format -style=gnu -dump-config > .clang-format'
 alias genfmic='clang-format -style=microsoft -dump-config > .clang-format'
 alias v='vim'
-alias nv='nvim'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 set -o vi
 export EDITOR='vim'
