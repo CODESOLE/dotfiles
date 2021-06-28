@@ -1,12 +1,14 @@
 if has('termguicolors')
 set termguicolors
 endif
-colorscheme default
-set background=dark
-hi CursorLine term=bold cterm=bold guibg=Grey40
+colorscheme torte
 set t_Co=256
 " CDC = Change to Directory of Current file
 command CDC cd %:p:h
+
+set vb noeb t_vb=
+set backspace=indent,eol,start
+set shell=bash
 
 set nocompatible
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
