@@ -1,6 +1,3 @@
-if has('termguicolors')
-set termguicolors
-endif
 colorscheme torte
 set t_Co=256
 " CDC = Change to Directory of Current file
@@ -34,7 +31,7 @@ set omnifunc=syntaxcomplete#Complete
 set nowritebackup
 set noswapfile
 set completeopt=menuone,menu,longest,preview
-set clipboard=unnamedplus
+set clipboard=unnamed
 noremap gl $
 noremap gh 0
 set cursorline
