@@ -13,6 +13,7 @@ set noshowmode
 set path+=**
 set ignorecase
 set smartcase
+set smartindent
 set showmatch
 set wildmode=list,full
 set wildignore=*/builddir/*,*/build/*,tags
