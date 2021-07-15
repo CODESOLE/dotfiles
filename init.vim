@@ -5,9 +5,7 @@ if has('termguicolors')
   set termguicolors
 endif
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
-set guifont=fixedsys
-set vb noeb t_vb=
-set shell=F:\cygwin64\bin\mintty.exe
+set shell=bash
 set laststatus=0 ruler
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 set mouse=a
