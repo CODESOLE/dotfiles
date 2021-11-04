@@ -1,0 +1,123 @@
+! do not scroll with output
+URxvt.scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt.scrollWithBuffer: true
+
+! disable scrollbar
+URxvt.scrollBar: false
+
+! scroll back to the bottom on keypress
+URxvt.scrollTtyKeypress: true
+
+URxvt.font: xft:Inconsolata:size=9
+URxvt.background: black
+URxvt.foreground: white
+
+URxvt.perl-ext-common: default,url-select,keyboard-select
+
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+
+
+
+! These are all possible options, presented with default values.
+! xst will fallback to *.option if st.option is not present.
+! see src/config.h for more information about option meanings.
+
+! --- These options only take effect on startup. ---
+st.termname:     xst-256color
+
+! Set to a non-zero value to disable window decorations (titlebar, etc) and go borderless.
+st.borderless:        0
+
+! --- The following options options can be reloaded via USR1 signal. ---
+st.font:              Inconsolata:pixelsize=12:antialias=true:autohint=true;
+
+! window padding
+st.borderpx:          0
+
+! Available cursor values: 2 4 6 7 = █ _ | ☃ ( 1 3 5 are blinking versions)
+st.cursorshape:       1
+
+! thickness of underline and bar cursors
+st.cursorthickness:   2
+
+! 0: normal blinking, 1: leave cursor border and blink with cursor background
+st.cursorblinkstyle:  0
+
+! 0: cursor blinks with a constant interval; 1: blinking cycle resets on key input
+st.cursorblinkontype: 1
+
+st.disablebold:         0
+st.disableitalics:         0
+st.disableroman:         0
+
+! Amount of lines scrolled
+st.scrollrate:  3
+
+! Kerning / character bounding-box height multiplier
+st.chscale:           1.0
+
+! Kerning / character bounding-box width multiplier
+st.cwscale:           1.0
+
+! blinking timeout for terminal and cursor blinking (0 disables)
+st.blinktimeout:      800
+
+! bell volume. Value between -100 and 100. (0 disables)
+st.bellvolume:        0
+
+! 1: render most of the lines/blocks characters without using the font for
+! perfect alignment between cells (U2500 - U259F except dashes/diagonals).
+! Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
+! 0: disable (render all U25XX glyphs normally from the font).
+st.boxdraw: 0
+
+! (0|1) boxdraw(bold) enable toggle
+st.boxdraw_bold: 0
+
+! braille (U28XX):  1: render as adjacent "pixels",  0: use font
+st.boxdraw_braille: 0
+
+! set this to a non-zero value to force window depth
+st.depth: 0
+
+! opacity==255 means what terminal will be not transparent, 0 - fully transparent
+! (float values in range 0 to 1.0 may also be used)
+st.opacity:      255
+
+! (0|1) dont pre-multiply color values of the pixels when using transparency
+! (useful for the systems where composite manager not running all the time,
+! as color pre-multiplication will make the "opaque" colors look darker/lighter
+! without the composition)
+st.disable_alpha_correction: 0
+
+! colors -- this is the base16-twilight colorscheme.
+st.foreground:   #eeeeee
+st.background:   #080808
+st.color0:       #323437
+st.color1:       #ff5454
+st.color2:       #8cc85f
+st.color3:       #e3c78a
+st.color4:       #80a0ff
+st.color5:       #d183e8
+st.color6:       #79dac8
+st.color7:       #a1aab8
+st.color8:       #7c8f8f
+st.color9:       #ff5189
+st.color10:      #36c692
+st.color11:      #bfbf97
+st.color12:      #74b2ff
+st.color13:      #ae81ff
+st.color14:      #85dc85
+st.color15:      #e2637f
+st.color16:      #282a36
+st.color17:      #f8f8f2
+st.color18:      #323537
+st.color19:      #464b50
+st.color20:      #838184
+st.color21:      #c3c3c3
