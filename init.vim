@@ -17,7 +17,7 @@ set hidden
 set cmdheight=1
 set updatetime=200
 set shortmess+=c
-set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
 set clipboard=unnamedplus
 noremap gl $
 noremap gh 0
@@ -49,38 +49,39 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 map <F3> :!ctags -R *<CR>
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'enable'
-let g:compe.throttle_time = 80
-let g:compe.source_timeout = 200
-let g:compe.resolve_timeout = 800
-let g:compe.incomplete_delay = 400
-let g:compe.max_abbr_width = 100
-let g:compe.max_kind_width = 100
-let g:compe.max_menu_width = 100
-let g:compe.documentation = v:true
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.nvim_lsp = v:true
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 lua <<EOF
 local nvim_lsp = require('lspconfig')
+local cmp = require'cmp'
 require 'nvim-treesitter.install'.compilers = {"clang"}
 require'nvim-treesitter.configs'.setup {
   highlight = {enable = true},
   indent = {enable = true},
 }
-nvim_lsp.clangd.setup{}
+cmp.setup({
+  snippet = {
+      expand = function(args) vim.fn["vsnip#anonymous"](args.body) end,
+  },
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable,
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = cmp.config.sources({
+    { name = 'vsnip' },
+    { name = 'nvim_lsp' }, {
+      { name = 'buffer' },
+    }
+  })
+})
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+nvim_lsp['clangd'].setup {
+}
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -100,10 +101,11 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
-local servers = { "clangd" }
+local servers = { 'clangd' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
+    capabilities = capabilities,
     cmd = {"/usr/bin/clangd", "--background-index", "--cross-file-rename", "--header-insertion=never"},
     flags = {
       debounce_text_changes = 150,
