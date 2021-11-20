@@ -24,8 +24,6 @@ then
   mkdir -p ~/.config/nvim
   mkdir -p ~/.config/vis/themes
   cp ./init.vim ~/.config/nvim/init.vim
-  cp ./visrc.lua ~/.config/vis/visrc.lua
-  cp ./seti.lua ~/.config/vis/themes/seti.lua
 fi
 
 if [ -x "$(command -v vis)" ]
