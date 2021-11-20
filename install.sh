@@ -11,7 +11,7 @@ then
   sudo xbps-install -S font-inconsolata-otf xclip neovim ninja cmake base-devel zoxide xst dmenu
 elif [ "$1" = "arch" ]
 then
-  sudo pacman -S ttf-inconsolata xclip neovim ninja cmake base-devel
+  sudo pacman -S ttf-inconsolata xclip neovim ninja cmake base-devel zoxide dmenu premake meson
 fi
 
 cp -i .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ~/
