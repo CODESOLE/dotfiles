@@ -22,12 +22,12 @@ if [ -x "$(command -v nvim)" ]
 then
   sudo cp -i ./moonfly.vim /usr/share/nvim/runtime/colors/moonfly.vim
   mkdir -p ~/.config/nvim
-  mkdir -p ~/.config/vis/themes
   cp ./init.vim ~/.config/nvim/init.vim
 fi
 
 if [ -x "$(command -v vis)" ]
 then
+  mkdir -p ~/.config/vis/themes
   cp ./visrc.lua ~/.config/vis/visrc.lua
   cp ./seti.lua ~/.config/vis/themes/seti.lua
 fi
