@@ -23,7 +23,13 @@ then
   sudo cp -i ./moonfly.vim /usr/share/nvim/runtime/colors/moonfly.vim
   mkdir -p ~/.config/nvim/pack/site/start
   cp ./init.vim ~/.config/nvim/init.vim
-  cd ~/.config/nvim/pack/site/start && git clone https://github.com/hrsh7th/cmp-nvim-lsp https://github.com/hrsh7th/cmp-vsnip https://github.com/hrsh7th/nvim-cmp https://github.com/neovim/nvim-lspconfig https://github.com/nvim-treesitter/nvim-treesitter https://github.com/hrsh7th/vim-vsnip
+  cd ~/.config/nvim/pack/site/start &&\
+  git clone https://github.com/hrsh7th/cmp-nvim-lsp &&\
+  git clone https://github.com/hrsh7th/cmp-vsnip &&\
+  git clone https://github.com/hrsh7th/nvim-cmp &&\
+  git clone https://github.com/neovim/nvim-lspconfig &&\
+  git clone https://github.com/nvim-treesitter/nvim-treesitter &&\
+  git clone https://github.com/hrsh7th/vim-vsnip
 fi
 
 if [ -x "$(command -v vis)" ]
