@@ -8,7 +8,7 @@ then
   sudo apt install fonts-inconsolata xclip neovim ninja-build build-essentials cmake
 elif [ "$1" = "void" ]
 then
-  sudo xbps-install -S font-inconsolata-otf xclip neovim ninja cmake base-devel zoxide
+  sudo xbps-install -S font-inconsolata-otf xclip neovim ninja cmake base-devel zoxide xst dmenu
 elif [ "$1" = "arch" ]
 then
   sudo pacman -S ttf-inconsolata xclip neovim ninja cmake base-devel
