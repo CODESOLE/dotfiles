@@ -52,7 +52,7 @@ vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 lua <<EOF
 local nvim_lsp = require('lspconfig')
 local cmp = require'cmp'
-require 'nvim-treesitter.install'.compilers = {"clang"}
+require 'nvim-treesitter.install'.compilers = {"gcc"}
 require'nvim-treesitter.configs'.setup {
   highlight = {enable = true},
   indent = {enable = true},
@@ -80,8 +80,7 @@ cmp.setup({
   })
 })
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-nvim_lsp['clangd'].setup {
-}
+nvim_lsp.ccls.setup{}
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -101,12 +100,11 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
-local servers = { 'clangd' }
+local servers = { 'ccls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = {"/usr/bin/clangd", "--background-index", "--cross-file-rename", "--header-insertion=never"},
     flags = {
       debounce_text_changes = 150,
     }
