@@ -24,12 +24,11 @@ then
   mkdir -p ~/.config/nvim/pack/site/start
   cp ./init.vim ~/.config/nvim/init.vim
   cd ~/.config/nvim/pack/site/start &&\
-  git clone https://github.com/hrsh7th/cmp-nvim-lsp &&\
-  git clone https://github.com/hrsh7th/cmp-vsnip &&\
-  git clone https://github.com/hrsh7th/nvim-cmp &&\
+  git clone https://github.com/ray-x/lsp_signature.nvim &&\
+  git clone https://github.com/hrsh7th/nvim-compe &&\
   git clone https://github.com/neovim/nvim-lspconfig &&\
-  git clone https://github.com/nvim-treesitter/nvim-treesitter &&\
-  git clone https://github.com/hrsh7th/vim-vsnip
+  git clone https://github.com/nvim-treesitter/nvim-treesitter
+
 fi
 
 if [ -x "$(command -v vis)" ]
