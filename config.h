@@ -69,7 +69,7 @@ static const struct arg args[] = {
     { netspeed_rx, "|D:%s", "eth0" },
     { netspeed_tx, "|U:%s", "eth0" },
     { cpu_perc, "|CPU:%s%%|", NULL },
-    { run_command, "RAM:%s|", "echo \"$(free -h | sed -n '/Mem/p' | awk '{print $3}')\"" },
+    { run_command, "RAM:%s|", "echo \"$(free --mega | sed -n '/Mem/p' | awk '{print $3}')MB\"" },
     { disk_free, "STORAGE:%s|", "/" },
     { datetime, "%s", "%a %b %d %T" },
 };
