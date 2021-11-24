@@ -5,22 +5,22 @@ then
   echo "Please enter dist name (eg. deb, void, arch)" && exit 1
 elif [ "$1" = "deb" ]
 then
-  sudo apt install fonts-inconsolata xclip neovim ninja-build build-essentials cmake
+  sudo apt -y install fonts-inconsolata xclip neovim ninja-build build-essentials cmake
 elif [ "$1" = "void" ]
 then
-  sudo xbps-install -S font-inconsolata-otf xclip vis neovim ninja cmake base-devel zoxide xst dmenu
+  sudo xbps-install -S -y font-inconsolata-otf xclip vis neovim ninja cmake base-devel zoxide xst dmenu
 elif [ "$1" = "arch" ]
 then
-  sudo pacman -S ttf-inconsolata xclip neovim vis ninja cmake base-devel zoxide dmenu premake meson
+  sudo pacman -S --noconfirm ttf-inconsolata xclip neovim vis ninja cmake base-devel zoxide dmenu premake meson
 fi
 
-cp -i .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ~/
+cp -f .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ~/
 
-chmod +x vpaste.sh && sudo cp -i vpaste.sh /usr/bin/vpaste.sh
+chmod +x vpaste.sh && sudo cp -f vpaste.sh /usr/bin/vpaste.sh
 
 if [ -x "$(command -v nvim)" ]
 then
-  sudo cp -i ./moonfly.vim /usr/share/nvim/runtime/colors/moonfly.vim
+  sudo cp -f ./moonfly.vim /usr/share/nvim/runtime/colors/moonfly.vim
   mkdir -p ~/.config/nvim/pack/site/start
   cp ./init.vim ~/.config/nvim/init.vim
   cd ~/.config/nvim/pack/site/start &&\
