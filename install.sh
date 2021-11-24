@@ -5,13 +5,13 @@ then
   echo "Please enter dist name (eg. deb, void, arch)" && exit 1
 elif [ "$1" = "deb" ]
 then
-  sudo apt -y install fonts-inconsolata xclip neovim ninja-build build-essentials cmake
+  sudo apt -y install fonts-inconsolata xclip neovim ninja-build build-essentials cmake ccls
 elif [ "$1" = "void" ]
 then
-  sudo xbps-install -S -y font-inconsolata-otf xclip vis neovim ninja cmake base-devel zoxide xst dmenu
+  sudo xbps-install -S -y font-inconsolata-otf xclip vis neovim ninja cmake base-devel zoxide xst dmenu ccls
 elif [ "$1" = "arch" ]
 then
-  sudo pacman -S --noconfirm ttf-inconsolata xclip neovim vis ninja cmake base-devel zoxide dmenu premake meson
+  sudo pacman -S --noconfirm ttf-inconsolata xclip neovim vis ninja cmake base-devel zoxide dmenu premake meson ccls
 fi
 
 cp -f .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ~/
