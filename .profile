@@ -2,6 +2,8 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     startx
 fi
 
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+
 alias evi='vim ~/.vimrc'
 alias ebs='vim ~/.bashrc'
 alias c='clear'
