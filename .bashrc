@@ -35,8 +35,6 @@ source ~/.bash-git-prompt/gitprompt.sh
 
 PS1="\e[1;32m[\u@\h \w]\$\e[m "
 
-alias evi='vim ~/.vimrc'
-alias ebs='vim ~/.bashrc'
 alias c='clear'
 alias e='exit'
 alias ..='cd ..'
@@ -54,7 +52,6 @@ alias v='nvim'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
-alias gp='git push'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 set -o vi
 export EDITOR='nvim'
