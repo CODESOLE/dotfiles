@@ -1,7 +1,7 @@
 # dotfiles
 My Dotfiles </br>
 
- * zoxide
+ * autojump
  * dwm, xst, dmenu, slstatus
 
 **nvim plugins:**
