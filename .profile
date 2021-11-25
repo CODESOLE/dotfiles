@@ -2,8 +2,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     startx
 fi
 
-eval "$(zoxide init posix --hook prompt --cmd j)"
-
 alias evi='vim ~/.vimrc'
 alias ebs='vim ~/.bashrc'
 alias c='clear'
