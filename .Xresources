@@ -9,7 +9,7 @@ st.termname:     xst-256color
 st.borderless:        0
 
 ! --- The following options options can be reloaded via USR1 signal. ---
-st.font:              JetbrainsMono:pixelsize=10:antialias=true:autohint=true;
+st.font:              HackRegularNerdFontCompleteMono:pixelsize=10:antialias=true:autohint=true;
 
 ! window padding
 st.borderpx:          0
