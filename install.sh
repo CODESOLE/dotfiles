@@ -10,6 +10,7 @@ elif [ "$1" = "arch" ]; then
   sudo pacman -S --noconfirm xclip neovim vis ninja cmake base-devel dmenu premake meson ccls
   git clone https://aur.archlinux.org/xst-git && cd xst-git/ && makepkg -si
   git clone https://aur.archlinux.org/autojump && cd autojump/ && makepkg -si
+  git clone https://git.suckless.org/dwm && && rm -f ./dwm/config.def.h && cp -f ./config.def.h ./dwm/config.def.h && sudo make clean install
 fi
 
 cp -f .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ~/
