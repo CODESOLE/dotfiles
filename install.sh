@@ -13,7 +13,8 @@ elif [ "$1" = "arch" ]; then
 fi
 
 cp -f .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ~/
-cp -f HackRegularNerdFontCompleteMono.ttf /usr/share/fonts/TTF/HackRegularNerdFontCompleteMono.ttf
+cp -f HackRegularNerdFontCompleteMono.ttf /usr/share/fonts/HackRegularNerdFontCompleteMono.ttf
+sudo fc-cache -f -v
 chmod +x vpaste.sh && sudo cp -f vpaste.sh /usr/bin/vpaste.sh
 
 if [ -x "$(command -v nvim)" ]; then
