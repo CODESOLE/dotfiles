@@ -6,6 +6,8 @@ elif [ "$1" = "deb" ]; then
   sudo apt -y install xclip neovim ninja-build build-essentials cmake ccls
 elif [ "$1" = "void" ]; then
   sudo xbps-install -S -y xclip vis neovim ninja cmake base-devel xst autojump dmenu ccls xorg xinit
+  git clone https://git.suckless.org/dwm && && rm -f ./dwm/config.def.h && cp -f ./config.def.h ./dwm/config.def.h && cd ./dwm/ && sudo make clean install && cd ..
+  git clone https://git.suckless.org/slstatus && rm -f ./slstatus/config.def.h && cp -f ./config.h ./slstatus/config.def.h && cd ./slstatus/ && sudo make clean install
 elif [ "$1" = "arch" ]; then
   sudo pacman -S --noconfirm xclip neovim vis ninja cmake base-devel dmenu premake meson ccls xorg xorg-xinit
   git clone https://aur.archlinux.org/xst-git && cd xst-git/ && makepkg -si && cd ..
