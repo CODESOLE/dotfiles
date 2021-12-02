@@ -1,5 +1,10 @@
 #!/usr/bin/sh
 
+cp -f .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ~/
+cp -f HackRegularNerdFontCompleteMono.ttf /usr/share/fonts/HackRegularNerdFontCompleteMono.ttf
+sudo fc-cache -f -v
+chmod +x vpaste.sh && sudo cp -f vpaste.sh /usr/bin/vpaste.sh
+
 if [ -z "$1" ]; then
   echo "Please enter dist name (eg. deb, void, arch)" && exit 1
 elif [ "$1" = "deb" ]; then
@@ -16,12 +21,6 @@ elif [ "$1" = "arch" ]; then
   git clone https://git.suckless.org/slstatus && rm -f ./slstatus/config.def.h && cp -f ./config.h ./slstatus/config.def.h && cd ./slstatus/ && sudo make clean install
 fi
 
-cd ..
-cp -f .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ~/
-cp -f HackRegularNerdFontCompleteMono.ttf /usr/share/fonts/HackRegularNerdFontCompleteMono.ttf
-sudo fc-cache -f -v
-chmod +x vpaste.sh && sudo cp -f vpaste.sh /usr/bin/vpaste.sh
-
 if [ -x "$(command -v nvim)" ]; then
   wget -O- -q https://raw.githubusercontent.com/bluz71/vim-moonfly-colors/master/colors/moonfly.vim > moonfly.vim
   sudo cp -f ./moonfly.vim /usr/share/nvim/runtime/colors/moonfly.vim
@@ -32,7 +31,6 @@ if [ -x "$(command -v nvim)" ]; then
   git clone https://github.com/hrsh7th/nvim-compe &&\
   git clone https://github.com/neovim/nvim-lspconfig &&\
   git clone https://github.com/nvim-treesitter/nvim-treesitter
-
 fi
 
 if [ -x "$(command -v vis)" ]; then
