@@ -1,0 +1,19 @@
+{
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "editor.fontSize": 13,
+    "window.zoomLevel": -1,
+    "explorer.confirmDelete": false,
+    "update.enableWindowsBackgroundUpdates": false,
+    "update.mode": "none",
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
+    "cmake.configureOnOpen": true,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "vscode-edge-devtools.mirrorEdits": true,
+    "gruvboxMaterial.darkContrast": "hard",
+    "gruvboxMaterial.darkPalette": "original",
+    "gruvboxMaterial.darkWorkbench": "high-contrast",
+    "gruvboxMaterial.highContrast": true,
+    "gruvboxMaterial.colorfulSyntax": true
+}
