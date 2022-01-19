@@ -7,7 +7,6 @@
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "gruvboxMaterial.darkContrast": "hard",
-    "gruvboxMaterial.darkPalette": "original",
     "gruvboxMaterial.darkWorkbench": "high-contrast",
     "gruvboxMaterial.highContrast": true,
     "gruvboxMaterial.colorfulSyntax": true
