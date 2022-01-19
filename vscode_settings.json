@@ -9,5 +9,10 @@
     "gruvboxMaterial.darkContrast": "hard",
     "gruvboxMaterial.darkWorkbench": "high-contrast",
     "gruvboxMaterial.highContrast": true,
-    "gruvboxMaterial.colorfulSyntax": true
+    "gruvboxMaterial.colorfulSyntax": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.minimap.showSlider": "always",
+    "editor.minimap.renderCharacters": false,
+    "editor.smoothScrolling": true,
+    "vim.useSystemClipboard": true
 }
