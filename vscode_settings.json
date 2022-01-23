@@ -4,15 +4,15 @@
     "window.zoomLevel": -1,
     "explorer.confirmDelete": false,
     "cmake.configureOnOpen": true,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "telemetry.telemetryLevel": "off",
     "gruvboxMaterial.darkContrast": "hard",
     "gruvboxMaterial.darkWorkbench": "high-contrast",
     "gruvboxMaterial.highContrast": true,
     "gruvboxMaterial.colorfulSyntax": true,
-    "workbench.iconTheme": "material-icon-theme",
     "editor.minimap.showSlider": "always",
     "editor.minimap.renderCharacters": false,
     "editor.smoothScrolling": true,
-    "vim.useSystemClipboard": true
+    "vim.useSystemClipboard": true,
+    "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'"
 }
