@@ -1,4 +1,5 @@
 colorscheme moonfly
+set termguicolors
 command CDC cd %:p:h
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 set laststatus=0 ruler
