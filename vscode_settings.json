@@ -14,5 +14,7 @@
     "editor.minimap.renderCharacters": false,
     "editor.smoothScrolling": true,
     "vim.useSystemClipboard": true,
-    "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'"
+    "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "window.dialogStyle": "custom",
+    "window.titleBarStyle": "custom"
 }
