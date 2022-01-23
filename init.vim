@@ -94,6 +94,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 end
-local servers = { 'ccls' }
+local servers = { 'clangd' }
 for _, lsp in ipairs(servers) do nvim_lsp[lsp].setup { on_attach = on_attach } end
 EOF
