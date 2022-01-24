@@ -1,23 +1,21 @@
 {
-    "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.colorTheme": "GitHub Dark Default",
     "editor.fontSize": 13,
     "window.zoomLevel": -1,
     "explorer.confirmDelete": false,
     "cmake.configureOnOpen": true,
     "workbench.iconTheme": "material-icon-theme",
     "telemetry.telemetryLevel": "off",
-    "gruvboxMaterial.darkContrast": "hard",
-    "gruvboxMaterial.darkWorkbench": "high-contrast",
-    "gruvboxMaterial.highContrast": true,
-    "gruvboxMaterial.colorfulSyntax": true,
     "editor.minimap.showSlider": "always",
     "editor.minimap.renderCharacters": false,
     "editor.smoothScrolling": true,
-    "vim.useSystemClipboard": true,
     "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "window.dialogStyle": "custom",
     "window.titleBarStyle": "custom",
     "workbench.sideBar.location": "right",
     "clangd.checkUpdates": true,
-    "material-icon-theme.showUpdateMessage": true
+    "material-icon-theme.showUpdateMessage": true,
+    "vscode-neovim.mouseSelectionStartVisualMode": true,
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.linux": "/home/cx/.config/nvim/init.vim"
 }
