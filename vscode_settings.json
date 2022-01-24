@@ -15,7 +15,13 @@
     "workbench.sideBar.location": "right",
     "clangd.checkUpdates": true,
     "material-icon-theme.showUpdateMessage": true,
-    "vscode-neovim.mouseSelectionStartVisualMode": true,
-    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.linux": "/home/cx/.config/nvim/init.vim"
+    "vim.enableNeovim": true,
+    "vim.highlightedyank.enable": true,
+    "vim.hlsearch": true,
+    "vim.leader": " ",
+    "vim.neovimPath": "/usr/bin/nvim",
+    "vim.neovimConfigPath": "~/.config/nvim/init.vim",
+    "vim.neovimUseConfigFile": true,
+    "vim.useSystemClipboard": true,
+    "vim.vimrc.enable": true,
 }
