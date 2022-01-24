@@ -16,5 +16,8 @@
     "vim.useSystemClipboard": true,
     "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "window.dialogStyle": "custom",
-    "window.titleBarStyle": "custom"
+    "window.titleBarStyle": "custom",
+    "workbench.sideBar.location": "right",
+    "clangd.checkUpdates": true,
+    "material-icon-theme.showUpdateMessage": true
 }
