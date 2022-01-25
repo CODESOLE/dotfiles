@@ -24,5 +24,8 @@
     "vim.neovimUseConfigFile": true,
     "vim.useSystemClipboard": true,
     "vim.vimrc.enable": true,
-    "keyboard.dispatch": "keyCode"
+    "keyboard.dispatch": "keyCode",
+    "git.confirmSync": false,
+    "clangd.path": "/usr/bin/clangd",
+    "clangd.arguments": ["--header-insertion=never"]
 }
