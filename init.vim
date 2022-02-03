@@ -12,7 +12,7 @@ set smartcase
 set smartindent
 set showmatch
 set wildmode=list,full
-set wildignore=*/build*/*,tags,*.out,*/bin/*
+set wildignore=*/build*/*,tags,*.out,*/bin/*,*/node_modules/*
 let mapleader=" "
 set hidden
 set cmdheight=1
@@ -77,6 +77,8 @@ local nvim_lsp = require('lspconfig')
 require "lsp_signature".setup()
 require 'nvim-treesitter.install'.compilers = {"gcc"}
 require'nvim-treesitter.configs'.setup { highlight = {enable = true} }
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -94,6 +96,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 end
-local servers = { 'clangd' }
-for _, lsp in ipairs(servers) do nvim_lsp[lsp].setup { on_attach = on_attach } end
+local servers = { 'clangd', 'html', 'cssls', 'tsserver' }
+for _, lsp in ipairs(servers) do nvim_lsp[lsp].setup { on_attach = on_attach, capabilities = capabilities } end
 EOF
