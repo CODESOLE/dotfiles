@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "GitHub Dark Default",  // clangd, Cmake, CmakeTools, CodeLLDB, GitGraph, GithubTheme, MaterialIcon, Meson, Vim
+    "workbench.colorTheme": "GitHub Dark Default",
     "editor.fontSize": 13,
     "window.zoomLevel": -1,
     "explorer.confirmDelete": false,
