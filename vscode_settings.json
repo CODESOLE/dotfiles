@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "GitHub Dark Default",
+    "workbench.colorTheme": "GitHub Dark Default",  // clangd, Cmake, CmakeTools, CodeLLDB, GitGraph, GithubTheme, MaterialIcon, Meson, Vim
     "editor.fontSize": 13,
     "window.zoomLevel": -1,
     "explorer.confirmDelete": false,
@@ -26,6 +26,5 @@
     "vim.vimrc.enable": true,
     "keyboard.dispatch": "keyCode",
     "git.confirmSync": false,
-    "clangd.path": "/usr/bin/clangd",
     "clangd.arguments": ["--header-insertion=never"]
 }
