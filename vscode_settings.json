@@ -32,5 +32,7 @@
     "mesonbuild.configureOnOpen": true,
     "editor.suggest.showStatusBar": true,
     "problems.showCurrentInStatus": true,
-    "vim.showmodename": false
+    "vim.showmodename": false,
+    "debug.openExplorerOnEnd": true,
+    "debug.showInStatusBar": "always"
 }
