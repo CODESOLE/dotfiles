@@ -26,5 +26,11 @@
     "vim.vimrc.enable": true,
     "keyboard.dispatch": "keyCode",
     "git.confirmSync": false,
-    "clangd.arguments": ["--header-insertion=never"]
+    "clangd.arguments": ["--header-insertion=never"],
+    "editor.semanticHighlighting.enabled": true,
+    "editor.smoothScrolling": true,
+    "mesonbuild.configureOnOpen": true,
+    "editor.suggest.showStatusBar": true,
+    "problems.showCurrentInStatus": true,
+    "vim.showmodename": false
 }
