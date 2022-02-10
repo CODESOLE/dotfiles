@@ -34,5 +34,6 @@
     "problems.showCurrentInStatus": true,
     "vim.showmodename": false,
     "debug.openExplorerOnEnd": true,
-    "debug.showInStatusBar": "always"
+    "debug.showInStatusBar": "always",
+    "git-graph.showStatusBarItem": false
 }
