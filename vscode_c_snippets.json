@@ -35,6 +35,19 @@
 			"}"
 		]
   },
+  "main": {
+    "prefix": "main",
+    "description": "int main(...) {}",
+    "body": [
+			"#include <stdio.h>",
+			"",
+      "int main(int argc, const char *argv[]) {",
+      "  $0",
+      "",
+      "  return 0;",
+			"}"
+		]
+  },
   "ternary": {
     "prefix": "tern",
     "description": "ternary operator",
