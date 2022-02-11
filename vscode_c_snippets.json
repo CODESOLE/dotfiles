@@ -1,0 +1,43 @@
+{
+  "struct": {
+    "prefix": "str",
+    "description": "struct name {};",
+    "body": [
+			"struct ${1:name} {",
+			"  $0;",
+			"};"
+		]
+  },
+  "union": {
+    "prefix": "uni",
+    "description": "union name {};",
+    "body": [
+			"union ${1:name} {",
+			"  $0;",
+			"};"
+		]
+  },
+  "enum": {
+    "prefix": "enum",
+    "description": "enum name {};",
+    "body": [
+			"enum ${1:name} {",
+			"  $0 = 0,",
+			"};"
+		]
+  },
+  "function": {
+    "prefix": "fn",
+    "description": "return_type name(args..) {}",
+    "body": [
+			"${1:return_type} ${2:function_name}(${3:args}) {",
+			"  $0",
+			"}"
+		]
+  },
+  "ternary": {
+    "prefix": "tern",
+    "description": "ternary operator",
+    "body": "${1:expression} ? ${2:first_condition} : ${3:second_condition};",
+	}
+}
