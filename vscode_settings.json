@@ -36,5 +36,9 @@
     "debug.openExplorerOnEnd": true,
     "debug.showInStatusBar": "always",
     "git-graph.showStatusBarItem": false,
-    "workbench.activityBar.visible": false
+    "workbench.activityBar.visible": false,
+    "update.mode": "none",
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.enableExperiments": false,
+    "json.schemaDownload.enable": false
 }
