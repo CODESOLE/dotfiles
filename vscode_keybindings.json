@@ -24,5 +24,13 @@
     {
         "key": "alt+k",
         "command": "editor.action.showDefinitionPreviewHover"
+    },
+    {
+        "key": "alt+s",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
     }
 ]
