@@ -44,5 +44,8 @@
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
     "npm.fetchOnlinePackageInfo": false,
-    "typescript.disableAutomaticTypeAcquisition": true
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "editor.rulers": [80],
+    "workbench.colorCustomizations": { "editorRuler.foreground": "#0000000e" },
+    "editor.minimap.maxColumn": 80
 }
