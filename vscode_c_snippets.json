@@ -1,29 +1,29 @@
 {
   "struct": {
     "prefix": "str",
-    "description": "struct name {};",
+    "description": "typedef struct name {};",
     "body": [
-			"struct ${1:name} {",
+			"typedef struct $1 {",
 			"  $0;",
-			"};"
+			"} $1;"
 		]
   },
   "union": {
     "prefix": "uni",
-    "description": "union name {};",
+    "description": "typedef union name {};",
     "body": [
-			"union ${1:name} {",
+			"typedef union $1 {",
 			"  $0;",
-			"};"
+			"} $1;"
 		]
   },
   "enum": {
     "prefix": "enum",
-    "description": "enum name {};",
+    "description": "typedef enum name {};",
     "body": [
-			"enum ${1:name} {",
+			"typedef enum $1 {",
 			"  $0 = 0,",
-			"};"
+			"} $1;"
 		]
   },
   "function": {
