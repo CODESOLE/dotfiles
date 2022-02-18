@@ -1,36 +1,38 @@
 {
   "struct": {
     "prefix": "str",
-    "description": "typedef struct name {};",
+    "description": "struct name {};",
     "body": [
-			"typedef struct $1 {",
+			"struct $1 {",
 			"  $0;",
-			"} $1;"
+			"};"
 		]
   },
   "union": {
     "prefix": "uni",
-    "description": "typedef union name {};",
+    "description": "union name {};",
     "body": [
-			"typedef union $1 {",
+			"union $1 {",
 			"  $0;",
-			"} $1;"
+			"};"
 		]
   },
   "enum": {
     "prefix": "enum",
-    "description": "typedef enum name {};",
+    "description": "enum name {};",
     "body": [
-			"typedef enum $1 {",
+			"enum $1 {",
 			"  $0 = 0,",
-			"} $1;"
+			"};"
 		]
   },
   "function": {
     "prefix": "fn",
     "description": "return_type name(args..) {}",
     "body": [
-			"${1:return_type} ${2:function_name}(${3:args}) {",
+			"${1:return_type}",
+      "${2:function_name}(${3:args})",
+      "{",
 			"  $0",
 			"}"
 		]
@@ -41,7 +43,9 @@
     "body": [
 			"#include <stdio.h>",
 			"",
-      "int main(int argc, const char *argv[]) {",
+      "int",
+      "main(int argc, const char *argv[])",
+      "{",
       "  $0",
       "",
       "  return 0;",
