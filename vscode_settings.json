@@ -47,5 +47,9 @@
     "typescript.disableAutomaticTypeAcquisition": true,
     "editor.rulers": [80],
     "workbench.colorCustomizations": { "editorRuler.foreground": "#0000000e" },
-    "editor.minimap.maxColumn": 80
+    "editor.minimap.maxColumn": 80,
+    "vim.sneak": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.easymotion": true,
+    "update.showReleaseNotes": false
 }
