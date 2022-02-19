@@ -32,5 +32,15 @@
     {
         "key": "alt+k",
         "command": "editor.action.showHover"
+    },
+    {
+        "key": "ctrl+f5",
+        "command": "-cmake.debugTarget",
+        "when": "cmake:enableFullFeatureSet && inCMakeProject && !cmake:hideDebugCommand && !inDebugMode"
+    },
+    {
+        "key": "shift+f5",
+        "command": "-cmake.launchTarget",
+        "when": "cmake:enableFullFeatureSet && !cmake:hideDebugCommand && !inDebugMode"
     }
 ]
