@@ -51,5 +51,6 @@
     "vim.sneak": true,
     "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true,
-    "update.showReleaseNotes": false
+    "update.showReleaseNotes": false,
+    "task.problemMatchers.neverPrompt": { "shell": true }
 }
