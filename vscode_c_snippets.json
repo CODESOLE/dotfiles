@@ -4,7 +4,7 @@
     "description": "struct name {};",
     "body": [
 			"struct $1 {",
-			"  $0;",
+			"\t$0;",
 			"};"
 		]
   },
@@ -13,7 +13,7 @@
     "description": "union name {};",
     "body": [
 			"union $1 {",
-			"  $0;",
+			"\t$0;",
 			"};"
 		]
   },
@@ -22,19 +22,27 @@
     "description": "enum name {};",
     "body": [
 			"enum $1 {",
-			"  $0 = 0,",
+			"\t$0 = 0,",
 			"};"
 		]
   },
-  "function": {
-    "prefix": "fn",
+  "function declaration": {
+    "prefix": "ffn",
     "description": "return_type name(args..) {}",
     "body": [
 			"${1:return_type}",
       "${2:function_name}(${3:args})",
       "{",
-			"  $0",
+			"\t$0",
 			"}"
+		]
+  },
+  "function definition": {
+    "prefix": "fn",
+    "description": "return_type name(args..);",
+    "body": [
+			"${1:return_type}",
+      "${2:function_name}(${3:args});",
 		]
   },
   "main": {
@@ -46,9 +54,9 @@
       "int",
       "main(int argc, const char *argv[])",
       "{",
-      "  $0",
+      "\t$0",
       "",
-      "  return 0;",
+      "\treturn 0;",
 			"}"
 		]
   },
@@ -56,5 +64,17 @@
     "prefix": "tern",
     "description": "ternary operator",
     "body": "${1:expression} ? ${2:first_condition} : ${3:second_condition};",
-	}
+	},
+  "guard": {
+    "prefix": "guard",
+    "description": "header guard",
+    "body": [
+      "#ifndef $1",
+      "#define $1",
+      "",
+      "$0",
+      "",
+      "#endif /* $1 */"
+    ]
+  }
 }
