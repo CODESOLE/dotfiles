@@ -52,5 +52,7 @@
     "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true,
     "update.showReleaseNotes": false,
-    "task.problemMatchers.neverPrompt": { "shell": true }
+    "task.problemMatchers.neverPrompt": { "shell": true },
+    "editor.minimap.enabled": false,
+    "window.menuBarVisibility": "compact"
 }
