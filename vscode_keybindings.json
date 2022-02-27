@@ -50,5 +50,9 @@
     {
         "key": "ctrl+shift+p",
         "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "alt+d",
+        "command": "workbench.action.toggleAuxiliaryBar"
     }
 ]
