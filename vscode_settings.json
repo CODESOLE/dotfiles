@@ -53,6 +53,5 @@
     "vim.easymotion": true,
     "update.showReleaseNotes": false,
     "task.problemMatchers.neverPrompt": { "shell": true },
-    "window.menuBarVisibility": "compact",
-    "breadcrumbs.enabled": false
+    "window.menuBarVisibility": "compact"
 }
