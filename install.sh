@@ -1,8 +1,6 @@
 #!/usr/bin/sh
 
 cp -f .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ~/
-sudo cp -f HackRegularNerdFontCompleteMono.ttf /usr/share/fonts/HackRegularNerdFontCompleteMono.ttf
-sudo fc-cache -f -v
 chmod +x vpaste.sh && sudo cp -f vpaste.sh /usr/bin/vpaste.sh
 
 if [ -z "$1" ]; then
