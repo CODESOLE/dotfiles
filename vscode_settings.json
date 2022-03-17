@@ -70,7 +70,7 @@
         "Git Bash": {
             "source": "Git Bash"
         },
-        "MSYS2 Bash": {
+        "MSYS2Bash": {
             "path": "C:\\msys64\\usr\\bin\\bash.exe",
             "args": ["--login", "-i"],
             "env": {
@@ -79,5 +79,6 @@
                 "MSYS2_PATH_TYPE": "inherit"
             }
         }
-    }
+    },
+    "terminal.integrated.defaultProfile.windows": "MSYS2Bash"
 }
