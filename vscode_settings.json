@@ -52,7 +52,6 @@
     "vim.easymotion": true,
     "update.showReleaseNotes": false,
     "task.problemMatchers.neverPrompt": { "shell": true },
-    "window.menuBarVisibility": "compact",
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
             "source": "PowerShell",
