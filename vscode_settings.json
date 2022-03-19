@@ -8,7 +8,6 @@
     "telemetry.telemetryLevel": "off",
     "editor.minimap.showSlider": "always",
     "editor.minimap.renderCharacters": false,
-    "editor.smoothScrolling": true,
     "editor.fontFamily": "'Liberation Mono', 'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "window.dialogStyle": "custom",
     "window.titleBarStyle": "custom",
