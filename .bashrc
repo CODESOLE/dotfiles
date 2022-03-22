@@ -56,6 +56,7 @@ alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias genformat='clang-format -style=llvm -dump-config > .clang-format'
 set -o vi
 export EDITOR='nvim'
 export VISUAL='nvim'
