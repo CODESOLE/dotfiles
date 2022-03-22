@@ -53,5 +53,8 @@
     "update.showReleaseNotes": false,
     "task.problemMatchers.neverPrompt": { "shell": true },
     "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": true
+    "editor.guides.bracketPairs": true,
+    "[c]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    }
 }
