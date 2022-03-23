@@ -3,68 +3,47 @@
     "prefix": "str",
     "description": "struct name {};",
     "body": [
-			"struct $1 {",
-			"\t$0;",
-			"};"
-		]
+      "struct $1 {",
+      "\t$0;",
+      "};"
+    ]
   },
   "union": {
     "prefix": "uni",
     "description": "union name {};",
     "body": [
-			"union $1 {",
-			"\t$0;",
-			"};"
-		]
+      "union $1 {",
+      "\t$0;",
+      "};"
+    ]
   },
   "enum": {
     "prefix": "enum",
     "description": "enum name {};",
     "body": [
-			"enum $1 {",
-			"\t$0 = 0,",
-			"};"
-		]
-  },
-  "function declaration": {
-    "prefix": "ffn",
-    "description": "return_type name(args..) {}",
-    "body": [
-			"${1:return_type}",
-      "${2:function_name}(${3:args})",
-      "{",
-			"\t$0",
-			"}"
-		]
-  },
-  "function definition": {
-    "prefix": "fn",
-    "description": "return_type name(args..);",
-    "body": [
-			"${1:return_type}",
-      "${2:function_name}(${3:args});",
-		]
+      "enum $1 {",
+      "\t$0 = 0,",
+      "};"
+    ]
   },
   "main": {
     "prefix": "main",
     "description": "int main(...) {}",
     "body": [
-			"#include <stdio.h>",
-			"",
-      "int",
-      "main(int argc, const char *argv[])",
-      "{",
+      "#include <stdio.h>",
+      "",
+      "int main(int argc, const char *argv[]) {",
       "\t$0",
       "",
       "\treturn 0;",
-			"}"
-		]
+      "}"
+    ]
   },
   "ternary": {
     "prefix": "tern",
     "description": "ternary operator",
     "body": "${1:expression} ? ${2:first_condition} : ${3:second_condition};",
-	},
+  },
   "guard": {
     "prefix": "guard",
     "description": "header guard",
