@@ -57,5 +57,11 @@
     "[c]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
     },
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "c-cpp-flylint.clang.pedantic": true,
+    "c-cpp-flylint.language": "c",
+    "c-cpp-flylint.clang.standard": [
+        "c99"
+    ],
+    "c-cpp-flylint.flawfinder.enable": false
 }
