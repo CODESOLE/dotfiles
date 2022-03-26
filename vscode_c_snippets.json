@@ -18,7 +18,7 @@
     ]
   },
   "enum": {
-    "prefix": "enum",
+    "prefix": "enu",
     "description": "enum name {};",
     "body": [
       "enum $1 {",
