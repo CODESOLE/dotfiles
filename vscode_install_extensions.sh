@@ -1,0 +1,14 @@
+code --install-extension asabil.meson
+code --install-extension EditorConfig.EditorConfig
+code --install-extension GitHub.github-vscode-theme
+code --install-extension jbenden.c-cpp-flylint
+code --install-extension llvm-vs-code-extensions.vscode-clangd
+code --install-extension mhutchie.git-graph
+code --install-extension ms-vscode.cmake-tools
+code --install-extension ms-vscode.hexeditor
+code --install-extension notskm.clang-tidy
+code --install-extension PKief.material-icon-theme
+code --install-extension twxs.cmake
+code --install-extension vadimcn.vscode-lldb
+code --install-extension vscodevim.vim
+code --install-extension xaver.clang-format
