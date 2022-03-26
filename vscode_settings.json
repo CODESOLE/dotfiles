@@ -63,5 +63,6 @@
     "c-cpp-flylint.clang.standard": [
         "c99"
     ],
-    "c-cpp-flylint.flawfinder.enable": false
+    "c-cpp-flylint.flawfinder.enable": false,
+    "c-cpp-flylint.flexelint.enable": false
 }
