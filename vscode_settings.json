@@ -95,6 +95,5 @@
         "custom"
     ],
     "doxdocgen.generic.dateFormat": "",
-    "doxdocgen.generic.authorTag": "@author {author}",
-    "doxdocgen.generic.briefTemplate": ""
+    "doxdocgen.generic.authorTag": "@author {author}"
 }
