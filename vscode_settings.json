@@ -52,6 +52,13 @@
     "update.showReleaseNotes": false,
     "task.problemMatchers.neverPrompt": { "shell": true },
     "editor.bracketPairColorization.enabled": true,
+    "clang-tidy.checks": [
+        "-*",
+        "clang-analyzer-*",
+        "-clang-analyzer-cplusplus*",
+        "performance-*",
+        "portability-*"
+    ],
     "editor.guides.bracketPairs": true,
     "[c]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
