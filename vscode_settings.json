@@ -101,5 +101,19 @@
         "custom"
     ],
     "doxdocgen.generic.dateFormat": "",
-    "doxdocgen.generic.authorTag": "@author {author}"
+    "doxdocgen.generic.authorTag": "@author {author}",
+    "todo-tree.general.statusBar": "total",
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]",
+        "@TODO",
+        "@FIXME",
+        "@@@"
+    ],
+    "todo-tree.filtering.ignoreGitSubmodules": true
 }
