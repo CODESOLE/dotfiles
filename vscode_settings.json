@@ -115,5 +115,7 @@
         "@FIXME",
         "@@@"
     ],
-    "todo-tree.filtering.ignoreGitSubmodules": true
+    "todo-tree.filtering.ignoreGitSubmodules": true,
+    "workbench.layoutControl.enabled": true,
+    "todo-tree.general.rootFolder": "${workspaceFolder}/src"
 }
