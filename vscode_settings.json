@@ -2,6 +2,7 @@
     "workbench.colorTheme": "GitHub Dark Default",
     "window.zoomLevel": -1,
     "explorer.confirmDelete": false,
+    "explorer.autoReveal": false,
     "cmake.configureOnOpen": true,
     "workbench.iconTheme": "material-icon-theme",
     "telemetry.telemetryLevel": "off",
