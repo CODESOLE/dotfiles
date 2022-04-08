@@ -33,6 +33,12 @@ GIT_PROMPT_SHOW_UNTRACKED_FILES=normal # can be no, normal or all; determines co
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 source ~/.bash-git-prompt/gitprompt.sh
 
+webm2gif() {
+    ffmpeg -y -i $1 -vf palettegen _tmp_palette.png
+    ffmpeg -y -i $1 -i _tmp_palette.png -filter_complex paletteuse -r 10  ${1%.webm}.gif
+    rm _tmp_palette.png
+}
+
 PS1="\e[1;32m[\u@\h \w]\$\e[m "
 
 alias c='clear'
