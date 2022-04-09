@@ -118,5 +118,12 @@
     ],
     "todo-tree.filtering.ignoreGitSubmodules": true,
     "workbench.layoutControl.enabled": true,
-    "todo-tree.general.rootFolder": "${workspaceFolder}/src"
+    "todo-tree.general.rootFolder": "${workspaceFolder}/src",
+    "ShortcutMenuBar.beautify": false,
+    "ShortcutMenuBar.navigateBack": false,
+    "ShortcutMenuBar.navigateForward": false,
+    "ShortcutMenuBar.openFilesList": false,
+    "ShortcutMenuBar.startDebugging": true,
+    "workbench.activityBar.visible": false,
+    "ShortcutMenuBar.toggleRenderWhitespace": true,
 }
