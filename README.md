@@ -1,0 +1,9 @@
+# dotfiles
+ - autojump
+ - blueprint-compiler-git
+ - extension-manager
+ - gnome-console
+ - gnome-text-editor
+ - pikaur
+ - text-engine
+ - virtualbox-ext-oracle
