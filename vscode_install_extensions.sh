@@ -1,5 +1,4 @@
 code --install-extension asabil.meson
-code --install-extension assisrMatheus.sidebar-markdown-notes
 code --install-extension cschlosser.doxdocgen
 code --install-extension EditorConfig.EditorConfig
 code --install-extension GitHub.github-vscode-theme
@@ -17,3 +16,4 @@ code --install-extension vscode-icons-team.vscode-icons
 code --install-extension vscodevim.vim
 code --install-extension xaver.clang-format
 code --install-extension jerrygoyal.shortcut-menu-bar
+code --install-extension eamodio.gitlens
