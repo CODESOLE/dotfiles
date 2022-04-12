@@ -7,3 +7,4 @@
  - pikaur
  - text-engine
  - virtualbox-ext-oracle
+ - lite-xl
