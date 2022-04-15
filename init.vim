@@ -1,3 +1,4 @@
+let g:clang_format_style='llvm'
 colorscheme moonfly
 set termguicolors
 command CDC cd %:p:h
