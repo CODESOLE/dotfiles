@@ -25,14 +25,13 @@ if [ -x "$(command -v nvim)" ]; then
   mkdir -p ~/.config/nvim/pack/site/start
   cp ./init.vim ~/.config/nvim/init.vim
   cd ~/.config/nvim/pack/site/start &&\
-  git clone https://github.com/ray-x/lsp_signature.nvim &&\
-  git clone https://github.com/hrsh7th/nvim-compe &&\
   git clone https://github.com/neovim/nvim-lspconfig &&\
   git clone https://github.com/nvim-treesitter/nvim-treesitter &&\
   git clone https://github.com/easymotion/vim-easymotion.git &&\
   git clone https://github.com/mg979/vim-visual-multi.git &&\
-  git clone https://github.com/cjuniet/clang-format.vim.git &&\
-  git clone https://github.com/projekt0n/github-nvim-theme
+  git clone https://github.com/projekt0n/github-nvim-theme &&\
+  git clone https://github.com/kyazdani42/nvim-tree.lua &&\
+  git clone https://github.com/kyazdani42/nvim-web-devicons
 fi
 
 if [ -x "$(command -v vis)" ]; then
