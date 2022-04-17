@@ -5,6 +5,7 @@ set nu
 set termguicolors
 command CDC cd %:p:h
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
+set makeprg=./build.sh
 set laststatus=0 ruler
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 set mouse=a
