@@ -42,6 +42,8 @@ nnoremap <Down> gj
 nmap <leader>t :ter<CR>
 nmap <leader>l :bn<CR>
 nmap <leader>h :bp<CR>
+nmap <leader>g :GitGutterPreviewHunk<CR>
+nmap <leader>m :NvimTreeToggle<CR>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
@@ -55,6 +57,9 @@ lua <<EOF
 local nvim_lsp = require('lspconfig')
 require 'nvim-treesitter.install'.compilers = {"gcc"}
 require'nvim-treesitter.configs'.setup { highlight = {enable = true} }
+require'nvim-tree'.setup {}
+require'nvim-web-devicons'.setup {}
+require'nvim-web-devicons'.get_icons()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 local on_attach = function(client, bufnr)
@@ -66,6 +71,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('i', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
