@@ -14,6 +14,7 @@ set path+=**
 set ignorecase
 set smartcase
 set smartindent
+set autoindent
 set showmatch
 set wildmode=list,full
 set wildignore=*/build*/*,tags,*.out,*/bin/*,*/node_modules/*,*/doc/*
