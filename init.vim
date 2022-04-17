@@ -1,5 +1,7 @@
+let g:dark_float=1
+let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
+colorscheme github_dark_default
 set nu
-colorscheme moonfly
 set termguicolors
 command CDC cd %:p:h
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
@@ -75,5 +77,5 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 end
 local servers = { 'clangd', 'html', 'cssls', 'tsserver' }
-for _, lsp in ipairs(servers) do nvim_lsp[lsp].setup { on_attach = on_attach, capabilities = capabilities } end
+for _, lsp in ipairs(servers) do nvim_lsp[lsp].setup {on_attach = on_attach, capabilities = capabilities} end
 EOF
