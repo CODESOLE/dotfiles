@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-cp -f .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ~/
+cp -f .profile .Xresources .bash_profile .bashrc .vimrc .xinitrc ${HOME}
 chmod +x vpaste.sh && sudo cp -f vpaste.sh /usr/bin/vpaste.sh
 
 if [ -z "$1" ]; then
@@ -18,9 +18,9 @@ elif [ "$1" = "arch" ]; then
   git clone https://git.suckless.org/dwm && rm -f ./dwm/config.def.h && cp -f ./config.def.h ./dwm/config.def.h && cd ./dwm/ && sudo make clean install && cd ..
   git clone https://git.suckless.org/slstatus && rm -f ./slstatus/config.def.h && cp -f ./config.h ./slstatus/config.def.h && cd ./slstatus/ && sudo make clean install
 elif [ "$1" = "nvim" ] && [ -x "$(command -v nvim)" ]; then
-  mkdir -p ~/.config/nvim/pack/site/start
-  cp ./init.vim ~/.config/nvim/init.vim
-  cd ~/.config/nvim/pack/site/start &&\
+  mkdir -p ${HOME}/.config/nvim/pack/site/start
+  cp ./init.vim ${HOME}/.config/nvim/init.vim
+  cd ${HOME}/.config/nvim/pack/site/start &&\
   git clone https://github.com/neovim/nvim-lspconfig &&\
   git clone https://github.com/nvim-treesitter/nvim-treesitter &&\
   git clone https://github.com/easymotion/vim-easymotion.git &&\
@@ -30,7 +30,7 @@ elif [ "$1" = "nvim" ] && [ -x "$(command -v nvim)" ]; then
   git clone https://github.com/kyazdani42/nvim-tree.lua &&\
   git clone https://github.com/kyazdani42/nvim-web-devicons
 elif [ "$1" = "vis" ] && [ -x "$(command -v vis)" ]; then
-  mkdir -p ~/.config/vis/themes
-  cp ./visrc.lua ~/.config/vis/visrc.lua
-  cp ./seti.lua ~/.config/vis/themes/seti.lua
+  mkdir -p ${HOME}/.config/vis/themes
+  cp ./visrc.lua ${HOME}/.config/vis/visrc.lua
+  cp ./seti.lua ${HOME}/.config/vis/themes/seti.lua
 fi
