@@ -16,7 +16,7 @@ set smartcase
 set smartindent
 set showmatch
 set wildmode=list,full
-set wildignore=*/build*/*,tags,*.out,*/bin/*,*/node_modules/*
+set wildignore=*/build*/*,tags,*.out,*/bin/*,*/node_modules/*,*/doc/*
 let mapleader=" "
 set hidden
 set cmdheight=1
@@ -28,6 +28,13 @@ noremap gl $
 noremap gh 0
 set cursorline
 set splitbelow splitright
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_preview=1
+let g:netrw_winsize=25
+autocmd FileType netrw setl bufhidden=delete
 nmap <leader><CR> :nohlsearch<CR>
 nnoremap j gj
 nnoremap k gk
@@ -46,6 +53,7 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
+au BufWritePost <buffer> lua require('lint').try_lint()
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 lua <<EOF
 local nvim_lsp = require('lspconfig')
@@ -54,6 +62,7 @@ require'nvim-treesitter.configs'.setup { highlight = {enable = true} }
 require'nvim-tree'.setup {}
 require'nvim-web-devicons'.setup {}
 require'nvim-web-devicons'.get_icons()
+require('lint').linters_by_ft = { c = {'cppcheck', 'clang-tidy', 'flawfinder'} }
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 local on_attach = function(client, bufnr)
@@ -76,6 +85,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 end
-local servers = { 'clangd', 'html', 'cssls', 'tsserver' }
+local servers = { 'clangd' }
 for _, lsp in ipairs(servers) do nvim_lsp[lsp].setup {on_attach = on_attach, capabilities = capabilities} end
 EOF
