@@ -31,7 +31,8 @@ if [ -x "$(command -v nvim)" ]; then
   git clone https://github.com/nvim-treesitter/nvim-treesitter &&\
   git clone https://github.com/easymotion/vim-easymotion.git &&\
   git clone https://github.com/mg979/vim-visual-multi.git &&\
-  git clone https://github.com/cjuniet/clang-format.vim.git
+  git clone https://github.com/cjuniet/clang-format.vim.git &&\
+  git clone https://github.com/projekt0n/github-nvim-theme
 fi
 
 if [ -x "$(command -v vis)" ]; then
