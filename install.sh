@@ -30,6 +30,7 @@ if [ -x "$(command -v nvim)" ]; then
   git clone https://github.com/easymotion/vim-easymotion.git &&\
   git clone https://github.com/mg979/vim-visual-multi.git &&\
   git clone https://github.com/projekt0n/github-nvim-theme &&\
+  git clone https://github.com/airblade/vim-gitgutter &&\
   git clone https://github.com/kyazdani42/nvim-tree.lua &&\
   git clone https://github.com/kyazdani42/nvim-web-devicons
 fi
