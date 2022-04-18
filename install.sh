@@ -26,7 +26,7 @@ elif [ "$1" = "nvim" ] && [ -x "$(command -v nvim)" ]; then
   git clone https://github.com/easymotion/vim-easymotion.git &&\
   git clone https://github.com/mg979/vim-visual-multi.git &&\
   git clone https://github.com/projekt0n/github-nvim-theme &&\
-  git clone https://github.com/airblade/vim-gitgutter &&\
+  git clone https://github.com/lewis6991/gitsigns.nvim &&\
   git clone https://github.com/kyazdani42/nvim-tree.lua &&\
   git clone https://github.com/kyazdani42/nvim-web-devicons &&\
   git clone https://github.com/mg979/docgen.vim.git &&\
