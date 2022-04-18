@@ -38,6 +38,7 @@ nmap <leader>t :ter<CR>
 nmap <leader>l :bn<CR>
 nmap <leader>h :bp<CR>
 nmap <leader>g :GitGutterPreviewHunk<CR>
+nmap <leader>G :GitGutterDiffOrig<CR>
 nmap <leader>m :NvimTreeToggle<CR>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
