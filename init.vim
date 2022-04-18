@@ -47,16 +47,20 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
-au BufWritePost <buffer> lua require('lint').try_lint()
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
+au BufWritePost <buffer> lua require('lint').try_lint()
 lua <<EOF
 local nvim_lsp = require('lspconfig')
 require 'nvim-treesitter.install'.compilers = {"gcc"}
-require'nvim-treesitter.configs'.setup { highlight = {enable = true} }
+require'nvim-treesitter.configs'.setup {
+  highlight = {enable = true},
+  rainbow = {enable = true,extended_mode = true,max_file_lines = nil,}
+}
 require'nvim-tree'.setup {}
 require'nvim-web-devicons'.setup {}
 require'nvim-web-devicons'.get_icons()
-require('lint').linters_by_ft = { c = {'cppcheck', 'clang-tidy', 'flawfinder'} }
+require("indent_blankline").setup {show_current_context = true,show_current_context_start = true,}
+require('lint').linters_by_ft = { cpp = {'cppcheck', 'clang-tidy', 'flawfinder',} }
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 local on_attach = function(client, bufnr)
