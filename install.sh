@@ -31,7 +31,6 @@ elif [ "$1" = "nvim" ] && [ -x "$(command -v nvim)" ]; then
   git clone https://github.com/kyazdani42/nvim-web-devicons &&\
   git clone https://github.com/mg979/docgen.vim.git &&\
   git clone https://github.com/editorconfig/editorconfig-vim.git &&\
-  git clone https://github.com/mfussenegger/nvim-lint.git &&\
   git clone https://github.com/p00f/nvim-ts-rainbow.git &&\
   git clone https://github.com/lukas-reineke/indent-blankline.nvim.git
 elif [ "$1" = "vis" ] && [ -x "$(command -v vis)" ]; then
