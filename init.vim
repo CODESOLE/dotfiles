@@ -3,7 +3,6 @@ let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
 colorscheme github_dark_default
 set nu
 set termguicolors
-command CDC cd %:p:h
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 set makeprg=./build.sh
 set laststatus=0 ruler
@@ -47,6 +46,7 @@ cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
+nmap <M-o> :ClangdSwitchSourceHeader<CR>
 lua <<EOF
 local nvim_lsp = require('lspconfig')
 require 'nvim-treesitter.install'.compilers = {"gcc"}
