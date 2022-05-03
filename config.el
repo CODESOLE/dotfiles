@@ -37,6 +37,7 @@
 (setq lsp-headerline-breadcrumb-enable 1)
 (setq lsp-headerline-breadcrumb-icons-enable 1)
 (require 'dap-lldb)
+(setq dap-lldb-debug-program '("/usr/bin/lldb-vscode"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
