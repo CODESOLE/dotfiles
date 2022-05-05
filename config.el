@@ -36,8 +36,16 @@
 
 (setq lsp-headerline-breadcrumb-enable 1)
 (setq lsp-headerline-breadcrumb-icons-enable 1)
+
 (require 'dap-lldb)
 (setq dap-lldb-debug-program '("/usr/bin/lldb-vscode"))
+
+(after! evil (evil-define-key 'insert global-map (kbd "C-j") 'evil-next-line)
+             (evil-define-key 'insert global-map (kbd "C-k") 'evil-previous-line)
+             (evil-define-key 'insert global-map (kbd "C-l") 'evil-forward-char)
+             (evil-define-key 'insert global-map (kbd "C-h") 'evil-backward-char)
+             (evil-define-key 'normal global-map (kbd "gl") 'evil-end-of-line)
+             (evil-define-key 'normal global-map (kbd "gh") 'evil-beginning-of-line))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
