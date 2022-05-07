@@ -38,7 +38,6 @@
 
 (setq lsp-headerline-breadcrumb-enable 1)
 (setq lsp-headerline-breadcrumb-icons-enable 1)
-(setq lsp-ui-doc-show-with-cursor t)
 
 (require 'dap-lldb)
 (setq dap-lldb-debug-program '("/usr/bin/lldb-vscode"))
