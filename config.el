@@ -35,7 +35,7 @@
 (setq doom-theme 'doom-one)
 (setq doom-font (font-spec :family "Liberation Mono" :size 12))
 (setq doom-themes-treemacs-theme "doom-colors")
-(setq lsp-semantic-tokens-mode t)
+(setq lsp-semantic-tokens-enable t)
 (require 'dap-lldb)
 (setq dap-lldb-debug-program '("/usr/bin/lldb-vscode"))
 
