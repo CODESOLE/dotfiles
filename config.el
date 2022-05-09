@@ -38,7 +38,7 @@
 (setq lsp-semantic-tokens-enable t)
 (require 'dap-lldb)
 (setq dap-lldb-debug-program '("/usr/bin/lldb-vscode"))
-
+(setq global-hl-todo-mode t)
 (after! evil (evil-define-key 'insert global-map (kbd "C-j") 'evil-next-line)
              (evil-define-key 'insert global-map (kbd "C-k") 'evil-previous-line)
              (evil-define-key 'insert global-map (kbd "C-l") 'evil-forward-char)
