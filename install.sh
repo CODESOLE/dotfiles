@@ -18,6 +18,8 @@ elif [ "$1" = "arch" ]; then
   git clone https://git.suckless.org/dwm && rm -f ./dwm/config.def.h && cp -f ./config.def.h ./dwm/config.def.h && cd ./dwm/ && sudo make clean install && cd ..
   git clone https://git.suckless.org/slstatus && rm -f ./slstatus/config.def.h && cp -f ./config.h ./slstatus/config.def.h && cd ./slstatus/ && sudo make clean install
 elif [ "$1" = "nvim" ] && [ -x "$(command -v nvim)" ]; then
+  wget -O- -q https://raw.githubusercontent.com/bluz71/vim-moonfly-colors/master/colors/moonfly.vim > moonfly.vim
+  sudo cp -f ./moonfly.vim /usr/share/nvim/runtime/colors/moonfly.vim
   mkdir -p ${HOME}/.config/nvim/pack/site/start
   cp ./init.vim ${HOME}/.config/nvim/init.vim
   cd ${HOME}/.config/nvim/pack/site/start &&\
