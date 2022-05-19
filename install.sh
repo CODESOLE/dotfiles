@@ -25,14 +25,10 @@ elif [ "$1" = "nvim" ] && [ -x "$(command -v nvim)" ]; then
   git clone https://github.com/nvim-treesitter/nvim-treesitter &&\
   git clone https://github.com/easymotion/vim-easymotion.git &&\
   git clone https://github.com/mg979/vim-visual-multi.git &&\
-  git clone https://github.com/projekt0n/github-nvim-theme &&\
   git clone https://github.com/lewis6991/gitsigns.nvim &&\
   git clone https://github.com/kyazdani42/nvim-tree.lua &&\
-  git clone https://github.com/kyazdani42/nvim-web-devicons &&\
   git clone https://github.com/mg979/docgen.vim.git &&\
-  git clone https://github.com/editorconfig/editorconfig-vim.git &&\
-  git clone https://github.com/p00f/nvim-ts-rainbow.git &&\
-  git clone https://github.com/lukas-reineke/indent-blankline.nvim.git
+  git clone https://github.com/editorconfig/editorconfig-vim.git
 elif [ "$1" = "vis" ] && [ -x "$(command -v vis)" ]; then
   mkdir -p ${HOME}/.config/vis/themes
   cp ./visrc.lua ${HOME}/.config/vis/visrc.lua
