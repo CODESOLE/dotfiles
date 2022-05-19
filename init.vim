@@ -1,6 +1,4 @@
-let g:dark_float=1
-let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
-colorscheme github_dark_default
+colorscheme moonfly
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m
 set nu
