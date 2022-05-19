@@ -1,6 +1,8 @@
 let g:dark_float=1
 let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
 colorscheme github_dark_default
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m
 set nu
 set termguicolors
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
