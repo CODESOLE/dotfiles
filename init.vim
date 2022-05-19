@@ -49,7 +49,12 @@ vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 nmap <M-o> :ClangdSwitchSourceHeader<CR>
 lua <<EOF
 local nvim_lsp = require('lspconfig')
-require 'nvim-treesitter.install'.compilers = {"gcc"}
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
 require'nvim-tree'.setup {}
 require('gitsigns').setup{
   on_attach = function(bufnr)
