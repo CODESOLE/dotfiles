@@ -49,6 +49,7 @@ vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 nmap <M-o> :ClangdSwitchSourceHeader<CR>
 lua <<EOF
 local nvim_lsp = require('lspconfig')
+require'neogit'.setup{}
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
