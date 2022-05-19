@@ -52,10 +52,6 @@ nmap <M-o> :ClangdSwitchSourceHeader<CR>
 lua <<EOF
 local nvim_lsp = require('lspconfig')
 require 'nvim-treesitter.install'.compilers = {"gcc"}
-require'nvim-treesitter.configs'.setup {
-  highlight = {enable = true},
-  rainbow = {enable = true,extended_mode = true,max_file_lines = nil,}
-}
 require'nvim-tree'.setup {}
 require'nvim-web-devicons'.setup {}
 require("indent_blankline").setup {show_current_context = true,show_current_context_start = true,}
