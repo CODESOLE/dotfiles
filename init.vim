@@ -53,8 +53,6 @@ lua <<EOF
 local nvim_lsp = require('lspconfig')
 require 'nvim-treesitter.install'.compilers = {"gcc"}
 require'nvim-tree'.setup {}
-require'nvim-web-devicons'.setup {}
-require("indent_blankline").setup {show_current_context = true,show_current_context_start = true,}
 require('gitsigns').setup{
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
