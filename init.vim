@@ -48,9 +48,11 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 nmap <M-o> :ClangdSwitchSourceHeader<CR>
+let g:coq_settings = { 'auto_start': 'shut-up' }
 lua <<EOF
 local nvim_lsp = require('lspconfig')
 require'neogit'.setup{}
+require'coq'.setup{}
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
