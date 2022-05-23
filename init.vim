@@ -6,7 +6,7 @@ set nu
 set termguicolors
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 set makeprg=./build.sh
-set laststatus=0 ruler
+set statusline=\ %n\ %<%f\ %m%r\ %=%l/%L\ %4v\ %P\ 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 set mouse=a
 set noshowmode
