@@ -57,7 +57,8 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-require'nvim-tree'.setup {}
+require'nvim-tree'.setup{}
+require'Comment'.setup{}
 require('gitsigns').setup{
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
