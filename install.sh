@@ -34,6 +34,7 @@ elif [ "$1" = "nvim" ] && [ -x "$(command -v nvim)" ]; then
   git clone https://github.com/mg979/docgen.vim.git &&\
   git clone https://github.com/gpanders/editorconfig.nvim &&\
   git clone https://github.com/ms-jpq/coq_nvim &&\
+  git clone https://github.com/numToStr/Comment.nvim &&\
   git clone https://github.com/ms-jpq/coq.artifacts
 elif [ "$1" = "vis" ] && [ -x "$(command -v vis)" ]; then
   mkdir -p ${HOME}/.config/vis/themes
