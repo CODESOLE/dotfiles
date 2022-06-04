@@ -1,5 +1,4 @@
 colorscheme moonfly
-let g:nvim_tree_show_icons = { 'git': 1, 'folders': 0, 'files': 0, 'folder_arrows': 0, }
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m
 set termguicolors
