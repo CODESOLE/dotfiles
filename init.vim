@@ -3,6 +3,11 @@ let g:nvim_tree_show_icons = { 'git': 1, 'folders': 0, 'files': 0, 'folder_arrow
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m
 set termguicolors
+inoremap {<CR> {<CR>}<Esc>ko<tab>
+inoremap [<CR> [<CR>]<Esc>ko<tab>
+inoremap (<CR> (<CR>)<Esc>ko<tab>
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 set makeprg=./build.sh
 set statusline=\ %n\ %<%f\ %m%r\ %=%l/%L\ %4v\ %P\ 
