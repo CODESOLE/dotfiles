@@ -2,11 +2,6 @@ colorscheme moonfly
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m
 set termguicolors
-inoremap {<CR> {<CR>}<Esc>ko
-inoremap [ []<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 set makeprg=./build.sh
 set statusline=\ %n\ %<%f\ %m%r\ %=%l/%L\ %4v\ %P\ 
