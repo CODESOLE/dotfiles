@@ -35,7 +35,8 @@ elif [ "$1" = "nvim" ] && [ -x "$(command -v nvim)" ]; then
   git clone https://github.com/gpanders/editorconfig.nvim &&\
   git clone https://github.com/ms-jpq/coq_nvim &&\
   git clone https://github.com/numToStr/Comment.nvim &&\
-  git clone https://github.com/ms-jpq/coq.artifacts
+  git clone https://github.com/ms-jpq/coq.artifacts &&\
+  git clone https://github.com/cohama/lexima.vim
 elif [ "$1" = "vis" ] && [ -x "$(command -v vis)" ]; then
   mkdir -p ${HOME}/.config/vis/themes
   cp ./visrc.lua ${HOME}/.config/vis/visrc.lua
