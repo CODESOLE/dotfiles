@@ -117,20 +117,17 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 end
-local servers = { 'clangd' }
+local servers = { 'clangd', 'gdscript', 'sumneko_lua' }
 for _, lsp in ipairs(servers) do
-  if nvim_lsp[lsp] == "clangd" then
-    nvim_lsp[lsp].setup { on_attach = on_attach, capabilities = capabilities, cmd = {"clangd",
-                                                                                     "--background-index",
-                                                                                     "--clang-tidy",
-                                                                                     "--clang-tidy-checks=-*,clang-analyzer-*",
-                                                                                     "--all-scopes-completion",
-                                                                                     "--cross-file-rename",
-                                                                                     "--completion-style=detailed",
-                                                                                     "--header-insertion-decorators",
-                                                                                     "--header-insertion=none"}
-                        }
-  end
-  nvim_lsp[lsp].setup {on_attach = on_attach, capabilities = capabilities}
+  nvim_lsp[lsp].setup { on_attach = on_attach, capabilities = capabilities }
+  nvim_lsp['clangd'].setup{ cmd = {"clangd",
+                                   "--background-index",
+                                   "--clang-tidy",
+                                   "--clang-tidy-checks=-*,clang-analyzer-*",
+                                   "--all-scopes-completion",
+                                   "--cross-file-rename",
+                                   "--completion-style=detailed",
+                                   "--header-insertion-decorators",
+                                   "--header-insertion=never"}}
 end
 EOF
