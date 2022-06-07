@@ -120,7 +120,9 @@ end
 local servers = { 'clangd', 'gdscript', 'sumneko_lua' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach, capabilities = capabilities }
-  nvim_lsp['clangd'].setup{ cmd = {"clangd",
+  nvim_lsp['clangd'].setup{ on_attach = on_attach,
+                            capabilities = capabilities,
+                            cmd = {"clangd",
                                    "--background-index",
                                    "--clang-tidy",
                                    "--clang-tidy-checks=-*,clang-analyzer-*",
