@@ -125,9 +125,7 @@ for _, lsp in ipairs(servers) do
                             cmd = {"clangd",
                                    "--background-index",
                                    "--clang-tidy",
-                                   "--clang-tidy-checks=-*,clang-analyzer-*",
                                    "--all-scopes-completion",
-                                   "--cross-file-rename",
                                    "--completion-style=detailed",
                                    "--header-insertion-decorators",
                                    "--header-insertion=never"}}
