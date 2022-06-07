@@ -46,7 +46,7 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 nmap <silent> <M-o> :ClangdSwitchSourceHeader<CR>
-let g:coq_settings = { 'auto_start': 'shut-up' }
+let g:coq_settings = { 'auto_start': 'shut-up', 'display.icons.mode': 'none' }
 lua <<EOF
 local nvim_lsp = require('lspconfig')
 require'neogit'.setup{}
