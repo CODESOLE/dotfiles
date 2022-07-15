@@ -4,7 +4,7 @@
     "explorer.confirmDelete": false,
     "explorer.autoReveal": false,
     "cmake.configureOnOpen": true,
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "vscode-icons",
     "telemetry.telemetryLevel": "off",
     "editor.minimap.showSlider": "always",
     "editor.minimap.enabled": false,
