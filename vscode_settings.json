@@ -28,6 +28,10 @@
     "git.confirmSync": false,
     "clangd.arguments": [
         "--header-insertion=never",
+        "--all-scopes-completion",
+        "--clang-tidy",
+        "--completion-style=detailed",
+        "--header-insertion-decorators",
         "--background-index"
     ],
     "editor.semanticHighlighting.enabled": true,
