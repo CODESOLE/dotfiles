@@ -22,7 +22,7 @@
         "when": "inKeybindings && inKeybindingsSearch"
     },
     {
-        "key": "alt+s",
+        "key": "alt+d",
         "command": "workbench.action.toggleSidebarVisibility"
     },
     {
@@ -52,7 +52,7 @@
         "command": "-workbench.action.showCommands"
     },
     {
-        "key": "alt+d",
+        "key": "alt+s",
         "command": "workbench.action.toggleAuxiliaryBar"
     },
     {
