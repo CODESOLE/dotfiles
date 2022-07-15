@@ -4,7 +4,6 @@ code --install-extension EditorConfig.EditorConfig
 code --install-extension GitHub.github-vscode-theme
 code --install-extension Gruntfuggly.todo-tree
 code --install-extension jbenden.c-cpp-flylint
-code --install-extension kevinkyang.auto-comment-blocks
 code --install-extension llvm-vs-code-extensions.vscode-clangd
 code --install-extension mhutchie.git-graph
 code --install-extension ms-vscode.cmake-tools
