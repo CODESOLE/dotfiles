@@ -14,7 +14,6 @@
     "window.titleBarStyle": "custom",
     "workbench.sideBar.location": "right",
     "clangd.checkUpdates": true,
-    "material-icon-theme.showUpdateMessage": true,
     "vim.enableNeovim": true,
     "vim.highlightedyank.enable": true,
     "vim.hlsearch": true,
