@@ -123,6 +123,5 @@
     "ShortcutMenuBar.navigateForward": false,
     "ShortcutMenuBar.openFilesList": false,
     "ShortcutMenuBar.startDebugging": true,
-    "workbench.activityBar.visible": false,
     "ShortcutMenuBar.toggleRenderWhitespace": true,
 }
