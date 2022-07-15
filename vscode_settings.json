@@ -26,7 +26,10 @@
     "vim.vimrc.enable": true,
     "keyboard.dispatch": "keyCode",
     "git.confirmSync": false,
-    "clangd.arguments": ["--header-insertion=never", "--background-index"],
+    "clangd.arguments": [
+        "--header-insertion=never",
+        "--background-index"
+    ],
     "editor.semanticHighlighting.enabled": true,
     "editor.smoothScrolling": true,
     "mesonbuild.configureOnOpen": true,
@@ -34,7 +37,6 @@
     "vim.showmodename": false,
     "debug.openExplorerOnEnd": true,
     "debug.showInStatusBar": "always",
-    "workbench.activityBar.visible": false,
     "update.mode": "none",
     "workbench.settings.enableNaturalLanguageSearch": false,
     "workbench.enableExperiments": false,
@@ -43,14 +45,20 @@
     "extensions.autoUpdate": false,
     "npm.fetchOnlinePackageInfo": false,
     "typescript.disableAutomaticTypeAcquisition": true,
-    "editor.rulers": [80],
-    "workbench.colorCustomizations": { "editorRuler.foreground": "#00000099" },
+    "editor.rulers": [
+        80
+    ],
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#00000099"
+    },
     "editor.minimap.maxColumn": 80,
     "vim.sneak": true,
     "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true,
     "update.showReleaseNotes": false,
-    "task.problemMatchers.neverPrompt": { "shell": true },
+    "task.problemMatchers.neverPrompt": {
+        "shell": true
+    },
     "editor.bracketPairColorization.enabled": true,
     "clang-tidy.checks": [
         "-*",
@@ -65,41 +73,15 @@
     },
     "editor.formatOnSave": true,
     "c-cpp-flylint.clang.pedantic": true,
-    "c-cpp-flylint.language": "c",
     "c-cpp-flylint.clang.standard": [
-        "c99"
+        "c99",
+        "c++20"
     ],
     "c-cpp-flylint.flawfinder.enable": false,
     "c-cpp-flylint.flexelint.enable": false,
     "c-cpp-flylint.lizard.enable": false,
     "doxdocgen.generic.useGitUserEmail": true,
     "doxdocgen.generic.useGitUserName": true,
-    "doxdocgen.file.versionTag": "",
-    "doxdocgen.file.customTag": [
-        "This program is free software: you can redistribute it and/or modify",
-        "it under the terms of the GNU General Public License as published by",
-        "the Free Software Foundation, either version 3 of the License, or",
-        "(at your option) any later version.",
-        "",
-        "This program is distributed in the hope that it will be useful,",
-        "but WITHOUT ANY WARRANTY; without even the implied warranty of",
-        "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the",
-        "GNU General Public License for more details.",
-        "",
-        "You should have received a copy of the GNU General Public License",
-        "along with this program.  If not, see <http://www.gnu.org/licenses/>.",
-        "",
-        "SPDX-License-Identifier: GPL-3.0-or-later",
-        ""
-    ],
-    "doxdocgen.file.fileOrder": [
-        "file",
-        "brief",
-        "author",
-        "copyright",
-        "empty",
-        "custom"
-    ],
     "doxdocgen.generic.dateFormat": "",
     "doxdocgen.generic.authorTag": "@author {author}",
     "todo-tree.general.statusBar": "total",
@@ -124,4 +106,9 @@
     "ShortcutMenuBar.openFilesList": false,
     "ShortcutMenuBar.startDebugging": true,
     "ShortcutMenuBar.toggleRenderWhitespace": true,
+    "editor.renderWhitespace": "none",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "git.autofetch": true,
 }
