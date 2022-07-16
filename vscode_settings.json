@@ -71,9 +71,6 @@
         "portability-*"
     ],
     "editor.guides.bracketPairs": true,
-    "[c]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
-    },
     "editor.formatOnSave": true,
     "c-cpp-flylint.clang.pedantic": true,
     "c-cpp-flylint.clang.standard": [
@@ -113,5 +110,9 @@
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
     "git.autofetch": true,
+    "workbench.activityBar.visible": false,
 }
