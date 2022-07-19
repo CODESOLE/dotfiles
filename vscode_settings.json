@@ -114,5 +114,7 @@
         "editor.defaultFormatter": "xaver.clang-format"
     },
     "git.autofetch": true,
+    "git.mergeEditor": true,
+    "window.commandCenter": true,
     "workbench.activityBar.visible": false,
 }
