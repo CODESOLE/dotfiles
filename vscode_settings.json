@@ -1,5 +1,6 @@
 {
     "workbench.colorTheme": "GitHub Dark Default",
+    "editor.stickyScroll.enabled": true,
     "window.zoomLevel": -1,
     "explorer.confirmDelete": false,
     "explorer.autoReveal": false,
