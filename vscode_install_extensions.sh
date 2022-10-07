@@ -14,5 +14,4 @@ code --install-extension vadimcn.vscode-lldb
 code --install-extension vscode-icons-team.vscode-icons
 code --install-extension vscodevim.vim
 code --install-extension xaver.clang-format
-code --install-extension jerrygoyal.shortcut-menu-bar
 code --install-extension usernamehw.errorlens
