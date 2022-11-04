@@ -8,13 +8,12 @@
     "workbench.iconTheme": "vscode-icons",
     "telemetry.telemetryLevel": "off",
     "editor.minimap.showSlider": "always",
-    "editor.minimap.enabled": false,
     "editor.minimap.renderCharacters": false,
     "editor.fontFamily": "'Liberation Mono', 'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "window.dialogStyle": "custom",
     "window.titleBarStyle": "custom",
     "workbench.sideBar.location": "right",
-    "clangd.checkUpdates": true,
+    "clangd.checkUpdates": false,
     "vim.enableNeovim": true,
     "vim.highlightedyank.enable": true,
     "vim.hlsearch": true,
@@ -101,12 +100,6 @@
     "todo-tree.filtering.ignoreGitSubmodules": true,
     "workbench.layoutControl.enabled": true,
     "todo-tree.general.rootFolder": "${workspaceFolder}/src",
-    "ShortcutMenuBar.beautify": false,
-    "ShortcutMenuBar.navigateBack": false,
-    "ShortcutMenuBar.navigateForward": false,
-    "ShortcutMenuBar.openFilesList": false,
-    "ShortcutMenuBar.startDebugging": true,
-    "ShortcutMenuBar.toggleRenderWhitespace": true,
     "editor.renderWhitespace": "none",
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
@@ -118,4 +111,6 @@
     "git.mergeEditor": true,
     "window.commandCenter": true,
     "workbench.activityBar.visible": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "diffEditor.diffAlgorithm": "experimental"
 }
