@@ -74,5 +74,9 @@
         "key": "ctrl+f",
         "command": "-actions.find",
         "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "f1",
+        "command": "cmake.launchTarget"
     }
 ]
