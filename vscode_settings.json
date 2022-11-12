@@ -112,5 +112,6 @@
     "window.commandCenter": true,
     "workbench.activityBar.visible": false,
     "vsicons.dontShowNewVersionMessage": true,
-    "diffEditor.diffAlgorithm": "experimental"
+    "diffEditor.diffAlgorithm": "experimental",
+    "cmake.copyCompileCommands": "${workspaceFolder}"
 }
