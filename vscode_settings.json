@@ -113,5 +113,5 @@
     "workbench.activityBar.visible": false,
     "vsicons.dontShowNewVersionMessage": true,
     "diffEditor.diffAlgorithm": "experimental",
-    "cmake.copyCompileCommands": "${workspaceFolder}"
+    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json"
 }
