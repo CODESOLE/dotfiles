@@ -15,3 +15,4 @@ code --install-extension vscode-icons-team.vscode-icons
 code --install-extension vscodevim.vim
 code --install-extension xaver.clang-format
 code --install-extension usernamehw.errorlens
+code --install-extension rust-lang.rust-analyzer
