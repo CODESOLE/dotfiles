@@ -113,5 +113,9 @@
     "workbench.activityBar.visible": false,
     "vsicons.dontShowNewVersionMessage": true,
     "diffEditor.diffAlgorithm": "experimental",
-    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json"
+    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
+    "rust-analyzer.semanticHighlighting.punctuation.specialization.enable": true,
+    "rust-analyzer.semanticHighlighting.punctuation.separate.macro.bang": true,
+    "rust-analyzer.semanticHighlighting.punctuation.enable": true,
+    "rust-analyzer.semanticHighlighting.operator.specialization.enable": true
 }
