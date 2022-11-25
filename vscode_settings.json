@@ -117,5 +117,8 @@
     "rust-analyzer.semanticHighlighting.punctuation.specialization.enable": true,
     "rust-analyzer.semanticHighlighting.punctuation.separate.macro.bang": true,
     "rust-analyzer.semanticHighlighting.punctuation.enable": true,
-    "rust-analyzer.semanticHighlighting.operator.specialization.enable": true
+    "rust-analyzer.semanticHighlighting.operator.specialization.enable": true,
+    "codesnap.showWindowTitle": true,
+    "codesnap.target": "window",
+    "codesnap.boxShadow": "rgba(0, 0, 0, 1) 0px 20px 68px"
 }
