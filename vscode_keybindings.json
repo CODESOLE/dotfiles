@@ -78,5 +78,9 @@
     {
         "key": "f1",
         "command": "cmake.launchTarget"
+    },
+    {
+        "key": "alt+space",
+        "command": "rust-analyzer.run"
     }
 ]
