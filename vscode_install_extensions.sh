@@ -18,3 +18,4 @@ code --install-extension usernamehw.errorlens
 code --install-extension rust-lang.rust-analyzer
 code --install-extension bungcip.better-toml
 code --install-extension adpyke.codesnap
+code --install-extension kahole.magit
