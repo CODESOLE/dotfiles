@@ -82,5 +82,13 @@
     {
         "key": "alt+space",
         "command": "rust-analyzer.run"
+    },
+    {
+        "key": "ctrl+g ctrl+p",
+        "command": "git.push"
+    },
+    {
+        "key": "ctrl+g ctrl+c",
+        "command": "git.commit"
     }
 ]
