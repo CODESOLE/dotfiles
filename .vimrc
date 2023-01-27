@@ -45,8 +45,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Up> gk
 nnoremap <Down> gj
-au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 nmap <leader>t :ter<CR>
 nmap <leader>l :bn<CR>
 nmap <leader>h :bp<CR>
@@ -58,9 +56,5 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
-vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
-cnoremap Sw execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-" map <F3> :!ctags -R --kinds-c++=+p --fields=+iaS --extras=+q .<CR>
-map <F3> :!ctags -R .<CR>
 nnoremap n nzz
 nnoremap N Nzz
