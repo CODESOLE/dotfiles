@@ -14,13 +14,9 @@
     "window.titleBarStyle": "custom",
     "workbench.sideBar.location": "right",
     "clangd.checkUpdates": false,
-    "vim.enableNeovim": true,
     "vim.highlightedyank.enable": true,
     "vim.hlsearch": true,
     "vim.leader": " ",
-    "vim.neovimPath": "/usr/bin/nvim",
-    "vim.neovimConfigPath": "~/.config/nvim/init.vim",
-    "vim.neovimUseConfigFile": true,
     "vim.useSystemClipboard": true,
     "vim.vimrc.enable": true,
     "keyboard.dispatch": "keyCode",
@@ -48,13 +44,6 @@
     "extensions.autoUpdate": false,
     "npm.fetchOnlinePackageInfo": false,
     "typescript.disableAutomaticTypeAcquisition": true,
-    "editor.rulers": [
-        80
-    ],
-    "workbench.colorCustomizations": {
-        "editorRuler.foreground": "#00000099"
-    },
-    "editor.minimap.maxColumn": 80,
     "vim.sneak": true,
     "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true,
