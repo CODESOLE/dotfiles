@@ -1,0 +1,24 @@
+
+[lapce]
+modal = false
+custom-titlebar = true
+
+[core]
+modal = true
+icon-theme = "Material Icons"
+color-theme = "Lapce Dark"
+
+[ui]
+font-family = ""
+preview-editor-width = 80
+
+[editor]
+font-family = "Cascadia Code"
+modal-mode-relative-line-numbers = false
+highlight-scope-lines = true
+
+[lapce-cpp-clangd]
+"volt.serverPath" = "/usr/bin/clangd"
+
+[lapce-rust]
+serverPath = "/usr/bin/rust-analyzer"

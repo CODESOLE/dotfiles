@@ -1,0 +1,44 @@
+
+[[keymaps]]
+command = "-new_file"
+key = "Ctrl+n"
+
+[[keymaps]]
+command = "list.previous"
+when = "list_focus"
+key = "Ctrl+Shift+p"
+
+[[keymaps]]
+command = "-list.previous"
+when = "list_focus"
+key = "Ctrl+p"
+
+[[keymaps]]
+command = "show_hover"
+mode = "n"
+key = "Shift+k"
+
+[[keymaps]]
+command = "-show_hover"
+mode = "n"
+key = "g h"
+
+[[keymaps]]
+command = "line_end"
+mode = "nv"
+key = "g l"
+
+[[keymaps]]
+command = "-line_end"
+mode = "nv"
+key = "$"
+
+[[keymaps]]
+command = "line_start"
+mode = "nv"
+key = "g h"
+
+[[keymaps]]
+command = "-line_start"
+mode = "nv"
+key = "0"
