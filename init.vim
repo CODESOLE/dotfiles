@@ -11,9 +11,14 @@ Plug 'TimUntersberger/neogit'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mg979/docgen.vim.git'
 Plug 'gpanders/editorconfig.nvim'
-Plug 'nvim-lua/completion-nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'cohama/lexima.vim'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 call plug#end()
 
 colorscheme moonfly
@@ -66,6 +71,39 @@ vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 nmap <silent> <M-o> :ClangdSwitchSourceHeader<CR>
 lua <<EOF
 local nvim_lsp = require('lspconfig')
+local cmp = require('cmp')
+cmp.setup({
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'buffer' },
+    })
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
 require'neogit'.setup{}
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -112,7 +150,7 @@ require('gitsigns').setup{
     map('n', '<leader>td', gs.toggle_deleted)
   end
 }
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -136,8 +174,8 @@ local on_attach = function(client, bufnr)
 end
 local servers = { 'clangd', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = require'completion'.on_attach, capabilities = capabilities }
-  nvim_lsp['clangd'].setup{ on_attach = require'completion'.on_attach,
+  nvim_lsp[lsp].setup { on_attach = on_attach, capabilities = capabilities }
+  nvim_lsp['clangd'].setup{ on_attach = on_attach,
                             capabilities = capabilities,
                             cmd = {"clangd",
                                    "--background-index",
