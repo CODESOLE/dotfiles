@@ -3,13 +3,14 @@ Plug 'bluz71/vim-moonfly-colors'
 Plug 'iCyMind/NeoSolarized'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'easymotion/vim-easymotion.git'
-Plug 'mg979/vim-visual-multi.git'
+Plug 'easymotion/vim-easymotion'
+Plug 'mg979/vim-visual-multi'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'TimUntersberger/neogit'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'mg979/docgen.vim.git'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 Plug 'gpanders/editorconfig.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'cohama/lexima.vim'
@@ -80,7 +81,32 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 nmap <silent> <M-o> :ClangdSwitchSourceHeader<CR>
+
 lua <<EOF
+local builtin = require('telescope.builtin')
+
+-- You dont need to set any of these options. These are the default ones. Only
+-- the loading is important
+require('telescope').setup {
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+-- To get fzf loaded and working with telescope, you need to call
+-- load_extension, somewhere after setup function:
+require('telescope').load_extension('fzf')
+
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
 local nvim_lsp = require('lspconfig')
 local cmp = require('cmp')
 cmp.setup({
