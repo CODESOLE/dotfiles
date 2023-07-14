@@ -1,3 +1,21 @@
+call plug#begin('~/AppData/Local/nvim/plugged')
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'iCyMind/NeoSolarized'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'easymotion/vim-easymotion.git'
+Plug 'mg979/vim-visual-multi.git'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'TimUntersberger/neogit'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'mg979/docgen.vim.git'
+Plug 'gpanders/editorconfig.nvim'
+Plug 'nvim-lua/completion-nvim'
+Plug 'numToStr/Comment.nvim'
+Plug 'cohama/lexima.vim'
+call plug#end()
+
 colorscheme moonfly
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m
@@ -46,7 +64,6 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 nmap <silent> <M-o> :ClangdSwitchSourceHeader<CR>
-let g:coq_settings = { 'auto_start': 'shut-up', 'display.icons.mode': 'none' }
 lua <<EOF
 local nvim_lsp = require('lspconfig')
 require'neogit'.setup{}
@@ -117,10 +134,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 end
-local servers = { 'clangd', 'gdscript', 'sumneko_lua' }
+local servers = { 'clangd', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach, capabilities = capabilities }
-  nvim_lsp['clangd'].setup{ on_attach = on_attach,
+  nvim_lsp[lsp].setup { on_attach = require'completion'.on_attach, capabilities = capabilities }
+  nvim_lsp['clangd'].setup{ on_attach = require'completion'.on_attach,
                             capabilities = capabilities,
                             cmd = {"clangd",
                                    "--background-index",
