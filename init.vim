@@ -21,13 +21,24 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 call plug#end()
 
+function! GitGetCurrentBranch()
+    :let s:branch_name = system("git rev-parse --abbrev-ref HEAD")
+    :let s:notidx = match(s:branch_name, 'fatal: not a git repository')
+    :if s:notidx == -1
+        :let s:branch_name = strtrans(s:branch_name)
+        :let s:branch_name = s:branch_name[:-3]
+        :return '(' . s:branch_name . ') '
+    :endif
+    :return ''
+endfunction
+
 colorscheme moonfly
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m
 set termguicolors
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 set makeprg=./build.sh
-set statusline=\ %n\ %<%f\ %m%r\ %=%l/%L\ %4v\ %P\ 
+set statusline=\ %{GitGetCurrentBranch()}\ %<%f\ %m%r\ %=%l/%L\ %4v\ %P\ 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 set mouse=a
 set noshowmode
