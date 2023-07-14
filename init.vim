@@ -1,6 +1,5 @@
 call plug#begin('~/AppData/Local/nvim/plugged')
 Plug 'bluz71/vim-moonfly-colors'
-Plug 'iCyMind/NeoSolarized'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'easymotion/vim-easymotion'
