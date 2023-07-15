@@ -149,7 +149,9 @@ cmp.setup.cmdline(':', {
   })
 })
 
-require'neogit'.setup{}
+require'neogit'.setup{ integrations = { diffview = true }, use_telescope = true }
+require'diffview'.setup{ use_icons = false }
+
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
