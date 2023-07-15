@@ -20,6 +20,8 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 call plug#end()
 
 function! GitGetCurrentBranch()
@@ -104,6 +106,12 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 local nvim_lsp = require('lspconfig')
 local cmp = require('cmp')
 cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      end,
+    },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -113,6 +121,7 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
+      { name = 'luasnip' },
       { name = 'buffer' },
     })
 })
