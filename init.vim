@@ -43,6 +43,7 @@ set path+=**
 set ignorecase
 set smartcase
 set smartindent
+set noswapfile
 set autoindent
 set showmatch
 set wildmode=list,full
