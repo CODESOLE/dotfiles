@@ -2,7 +2,7 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'easymotion/vim-easymotion'
+Plug 'ggandor/leap.nvim'
 Plug 'mg979/vim-visual-multi'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lua/plenary.nvim'
