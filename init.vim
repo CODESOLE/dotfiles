@@ -41,9 +41,9 @@ set mouse=a
 set noshowmode
 set path+=**
 set ignorecase
+set noswapfile
 set smartcase
 set smartindent
-set noswapfile
 set autoindent
 set showmatch
 set wildmode=list,full
@@ -79,7 +79,11 @@ cnoremap <C-l> <Right>
 lua <<EOF
 local builtin = require('telescope.builtin')
 require('leap').add_default_mappings()
-require('lualine').setup{sections = {lualine_a = {''}, lualine_x = {'encoding', '', ''}}}
+require('lualine').setup{options = {
+					component_separators = { left = '|', right = '|'},
+					section_separators = { left = '|', right = ''}, icons_enabled = false
+				   },
+			sections = {lualine_a = {''}, lualine_x = {'encoding', '', ''}, lualine_y = {''}}}
 require "pears".setup()
 
 -- You dont need to set any of these options. These are the default ones. Only
