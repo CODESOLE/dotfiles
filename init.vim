@@ -11,7 +11,9 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCM
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 Plug 'gpanders/editorconfig.nvim'
 Plug 'numToStr/Comment.nvim'
-Plug 'cohama/lexima.vim'
+Plug 'steelsojka/pears.nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'sindrets/diffview.nvim'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -32,13 +34,7 @@ function! GitGetCurrentBranch()
 endfunction
 
 colorscheme moonfly
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-set grepformat=%f:%l:%c:%m
-set termguicolors
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
-set makeprg=./build.sh
-set statusline=\ %{GitGetCurrentBranch()}\ %<%f\ %m%r\ %=%l/%L\ %4v\ %P\ 
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 set mouse=a
 set noshowmode
 set path+=**
@@ -52,9 +48,8 @@ set wildignore=*/build*/*,tags,*.out,*/bin/*,*/node_modules/*,*/doc/*
 let mapleader=" "
 set hidden
 set cmdheight=1
-set updatetime=200
+set updatetime=900
 set shortmess+=c
-set completeopt=menu,menuone,noselect
 set clipboard=unnamedplus
 noremap gl $
 noremap gh 0
@@ -82,6 +77,9 @@ nmap <silent> <M-o> :ClangdSwitchSourceHeader<CR>
 
 lua <<EOF
 local builtin = require('telescope.builtin')
+require('leap').add_default_mappings()
+require('lualine').setup{sections = {lualine_a = {''}, lualine_x = {'encoding', '', ''}}}
+require "pears".setup()
 
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
