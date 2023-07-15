@@ -14,6 +14,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'steelsojka/pears.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'kylechui/nvim-surround' 
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
