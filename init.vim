@@ -68,6 +68,7 @@ cnoremap <C-l> <Right>
 
 lua <<EOF
 local builtin = require('telescope.builtin')
+require("nvim-surround").setup()
 require('leap').add_default_mappings()
 require('lualine').setup{options = {
 					component_separators = { left = '|', right = '|'},
