@@ -72,7 +72,6 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
-vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
 
 lua <<EOF
 local builtin = require('telescope.builtin')
