@@ -73,7 +73,6 @@ cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 vmap <leader><leader> <ESC>:exec "'<,'>w !vpaste.sh ft=".&ft<CR>
-nmap <silent> <M-o> :ClangdSwitchSourceHeader<CR>
 
 lua <<EOF
 local builtin = require('telescope.builtin')
