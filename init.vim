@@ -24,17 +24,6 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 call plug#end()
 
-function! GitGetCurrentBranch()
-    :let s:branch_name = system("git rev-parse --abbrev-ref HEAD")
-    :let s:notidx = match(s:branch_name, 'fatal: not a git repository')
-    :if s:notidx == -1
-        :let s:branch_name = strtrans(s:branch_name)
-        :let s:branch_name = s:branch_name[:-3]
-        :return '(' . s:branch_name . ') '
-    :endif
-    :return ''
-endfunction
-
 colorscheme moonfly
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 set mouse=a
