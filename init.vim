@@ -19,6 +19,7 @@ Plug 'kylechui/nvim-surround'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'nvim-tree/nvim-web-devicons'
+Plug 'ahmedkhalf/project.nvim'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -38,6 +39,7 @@ set noswapfile
 set smartcase
 set smartindent
 set autoindent
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 set showmatch
 let mapleader=" "
 set hidden
@@ -309,7 +311,15 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-require'nvim-tree'.setup{ renderer={icons={show = { file = true, folder = true, folder_arrow = true }}} }
+require'nvim-tree'.setup{
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true
+  },
+}
+require("project_nvim").setup{}
 require'Comment'.setup{}
 require('gitsigns').setup{
   on_attach = function(bufnr)
