@@ -32,15 +32,12 @@ let g:moonflyVirtualTextColor = v:true
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 set mouse=a
 set noshowmode
-set path+=**
 set ignorecase
 set noswapfile
 set smartcase
 set smartindent
 set autoindent
 set showmatch
-set wildmode=list,full
-set wildignore=*/build*/*,tags,*.out,*/bin/*,*/node_modules/*,*/doc/*
 let mapleader=" "
 set hidden
 set cmdheight=1
