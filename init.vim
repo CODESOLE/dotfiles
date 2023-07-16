@@ -16,6 +16,8 @@ Plug 'steelsojka/pears.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'kylechui/nvim-surround' 
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -65,6 +67,66 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 
 lua <<EOF
+require("dapui").setup()
+local dap, dapui = require("dap"), require("dapui")
+
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "13000",
+  executable = {
+    -- CHANGE THIS to your path!
+    command = 'C:\\Users\\serce\\.vscode-oss\\extensions\\vadimcn.vscode-lldb-1.9.2-universal\\adapter\\codelldb.exe',
+    args = {"--port", "13000"},
+
+    -- On windows you may have to uncomment this:
+    detached = false,
+  }
+}
+dap.configurations.cpp = {
+  {
+    name = "Launch file",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+  },
+}
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
+
+vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+vim.keymap.set({'n', 'v'}, '<Leader>dh', function() require('dap.ui.widgets').hover() end)
+vim.keymap.set({'n', 'v'}, '<Leader>dp', function() require('dap.ui.widgets').preview() end)
+vim.keymap.set('n', '<Leader>df', function()
+local widgets = require('dap.ui.widgets')
+widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+local widgets = require('dap.ui.widgets')
+widgets.centered_float(widgets.scopes)
+end)
+
 local builtin = require('telescope.builtin')
 require("nvim-surround").setup()
 require('leap').add_default_mappings()
@@ -72,7 +134,7 @@ require('lualine').setup{options = {
 					component_separators = { left = '|', right = '|'},
 					section_separators = { left = '|', right = ''}, icons_enabled = false
 				   },
-			sections = {lualine_a = {''}, lualine_x = {'encoding', '', ''}, lualine_y = {''}}}
+			sections = {lualine_a = {''}, lualine_x = {'encoding', '', ''}, lualine_y = {'progress'}}}
 require "pears".setup()
 
 -- You dont need to set any of these options. These are the default ones. Only
