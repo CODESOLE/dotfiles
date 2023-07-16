@@ -18,6 +18,7 @@ Plug 'sindrets/diffview.nvim'
 Plug 'kylechui/nvim-surround' 
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
+Plug 'nvim-tree/nvim-web-devicons'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -67,6 +68,7 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 
 lua <<EOF
+require'nvim-web-devicons'.setup()
 require("dapui").setup()
 local dap, dapui = require("dap"), require("dapui")
 
@@ -132,7 +134,7 @@ require("nvim-surround").setup()
 require('leap').add_default_mappings()
 require('lualine').setup{options = {
 					component_separators = { left = '|', right = '|'},
-					section_separators = { left = '|', right = ''}, icons_enabled = false
+					section_separators = { left = '|', right = ''}, icons_enabled = true
 				   },
 			sections = {lualine_a = {''}, lualine_x = {'encoding', '', ''}, lualine_y = {'progress'}}}
 require "pears".setup()
@@ -201,7 +203,7 @@ cmp.setup.cmdline(':', {
 })
 
 require'neogit'.setup{ integrations = { diffview = true }, use_telescope = true }
-require'diffview'.setup{ use_icons = false }
+require'diffview'.setup{ use_icons = true }
 
 require'nvim-treesitter.configs'.setup {
   textobjects = {
@@ -307,7 +309,7 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-require'nvim-tree'.setup{ renderer={icons={show = { file = false, folder = false, folder_arrow = false }}} }
+require'nvim-tree'.setup{ renderer={icons={show = { file = true, folder = true, folder_arrow = true }}} }
 require'Comment'.setup{}
 require('gitsigns').setup{
   on_attach = function(bufnr)
