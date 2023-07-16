@@ -27,6 +27,8 @@ Plug 'saadparwaiz1/cmp_luasnip'
 call plug#end()
 
 colorscheme moonfly
+let g:moonflyWinSeparator = 2
+let g:moonflyVirtualTextColor = v:true
 au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 set mouse=a
 set noshowmode
