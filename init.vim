@@ -19,7 +19,7 @@ Plug 'kylechui/nvim-surround'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'ahmedkhalf/project.nvim'
+Plug 'glepnir/dashboard-nvim'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -319,9 +319,7 @@ require'nvim-tree'.setup{
     update_root = true
   },
 }
-require'project_nvim'.setup{}
-require('telescope').load_extension('projects')
-require'telescope'.extensions.projects.projects{}
+require'dashboard'.setup{}
 require'Comment'.setup{}
 require('gitsigns').setup{
   on_attach = function(bufnr)
