@@ -38,7 +38,7 @@ require('packer').startup(function(use)
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
   use 'nvim-tree/nvim-web-devicons'
-  use 'glepnir/dashboard-nvim'
+  use {'glepnir/dashboard-nvim', event = 'VimEnter'}
 
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
