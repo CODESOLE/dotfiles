@@ -70,7 +70,7 @@ vim.o.softtabstop        = 2
 vim.bo.expandtab         = true
 vim.o.expandtab          = true
 vim.o.smarttab           = true
-vim.o.showmode = true
+vim.o.showmode = false
 vim.o.splitbelow         = true
 vim.o.splitright         = true
 vim.o.swapfile = false
@@ -114,30 +114,30 @@ require'nvim-web-devicons'.setup()
 require("dapui").setup()
 local dap, dapui = require("dap"), require("dapui")
 
--- dap.adapters.codelldb = {
---   type = 'server',
---   port = "13000",
---   executable = {
---     -- CHANGE THIS to your path!
---     command = 'C:\\Users\\serce\\.vscode-oss\\extensions\\vadimcn.vscode-lldb-1.9.2-universal\\adapter\\codelldb.exe',
---     args = {"--port", "13000"},
--- 
---     -- On windows you may have to uncomment this:
---     detached = false,
---   }
--- }
--- dap.configurations.cpp = {
---   {
---     name = "Launch file",
---     type = "codelldb",
---     request = "launch",
---     program = function()
---       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
---     end,
---     cwd = '${workspaceFolder}',
---     stopOnEntry = false,
---   },
--- }
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "13000",
+  executable = {
+    -- CHANGE THIS to your path!
+    command = vim.fn.stdpath('data')..'\\mason\\bin\\codelldb.cmd',
+    args = {"--port", "13000"},
+
+    -- On windows you may have to uncomment this:
+    detached = false,
+  }
+}
+dap.configurations.cpp = {
+  {
+    name = "Launch file",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+  },
+}
 
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
