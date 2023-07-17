@@ -175,11 +175,7 @@ end)
 local builtin = require('telescope.builtin')
 require("nvim-surround").setup()
 require('leap').add_default_mappings()
-require('lualine').setup{options = {
-					component_separators = { left = '|', right = '|'},
-					section_separators = { left = '|', right = ''}, icons_enabled = true
-				   },
-			sections = {lualine_a = {''}, lualine_x = {'encoding', '', ''}, lualine_y = {'progress'}}}
+require('lualine').setup{options = {component_separators = { left = '|', right = '|'},section_separators = { left = '|', right = ''},},sections = {lualine_a = {''}, lualine_x = {'encoding', '', ''}, lualine_y = {'progress'}}}
 require "pears".setup()
 
 -- You dont need to set any of these options. These are the default ones. Only
