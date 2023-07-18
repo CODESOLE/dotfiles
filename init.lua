@@ -21,6 +21,7 @@ require('packer').startup(function(use)
       ts_update()
     end,
   }
+  use "lukas-reineke/indent-blankline.nvim"
   use 'norcalli/nvim-colorizer.lua'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'ggandor/leap.nvim'
@@ -61,7 +62,10 @@ vim.o.termguicolors = true
 
 require 'colorizer'.setup()
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
+require("indent_blankline").setup {
+  show_current_context = true,
+  show_current_context_start = true,
+}
 vim.cmd('colorscheme moonfly')
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('set mouse=a')
