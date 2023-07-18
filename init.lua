@@ -129,10 +129,10 @@ vim.keymap.set('c', '<A-k>', '<Up>')
 vim.keymap.set('c', '<A-h>', '<Left>') 
 vim.keymap.set('c', '<A-l>', '<Right>')
 
-vim.keymap.set('t', '<A-j>', '<Down>') 
-vim.keymap.set('t', '<A-k>', '<Up>') 
-vim.keymap.set('t', '<A-h>', '<Left>') 
-vim.keymap.set('t', '<A-l>', '<Right>')
+vim.keymap.set('t', '<A-j>', '<C-\><C-N><C-w>j') 
+vim.keymap.set('t', '<A-k>', '<C-\><C-N><C-w>k') 
+vim.keymap.set('t', '<A-h>', '<C-\><C-N><C-w>h') 
+vim.keymap.set('t', '<A-l>', '<C-\><C-N><C-w>l')
 
 
 
