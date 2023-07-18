@@ -124,6 +124,8 @@ vim.keymap.set('t', '<A-k>', '<C-\\><C-N><C-w>k')
 vim.keymap.set('t', '<A-h>', '<C-\\><C-N><C-w>h') 
 vim.keymap.set('t', '<A-l>', '<C-\\><C-N><C-w>l')
 
+vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
+
 require'nvim-web-devicons'.setup()
 require("dapui").setup()
 local dap, dapui = require("dap"), require("dapui")
