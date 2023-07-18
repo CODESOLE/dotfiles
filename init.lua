@@ -109,6 +109,35 @@ vim.keymap.set('c', '<C-k>', '<Up>')
 vim.keymap.set('c', '<C-h>', '<Left>')
 vim.keymap.set('c', '<C-l>', '<Right>')
 
+
+
+
+
+
+vim.keymap.set('n', '<A-k>', '<Right>')
+vim.keymap.set('n', '<A-j>', '<Right>')
+vim.keymap.set('n', '<A-h>', '<Right>')
+vim.keymap.set('n', '<A-l>', '<Right>')
+  
+vim.keymap.set('i', '<A-k>', '<Up>') 
+vim.keymap.set('i', '<A-j>', '<Down>') 
+vim.keymap.set('i', '<A-h>', '<Left>') 
+vim.keymap.set('i', '<A-l>', '<Right>') 
+  
+vim.keymap.set('c', '<A-j>', '<Down>') 
+vim.keymap.set('c', '<A-k>', '<Up>') 
+vim.keymap.set('c', '<A-h>', '<Left>') 
+vim.keymap.set('c', '<A-l>', '<Right>')
+
+vim.keymap.set('t', '<A-j>', '<Down>') 
+vim.keymap.set('t', '<A-k>', '<Up>') 
+vim.keymap.set('t', '<A-h>', '<Left>') 
+vim.keymap.set('t', '<A-l>', '<Right>')
+
+
+
+
+
 require'nvim-web-devicons'.setup()
 require("dapui").setup()
 local dap, dapui = require("dap"), require("dapui")
