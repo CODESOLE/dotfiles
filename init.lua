@@ -58,8 +58,9 @@ require('packer').startup(function(use)
   end
 end)
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.o.termguicolors = true
-
 require 'colorizer'.setup()
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 require("indent_blankline").setup {
