@@ -118,16 +118,11 @@ vim.keymap.set('n', '<A-k>', '<Right>')
 vim.keymap.set('n', '<A-j>', '<Right>')
 vim.keymap.set('n', '<A-h>', '<Right>')
 vim.keymap.set('n', '<A-l>', '<Right>')
-  
-vim.keymap.set('i', '<A-k>', '<Up>') 
-vim.keymap.set('i', '<A-j>', '<Down>') 
-vim.keymap.set('i', '<A-h>', '<Left>') 
-vim.keymap.set('i', '<A-l>', '<Right>') 
-  
-vim.keymap.set('c', '<A-j>', '<Down>') 
-vim.keymap.set('c', '<A-k>', '<Up>') 
-vim.keymap.set('c', '<A-h>', '<Left>') 
-vim.keymap.set('c', '<A-l>', '<Right>')
+
+vim.keymap.set('i', '<A-j>', '<C-\><C-N><C-w>j') 
+vim.keymap.set('i', '<A-k>', '<C-\><C-N><C-w>k') 
+vim.keymap.set('i', '<A-h>', '<C-\><C-N><C-w>h') 
+vim.keymap.set('i', '<A-l>', '<C-\><C-N><C-w>l')
 
 vim.keymap.set('t', '<A-j>', '<C-\><C-N><C-w>j') 
 vim.keymap.set('t', '<A-k>', '<C-\><C-N><C-w>k') 
