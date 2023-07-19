@@ -15,11 +15,10 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'bluz71/vim-moonfly-colors'
   use 'neovim/nvim-lspconfig'
-  use { 'nvim-treesitter/nvim-treesitter',
-    run = function()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-      ts_update()
-    end,
+  use { 'nvim-treesitter/nvim-treesitter', run = function()
+    local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+    ts_update()
+  end,
   }
   use "lukas-reineke/indent-blankline.nvim"
   use 'norcalli/nvim-colorizer.lua'
@@ -43,8 +42,8 @@ require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
   use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
   use { 'williamboman/mason-lspconfig.nvim' }
+  use { 'ahmedkhalf/project.nvim', config = function() require('project_nvim').setup {} end }
   use { 'glepnir/dashboard-nvim', event = 'VimEnter', config = function() require('dashboard').setup {} end }
-
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -52,7 +51,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
-
+  use 'arkav/lualine-lsp-progress'
   if packer_bootstrap then
     require('packer').sync()
   end
@@ -207,28 +206,21 @@ require('lualine').setup { options = {
   component_separators = { left = '|', right = '|' },
   section_separators = { left = '|', right = '' },
 }, sections = {
-  lualine_a = { '' },
-  lualine_x = { '', '', '' },
+  lualine_a = { 'lsp_progress' },
+  lualine_c = { 'filename' },
+  lualine_x = { '', '', 'filesize' },
   lualine_y = { 'progress' }
 } }
 require "pears".setup()
 
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
-require('telescope').setup {
-  extensions = {
-    fzf = {
-      fuzzy = true,                   -- false will only do exact matching
-      override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true,    -- override the file sorter
-      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-      -- the default case_mode is "smart_case"
-    }
-  }
-}
+require('telescope').setup {}
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('projects')
+vim.keymap.set('n', '<leader>o', require 'telescope'.extensions.projects.projects, {})
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
@@ -385,7 +377,7 @@ require 'nvim-treesitter.configs'.setup {
 }
 require 'nvim-tree'.setup {
   sync_root_with_cwd = true,
-  respect_buf_cwd = true,
+  update_root = true,
   update_focused_file = {
     enable = true,
     update_root = true
