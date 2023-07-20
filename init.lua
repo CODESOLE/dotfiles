@@ -390,3 +390,9 @@ require 'lspconfig'.clangd.setup { cmd = { "clangd",
   "--header-insertion-decorators",
   "--header-insertion=never" } }
 vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = false, silent = true })
+vim.keymap.set("x", "<leader>vp", [["_dP]])
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set("x", "<leader>p", [["+p]])
+vim.keymap.set("x", "<leader>P", [["+P]])
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({"n", "v"}, "<leader>Y", [["+Y]])
