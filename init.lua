@@ -342,7 +342,8 @@ require('gitsigns').setup {
     map('n', '<leader>td', gs.toggle_deleted)
   end
 }
-
+require('lsp-zero').nvim_workspace()
+require('lsp-zero').ensure_installed({"lua_ls", "rust_analyzer", "clangd"})
 require('lsp-zero').preset({}).on_attach(function(client, bufnr)
   require('lsp-zero').preset({}).default_keymaps({ buffer = bufnr })
 end)
@@ -380,10 +381,6 @@ require 'cmp'.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
-require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "rust_analyzer", "clangd" },
-}
 
 require 'lspconfig'.clangd.setup { cmd = { "clangd",
   "--background-index",
