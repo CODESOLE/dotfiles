@@ -99,7 +99,6 @@ vim.o.autoindent   = true
 vim.o.showmatch    = true
 vim.o.hidden       = true
 vim.o.cursorline   = true
-vim.o.clipboard    = 'unnamedplus'
 vim.g.mapleader    = ' '
 
 vim.keymap.set('n', '<Leader><CR>', ':nohlsearch<CR>')
