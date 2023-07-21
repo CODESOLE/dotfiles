@@ -33,7 +33,6 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run =
   'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.2', requires = { { 'nvim-lua/plenary.nvim' } } }
-  use 'gpanders/editorconfig.nvim'
   use { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup {} end }
   use { 'steelsojka/pears.nvim', config = function() require "pears".setup() end }
   use 'nvim-lualine/lualine.nvim'
