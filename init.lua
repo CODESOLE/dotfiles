@@ -72,9 +72,6 @@ require("indent_blankline").setup {
 }
 vim.cmd('colorscheme moonfly')
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
-vim.cmd('set mouse=a')
-vim.cmd('set cmdheight=1')
-vim.cmd('set shortmess+=c')
 vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
 vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
 vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
