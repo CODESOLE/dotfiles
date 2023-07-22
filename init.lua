@@ -75,6 +75,9 @@ vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch
 vim.cmd('set mouse=a')
 vim.cmd('set cmdheight=1')
 vim.cmd('set shortmess+=c')
+vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
+vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
+vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
 
 vim.bo.tabstop     = 2
 vim.o.tabstop      = 2
@@ -341,7 +344,7 @@ require('gitsigns').setup {
   end
 }
 require('lsp-zero').nvim_workspace()
-require('lsp-zero').ensure_installed({"lua_ls", "rust_analyzer", "clangd"})
+require('lsp-zero').ensure_installed({ "lua_ls", "rust_analyzer", "clangd" })
 require('lsp-zero').preset({}).on_attach(function(client, bufnr)
   require('lsp-zero').preset({}).default_keymaps({ buffer = bufnr })
 end)
@@ -389,9 +392,9 @@ require 'lspconfig'.clangd.setup { cmd = { "clangd",
   "--header-insertion=never" } }
 vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = false, silent = true })
 vim.keymap.set("x", "<leader>vp", [["_dP]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("x", "<leader>p", [["+p]])
 vim.keymap.set("x", "<leader>P", [["+P]])
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set({"n", "v"}, "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
