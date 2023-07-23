@@ -208,7 +208,7 @@ require('lualine').setup { options = {
 }, sections = {
   lualine_a = { 'lsp_progress' },
   lualine_c = { 'filename' },
-  lualine_x = { '', '', 'filesize' },
+  lualine_x = { 'searchcount', '', '' },
   lualine_y = { 'progress' }
 } }
 
