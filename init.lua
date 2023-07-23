@@ -66,6 +66,7 @@ vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.o.termguicolors = true
+vim.o.cmdheight = 0
 require("indent_blankline").setup {
   show_current_context = true,
   show_current_context_start = true,
