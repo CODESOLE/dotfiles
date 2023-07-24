@@ -64,6 +64,7 @@ require('packer').startup(function(use)
 end)
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 vim.g.loaded_netrw = 1
+vim.wo.number = true
 vim.g.loaded_netrwPlugin = 1
 vim.o.termguicolors = true
 vim.o.cmdheight = 0
@@ -209,7 +210,8 @@ require('lualine').setup { options = {
   lualine_a = { 'lsp_progress' },
   lualine_c = { 'filename' },
   lualine_x = { 'searchcount', '', '' },
-  lualine_y = { 'progress' }
+  lualine_y = { 'progress' },
+  lualine_z = { '' },
 } }
 
 require('telescope').setup {}
