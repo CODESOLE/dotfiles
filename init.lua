@@ -29,7 +29,7 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'NeogitOrg/neogit'
-  use 'kyazdani42/nvim-tree.lua'
+  use { 'nvim-treesitter/nvim-treesitter-context', config = function() require 'treesitter-context'.setup {} end }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run =
   'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.2', requires = { { 'nvim-lua/plenary.nvim' } } }
@@ -299,13 +299,6 @@ require 'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
-  },
-}
-require 'nvim-tree'.setup {
-  sync_root_with_cwd = true,
-  update_focused_file = {
-    enable = true,
-    update_root = true
   },
 }
 require('gitsigns').setup {
