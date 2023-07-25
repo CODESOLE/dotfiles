@@ -40,7 +40,9 @@ require('packer').startup(function(use)
   use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
   use { 'williamboman/mason-lspconfig.nvim' }
   use { 'ahmedkhalf/project.nvim', config = function() require('project_nvim').setup {} end }
-  use { 'glepnir/dashboard-nvim', event = 'VimEnter', config = function() require('dashboard').setup {} end }
+  use { 'utilyre/barbecue.nvim', tag = "*", requires = { 'SmiteshP/nvim-navic' }, config = function()
+    require("barbecue").setup { show_dirname = false, show_basename = false }
+  end }
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -206,8 +208,16 @@ require('lualine').setup { options = {
   lualine_y = { 'progress' },
   lualine_z = { '' },
 } }
-
-require('telescope').setup {}
+require('telescope').setup {
+  pickers = {
+    buffers = {
+      mappings = {
+        i = { ["<c-d>"] = "delete_buffer" },
+        n = { ["d"] = "delete_buffer" },
+      }
+    }
+  }
+}
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('undo')
 vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
