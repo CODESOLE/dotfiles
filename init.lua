@@ -8,9 +8,6 @@ local ensure_packer = function()
   end
   return false
 end
-
-local packer_bootstrap = ensure_packer()
-
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'bluz71/vim-moonfly-colors'
@@ -29,7 +26,6 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'NeogitOrg/neogit'
-  use { 'nvim-treesitter/nvim-treesitter-context', config = function() require 'treesitter-context'.setup {} end }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run =
   'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.2', requires = { { 'nvim-lua/plenary.nvim' } } }
@@ -58,7 +54,7 @@ require('packer').startup(function(use)
   use { 'stevearc/oil.nvim', config = function() require('oil').setup() end }
   use { 'RRethy/vim-illuminate' }
   use { 'VonHeikemen/lsp-zero.nvim', branch = 'v2.x' }
-  if packer_bootstrap then
+  if ensure_packer() then
     require('packer').sync()
   end
 end)
@@ -68,10 +64,7 @@ vim.wo.number = true
 vim.g.loaded_netrwPlugin = 1
 vim.o.termguicolors = true
 vim.o.cmdheight = 0
-require("indent_blankline").setup {
-  show_current_context = true,
-  show_current_context_start = true,
-}
+require("indent_blankline").setup { show_current_context = true, show_current_context_start = true, }
 vim.cmd('colorscheme moonfly')
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
@@ -208,7 +201,7 @@ require('lualine').setup { options = {
   section_separators = { left = '|', right = '' },
 }, sections = {
   lualine_a = { 'lsp_progress' },
-  lualine_c = { 'filename' },
+  lualine_c = { { 'filename', path = 1 } },
   lualine_x = { 'searchcount', '', '' },
   lualine_y = { 'progress' },
   lualine_z = { '' },
