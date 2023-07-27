@@ -6,7 +6,7 @@ if wezterm.config_builder then
 end
 
 wezterm.on('gui-startup', function(cmd)
-  local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+  local _, _, window = wezterm.mux.spawn_window(cmd or {})
   window:gui_window():maximize()
 end)
 
@@ -19,14 +19,17 @@ config.colors = {
   selection_fg = '#080808',
   selection_bg = '#b2ceee',
 }
+
 local launch_menu = {}
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_prog = { 'powershell.exe', '-NoLogo' }
+
   table.insert(launch_menu, {
     label = 'PowerShell',
     args = { 'powershell.exe', '-NoLogo' },
   })
+
   for _, vsvers in ipairs(wezterm.glob('Microsoft Visual Studio/20*', 'C:/Program Files (x86)')) do
     local year = vsvers:gsub('Microsoft Visual Studio/', '')
     table.insert(launch_menu, {
@@ -43,8 +46,11 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 end
 
 config.launch_menu = launch_menu
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.window_decorations = "TITLE"
+config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 9
 config.adjust_window_size_when_changing_font_size = true
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+config.window_padding = { left = 0, right = 0, top = 0, bottom = 0, }
+
 return config
