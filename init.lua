@@ -69,9 +69,9 @@ vim.o.cmdheight = 0
 require("indent_blankline").setup { show_current_context = true, show_current_context_start = true, }
 vim.cmd('colorscheme moonfly')
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
-vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
-vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
-vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
+vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "ColorColumn" })
+vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "ColorColumn" })
+vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "ColorColumn" })
 
 vim.bo.tabstop     = 2
 vim.o.tabstop      = 2
@@ -94,7 +94,7 @@ vim.o.smartindent  = true
 vim.o.autoindent   = true
 vim.o.showmatch    = true
 vim.o.hidden       = true
-vim.o.cursorline   = true
+vim.o.cursorline   = false
 vim.g.mapleader    = ' '
 
 vim.keymap.set('n', '<Leader><CR>', ':nohlsearch<CR>')
