@@ -94,7 +94,6 @@ vim.o.smartindent  = true
 vim.o.autoindent   = true
 vim.o.showmatch    = true
 vim.o.hidden       = true
-vim.o.cursorline   = false
 vim.g.mapleader    = ' '
 
 vim.keymap.set('n', '<Leader><CR>', ':nohlsearch<CR>')
