@@ -46,7 +46,7 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 end
 
 config.launch_menu = launch_menu
-config.window_decorations = "TITLE"
+config.window_decorations = "TITLE|RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 9
 config.adjust_window_size_when_changing_font_size = true
