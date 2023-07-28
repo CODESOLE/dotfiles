@@ -23,7 +23,6 @@ require('packer').startup(function(use)
   use { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'ggandor/leap.nvim'
-  use { 'ggandor/leap-spooky.nvim', config = function() require 'leap-spooky'.setup {} end }
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'NeogitOrg/neogit'
