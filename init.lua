@@ -10,6 +10,7 @@ local ensure_packer = function()
 end
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+  use 'HiPhish/rainbow-delimiters.nvim'
   use 'bluz71/vim-moonfly-colors'
   use 'neovim/nvim-lspconfig'
   use { 'nvim-treesitter/nvim-treesitter', run = function()
@@ -30,7 +31,7 @@ require('packer').startup(function(use)
   'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.2', requires = { { 'nvim-lua/plenary.nvim' } } }
   use { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup {} end }
-  use { 'steelsojka/pears.nvim', config = function() require "pears".setup() end }
+  use { 'windwp/nvim-autopairs', config = function() require("nvim-autopairs").setup {} end }
   use 'nvim-lualine/lualine.nvim'
   use { 'sindrets/diffview.nvim', config = function() require 'diffview'.setup { use_icon = true } end }
   use { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end }
@@ -397,3 +398,13 @@ vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.g.rainbow_delimiters = {
+  strategy = {
+    [''] = require 'rainbow-delimiters'.strategy['global'],
+    vim = require 'rainbow-delimiters'.strategy['local'],
+  },
+  query = { [''] = 'rainbow-delimiters', lua = 'rainbow-blocks', },
+  highlight = {
+    'RainbowDelimiterRed', 'RainbowDelimiterYellow', 'RainbowDelimiterBlue', 'RainbowDelimiterOrange',
+    'RainbowDelimiterGreen', 'RainbowDelimiterViolet', 'RainbowDelimiterCyan', },
+}
