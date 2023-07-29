@@ -62,6 +62,7 @@ require('packer').startup(function(use)
 end)
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 vim.g.loaded_netrw = 1
+vim.g.updatetime = 200
 vim.wo.number = true
 vim.cmd [[set cursorlineopt=number]]
 vim.cmd [[set cursorline]]
