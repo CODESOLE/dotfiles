@@ -47,8 +47,9 @@ end
 
 config.launch_menu = launch_menu
 config.hide_tab_bar_if_only_one_tab = true
-config.window_decorations = "TITLE|RESIZE"
-config.font_size = 9
+config.font = wezterm.font 'CaskaydiaCove NFM'
+config.window_decorations = 'TITLE|RESIZE'
+config.font_size = 10
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0, }
 config.use_fancy_tab_bar = false
