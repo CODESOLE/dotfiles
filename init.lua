@@ -61,6 +61,7 @@ require('packer').startup(function(use)
   end
 end)
 vim.g.loaded_netrw = 1
+vim.wo.wrap = false
 vim.g.updatetime = 200
 vim.wo.number = true
 vim.cmd [[set cursorlineopt=number]]
