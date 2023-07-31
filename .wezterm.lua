@@ -47,7 +47,7 @@ end
 
 config.launch_menu = launch_menu
 config.hide_tab_bar_if_only_one_tab = true
-config.font = wezterm.font 'CaskaydiaCove NFM'
+config.font = wezterm.font 'Cascadia Mono'
 config.window_decorations = 'TITLE|RESIZE'
 config.font_size = 10
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
