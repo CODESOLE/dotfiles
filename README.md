@@ -10,4 +10,3 @@
  - zoxide
  - fzf
  - npm
- - rust
