@@ -21,10 +21,9 @@ config.colors = {
 }
 
 local launch_menu = {}
+config.default_prog = { 'nu.exe' }
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-  config.default_prog = { 'powershell.exe', '-NoLogo' }
-
   table.insert(launch_menu, {
     label = 'PowerShell',
     args = { 'powershell.exe', '-NoLogo' },
