@@ -9,3 +9,5 @@
  - rustup
  - zoxide
  - fzf
+ - npm
+ - rust
