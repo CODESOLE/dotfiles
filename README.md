@@ -8,3 +8,4 @@
  - helix
  - rustup
  - zoxide
+ - fzf
