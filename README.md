@@ -7,3 +7,4 @@
  - llvm
  - helix
  - rustup
+ - zoxide
