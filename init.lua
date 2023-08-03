@@ -20,6 +20,7 @@ require('packer').startup(function(use)
   }
   use 'lukas-reineke/indent-blankline.nvim'
   use 'debugloop/telescope-undo.nvim'
+  use 'Bekaboo/dropbar.nvim'
   use { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'ggandor/leap.nvim'
@@ -40,9 +41,6 @@ require('packer').startup(function(use)
   use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
   use { 'williamboman/mason-lspconfig.nvim' }
   use { 'ahmedkhalf/project.nvim', config = function() require('project_nvim').setup {} end }
-  use { 'utilyre/barbecue.nvim', tag = "*", requires = { 'SmiteshP/nvim-navic' }, config = function()
-    require("barbecue").setup { show_dirname = false, show_basename = false }
-  end }
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
