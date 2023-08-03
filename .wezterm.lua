@@ -24,6 +24,8 @@ local launch_menu = {}
 config.default_prog = { 'nu.exe' }
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.default_prog = { 'nu.exe' }
+
   table.insert(launch_menu, {
     label = 'PowerShell',
     args = { 'powershell.exe', '-NoLogo' },
@@ -52,5 +54,13 @@ config.font_size = 10
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0, }
 config.use_fancy_tab_bar = false
+config.keys = {}
+for i = 1, 8 do
+  -- F1 through F8 to activate that tab
+  table.insert(config.keys, {
+    key = 'F' .. tostring(i),
+    action = wezterm.action.ActivateTab(i - 1),
+  })
+end
 
 return config
