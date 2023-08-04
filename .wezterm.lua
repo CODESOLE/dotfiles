@@ -56,9 +56,10 @@ config.window_padding = { left = 0, right = 0, top = 0, bottom = 0, }
 config.use_fancy_tab_bar = false
 config.keys = {}
 for i = 1, 8 do
-  -- F1 through F8 to activate that tab
+  -- CTRL+ALT + number to activate that tab
   table.insert(config.keys, {
-    key = 'F' .. tostring(i),
+    key = tostring(i),
+    mods = 'CTRL|ALT',
     action = wezterm.action.ActivateTab(i - 1),
   })
 end
