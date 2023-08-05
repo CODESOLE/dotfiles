@@ -20,7 +20,7 @@ require('packer').startup(function(use)
   }
   use 'lukas-reineke/indent-blankline.nvim'
   use 'debugloop/telescope-undo.nvim'
-  use 'Bekaboo/dropbar.nvim'
+  -- use 'Bekaboo/dropbar.nvim'
   use { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'ggandor/leap.nvim'
@@ -40,7 +40,6 @@ require('packer').startup(function(use)
   use { 'nvim-tree/nvim-web-devicons', config = function() require 'nvim-web-devicons'.setup() end }
   use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
   use { 'williamboman/mason-lspconfig.nvim' }
-  use { 'ahmedkhalf/project.nvim', config = function() require('project_nvim').setup {} end }
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -227,8 +226,6 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('undo')
 vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
-require('telescope').load_extension('projects')
-vim.keymap.set('n', '<leader>o', require 'telescope'.extensions.projects.projects, {})
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
