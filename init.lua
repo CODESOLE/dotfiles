@@ -20,7 +20,7 @@ require('packer').startup(function(use)
   }
   use 'lukas-reineke/indent-blankline.nvim'
   use 'debugloop/telescope-undo.nvim'
-  -- use 'Bekaboo/dropbar.nvim'
+  use 'Bekaboo/dropbar.nvim'
   use { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'ggandor/leap.nvim'
