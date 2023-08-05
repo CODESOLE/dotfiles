@@ -155,10 +155,16 @@ dap.configurations.cpp = {
     type = "codelldb",
     request = "launch",
     program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') .. '/' .. '${workspaceFolderBasename}'
     end,
     cwd = '${workspaceFolder}',
-    stopOnEntry = false,
+    args = function()
+      local args = {}
+      for w in vim.fn.input('Args: ', '', 'file'):gmatch('%S+') do
+        table.insert(args, w)
+      end
+      return args
+    end,
   },
 }
 
