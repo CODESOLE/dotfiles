@@ -392,6 +392,7 @@ require 'lspconfig'.clangd.setup { cmd = { "clangd",
   "--header-insertion-decorators",
   "--header-insertion=never" } }
 vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = false, silent = true })
+vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { noremap = false, silent = true })
 vim.keymap.set("x", "<leader>vp", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>vd", [["_d]])
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
