@@ -8,5 +8,6 @@
  - helix
  - rustup
  - zoxide
- - fzf
+ - fzf, rg, fd
  - npm
+ - git
