@@ -54,7 +54,6 @@ else ---------------------------------------------------------------------------
     use 'wbthomason/packer.nvim'
     use 'HiPhish/rainbow-delimiters.nvim'
     use 'bluz71/vim-moonfly-colors'
-    use({ 'projekt0n/github-nvim-theme' })
     use 'neovim/nvim-lspconfig'
     use { 'nvim-treesitter/nvim-treesitter', run = function()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
