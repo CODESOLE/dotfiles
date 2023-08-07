@@ -20,6 +20,7 @@ if vim.g.vscode then
     end
   end)
   require('leap').add_default_mappings()
+  vim.g.mapleader    = ' '
   vim.keymap.set("x", "<leader>vp", [["_dP]])
   vim.keymap.set({ "n", "v" }, "<leader>vd", [["_d]])
   vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
@@ -34,8 +35,6 @@ if vim.g.vscode then
   vim.keymap.set('n', '<Up>', 'gk')
   vim.keymap.set('n', '<Down>', 'gj')
   vim.keymap.set('n', 'gl', '$')
-  vim.keymap.set('n', 'gn', ':bn<CR>')
-  vim.keymap.set('n', 'gp', ':bp<CR>')
   vim.keymap.set('n', 'gh', '0')
 else
   local ensure_packer = function()
