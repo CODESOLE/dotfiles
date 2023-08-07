@@ -29,6 +29,9 @@ if vim.g.vscode then
   vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
   vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+  vim.keymap.set("n", "<leader>h", "<Cmd>Tabprevious<CR>")
+  vim.keymap.set("n", "<leader>l", "<Cmd>Tabnext<CR>")
+
   vim.keymap.set('n', '<Leader><CR>', ':nohlsearch<CR>')
   vim.keymap.set('n', 'j', 'gj')
   vim.keymap.set('n', 'k', 'gk')
