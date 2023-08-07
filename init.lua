@@ -1,4 +1,4 @@
-if vim.g.vscode then
+if vim.g.vscode then -------------------------------------------------------------------------------------------------------------------------------------------------- VSCODE CONFIG
   local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -20,7 +20,7 @@ if vim.g.vscode then
     end
   end)
   require('leap').add_default_mappings()
-  vim.g.mapleader    = ' '
+  vim.g.mapleader = ' '
   vim.keymap.set("x", "<leader>vp", [["_dP]])
   vim.keymap.set({ "n", "v" }, "<leader>vd", [["_d]])
   vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
@@ -39,7 +39,7 @@ if vim.g.vscode then
   vim.keymap.set('n', '<Down>', 'gj')
   vim.keymap.set('n', 'gl', '$')
   vim.keymap.set('n', 'gh', '0')
-else
+else ------------------------------------------------------------------------------------------------------------------------------------------------------------------ NVIM CONFIG
   local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -54,6 +54,7 @@ else
     use 'wbthomason/packer.nvim'
     use 'HiPhish/rainbow-delimiters.nvim'
     use 'bluz71/vim-moonfly-colors'
+    use({ 'projekt0n/github-nvim-theme' })
     use 'neovim/nvim-lspconfig'
     use { 'nvim-treesitter/nvim-treesitter', run = function()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
