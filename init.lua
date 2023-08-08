@@ -308,6 +308,8 @@ else ---------------------------------------------------------------------------
   require('telescope').load_extension('fzf')
   require('telescope').load_extension('undo')
   vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+  vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { noremap = false, silent = true })
+  vim.keymap.set('n', '<leader>S', '<cmd>Telescope lsp_workspace_symbols<CR>', { noremap = false, silent = true })
 
   vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
   vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
@@ -315,6 +317,7 @@ else ---------------------------------------------------------------------------
   vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
   vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
   vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
+  vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
   vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
   require 'neogit'.setup { integrations = { diffview = true }, use_telescope = true }
@@ -473,7 +476,6 @@ else ---------------------------------------------------------------------------
     "--completion-style=detailed",
     "--header-insertion-decorators",
     "--header-insertion=never" } }
-  vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { noremap = false, silent = true })
   vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = false, silent = true })
   vim.keymap.set("x", "<leader>vp", [["_dP]])
   vim.keymap.set({ "n", "v" }, "<leader>vd", [["_d]])
