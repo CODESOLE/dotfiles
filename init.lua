@@ -318,7 +318,6 @@ else ---------------------------------------------------------------------------
   vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
   vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
   vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-  vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
   require 'neogit'.setup { integrations = { diffview = true }, use_telescope = true }
   require 'nvim-treesitter.configs'.setup {
