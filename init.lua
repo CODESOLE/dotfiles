@@ -155,7 +155,7 @@ local get_launch_conf = function(exec_path_or_args)
     vim.notify_once("NOT FOUND LAUNCH.TXT CONFIG FILE AT THE WORKSPACE ROOT DIRECTORY!!!", vim.log.levels.WARN)
     return
   end
-  local lines = file.lines()
+  local lines = file:lines()
   local executable_path = vim.fn.trim(lines())
   if exec_path_or_args == 'exec_path' then
     return executable_path
