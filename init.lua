@@ -248,6 +248,12 @@ vim.keymap.set('n', '<leader>dc', function()
   dap.configurations.rust[1].program = get_launch_conf 'program'
   dap.configurations.rust[1].args = get_launch_conf 'args'
 
+  dap.configurations.cpp[1].program = get_launch_conf 'program'
+  dap.configurations.cpp[1].args = get_launch_conf 'args'
+
+  dap.configurations.c[1].program = get_launch_conf 'program'
+  dap.configurations.c[1].args = get_launch_conf 'args'
+
   require('dap').continue()
 end)
 vim.keymap.set('n', '<leader>dj', function() require('dap').step_over() end)
