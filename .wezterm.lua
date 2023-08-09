@@ -21,7 +21,7 @@ config.colors = {
 }
 
 local launch_menu = {}
-config.default_prog = { 'nu.exe' }
+config.default_prog = { 'nu' }
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_prog = { 'nu.exe' }
