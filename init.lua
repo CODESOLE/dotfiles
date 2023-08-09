@@ -148,22 +148,30 @@ dap.adapters.codelldb = {
     detached = false,
   }
 }
+
+local get_launch_conf = function (exec_path)
+  local lines = io.lines(vim.fn.getcwd() .. '/' .. 'launch.txt')
+  local executable_path = vim.fn.trim(lines())
+  if exec_path == true then
+    return executable_path
+  end
+  local args_ = vim.fn.trim(lines())
+  local arrs = {}
+  for args in args_:gmatch('%S+') do
+    local ar = vim.fn.trim(args)
+    table.insert(arrs, ar)
+  end
+  return arrs
+end
+
 dap.configurations.cpp = {
   {
     name = "Launch file",
     type = "codelldb",
     request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') .. '${workspaceFolderBasename}'
-    end,
+    program = get_launch_conf(true),
     cwd = '${workspaceFolder}',
-    args = function()
-      local args = {}
-      for w in vim.fn.input('Args: ', '', 'file'):gmatch('%S+') do
-        table.insert(args, w)
-      end
-      return args
-    end,
+    args = get_launch_conf(false),
   },
 }
 
@@ -173,17 +181,9 @@ dap.configurations.rust = {
     name = "Launch file",
     type = "codelldb",
     request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') .. '${workspaceFolderBasename}'
-    end,
+    program = get_launch_conf(true),
     cwd = '${workspaceFolder}',
-    args = function()
-      local args = {}
-      for w in vim.fn.input('Args: ', '', 'file'):gmatch('%S+') do
-        table.insert(args, w)
-      end
-      return args
-    end,
+    args = get_launch_conf(false),
     initCommands = function()
       if jit.os == 'Linux' then
         -- Find out where to look for the pretty printer Python module
