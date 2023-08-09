@@ -228,7 +228,23 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
-vim.keymap.set('n', '<leader>dc', function() require('dap').continue() end)
+vim.keymap.set('n', '<leader>dc', function()
+  local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
+  if file == nil then
+    vim.notify_once("NOT FOUND LAUNCH.TXT CONFIG FILE AT THE WORKSPACE ROOT DIRECTORY!!!", vim.log.levels.WARN)
+    return
+  end
+  local ln = file:lines()
+  ln()
+  ln()
+  local build_cmd = ln()
+
+  if build_cmd ~= nil then
+    vim.cmd("!" .. build_cmd)
+  end
+
+  require('dap').continue()
+end)
 vim.keymap.set('n', '<leader>dj', function() require('dap').step_over() end)
 vim.keymap.set('n', '<leader>dk', function() require('dap').step_into() end)
 vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
