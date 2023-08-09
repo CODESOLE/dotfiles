@@ -170,6 +170,7 @@ local get_launch_conf = function(exec_path_or_args)
   else
     vim.notify_once("INCORRECT ARGUMENT! ARGUMENT CAN BE EITHER 'exec_path' OR 'args'!", vim.log.levels.WARN)
   end
+  file:close()
 end
 
 dap.configurations.cpp = {
@@ -242,6 +243,10 @@ vim.keymap.set('n', '<leader>dc', function()
   if build_cmd ~= nil then
     vim.cmd("!" .. build_cmd)
   end
+
+  file:close()
+  dap.configurations.rust.program = get_launch_conf 'program'
+  dap.configurations.rust.args = get_launch_conf 'args'
 
   require('dap').continue()
 end)
