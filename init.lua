@@ -245,8 +245,8 @@ vim.keymap.set('n', '<leader>dc', function()
   end
 
   file:close()
-  dap.configurations.rust.program = get_launch_conf 'program'
-  dap.configurations.rust.args = get_launch_conf 'args'
+  dap.configurations.rust[1].program = get_launch_conf 'program'
+  dap.configurations.rust[1].args = get_launch_conf 'args'
 
   require('dap').continue()
 end)
