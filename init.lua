@@ -149,19 +149,27 @@ dap.adapters.codelldb = {
   }
 }
 
-local get_launch_conf = function (exec_path)
-  local lines = io.lines(vim.fn.getcwd() .. '/' .. 'launch.txt')
+local get_launch_conf = function(exec_path_or_args)
+  local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
+  if file == nil then
+    vim.notify_once("NOT FOUND LAUNCH.TXT CONFIG FILE AT THE WORKSPACE ROOT DIRECTORY!!!", vim.log.levels.WARN)
+    return
+  end
+  local lines = file.lines()
   local executable_path = vim.fn.trim(lines())
-  if exec_path == true then
+  if exec_path_or_args == 'exec_path' then
     return executable_path
+  elseif exec_path_or_args == 'args' then
+    local args_ = vim.fn.trim(lines())
+    local arrs = {}
+    for args in args_:gmatch('%S+') do
+      local ar = vim.fn.trim(args)
+      table.insert(arrs, ar)
+    end
+    return arrs
+  else
+    vim.notify_once("INCORRECT ARGUMENT! ARGUMENT CAN BE EITHER 'exec_path' OR 'args'!", vim.log.levels.WARN)
   end
-  local args_ = vim.fn.trim(lines())
-  local arrs = {}
-  for args in args_:gmatch('%S+') do
-    local ar = vim.fn.trim(args)
-    table.insert(arrs, ar)
-  end
-  return arrs
 end
 
 dap.configurations.cpp = {
@@ -169,9 +177,9 @@ dap.configurations.cpp = {
     name = "Launch file",
     type = "codelldb",
     request = "launch",
-    program = get_launch_conf(true),
+    program = get_launch_conf 'exec_path',
     cwd = '${workspaceFolder}',
-    args = get_launch_conf(false),
+    args = get_launch_conf 'args',
   },
 }
 
@@ -181,9 +189,9 @@ dap.configurations.rust = {
     name = "Launch file",
     type = "codelldb",
     request = "launch",
-    program = get_launch_conf(true),
+    program = get_launch_conf 'exec_path',
     cwd = '${workspaceFolder}',
-    args = get_launch_conf(false),
+    args = get_launch_conf 'args',
     initCommands = function()
       if jit.os == 'Linux' then
         -- Find out where to look for the pretty printer Python module
@@ -292,7 +300,7 @@ require 'nvim-treesitter.configs'.setup {
     },
     move = {
       enable = true,
-      set_jumps = true,   -- whether to set jumps in the jumplist
+      set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
         ["]m"] = "@function.outer",
         ["]]"] = { query = "@class.outer", desc = "Next class start" },
@@ -339,9 +347,9 @@ require 'nvim-treesitter.configs'.setup {
         ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
       },
       selection_modes = {
-        ['@parameter.outer'] = 'v',   -- charwise
-        ['@function.outer'] = 'V',    -- linewise
-        ['@class.outer'] = '<c-v>',   -- blockwise
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V',  -- linewise
+        ['@class.outer'] = '<c-v>', -- blockwise
       },
       include_surrounding_whitespace = true,
     },
@@ -399,7 +407,7 @@ require('lsp-zero').preset({}).setup()
 require 'cmp'.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)   -- For `luasnip` users.
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   mapping = {
