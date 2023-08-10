@@ -106,7 +106,7 @@ vim.keymap.set('n', 'gl', '$')
 vim.keymap.set('n', '<leader>t', ':belowright split |ter<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
-vim.keymap.set('n', '<leader>m', require('oil').open_float())
+vim.keymap.set('n', '<leader>m', require('oil').open_float)
 vim.keymap.set('n', 'gh', '0')
 
 vim.keymap.set('i', '<C-k>', '<Up>')
