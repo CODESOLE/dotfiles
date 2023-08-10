@@ -61,9 +61,6 @@ end)
 vim.g.loaded_netrw = 1
 vim.wo.wrap = false
 vim.g.updatetime = 200
-vim.wo.number = true
-vim.cmd [[set cursorlineopt=number]]
-vim.cmd [[set cursorline]]
 vim.g.loaded_netrwPlugin = 1
 vim.o.termguicolors = true
 vim.o.cmdheight = 0
@@ -321,8 +318,8 @@ require('lualine').setup { options = {
   lualine_a = { 'lsp_progress' },
   lualine_c = { { 'filename', path = 1 } },
   lualine_x = { 'searchcount', '', '' },
-  lualine_y = { 'progress' },
-  lualine_z = { '' },
+  lualine_y = { '' },
+  lualine_z = { 'wo:number' },
 } }
 
 require('telescope').setup {
