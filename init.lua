@@ -159,14 +159,21 @@ local get_launch_conf = function(exec_path_or_args)
   local lines = file:lines()
   local executable_path = vim.fn.trim(lines())
   if exec_path_or_args == 'exec_path' then
+    file:close()
     return executable_path
   elseif exec_path_or_args == 'args' then
-    local args_ = vim.fn.trim(lines())
+    local l = lines()
+    if l == nil then
+      file:close()
+      return nil
+    end
+    local args_ = vim.fn.trim(l)
     local arrs = {}
     for args in args_:gmatch('%S+') do
       local ar = vim.fn.trim(args)
       table.insert(arrs, ar)
     end
+    file:close()
     return arrs
   else
     vim.notify_once("INCORRECT ARGUMENT! ARGUMENT CAN BE EITHER 'exec_path' OR 'args'!", vim.log.levels.WARN)
@@ -229,9 +236,10 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
-
+vim.api.nvim_create_augroup("dap_conf", { clear = true })
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   pattern = { "launch.txt" },
+  group = "dap_conf",
   callback = function()
     vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
     vim.notify_once("dap.configurations updated!", vim.log.levels.INFO)
