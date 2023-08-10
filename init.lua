@@ -51,7 +51,7 @@ require('packer').startup(function(use)
   use 'rafamadriz/friendly-snippets'
   use 'saadparwaiz1/cmp_luasnip'
   use 'arkav/lualine-lsp-progress'
-  use { 'stevearc/oil.nvim', config = function() require('oil').setup() end }
+  use { 'stevearc/oil.nvim', config = function() require('oil').setup { view_options = { show_hidden = true } } end }
   use { 'RRethy/vim-illuminate' }
   use { 'VonHeikemen/lsp-zero.nvim', branch = 'v2.x' }
   if ensure_packer() then
