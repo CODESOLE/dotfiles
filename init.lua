@@ -179,7 +179,7 @@ dap.configurations.cpp = {
     type = "codelldb",
     request = "launch",
     program = get_launch_conf 'exec_path',
-    cwd = '${workspaceFolder}',
+    cwd = "${workspaceFolder}",
     args = get_launch_conf 'args',
   },
 }
@@ -190,8 +190,8 @@ dap.configurations.rust = {
     name = "Launch file",
     type = "codelldb",
     request = "launch",
-    program = get_launch_conf 'exec_path',
-    cwd = '${workspaceFolder}',
+    program = get_launch_conf "exec_path",
+    cwd = "${workspaceFolder}",
     args = get_launch_conf 'args',
     initCommands = function()
       if jit.os == 'Linux' then
@@ -243,17 +243,13 @@ vim.keymap.set('n', '<leader>dc', function()
   if build_cmd ~= nil then
     vim.cmd("!" .. build_cmd)
   end
-
   file:close()
-  dap.configurations.rust[1].program = get_launch_conf 'program'
-  dap.configurations.rust[1].args = get_launch_conf 'args'
-
-  dap.configurations.cpp[1].program = get_launch_conf 'program'
-  dap.configurations.cpp[1].args = get_launch_conf 'args'
-
-  dap.configurations.c[1].program = get_launch_conf 'program'
-  dap.configurations.c[1].args = get_launch_conf 'args'
-
+  vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    pattern = { "launch.txt" },
+    callback = function()
+      vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
+    end
+  })
   require('dap').continue()
 end)
 vim.keymap.set('n', '<leader>dj', function() require('dap').step_over() end)
@@ -276,6 +272,35 @@ vim.keymap.set('n', '<Leader>ds', function()
   widgets.centered_float(widgets.scopes)
 end)
 
+local keymap_restore = {}
+dap.listeners.after['event_initialized']['me'] = function()
+  for _, buf in pairs(vim.api.nvim_list_bufs()) do
+    local keymaps = vim.api.nvim_buf_get_keymap(buf, 'n')
+    for _, keymap in pairs(keymaps) do
+      if keymap.lhs == "K" then
+        table.insert(keymap_restore, keymap)
+        vim.api.nvim_buf_del_keymap(buf, 'n', 'K')
+      end
+    end
+  end
+  vim.api.nvim_set_keymap(
+    'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+end
+
+dap.listeners.after['event_terminated']['me'] = function()
+  for _, keymap in pairs(keymap_restore) do
+    vim.api.nvim_buf_set_keymap(
+      keymap.buffer,
+      keymap.mode,
+      keymap.lhs,
+      keymap.rhs,
+      { silent = keymap.silent == 1 }
+    )
+  end
+  keymap_restore = {}
+end
+
+
 local builtin = require('telescope.builtin')
 require('leap').add_default_mappings()
 require('lualine').setup { options = {
@@ -288,6 +313,7 @@ require('lualine').setup { options = {
   lualine_y = { 'progress' },
   lualine_z = { '' },
 } }
+
 require('telescope').setup {
   pickers = {
     buffers = {
