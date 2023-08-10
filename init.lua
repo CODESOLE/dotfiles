@@ -21,6 +21,7 @@ require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
   use 'debugloop/telescope-undo.nvim'
   -- use 'Bekaboo/dropbar.nvim'
+  use 'theHamsta/nvim-dap-virtual-text'
   use { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'ggandor/leap.nvim'
@@ -136,7 +137,7 @@ vim.keymap.set('t', '<A-l>', '<C-\\><C-N><C-w>l')
 vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
 require("dapui").setup()
 local dap, dapui = require("dap"), require("dapui")
-
+require("nvim-dap-virtual-text").setup()
 dap.adapters.codelldb = {
   type = 'server',
   port = "13000",
@@ -190,7 +191,7 @@ dap.configurations.rust = {
     name = "Launch file",
     type = "codelldb",
     request = "launch",
-    program = get_launch_conf "exec_path",
+    program = get_launch_conf 'exec_path',
     cwd = "${workspaceFolder}",
     args = get_launch_conf 'args',
     initCommands = function()
@@ -229,6 +230,14 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  pattern = { "launch.txt" },
+  callback = function()
+    vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
+    vim.notify_once("dap.configurations updated!", vim.log.levels.INFO)
+  end
+})
+
 vim.keymap.set('n', '<leader>dc', function()
   local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
   if file == nil then
@@ -244,12 +253,6 @@ vim.keymap.set('n', '<leader>dc', function()
     vim.cmd("!" .. build_cmd)
   end
   file:close()
-  vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    pattern = { "launch.txt" },
-    callback = function()
-      vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
-    end
-  })
   require('dap').continue()
 end)
 vim.keymap.set('n', '<leader>dj', function() require('dap').step_over() end)
