@@ -147,6 +147,12 @@ dap.adapters.codelldb = {
   }
 }
 
+dap.adapters.godot = {
+  type = "server",
+  host = '127.0.0.1',
+  port = 6006,
+}
+
 local get_launch_conf = function(exec_path_or_args)
   local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
   if file == nil then
@@ -177,7 +183,15 @@ local get_launch_conf = function(exec_path_or_args)
   end
   file:close()
 end
-
+dap.configurations.gdscript = {
+  {
+    type = "godot",
+    request = "launch",
+    name = "Launch scene",
+    project = "${workspaceFolder}",
+    launch_scene = true,
+  }
+}
 dap.configurations.cpp = {
   {
     name = "Launch file",
@@ -504,7 +518,7 @@ require 'cmp'.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
+require 'lspconfig'.gdscript.setup {}
 require 'lspconfig'.clangd.setup { cmd = { "clangd",
   "--background-index",
   "--clang-tidy",
