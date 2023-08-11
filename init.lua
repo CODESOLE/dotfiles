@@ -311,14 +311,14 @@ end
 local builtin = require('telescope.builtin')
 require('leap').add_default_mappings()
 require('lualine').setup { options = {
-  component_separators = { left = '|', right = '|' },
-  section_separators = { left = '|', right = '' },
+  component_separators = { left = '', right = '' },
+  section_separators = { left = '', right = '' },
 }, sections = {
-  lualine_a = { 'lsp_progress' },
+  lualine_a = { 'location' },
   lualine_c = { { 'filename', path = 1 } },
   lualine_x = { 'searchcount', '', '' },
   lualine_y = { '' },
-  lualine_z = { 'location' },
+  lualine_z = { 'lsp_progress' },
 } }
 
 require('telescope').setup {
