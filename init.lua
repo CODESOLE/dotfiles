@@ -38,7 +38,7 @@ require('packer').startup(function(use)
   use { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end }
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
-  use { 'nvim-tree/nvim-web-devicons', config = function() require 'nvim-web-devicons'.setup() end }
+  use 'onsails/lspkind.nvim'
   use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
   use { 'williamboman/mason-lspconfig.nvim' }
   use 'hrsh7th/cmp-nvim-lsp'
@@ -308,7 +308,6 @@ dap.listeners.after['event_terminated']['me'] = function()
   keymap_restore = {}
 end
 
-
 local builtin = require('telescope.builtin')
 require('leap').add_default_mappings()
 require('lualine').setup { options = {
@@ -319,7 +318,7 @@ require('lualine').setup { options = {
   lualine_c = { { 'filename', path = 1 } },
   lualine_x = { 'searchcount', '', '' },
   lualine_y = { '' },
-  lualine_z = { 'wo:number' },
+  lualine_z = { 'location' },
 } }
 
 require('telescope').setup {
@@ -465,7 +464,15 @@ require('lsp-zero').preset({}).on_attach(function(client, bufnr)
 end)
 require('lsp-zero').preset({}).setup()
 
+local lspkind = require 'lspkind'
 require 'cmp'.setup({
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol',       -- show only symbol annotations
+      maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+    })
+  },
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
