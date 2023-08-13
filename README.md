@@ -11,3 +11,4 @@
  - fzf, rg, fd
  - npm
  - git
+ - 7z or unzip
