@@ -27,8 +27,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_prog = { 'nu.exe' }
 
   table.insert(launch_menu, {
-    label = 'PowerShell',
-    args = { 'powershell.exe', '-NoLogo' },
+    label = 'pwsh',
+    args = { 'pwsh', '-NoLogo' },
   })
 
   for _, vsvers in ipairs(wezterm.glob('Microsoft Visual Studio/20*', 'C:/Program Files (x86)')) do
