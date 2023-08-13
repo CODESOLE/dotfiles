@@ -12,3 +12,4 @@
  - npm
  - git
  - 7z or unzip
+ - pwsh
