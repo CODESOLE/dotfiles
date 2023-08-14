@@ -41,6 +41,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
         'C:/Program Files (x86)/'
         .. vsvers
         .. '/BuildTools/VC/Auxiliary/Build/vcvars64.bat',
+        '&&',
+        'nu.exe'
       },
     })
   end
