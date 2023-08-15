@@ -132,6 +132,11 @@ vim.keymap.set('t', '<A-h>', '<C-\\><C-N><C-w>h')
 vim.keymap.set('t', '<A-l>', '<C-\\><C-N><C-w>l')
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
+
+vim.keymap.set({ 'n', 'x' }, '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set({ 'n', 'x' }, '<leader>F', '<Cmd>lua vim.lsp.buf.format({async=true})<CR>')
+vim.keymap.set('n', '<leader>r', '<Cmd>lua vim.lsp.buf.rename()<CR>')
+
 require("dapui").setup()
 local dap, dapui = require("dap"), require("dapui")
 require("nvim-dap-virtual-text").setup()
