@@ -79,13 +79,11 @@ vim.bo.softtabstop = 2
 vim.o.softtabstop  = 2
 vim.bo.expandtab   = true
 vim.o.expandtab    = true
-vim.o.smarttab     = true
 vim.o.showmode     = false
 vim.o.splitbelow   = true
 vim.o.splitright   = true
 vim.o.swapfile     = false
 vim.bo.swapfile    = false
-vim.o.hlsearch     = true
 vim.o.smartcase    = true
 vim.o.ignorecase   = true
 vim.o.smartindent  = true
@@ -100,12 +98,12 @@ vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '<Up>', 'gk')
 vim.keymap.set('n', '<Down>', 'gj')
 vim.keymap.set('n', 'gl', '$')
-vim.keymap.set('n', '<leader>t', ':belowright split |ter<CR>')
+vim.keymap.set('n', '<leader>t', '<Cmd>sp term://nu<CR>')
+vim.cmd[[autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif]]
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
 vim.keymap.set('n', '<leader>m', require('oil').open_float)
 vim.keymap.set('n', 'gh', '0')
-
 vim.keymap.set('i', '<C-k>', '<Up>')
 vim.keymap.set('i', '<C-j>', '<Down>')
 vim.keymap.set('i', '<C-h>', '<Left>')
