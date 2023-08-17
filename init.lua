@@ -10,14 +10,14 @@ local ensure_packer = function()
 end
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+  use { 'rmagatti/auto-session', config = function() require("auto-session").setup {} end }
   use 'HiPhish/rainbow-delimiters.nvim'
   use 'bluz71/vim-moonfly-colors'
   use 'neovim/nvim-lspconfig'
   use { 'nvim-treesitter/nvim-treesitter', run = function()
     local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
     ts_update()
-  end,
-  }
+  end, }
   use 'lukas-reineke/indent-blankline.nvim'
   use 'debugloop/telescope-undo.nvim'
   -- use 'Bekaboo/dropbar.nvim'
@@ -64,6 +64,7 @@ vim.g.updatetime = 200
 vim.g.loaded_netrwPlugin = 1
 vim.o.termguicolors = true
 vim.o.cmdheight = 0
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 require("indent_blankline").setup { show_current_context = true, show_current_context_start = true, }
 vim.cmd [[colorscheme moonfly]]
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
@@ -99,7 +100,7 @@ vim.keymap.set('n', '<Up>', 'gk')
 vim.keymap.set('n', '<Down>', 'gj')
 vim.keymap.set('n', 'gl', '$')
 vim.keymap.set('n', '<leader>t', '<Cmd>sp term://nu<CR>')
-vim.cmd[[autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif]]
+vim.cmd [[autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif]]
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
 vim.keymap.set('n', '<leader>m', require('oil').open_float)
