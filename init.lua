@@ -57,7 +57,6 @@ require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use 'rafamadriz/friendly-snippets'
   use 'saadparwaiz1/cmp_luasnip'
-  use 'arkav/lualine-lsp-progress'
   use { 'stevearc/oil.nvim', config = function() require('oil').setup { view_options = { show_hidden = true } } end }
   use { 'RRethy/vim-illuminate' }
   use { 'VonHeikemen/lsp-zero.nvim', branch = 'v2.x' }
@@ -329,7 +328,7 @@ require('lualine').setup { options = {
   lualine_c = { { 'filename', path = 1 } },
   lualine_x = { 'searchcount', '', '' },
   lualine_y = { '' },
-  lualine_z = { 'lsp_progress' },
+  lualine_z = { '' },
 } }
 
 require('telescope').setup {
