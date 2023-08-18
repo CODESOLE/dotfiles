@@ -100,6 +100,7 @@ vim.o.hidden       = true
 vim.g.mapleader    = ' '
 
 vim.keymap.set('n', '<Leader><CR>', ':nohlsearch<CR>')
+vim.keymap.set('n', '<Leader>g', '<Cmd>Neogit<CR>')
 vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '<Up>', 'gk')
