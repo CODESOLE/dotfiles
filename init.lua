@@ -10,7 +10,14 @@ local ensure_packer = function()
 end
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use { 'rmagatti/auto-session', config = function() require("auto-session").setup {} end }
+  use { "olimorris/persisted.nvim", config = function()
+    require("persisted").setup { autoload = true,
+      on_autoload_no_session = function()
+        vim.notify("No existing session to load.")
+      end,
+      allowed_dirs = { "~/GitHub" }
+    }
+  end }
   use 'HiPhish/rainbow-delimiters.nvim'
   use 'bluz71/vim-moonfly-colors'
   use 'neovim/nvim-lspconfig'
@@ -109,7 +116,7 @@ vim.keymap.set('i', '<C-k>', '<Up>')
 vim.keymap.set('i', '<C-j>', '<Down>')
 vim.keymap.set('i', '<C-h>', '<Left>')
 vim.keymap.set('i', '<C-l>', '<Right>')
-vim.keymap.set('n', '<C-s>', '<Cmd>SessionSave<CR>')
+vim.keymap.set('n', '<leader>o', '<Cmd>Telescope persisted<CR>')
 
 vim.keymap.set('c', '<C-j>', '<Down>')
 vim.keymap.set('c', '<C-k>', '<Up>')
@@ -337,6 +344,7 @@ require('telescope').setup {
 }
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('undo')
+require("telescope").load_extension("persisted")
 vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
 vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { noremap = false, silent = true })
 vim.keymap.set('n', '<leader>S', '<cmd>Telescope lsp_workspace_symbols<CR>', { noremap = false, silent = true })
@@ -533,3 +541,9 @@ vim.g.rainbow_delimiters = {
     'RainbowDelimiterRed', 'RainbowDelimiterYellow', 'RainbowDelimiterBlue', 'RainbowDelimiterOrange',
     'RainbowDelimiterGreen', 'RainbowDelimiterViolet', 'RainbowDelimiterCyan', },
 }
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = "󰋽 " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='red', linehl='', numhl=''})
