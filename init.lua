@@ -27,7 +27,7 @@ require('packer').startup(function(use)
   end, }
   use 'lukas-reineke/indent-blankline.nvim'
   use 'debugloop/telescope-undo.nvim'
-  -- use 'Bekaboo/dropbar.nvim'
+  use 'Bekaboo/dropbar.nvim'
   use 'theHamsta/nvim-dap-virtual-text'
   use { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -71,7 +71,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.o.termguicolors = true
 vim.o.cmdheight = 0
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-require("indent_blankline").setup { show_current_context = true, show_current_context_start = true, }
 vim.cmd [[colorscheme moonfly]]
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "ColorColumn" })
@@ -547,3 +546,29 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 vim.fn.sign_define('DapBreakpoint', {text='⚫', texthl='red', linehl='', numhl=''})
+local highlight = {
+    "RainbowRed",
+    "RainbowYellow",
+    "RainbowBlue",
+    "RainbowOrange",
+    "RainbowGreen",
+    "RainbowViolet",
+    "RainbowCyan",
+}
+local hooks = require "ibl.hooks"
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+end)
+
+vim.g.rainbow_delimiters = { highlight = highlight }
+require("ibl").setup { scope = { highlight = highlight } }
+
+hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
