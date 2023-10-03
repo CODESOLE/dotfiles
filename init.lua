@@ -17,56 +17,67 @@ end
 
 bootstrap_pckr()
 
-require('pckr').add{
- { "olimorris/persisted.nvim", config = function()
-    require("persisted").setup { autoload = true,
-      on_autoload_no_session = function()
-        vim.notify("No existing session to load.")
-      end,
-      allowed_dirs = { "~/github" }
-    }
-  end };
-   'HiPhish/rainbow-delimiters.nvim';
-   'bluz71/vim-moonfly-colors';
-   'neovim/nvim-lspconfig';
-   { 'nvim-treesitter/nvim-treesitter', run = function()
-    local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-    ts_update()
-  end, };
-   'lukas-reineke/indent-blankline.nvim';
-   'nvim-tree/nvim-web-devicons';
-   'Bekaboo/dropbar.nvim';
-   'theHamsta/nvim-dap-virtual-text';
-   { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end };
-   'nvim-treesitter/nvim-treesitter-textobjects';
-   'ggandor/leap.nvim';
-   'lewis6991/gitsigns.nvim';
-   'nvim-lua/plenary.nvim';
-   'NeogitOrg/neogit';
-   { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' };
-   { 'nvim-telescope/telescope.nvim', tag = '0.1.2', requires = { { 'nvim-lua/plenary.nvim' } } };
-   { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup {} end };
-   { 'windwp/nvim-autopairs', config = function() require("nvim-autopairs").setup {} end };
-   'nvim-lualine/lualine.nvim';
-   { 'sindrets/diffview.nvim', config = function() require 'diffview'.setup { _icon = true } end };
-   { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end };
-   'mfussenegger/nvim-dap';
-   'rcarriga/nvim-dap-ui';
-   'onsails/lspkind.nvim';
-   { 'williamboman/mason.nvim', run = ":MasonUpdate" };
-   { 'williamboman/mason-lspconfig.nvim' };
-   'hrsh7th/cmp-nvim-lsp';
-   'hrsh7th/cmp-buffer';
-   'hrsh7th/cmp-path';
-   'hrsh7th/cmp-cmdline';
-   'hrsh7th/nvim-cmp';
-   'hrsh7th/cmp-nvim-lsp-signature-help';
-   'L3MON4D3/LuaSnip';
-   'rafamadriz/friendly-snippets';
-   'saadparwaiz1/cmp_luasnip';
-   { 'stevearc/oil.nvim', config = function() require('oil').setup { view_options = { show_hidden = true } } end };
-   { 'RRethy/vim-illuminate' };
-   { 'VonHeikemen/lsp-zero.nvim', branch = 'v2.x' };
+require('pckr').add {
+  {
+    "olimorris/persisted.nvim",
+    config = function()
+      require("persisted").setup { autoload = true,
+        on_autoload_no_session = function()
+          vim.notify("No existing session to load.")
+        end,
+        allowed_dirs = { "~/github" }
+      }
+    end
+  },
+  'HiPhish/rainbow-delimiters.nvim',
+  'bluz71/vim-moonfly-colors',
+  'neovim/nvim-lspconfig',
+  {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
+  },
+  'lukas-reineke/indent-blankline.nvim',
+  'nvim-tree/nvim-web-devicons',
+  'Bekaboo/dropbar.nvim',
+  'theHamsta/nvim-dap-virtual-text',
+  { 'norcalli/nvim-colorizer.lua',              config = function() require 'colorizer'.setup() end },
+  'nvim-treesitter/nvim-treesitter-textobjects',
+  'ggandor/leap.nvim',
+  'lewis6991/gitsigns.nvim',
+  'nvim-lua/plenary.nvim',
+  'NeogitOrg/neogit',
+  { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+  {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    requires = {
+      { 'nvim-lua/plenary.nvim' } }
+  },
+  { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup {} end },
+  { 'windwp/nvim-autopairs', config = function() require("nvim-autopairs").setup {} end },
+  'nvim-lualine/lualine.nvim',
+  { 'sindrets/diffview.nvim', config = function() require 'diffview'.setup { _icon = true } end },
+  { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end },
+  'mfussenegger/nvim-dap',
+  'rcarriga/nvim-dap-ui',
+  'onsails/lspkind.nvim',
+  { 'williamboman/mason.nvim',          run = ":MasonUpdate" },
+  { 'williamboman/mason-lspconfig.nvim' },
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp-signature-help',
+  'L3MON4D3/LuaSnip',
+  'rafamadriz/friendly-snippets',
+  'saadparwaiz1/cmp_luasnip',
+  { 'stevearc/oil.nvim',         config = function() require('oil').setup { view_options = { show_hidden = true } } end },
+  { 'RRethy/vim-illuminate' },
+  { 'VonHeikemen/lsp-zero.nvim', branch = 'v2.x' },
 }
 vim.g.loaded_netrw = 1
 vim.wo.wrap = false
@@ -156,9 +167,8 @@ dap.adapters.codelldb = {
     command = vim.fn.stdpath('data') .. '/mason/bin/codelldb.cmd',
     args = { "--port", "13000" },
 
-    if jit.os == "Windows" then
-      detached = false,
-    end
+    -- On windows you may have to uncomment this:
+    detached = false,
   }
 }
 
@@ -547,27 +557,27 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-vim.fn.sign_define('DapBreakpoint', {text='⚫', texthl='red', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpoint', { text = '⚫', texthl = 'red', linehl = '', numhl = '' })
 local highlight = {
-    "RainbowRed",
-    "RainbowYellow",
-    "RainbowBlue",
-    "RainbowOrange",
-    "RainbowGreen",
-    "RainbowViolet",
-    "RainbowCyan",
+  "RainbowRed",
+  "RainbowYellow",
+  "RainbowBlue",
+  "RainbowOrange",
+  "RainbowGreen",
+  "RainbowViolet",
+  "RainbowCyan",
 }
 local hooks = require "ibl.hooks"
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+  vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+  vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+  vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+  vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+  vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+  vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+  vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
 end)
 
 vim.g.rainbow_delimiters = { highlight = highlight }
