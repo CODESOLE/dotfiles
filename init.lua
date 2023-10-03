@@ -15,7 +15,7 @@ require('packer').startup(function(use)
       on_autoload_no_session = function()
         vim.notify("No existing session to load.")
       end,
-      allowed_dirs = { "~/GitHub" }
+      allowed_dirs = { "~/github" }
     }
   end }
   use 'HiPhish/rainbow-delimiters.nvim'
