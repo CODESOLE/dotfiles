@@ -35,8 +35,7 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'NeogitOrg/neogit'
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run =
-  'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.2', requires = { { 'nvim-lua/plenary.nvim' } } }
   use { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup {} end }
   use { 'windwp/nvim-autopairs', config = function() require("nvim-autopairs").setup {} end }
