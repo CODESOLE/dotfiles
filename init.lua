@@ -34,7 +34,7 @@ require('pckr').add{
     ts_update()
   end, };
    'lukas-reineke/indent-blankline.nvim';
-   'debugloop/telescope-undo.nvim';
+   'nvim-tree/nvim-web-devicons';
    'Bekaboo/dropbar.nvim';
    'theHamsta/nvim-dap-virtual-text';
    { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end };
@@ -345,9 +345,7 @@ require('telescope').setup {
   }
 }
 require('telescope').load_extension('fzf')
-require('telescope').load_extension('undo')
 require("telescope").load_extension("persisted")
-vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
 vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { noremap = false, silent = true })
 vim.keymap.set('n', '<leader>S', '<cmd>Telescope lsp_workspace_symbols<CR>', { noremap = false, silent = true })
 
