@@ -266,6 +266,15 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     vim.notify_once("dap.configurations updated!", vim.log.levels.INFO)
   end
 })
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+  group = "dap_conf",
+  callback = function()
+    if io.open(vim.fn.getcwd() .. '/launch.txt', 'r') ~= nil then
+      vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
+      vim.notify_once("dap.configurations updated!", vim.log.levels.INFO)
+    end
+  end
+})
 
 vim.keymap.set('n', '<leader>dc', function()
   local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
