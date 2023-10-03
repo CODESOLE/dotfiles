@@ -108,7 +108,7 @@ vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '<Up>', 'gk')
 vim.keymap.set('n', '<Down>', 'gj')
 vim.keymap.set('n', 'gl', '$')
-vim.keymap.set('n', '<leader>t', '<Cmd>sp term://nu<CR>')
+vim.keymap.set('n', '<leader>t', '<Cmd>sp term://bash<CR>')
 vim.cmd [[autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif]]
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
@@ -156,8 +156,9 @@ dap.adapters.codelldb = {
     command = vim.fn.stdpath('data') .. '/mason/bin/codelldb.cmd',
     args = { "--port", "13000" },
 
-    -- On windows you may have to uncomment this:
-    detached = false,
+    if jit.os == "Windows" then
+      detached = false,
+    end
   }
 }
 
