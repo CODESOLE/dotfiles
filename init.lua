@@ -1,73 +1,77 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-    vim.cmd [[packadd packer.nvim]]
-    return true
+vim.o.termguicolors = true
+local function bootstrap_pckr()
+  local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+
+  if not vim.loop.fs_stat(pckr_path) then
+    vim.fn.system({
+      'git',
+      'clone',
+      "--filter=blob:none",
+      'https://github.com/lewis6991/pckr.nvim',
+      pckr_path
+    })
   end
-  return false
+
+  vim.opt.rtp:prepend(pckr_path)
 end
-require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use { "olimorris/persisted.nvim", config = function()
+
+bootstrap_pckr()
+
+require('pckr').add{
+ { "olimorris/persisted.nvim", config = function()
     require("persisted").setup { autoload = true,
       on_autoload_no_session = function()
         vim.notify("No existing session to load.")
       end,
       allowed_dirs = { "~/github" }
     }
-  end }
-  use 'HiPhish/rainbow-delimiters.nvim'
-  use 'bluz71/vim-moonfly-colors'
-  use 'neovim/nvim-lspconfig'
-  use { 'nvim-treesitter/nvim-treesitter', run = function()
+  end };
+   'HiPhish/rainbow-delimiters.nvim';
+   'bluz71/vim-moonfly-colors';
+   'neovim/nvim-lspconfig';
+   { 'nvim-treesitter/nvim-treesitter', run = function()
     local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
     ts_update()
-  end, }
-  use 'lukas-reineke/indent-blankline.nvim'
-  use 'debugloop/telescope-undo.nvim'
-  use 'Bekaboo/dropbar.nvim'
-  use 'theHamsta/nvim-dap-virtual-text'
-  use { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end }
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'ggandor/leap.nvim'
-  use 'lewis6991/gitsigns.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'NeogitOrg/neogit'
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use { 'nvim-telescope/telescope.nvim', tag = '0.1.2', requires = { { 'nvim-lua/plenary.nvim' } } }
-  use { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup {} end }
-  use { 'windwp/nvim-autopairs', config = function() require("nvim-autopairs").setup {} end }
-  use 'nvim-lualine/lualine.nvim'
-  use { 'sindrets/diffview.nvim', config = function() require 'diffview'.setup { use_icon = true } end }
-  use { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end }
-  use 'mfussenegger/nvim-dap'
-  use 'rcarriga/nvim-dap-ui'
-  use 'onsails/lspkind.nvim'
-  use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
-  use { 'williamboman/mason-lspconfig.nvim' }
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp-signature-help'
-  use 'L3MON4D3/LuaSnip'
-  use 'rafamadriz/friendly-snippets'
-  use 'saadparwaiz1/cmp_luasnip'
-  use { 'stevearc/oil.nvim', config = function() require('oil').setup { view_options = { show_hidden = true } } end }
-  use { 'RRethy/vim-illuminate' }
-  use { 'VonHeikemen/lsp-zero.nvim', branch = 'v2.x' }
-  if ensure_packer() then
-    require('packer').sync()
-  end
-end)
+  end, };
+   'lukas-reineke/indent-blankline.nvim';
+   'debugloop/telescope-undo.nvim';
+   'Bekaboo/dropbar.nvim';
+   'theHamsta/nvim-dap-virtual-text';
+   { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end };
+   'nvim-treesitter/nvim-treesitter-textobjects';
+   'ggandor/leap.nvim';
+   'lewis6991/gitsigns.nvim';
+   'nvim-lua/plenary.nvim';
+   'NeogitOrg/neogit';
+   { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' };
+   { 'nvim-telescope/telescope.nvim', tag = '0.1.2', requires = { { 'nvim-lua/plenary.nvim' } } };
+   { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup {} end };
+   { 'windwp/nvim-autopairs', config = function() require("nvim-autopairs").setup {} end };
+   'nvim-lualine/lualine.nvim';
+   { 'sindrets/diffview.nvim', config = function() require 'diffview'.setup { _icon = true } end };
+   { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end };
+   'mfussenegger/nvim-dap';
+   'rcarriga/nvim-dap-ui';
+   'onsails/lspkind.nvim';
+   { 'williamboman/mason.nvim', run = ":MasonUpdate" };
+   { 'williamboman/mason-lspconfig.nvim' };
+   'hrsh7th/cmp-nvim-lsp';
+   'hrsh7th/cmp-buffer';
+   'hrsh7th/cmp-path';
+   'hrsh7th/cmp-cmdline';
+   'hrsh7th/nvim-cmp';
+   'hrsh7th/cmp-nvim-lsp-signature-help';
+   'L3MON4D3/LuaSnip';
+   'rafamadriz/friendly-snippets';
+   'saadparwaiz1/cmp_luasnip';
+   { 'stevearc/oil.nvim', config = function() require('oil').setup { view_options = { show_hidden = true } } end };
+   { 'RRethy/vim-illuminate' };
+   { 'VonHeikemen/lsp-zero.nvim', branch = 'v2.x' };
+}
 vim.g.loaded_netrw = 1
 vim.wo.wrap = false
 vim.g.updatetime = 200
 vim.g.loaded_netrwPlugin = 1
-vim.o.termguicolors = true
 vim.o.cmdheight = 0
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.cmd [[colorscheme moonfly]]
