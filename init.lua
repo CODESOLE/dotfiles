@@ -30,7 +30,7 @@ require('pckr').add {
     end
   },
   'HiPhish/rainbow-delimiters.nvim',
-{  'linrongbin16/lsp-progress.nvim', config = function() require 'lsp-progress'.setup() end},
+  { 'linrongbin16/lsp-progress.nvim', config = function() require 'lsp-progress'.setup() end },
   'bluz71/vim-moonfly-colors',
   'neovim/nvim-lspconfig',
   {
@@ -43,7 +43,7 @@ require('pckr').add {
   'lukas-reineke/indent-blankline.nvim',
   'nvim-tree/nvim-web-devicons',
   'Bekaboo/dropbar.nvim',
-  { 'norcalli/nvim-colorizer.lua',              config = function() require 'colorizer'.setup() end },
+  { 'norcalli/nvim-colorizer.lua',    config = function() require 'colorizer'.setup() end },
   'nvim-treesitter/nvim-treesitter-textobjects',
   'ggandor/leap.nvim',
   'lewis6991/gitsigns.nvim',
@@ -56,8 +56,8 @@ require('pckr').add {
     requires = {
       { 'nvim-lua/plenary.nvim' } }
   },
-  { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup {} end },
-  { 'windwp/nvim-autopairs', config = function() require("nvim-autopairs").setup {} end },
+  { 'numToStr/Comment.nvim',                    config = function() require 'Comment'.setup {} end },
+  { 'windwp/nvim-autopairs',                    config = function() require("nvim-autopairs").setup {} end },
   'nvim-lualine/lualine.nvim',
   { 'sindrets/diffview.nvim', config = function() require 'diffview'.setup { _icon = true } end },
   { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end },
@@ -524,12 +524,11 @@ require('mason-lspconfig').setup({
     end,
   }
 })
-
 local lspkind = require 'lspkind'
 require 'cmp'.setup({
   formatting = {
     format = lspkind.cmp_format({
-      mode = 'symbol',       -- show only symbol annotations
+      mode = 'symbol_text',       -- show only symbol annotations
       maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
     })
@@ -542,8 +541,8 @@ require 'cmp'.setup({
   mapping = {
     ['<CR>'] = require 'cmp'.mapping.confirm({ select = false }),
     ['<C-Space>'] = require 'cmp'.mapping.complete(),
-    ['<C-f>'] = require 'cmp'.mapping.scroll_docs(-4),
-    ['<C-b>'] = require 'cmp'.mapping.scroll_docs(-4),
+    ['<C-u>'] = require 'cmp'.mapping.scroll_docs(-4),
+    ['<C-d>'] = require 'cmp'.mapping.scroll_docs(4),
   },
   sources = require 'cmp'.config.sources({ { name = 'path' }, { name = 'nvim_lsp' }, { name = 'buffer' },
     { name = 'luasnip' }, { name = 'nvim_lsp_signature_help' }
