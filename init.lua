@@ -19,15 +19,23 @@ bootstrap_pckr()
 
 require('pckr').add {
   {
-    "olimorris/persisted.nvim",
+    "luukvbaal/statuscol.nvim",
     config = function()
-      require("persisted").setup { autoload = true,
-        on_autoload_no_session = function()
-          vim.notify("No existing session to load.")
-        end,
-        allowed_dirs = { "~/github" }
-      }
-    end
+      local builtin = require("statuscol.builtin")
+      require("statuscol").setup({
+        segments = {
+          {
+            sign = { name = { "Diagnostic" }, auto = true },
+            click = "v:lua.ScSa"
+          },
+          { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa", },
+          {
+            sign = { name = { "GitSign*" } },
+            click = "v:lua.ScSa"
+          }
+        }
+      })
+    end,
   },
   'HiPhish/rainbow-delimiters.nvim',
   { 'linrongbin16/lsp-progress.nvim', config = function() require 'lsp-progress'.setup() end },
@@ -82,6 +90,7 @@ require('pckr').add {
 }
 vim.g.loaded_netrw = 1
 vim.wo.wrap = false
+vim.wo.number = true
 vim.g.updatetime = 200
 vim.g.loaded_netrwPlugin = 1
 vim.o.cmdheight = 0
@@ -130,7 +139,6 @@ vim.keymap.set('i', '<C-k>', '<Up>')
 vim.keymap.set('i', '<C-j>', '<Down>')
 vim.keymap.set('i', '<C-h>', '<Left>')
 vim.keymap.set('i', '<C-l>', '<Right>')
-vim.keymap.set('n', '<leader>o', '<Cmd>Telescope persisted<CR>')
 
 vim.keymap.set('c', '<C-j>', '<Down>')
 vim.keymap.set('c', '<C-k>', '<Up>')
@@ -371,7 +379,6 @@ require('telescope').setup {
   }
 }
 require('telescope').load_extension('fzf')
-require("telescope").load_extension("persisted")
 vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { noremap = false, silent = true })
 vim.keymap.set('n', '<leader>S', '<cmd>Telescope lsp_workspace_symbols<CR>', { noremap = false, silent = true })
 
@@ -458,6 +465,7 @@ require 'nvim-treesitter.configs'.setup {
   },
 }
 require('gitsigns').setup {
+  word_diff = true,
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
@@ -528,7 +536,7 @@ local lspkind = require 'lspkind'
 require 'cmp'.setup({
   formatting = {
     format = lspkind.cmp_format({
-      mode = 'symbol_text',       -- show only symbol annotations
+      mode = 'symbol_text',  -- show only symbol annotations
       maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
     })
