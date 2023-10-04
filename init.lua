@@ -30,6 +30,7 @@ require('pckr').add {
     end
   },
   'HiPhish/rainbow-delimiters.nvim',
+{  'linrongbin16/lsp-progress.nvim', config = function() require 'lsp-progress'.setup() end},
   'bluz71/vim-moonfly-colors',
   'neovim/nvim-lspconfig',
   {
@@ -348,12 +349,17 @@ require('lualine').setup { options = {
   section_separators = { left = '', right = '' },
 }, sections = {
   lualine_a = { 'location' },
-  lualine_c = { { 'filename', path = 1 } },
+  lualine_c = { { 'filename', path = 1 }, 'require "lsp-progress".progress()' },
   lualine_x = { 'searchcount', '', '' },
   lualine_y = { '' },
   lualine_z = { '' },
 } }
-
+-- listen lsp-progress event and refresh lualine
+vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+vim.api.nvim_create_autocmd("User LspProgressStatusUpdated", {
+  group = "lualine_augroup",
+  callback = require("lualine").refresh,
+})
 require('telescope').setup {
   pickers = {
     buffers = {
@@ -619,7 +625,7 @@ hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_ex
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
-    if vim.lsp.get_active_clients {bufnr = vim.api.nvim_get_current_buf() }[1].server_capabilities.inlayHintProvider then
+    if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.inlayHintProvider then
       vim.lsp.inlay_hint(0, true)
     end
   end,
