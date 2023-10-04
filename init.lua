@@ -95,6 +95,13 @@ vim.g.updatetime = 200
 vim.g.loaded_netrwPlugin = 1
 vim.o.cmdheight = 0
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.g.moonflyWinSeparator = 2
+vim.cmd [[
+if exists('&cursorlineopt')
+    set cursorlineopt=number
+    set cursorline
+endif
+]]
 vim.cmd [[colorscheme moonfly]]
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "ColorColumn" })
