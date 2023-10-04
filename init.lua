@@ -616,3 +616,11 @@ vim.g.rainbow_delimiters = { highlight = highlight }
 require("ibl").setup { scope = { highlight = highlight } }
 
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    if vim.lsp.get_active_clients {bufnr = vim.api.nvim_get_current_buf() }[1].server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint(0, true)
+    end
+  end,
+})
