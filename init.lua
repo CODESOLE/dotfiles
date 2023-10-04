@@ -631,6 +631,7 @@ require("ibl").setup { scope = { highlight = highlight } }
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 
 vim.api.nvim_create_autocmd('LspAttach', {
+  once = true,
   callback = function(ev)
     if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.inlayHintProvider then
       vim.lsp.inlay_hint(0, true)
