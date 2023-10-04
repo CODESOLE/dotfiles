@@ -42,7 +42,6 @@ require('pckr').add {
   'lukas-reineke/indent-blankline.nvim',
   'nvim-tree/nvim-web-devicons',
   'Bekaboo/dropbar.nvim',
-  'theHamsta/nvim-dap-virtual-text',
   { 'norcalli/nvim-colorizer.lua',              config = function() require 'colorizer'.setup() end },
   'nvim-treesitter/nvim-treesitter-textobjects',
   'ggandor/leap.nvim',
@@ -52,7 +51,7 @@ require('pckr').add {
   { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    tag = '0.1.3',
     requires = {
       { 'nvim-lua/plenary.nvim' } }
   },
@@ -61,6 +60,7 @@ require('pckr').add {
   'nvim-lualine/lualine.nvim',
   { 'sindrets/diffview.nvim', config = function() require 'diffview'.setup { _icon = true } end },
   { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end },
+  'theHamsta/nvim-dap-virtual-text',
   'mfussenegger/nvim-dap',
   'rcarriga/nvim-dap-ui',
   'onsails/lspkind.nvim',
@@ -77,7 +77,7 @@ require('pckr').add {
   'saadparwaiz1/cmp_luasnip',
   { 'stevearc/oil.nvim',         config = function() require('oil').setup { view_options = { show_hidden = true } } end },
   { 'RRethy/vim-illuminate' },
-  { 'VonHeikemen/lsp-zero.nvim', branch = 'v2.x' },
+  { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' },
 }
 vim.g.loaded_netrw = 1
 vim.wo.wrap = false
@@ -489,12 +489,23 @@ require('gitsigns').setup {
     vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
-require('lsp-zero').nvim_workspace()
-require('lsp-zero').ensure_installed({ "lua_ls", "rust_analyzer", "clangd" })
-require('lsp-zero').preset({}).on_attach(function(client, bufnr)
-  require('lsp-zero').preset({}).default_keymaps({ buffer = bufnr })
+local lsp_zero = require('lsp-zero')
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = { "lua_ls", "rust_analyzer", "clangd" },
+  handlers = {
+    lsp_zero.default_setup,
+    lua_ls = function()
+      local lua_opts = lsp_zero.nvim_lua_ls()
+      require('lspconfig').lua_ls.setup(lua_opts)
+    end,
+  }
+})
+lsp_zero.nvim_workspace()
+lsp_zero.preset({}).on_attach(function(client, bufnr)
+  lsp_zero.preset({}).default_keymaps({ buffer = bufnr })
 end)
-require('lsp-zero').preset({}).setup()
+lsp_zero.preset({}).setup()
 
 local lspkind = require 'lspkind'
 require 'cmp'.setup({
@@ -513,8 +524,8 @@ require 'cmp'.setup({
   mapping = {
     ['<CR>'] = require 'cmp'.mapping.confirm({ select = false }),
     ['<C-Space>'] = require 'cmp'.mapping.complete(),
-    ['<C-f>'] = require('lsp-zero').cmp_action().luasnip_jump_forward(),
-    ['<C-b>'] = require('lsp-zero').cmp_action().luasnip_jump_backward(),
+    ['<C-f>'] = require 'cmp'.mapping.scroll_docs(-4),
+    ['<C-b>'] = require 'cmp'.mapping.scroll_docs(-4),
   },
   sources = require 'cmp'.config.sources({ { name = 'path' }, { name = 'nvim_lsp' }, { name = 'buffer' },
     { name = 'luasnip' }, { name = 'nvim_lsp_signature_help' }
