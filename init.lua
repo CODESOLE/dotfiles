@@ -490,6 +490,11 @@ require('gitsigns').setup {
   end
 }
 local lsp_zero = require('lsp-zero')
+lsp_zero.on_attach(function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({ buffer = bufnr })
+end)
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = { "lua_ls", "rust_analyzer", "clangd" },
@@ -498,14 +503,21 @@ require('mason-lspconfig').setup({
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
+      require('lspconfig').lua_ls.setup({
+        on_attach = function(client, bufnr)
+          vim.lsp.inlay_hint(bufnr, true)
+        end,
+        settings = {
+          Lua = {
+            hint = {
+              enable = true,
+            },
+          },
+        },
+      })
     end,
   }
 })
-lsp_zero.nvim_workspace()
-lsp_zero.preset({}).on_attach(function(client, bufnr)
-  lsp_zero.preset({}).default_keymaps({ buffer = bufnr })
-end)
-lsp_zero.preset({}).setup()
 
 local lspkind = require 'lspkind'
 require 'cmp'.setup({
