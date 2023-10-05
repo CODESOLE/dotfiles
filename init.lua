@@ -42,7 +42,13 @@ require('pckr').add {
     end,
   },
   'HiPhish/rainbow-delimiters.nvim',
-  { 'linrongbin16/lsp-progress.nvim', config = function() require 'lsp-progress'.setup() end },
+  {
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
+    config = function()
+      require("fidget").setup()
+    end,
+  },
   'bluz71/vim-moonfly-colors',
   'neovim/nvim-lspconfig',
   {
@@ -55,7 +61,7 @@ require('pckr').add {
   'lukas-reineke/indent-blankline.nvim',
   'nvim-tree/nvim-web-devicons',
   'Bekaboo/dropbar.nvim',
-  { 'norcalli/nvim-colorizer.lua',    config = function() require 'colorizer'.setup() end },
+  { 'norcalli/nvim-colorizer.lua',              config = function() require 'colorizer'.setup() end },
   'nvim-treesitter/nvim-treesitter-textobjects',
   'ggandor/leap.nvim',
   'lewis6991/gitsigns.nvim',
@@ -68,8 +74,8 @@ require('pckr').add {
     requires = {
       { 'nvim-lua/plenary.nvim' } }
   },
-  { 'numToStr/Comment.nvim',                    config = function() require 'Comment'.setup {} end },
-  { 'windwp/nvim-autopairs',                    config = function() require("nvim-autopairs").setup {} end },
+  { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup {} end },
+  { 'windwp/nvim-autopairs', config = function() require("nvim-autopairs").setup {} end },
   'nvim-lualine/lualine.nvim',
   { 'sindrets/diffview.nvim', config = function() require 'diffview'.setup { _icon = true } end },
   { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end },
@@ -192,82 +198,7 @@ dap.adapters.codelldb = {
   }
 }
 
--- local get_launch_conf = function(exec_path_or_args)
---   local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
---   if file == nil then
---     vim.notify_once("NOT FOUND LAUNCH.TXT CONFIG FILE AT THE WORKSPACE ROOT DIRECTORY!!!", vim.log.levels.WARN)
---     return
---   end
---   local lines = file:lines()
---   local executable_path = vim.fn.trim(lines())
---   if exec_path_or_args == 'exec_path' then
---     file:close()
---     return executable_path
---   elseif exec_path_or_args == 'args' then
---     local l = lines()
---     if l == nil then
---       file:close()
---       return nil
---     end
---     local args_ = vim.fn.trim(l)
---     local arrs = {}
---     for args in args_:gmatch('%S+') do
---       local ar = vim.fn.trim(args)
---       table.insert(arrs, ar)
---     end
---     file:close()
---     return arrs
---   else
---     vim.notify_once("INCORRECT ARGUMENT! ARGUMENT CAN BE EITHER 'exec_path' OR 'args'!", vim.log.levels.WARN)
---   end
---   file:close()
--- end
 require 'dap.ext.vscode'.load_launchjs(nil, { codelldb = { 'c', 'cpp', 'rust' } })
--- dap.configurations.cpp = {
---   {
---     name = "Launch file",
---     type = "codelldb",
---     request = "launch",
---     program = get_launch_conf 'exec_path',
---     cwd = "${workspaceFolder}",
---     args = get_launch_conf 'args',
---   },
--- }
---
--- dap.configurations.c = dap.configurations.cpp
--- dap.configurations.rust = {
---   {
---     name = "Launch file",
---     type = "codelldb",
---     request = "launch",
---     program = get_launch_conf 'exec_path',
---     cwd = "${workspaceFolder}",
---     args = get_launch_conf 'args',
---     initCommands = function()
---       if jit.os == 'Linux' then
---         -- Find out where to look for the pretty printer Python module
---         local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
---
---         local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
---         local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
---
---         local commands = {}
---         local file = io.open(commands_file, 'r')
---         if file then
---           for line in file:lines() do
---             table.insert(commands, line)
---           end
---           file:close()
---         end
---         table.insert(commands, 1, script_import)
---
---         return commands
---       else
---         return nil
---       end
---     end
---   },
--- }
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
@@ -278,42 +209,8 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
--- vim.api.nvim_create_augroup("dap_conf", { clear = true })
--- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
---   pattern = { "launch.txt" },
---   group = "dap_conf",
---   callback = function()
---     vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
---     vim.notify_once("dap.configurations updated!", vim.log.levels.INFO)
---   end
--- })
--- vim.api.nvim_create_autocmd({ "VimEnter" }, {
---   group = "dap_conf",
---   callback = function()
---     if io.open(vim.fn.getcwd() .. '/launch.txt', 'r') ~= nil then
---       vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
---       vim.notify_once("dap.configurations updated!", vim.log.levels.INFO)
---     end
---   end
--- })
 
-vim.keymap.set('n', '<leader>dc', function()
-  -- local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
-  -- if file == nil then
-  --   vim.notify_once("NOT FOUND LAUNCH.TXT CONFIG FILE AT THE WORKSPACE ROOT DIRECTORY!!!", vim.log.levels.WARN)
-  --   return
-  -- end
-  -- local ln = file:lines()
-  -- ln()
-  -- ln()
-  -- local build_cmd = ln()
-  --
-  -- if build_cmd ~= nil then
-  --   vim.cmd("!" .. build_cmd)
-  -- end
-  -- file:close()
-  require('dap').continue()
-end)
+vim.keymap.set('n', '<leader>dc', function() require('dap').continue() end)
 vim.keymap.set('n', '<leader>dj', function() require('dap').step_over() end)
 vim.keymap.set('n', '<leader>dk', function() require('dap').step_into() end)
 vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
@@ -334,52 +231,20 @@ vim.keymap.set('n', '<Leader>ds', function()
   widgets.centered_float(widgets.scopes)
 end)
 
-local keymap_restore = {}
-dap.listeners.after['event_initialized']['me'] = function()
-  for _, buf in pairs(vim.api.nvim_list_bufs()) do
-    local keymaps = vim.api.nvim_buf_get_keymap(buf, 'n')
-    for _, keymap in pairs(keymaps) do
-      if keymap.lhs == "K" then
-        table.insert(keymap_restore, keymap)
-        vim.api.nvim_buf_del_keymap(buf, 'n', 'K')
-      end
-    end
-  end
-  vim.api.nvim_set_keymap(
-    'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
-end
-
-dap.listeners.after['event_terminated']['me'] = function()
-  for _, keymap in pairs(keymap_restore) do
-    vim.api.nvim_buf_set_keymap(
-      keymap.buffer,
-      keymap.mode,
-      keymap.lhs,
-      keymap.rhs,
-      { silent = keymap.silent == 1 }
-    )
-  end
-  keymap_restore = {}
-end
-
 local builtin = require('telescope.builtin')
 require('leap').add_default_mappings()
 require('lualine').setup { options = {
   component_separators = { left = '', right = '' },
   section_separators = { left = '', right = '' },
 }, sections = {
-  lualine_a = { 'location' },
-  lualine_c = { { 'filename', path = 1 }, 'require "lsp-progress".progress()' },
-  lualine_x = { 'searchcount', '', '' },
+  lualine_a = { 'branch' },
+  lualine_b = { 'diff', 'diagnostics' },
+  lualine_c = { 'filename' },
+  lualine_x = { '', '', '' },
   lualine_y = { '' },
-  lualine_z = { '' },
+  lualine_z = { 'searchcount' },
 } }
--- listen lsp-progress event and refresh lualine
-vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
-vim.api.nvim_create_autocmd("User LspProgressStatusUpdated", {
-  group = "lualine_augroup",
-  callback = require("lualine").refresh,
-})
+
 require('telescope').setup {
   pickers = {
     buffers = {
