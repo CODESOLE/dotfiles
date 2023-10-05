@@ -72,7 +72,7 @@ require('pckr').add {
   'theHamsta/nvim-dap-virtual-text',
   'mfussenegger/nvim-dap',
   'rcarriga/nvim-dap-ui',
-  'onsails/lspkind.nvim',
+  { 'karb94/neoscroll.nvim',            config = function() require "neoscroll".setup() end },
   { 'williamboman/mason.nvim',          run = ":MasonUpdate" },
   { 'williamboman/mason-lspconfig.nvim' },
   'hrsh7th/cmp-nvim-lsp',
@@ -539,15 +539,14 @@ require('mason-lspconfig').setup({
     end,
   }
 })
-local lspkind = require 'lspkind'
 require 'cmp'.setup({
-  formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol_text',  -- show only symbol annotations
-      maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-    })
-  },
+  -- formatting = {
+  --   format = lspkind.cmp_format({
+  --     mode = 'symbol_text',  -- show only symbol annotations
+  --     maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+  --     ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+  --   })
+  -- },
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
