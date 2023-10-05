@@ -184,7 +184,7 @@ dap.adapters.codelldb = {
     args = { "--port", "13000" },
 
     -- On windows you may have to uncomment this:
-    detached = false,
+    -- detached = false,
   }
 }
 
