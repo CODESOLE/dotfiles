@@ -28,6 +28,10 @@ require('pckr').add {
             sign = { name = { "Diagnostic" }, auto = true },
             click = "v:lua.ScSa"
           },
+          {
+            sign = { name = { "Dap*" }, auto = true },
+            click = "v:lua.ScSa"
+          },
           { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa", },
           {
             sign = { name = { "GitSign*" } },
@@ -180,7 +184,7 @@ dap.adapters.codelldb = {
   type = 'server',
   port = "13000",
   executable = {
-    command = vim.fn.stdpath('data') .. '/mason/bin/codelldb.cmd',
+    command = vim.fn.stdpath('data') .. '/mason/bin/codelldb',
     args = { "--port", "13000" },
 
     -- On windows you may have to uncomment this:
@@ -188,81 +192,82 @@ dap.adapters.codelldb = {
   }
 }
 
-local get_launch_conf = function(exec_path_or_args)
-  local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
-  if file == nil then
-    vim.notify_once("NOT FOUND LAUNCH.TXT CONFIG FILE AT THE WORKSPACE ROOT DIRECTORY!!!", vim.log.levels.WARN)
-    return
-  end
-  local lines = file:lines()
-  local executable_path = vim.fn.trim(lines())
-  if exec_path_or_args == 'exec_path' then
-    file:close()
-    return executable_path
-  elseif exec_path_or_args == 'args' then
-    local l = lines()
-    if l == nil then
-      file:close()
-      return nil
-    end
-    local args_ = vim.fn.trim(l)
-    local arrs = {}
-    for args in args_:gmatch('%S+') do
-      local ar = vim.fn.trim(args)
-      table.insert(arrs, ar)
-    end
-    file:close()
-    return arrs
-  else
-    vim.notify_once("INCORRECT ARGUMENT! ARGUMENT CAN BE EITHER 'exec_path' OR 'args'!", vim.log.levels.WARN)
-  end
-  file:close()
-end
-dap.configurations.cpp = {
-  {
-    name = "Launch file",
-    type = "codelldb",
-    request = "launch",
-    program = get_launch_conf 'exec_path',
-    cwd = "${workspaceFolder}",
-    args = get_launch_conf 'args',
-  },
-}
-
-dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = {
-  {
-    name = "Launch file",
-    type = "codelldb",
-    request = "launch",
-    program = get_launch_conf 'exec_path',
-    cwd = "${workspaceFolder}",
-    args = get_launch_conf 'args',
-    initCommands = function()
-      if jit.os == 'Linux' then
-        -- Find out where to look for the pretty printer Python module
-        local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
-
-        local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
-        local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
-
-        local commands = {}
-        local file = io.open(commands_file, 'r')
-        if file then
-          for line in file:lines() do
-            table.insert(commands, line)
-          end
-          file:close()
-        end
-        table.insert(commands, 1, script_import)
-
-        return commands
-      else
-        return nil
-      end
-    end
-  },
-}
+-- local get_launch_conf = function(exec_path_or_args)
+--   local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
+--   if file == nil then
+--     vim.notify_once("NOT FOUND LAUNCH.TXT CONFIG FILE AT THE WORKSPACE ROOT DIRECTORY!!!", vim.log.levels.WARN)
+--     return
+--   end
+--   local lines = file:lines()
+--   local executable_path = vim.fn.trim(lines())
+--   if exec_path_or_args == 'exec_path' then
+--     file:close()
+--     return executable_path
+--   elseif exec_path_or_args == 'args' then
+--     local l = lines()
+--     if l == nil then
+--       file:close()
+--       return nil
+--     end
+--     local args_ = vim.fn.trim(l)
+--     local arrs = {}
+--     for args in args_:gmatch('%S+') do
+--       local ar = vim.fn.trim(args)
+--       table.insert(arrs, ar)
+--     end
+--     file:close()
+--     return arrs
+--   else
+--     vim.notify_once("INCORRECT ARGUMENT! ARGUMENT CAN BE EITHER 'exec_path' OR 'args'!", vim.log.levels.WARN)
+--   end
+--   file:close()
+-- end
+require 'dap.ext.vscode'.load_launchjs(nil, { codelldb = { 'c', 'cpp', 'rust' } })
+-- dap.configurations.cpp = {
+--   {
+--     name = "Launch file",
+--     type = "codelldb",
+--     request = "launch",
+--     program = get_launch_conf 'exec_path',
+--     cwd = "${workspaceFolder}",
+--     args = get_launch_conf 'args',
+--   },
+-- }
+--
+-- dap.configurations.c = dap.configurations.cpp
+-- dap.configurations.rust = {
+--   {
+--     name = "Launch file",
+--     type = "codelldb",
+--     request = "launch",
+--     program = get_launch_conf 'exec_path',
+--     cwd = "${workspaceFolder}",
+--     args = get_launch_conf 'args',
+--     initCommands = function()
+--       if jit.os == 'Linux' then
+--         -- Find out where to look for the pretty printer Python module
+--         local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
+--
+--         local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
+--         local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
+--
+--         local commands = {}
+--         local file = io.open(commands_file, 'r')
+--         if file then
+--           for line in file:lines() do
+--             table.insert(commands, line)
+--           end
+--           file:close()
+--         end
+--         table.insert(commands, 1, script_import)
+--
+--         return commands
+--       else
+--         return nil
+--       end
+--     end
+--   },
+-- }
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
@@ -273,40 +278,40 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
-vim.api.nvim_create_augroup("dap_conf", { clear = true })
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "launch.txt" },
-  group = "dap_conf",
-  callback = function()
-    vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
-    vim.notify_once("dap.configurations updated!", vim.log.levels.INFO)
-  end
-})
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-  group = "dap_conf",
-  callback = function()
-    if io.open(vim.fn.getcwd() .. '/launch.txt', 'r') ~= nil then
-      vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
-      vim.notify_once("dap.configurations updated!", vim.log.levels.INFO)
-    end
-  end
-})
+-- vim.api.nvim_create_augroup("dap_conf", { clear = true })
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+--   pattern = { "launch.txt" },
+--   group = "dap_conf",
+--   callback = function()
+--     vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
+--     vim.notify_once("dap.configurations updated!", vim.log.levels.INFO)
+--   end
+-- })
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+--   group = "dap_conf",
+--   callback = function()
+--     if io.open(vim.fn.getcwd() .. '/launch.txt', 'r') ~= nil then
+--       vim.cmd(string.format("source %s", vim.fn.stdpath("config") .. '/init.lua'))
+--       vim.notify_once("dap.configurations updated!", vim.log.levels.INFO)
+--     end
+--   end
+-- })
 
 vim.keymap.set('n', '<leader>dc', function()
-  local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
-  if file == nil then
-    vim.notify_once("NOT FOUND LAUNCH.TXT CONFIG FILE AT THE WORKSPACE ROOT DIRECTORY!!!", vim.log.levels.WARN)
-    return
-  end
-  local ln = file:lines()
-  ln()
-  ln()
-  local build_cmd = ln()
-
-  if build_cmd ~= nil then
-    vim.cmd("!" .. build_cmd)
-  end
-  file:close()
+  -- local file = io.open(vim.fn.getcwd() .. '/' .. 'launch.txt', 'r')
+  -- if file == nil then
+  --   vim.notify_once("NOT FOUND LAUNCH.TXT CONFIG FILE AT THE WORKSPACE ROOT DIRECTORY!!!", vim.log.levels.WARN)
+  --   return
+  -- end
+  -- local ln = file:lines()
+  -- ln()
+  -- ln()
+  -- local build_cmd = ln()
+  --
+  -- if build_cmd ~= nil then
+  --   vim.cmd("!" .. build_cmd)
+  -- end
+  -- file:close()
   require('dap').continue()
 end)
 vim.keymap.set('n', '<leader>dj', function() require('dap').step_over() end)
