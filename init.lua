@@ -59,7 +59,9 @@ require('pckr').add {
     end,
   },
   'lukas-reineke/indent-blankline.nvim',
+  'mg979/vim-visual-multi',
   'nvim-tree/nvim-web-devicons',
+  { 'stevearc/overseer.nvim',   config = function() require('overseer').setup({ dap = false, }) end },
   'Bekaboo/dropbar.nvim',
   { 'norcalli/nvim-colorizer.lua',              config = function() require 'colorizer'.setup() end },
   'nvim-treesitter/nvim-treesitter-textobjects',
@@ -197,9 +199,9 @@ dap.adapters.codelldb = {
     -- detached = false,
   }
 }
-
+require 'dap.ext.vscode'.json_decode = require "overseer.json".decode
 require 'dap.ext.vscode'.load_launchjs(nil, { codelldb = { 'c', 'cpp', 'rust' } })
-
+require 'overseer'.patch_dap(true)
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
