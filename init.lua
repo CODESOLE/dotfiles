@@ -34,7 +34,7 @@ require('pckr').add {
           },
           { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa", },
           {
-            sign = { name = { "GitSign*" } },
+            sign = { namespace = { "gitsign*" } },
             click = "v:lua.ScSa"
           }
         }
@@ -344,7 +344,6 @@ require 'nvim-treesitter.configs'.setup {
   },
 }
 require('gitsigns').setup {
-  word_diff = true,
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
