@@ -61,9 +61,9 @@ require('pckr').add {
   'lukas-reineke/indent-blankline.nvim',
   'mg979/vim-visual-multi',
   'nvim-tree/nvim-web-devicons',
-  { 'stevearc/overseer.nvim',   config = function() require('overseer').setup({ dap = false, }) end },
+  { 'stevearc/overseer.nvim',      config = function() require('overseer').setup({ dap = false, }) end },
   'Bekaboo/dropbar.nvim',
-  { 'norcalli/nvim-colorizer.lua',              config = function() require 'colorizer'.setup() end },
+  { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end },
   'nvim-treesitter/nvim-treesitter-textobjects',
   'ggandor/leap.nvim',
   'lewis6991/gitsigns.nvim',
@@ -76,8 +76,8 @@ require('pckr').add {
     requires = {
       { 'nvim-lua/plenary.nvim' } }
   },
-  { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup {} end },
-  { 'windwp/nvim-autopairs', config = function() require("nvim-autopairs").setup {} end },
+  { 'numToStr/Comment.nvim',                    config = function() require 'Comment'.setup {} end },
+  { 'windwp/nvim-autopairs',                    config = function() require("nvim-autopairs").setup {} end },
   'nvim-lualine/lualine.nvim',
   { 'sindrets/diffview.nvim', config = function() require 'diffview'.setup { _icon = true } end },
   { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end },
