@@ -262,6 +262,7 @@ vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { noremap = false
 vim.keymap.set('n', '<leader>S', '<cmd>Telescope lsp_workspace_symbols<CR>', { noremap = false, silent = true })
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fF', '<cmd>Telescope current_buffer_fuzzy_find<CR>', { noremap = false, silent = true })
 vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
