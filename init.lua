@@ -258,8 +258,6 @@ require('telescope').setup {
   }
 }
 require('telescope').load_extension('fzf')
-vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { noremap = false, silent = true })
-vim.keymap.set('n', '<leader>S', '<cmd>Telescope lsp_workspace_symbols<CR>', { noremap = false, silent = true })
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fF', '<cmd>Telescope current_buffer_fuzzy_find<CR>', { noremap = false, silent = true })
@@ -387,6 +385,11 @@ lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
   lsp_zero.default_keymaps({ buffer = bufnr })
+
+  vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { buffer = bufnr })
+  vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { buffer = bufnr })
+  vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', { buffer = bufnr })
+  vim.keymap.set('n', '<leader>S', '<cmd>Telescope lsp_workspace_symbols<CR>', { buffer = bufnr })
 end)
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -450,7 +453,6 @@ require 'lspconfig'.clangd.setup { cmd = { "clangd",
   "--completion-style=detailed",
   "--header-insertion-decorators",
   "--header-insertion=never" } }
-vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = false, silent = true })
 vim.keymap.set("x", "<leader>vp", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>vd", [["_d]])
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
