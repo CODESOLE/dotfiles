@@ -364,6 +364,8 @@ require('gitsigns').setup {
       return '<Ignore>'
     end, { expr = true })
 
+    vim.keymap.set('n', '<leader>hn', gs.next_hunk)
+    vim.keymap.set('n', '<leader>hp', gs.prev_hunk)
     vim.keymap.set('n', '<leader>hs', gs.stage_hunk)
     vim.keymap.set('n', '<leader>hr', gs.reset_hunk)
     vim.keymap.set('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
@@ -371,7 +373,7 @@ require('gitsigns').setup {
     vim.keymap.set('n', '<leader>hS', gs.stage_buffer)
     vim.keymap.set('n', '<leader>hu', gs.undo_stage_hunk)
     vim.keymap.set('n', '<leader>hR', gs.reset_buffer)
-    vim.keymap.set('n', '<leader>hp', gs.preview_hunk)
+    vim.keymap.set('n', '<leader>hh', gs.preview_hunk)
     vim.keymap.set('n', '<leader>hb', function() gs.blame_line { full = true } end)
     vim.keymap.set('n', '<leader>hd', gs.diffthis)
     vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end)
