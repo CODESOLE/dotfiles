@@ -205,14 +205,8 @@ require 'overseer'.patch_dap(true)
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
-vim.keymap.set('n', '<leader>D', function() require('dapui').close() end, { noremap = true, silent = true })
--- dap.listeners.before.event_terminated["dapui_config"] = function()
---   dapui.close()
--- end
--- dap.listeners.before.event_exited["dapui_config"] = function()
---   dapui.close()
--- end
 
+vim.keymap.set('n', '<leader>D', function() require('dapui').close() end, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>dc', function() require('dap').continue() end)
 vim.keymap.set('n', '<leader>dj', function() require('dap').step_over() end)
 vim.keymap.set('n', '<leader>dk', function() require('dap').step_into() end)
