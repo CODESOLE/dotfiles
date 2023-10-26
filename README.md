@@ -1,11 +1,9 @@
 # dotfiles
 
- - starship
- - nushell
+ - msys2
  - cmake
  - vsbuildtools
- - llvm
- - helix
+ - meson
  - rustup
  - zoxide
  - fzf, rg, fd
