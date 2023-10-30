@@ -115,6 +115,7 @@ if exists('&cursorlineopt')
 endif
 ]]
 vim.cmd [[colorscheme moonfly]]
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "ColorColumn" })
 vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "ColorColumn" })
