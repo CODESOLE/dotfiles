@@ -8,6 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 set termguicolors
@@ -229,3 +230,5 @@ nnoremap <Leader><Down> <Plug>VimspectorDownFrame
 nnoremap <Leader>dh <Plug>VimspectorStepOut
 nnoremap <Leader>dk <Plug>VimspectorStepInto
 nnoremap <Leader>dj <Plug>VimspectorStepOver
+
+nnoremap s <Plug>(easymotion-s2)
