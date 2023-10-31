@@ -7,6 +7,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 set termguicolors
