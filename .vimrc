@@ -1,6 +1,7 @@
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
+Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
 Plug 'airblade/vim-gitgutter'
 Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-fugitive'
@@ -9,7 +10,7 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 set termguicolors
-colorscheme torte
+colorscheme moonfly
 set wildmode=list,full
 set wildmenu
 set wildignore=*/builddir/*,*/build/*,tags
@@ -214,3 +215,16 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+nnoremap <Leader>dr <Plug>VimpectorRestart
+nnoremap <Leader>de <Plug>VimspectorStop
+nnoremap <Leader>dc <Plug>VimspectorContinue
+nnoremap <Leader>dt <Plug>VimspectorRunToCursor
+
+nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dl <Plug>VimspectorToggleConditionalBreakpoint
+nnoremap <Leader><Up> <Plug>VimspectorUpFrame
+nnoremap <Leader><Down> <Plug>VimspectorDownFrame
+nnoremap <Leader>dh <Plug>VimspectorStepOut
+nnoremap <Leader>dk <Plug>VimspectorStepInto
+nnoremap <Leader>dj <Plug>VimspectorStepOver
