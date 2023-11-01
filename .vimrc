@@ -1,7 +1,7 @@
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
-Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
+Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-fugitive'
