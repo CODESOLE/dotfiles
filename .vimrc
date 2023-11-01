@@ -9,11 +9,15 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'LunarWatcher/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 let g:moonflyWinSeparator = 2
 set termguicolors
 colorscheme moonfly
+set laststatus=0 ruler
 set wildmode=list,full
 set wildmenu
 set wildignore=*/builddir/*,*/build/*,tags
@@ -44,8 +48,8 @@ nnoremap k gk
 nnoremap <Up> gk
 nnoremap <Down> gj
 nmap <leader>t :ter<CR>
-nmap <leader>l :bn<CR>
-nmap <leader>h :bp<CR>
+nmap gn :bn<CR>
+nmap gp :bp<CR>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
