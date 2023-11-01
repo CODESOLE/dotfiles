@@ -1,3 +1,11 @@
 {
-  "semanticTokens.enable": true
+  "semanticTokens.enable": true,
+  "clangd.arguments": [
+    "--background-index",
+    "--clang-tidy",
+    "--all-scopes-completion",
+    "--completion-style=detailed",
+    "--header-insertion-decorators",
+    "--header-insertion=never"
+  ]
 }
