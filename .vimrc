@@ -14,7 +14,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 call plug#end()
 
-let g:moonflyWinSeparator = 2
 set termguicolors
 colorscheme moonfly
 set laststatus=0 ruler
