@@ -149,11 +149,8 @@ endif
 
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
-
 command! -nargs=0 Format :call CocActionAsync('format')
-
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
@@ -165,7 +162,7 @@ nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>p  :call CocAction('jumpDefinition', v:false)<CR>
 
 nnoremap <Leader>dr <Plug>VimpectorRestart
 nnoremap <Leader>de <Plug>VimspectorStop
@@ -178,5 +175,4 @@ nnoremap <Leader><Down> <Plug>VimspectorDownFrame
 nnoremap <Leader>dh <Plug>VimspectorStepOut
 nnoremap <Leader>dk <Plug>VimspectorStepInto
 nnoremap <Leader>dj <Plug>VimspectorStepOver
-
 nnoremap s <Plug>(easymotion-s2)
