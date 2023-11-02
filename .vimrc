@@ -175,3 +175,10 @@ nnoremap <Leader>dh <Plug>VimspectorStepOut
 nnoremap <Leader>dk <Plug>VimspectorStepInto
 nnoremap <Leader>dj <Plug>VimspectorStepOver
 nnoremap s <Plug>(easymotion-s2)
+
+nnoremap <leader>ff :Files<cr>
+nnoremap <leader>fg :GFiles<cr>
+nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader>fl :Rg<cr>
+
+nnoremap <leader>g :Git<cr>
