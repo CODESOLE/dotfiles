@@ -4,8 +4,7 @@ Plug 'puremourning/vimspector'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'mg979/vim-visual-multi'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'Donaldttt/fuzzyy'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
@@ -152,8 +151,9 @@ nnoremap <Leader>dh <Plug>VimspectorStepOut
 nnoremap <Leader>dk <Plug>VimspectorStepInto
 nnoremap <Leader>dj <Plug>VimspectorStepOver
 nnoremap s <Plug>(easymotion-s2)
-nnoremap <leader>ff :Files<cr>
-nnoremap <leader>fg :GFiles<cr>
-nnoremap <leader>fb :Buffers<cr>
-nnoremap <leader>fl :Rg<cr>
+let g:enable_fuzzyy_keymaps = 0
+nnoremap <leader>ff :FuzzyFiles<cr>
+nnoremap <leader>fg :FuzzyGitFiles<cr>
+nnoremap <leader>fb :FuzzyBuffers<cr>
+nnoremap <leader>fl :FuzzyGrep<cr>
 nnoremap <leader>g :Git<cr>
