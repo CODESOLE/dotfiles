@@ -59,6 +59,7 @@ nnoremap N Nzz
 set encoding=utf-8
 set nobackup
 set nowritebackup
+set noswapfile
 set updatetime=300
 set signcolumn=yes
 inoremap <silent><expr> <TAB>
