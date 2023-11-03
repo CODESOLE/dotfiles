@@ -6,7 +6,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mg979/vim-visual-multi'
 Plug 'Donaldttt/fuzzyy'
 Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 call plug#end()
@@ -132,7 +131,6 @@ command! -nargs=0 Format :call CocActionAsync('format')
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-set statusline^=%{FugitiveStatusline()}
 nnoremap <silent><nowait> <space>e  :<C-u>CocList diagnostics<cr>
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
@@ -157,4 +155,4 @@ nnoremap <leader>ff :FuzzyFiles<cr>
 nnoremap <leader>fg :FuzzyGitFiles<cr>
 nnoremap <leader>fb :FuzzyBuffers<cr>
 nnoremap <leader>fl :FuzzyGrep<cr>
-nnoremap <leader>g :Git<cr>
+nnoremap <leader>g :tab term lazygit<cr>
