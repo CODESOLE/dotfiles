@@ -1,6 +1,8 @@
 # dotfiles
 
  - msys2
+ - lazygit
+ - delta
  - cmake
  - vsbuildtools
  - meson
