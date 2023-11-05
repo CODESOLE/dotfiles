@@ -45,6 +45,9 @@ nnoremap <Down> gj
 nmap <leader>t :ter<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
+nnoremap <leader>l :cn<cr>
+nnoremap <leader>h :cp<cr>
+nnoremap <leader>o :cw<cr>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
