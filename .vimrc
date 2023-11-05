@@ -48,6 +48,7 @@ nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 nnoremap <leader>o :cw<cr>
+nnoremap <leader>O :ccl<cr>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
