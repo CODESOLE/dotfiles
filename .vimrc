@@ -4,7 +4,6 @@ Plug 'puremourning/vimspector'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'mg979/vim-visual-multi'
-Plug 'Donaldttt/fuzzyy'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -15,7 +14,7 @@ colorscheme moonfly
 set laststatus=0 ruler
 set wildmode=list,full
 set wildmenu
-set wildignore=*/builddir/*,*/build/*,tags
+set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*
 set path+=**
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 syntax enable
@@ -151,9 +150,4 @@ nnoremap <Leader>dh <Plug>VimspectorStepOut
 nnoremap <Leader>dk <Plug>VimspectorStepInto
 nnoremap <Leader>dj <Plug>VimspectorStepOver
 nnoremap s <Plug>(easymotion-s2)
-let g:enable_fuzzyy_keymaps = 0
-nnoremap <leader>ff :FuzzyFiles<cr>
-nnoremap <leader>fg :FuzzyGitFiles<cr>
-nnoremap <leader>fb :FuzzyBuffers<cr>
-nnoremap <leader>fl :FuzzyGrep<cr>
 nnoremap <leader>g :tab term lazygit<cr>
