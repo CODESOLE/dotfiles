@@ -153,3 +153,4 @@ nnoremap <Leader>dk <Plug>VimspectorStepInto
 nnoremap <Leader>dj <Plug>VimspectorStepOver
 nnoremap s <Plug>(easymotion-s2)
 nnoremap <leader>g :tab term lazygit<cr>
+command! ClearQuickfixList cexpr []
