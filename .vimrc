@@ -16,6 +16,7 @@ set laststatus=0 ruler
 set wildmode=list,full
 set wildmenu
 set wildignore=*/builddir/*,*/build/*,tags
+set path+=**
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 syntax enable
 set mouse=a
