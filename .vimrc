@@ -39,10 +39,6 @@ let g:netrw_winsize=25
 autocmd FileType netrw setl bufhidden=delete
 set is hlsearch
 nmap <leader><CR> :nohlsearch<CR>
-nnoremap j gj
-nnoremap k gk
-nnoremap <Up> gk
-nnoremap <Down> gj
 nmap <leader>t :ter<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
