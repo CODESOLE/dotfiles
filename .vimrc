@@ -54,6 +54,9 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
+tnoremap <Esc> <C-w>N
+nnoremap <leader>H <C-w>t<C-w>H
+nnoremap <leader>K <C-w>t<C-w>K
 nnoremap n nzz
 nnoremap N Nzz
 set encoding=utf-8
