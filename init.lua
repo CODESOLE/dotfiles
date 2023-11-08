@@ -41,7 +41,6 @@ require('pckr').add {
       })
     end,
   },
-  'HiPhish/rainbow-delimiters.nvim',
   {
     'j-hui/fidget.nvim',
     tag = 'legacy',
@@ -65,7 +64,6 @@ require('pckr').add {
   'Bekaboo/dropbar.nvim',
   { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end },
   'nvim-treesitter/nvim-treesitter-textobjects',
-  'ggandor/leap.nvim',
   'lewis6991/gitsigns.nvim',
   'nvim-lua/plenary.nvim',
   'NeogitOrg/neogit',
@@ -76,11 +74,19 @@ require('pckr').add {
     requires = {
       { 'nvim-lua/plenary.nvim' } }
   },
+  {
+    'stevearc/oil.nvim',
+    config = function()
+      require('oil').setup { view_options = {
+        show_hidden = true } }
+    end
+  },
+  'ggandor/leap.nvim',
   { 'numToStr/Comment.nvim',                    config = function() require 'Comment'.setup {} end },
+  { 'kylechui/nvim-surround',                   config = function() require("nvim-surround").setup() end },
   { 'windwp/nvim-autopairs',                    config = function() require("nvim-autopairs").setup {} end },
   'nvim-lualine/lualine.nvim',
-  { 'sindrets/diffview.nvim', config = function() require 'diffview'.setup { _icon = true } end },
-  { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup() end },
+  { 'sindrets/diffview.nvim',           config = function() require 'diffview'.setup { _icon = true } end },
   'theHamsta/nvim-dap-virtual-text',
   'mfussenegger/nvim-dap',
   'rcarriga/nvim-dap-ui',
@@ -96,9 +102,7 @@ require('pckr').add {
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
   'saadparwaiz1/cmp_luasnip',
-  { 'stevearc/oil.nvim',         config = function() require('oil').setup { view_options = { show_hidden = true } } end },
   { 'RRethy/vim-illuminate' },
-  { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' },
 }
 vim.g.loaded_netrw = 1
 vim.wo.wrap = false
@@ -184,10 +188,6 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
 
 vim.keymap.set('n', '<leader>th', '<C-w>t<C-w>H', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tv', '<C-w>t<C-w>K', { noremap = true, silent = true })
-
-vim.keymap.set({ 'n', 'x' }, '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
-vim.keymap.set({ 'n', 'x' }, '<leader>F', '<Cmd>lua vim.lsp.buf.format({async=true})<CR>')
-vim.keymap.set('n', '<leader>r', '<Cmd>lua vim.lsp.buf.rename()<CR>')
 
 require("dapui").setup()
 local dap, dapui = require("dap"), require("dapui")
@@ -381,79 +381,129 @@ require('gitsigns').setup {
     vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
-local lsp_zero = require('lsp-zero')
-lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({ buffer = bufnr })
-
-  vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { buffer = bufnr })
-  vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { buffer = bufnr })
-  vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', { buffer = bufnr })
-  vim.keymap.set('n', '<leader>S', '<cmd>Telescope lsp_workspace_symbols<CR>', { buffer = bufnr })
-end)
-require('mason').setup({})
-require('mason-lspconfig').setup({
-  ensure_installed = { "lua_ls", "rust_analyzer", "clangd" },
-  handlers = {
-    lsp_zero.default_setup,
-    lua_ls = function()
-      local lua_opts = lsp_zero.nvim_lua_ls()
-      require('lspconfig').lua_ls.setup(lua_opts)
-      require('lspconfig').lua_ls.setup({
-        on_attach = function(client, bufnr)
-          vim.lsp.inlay_hint(bufnr, true)
-        end,
-        settings = {
-          Lua = {
-            hint = {
-              enable = true,
-            },
+local handlers = {
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
+  function(server_name) -- default handler (optional)
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    require("lspconfig")[server_name].setup {
+      capabilities = capabilities,
+    }
+  end,
+  -- Next, you can provide targeted overrides for specific servers.
+  ["clangd"] = function()
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    require 'lspconfig'.clangd.setup {
+      capabilities = capabilities,
+      cmd = { "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion-decorators",
+        "--header-insertion=never" } }
+  end,
+  ["lua_ls"] = function()
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local lspconfig = require("lspconfig")
+    lspconfig.lua_ls.setup {
+      capabilities, capabilities,
+      settings = {
+        Lua = {
+          hint = {
+            enable = true,
           },
-        },
-      })
-    end,
-  }
+          diagnostics = {
+            globals = { "vim" }
+          }
+        }
+      }
+    }
+  end,
+}
+require('mason').setup()
+require('mason-lspconfig').setup { handlers = handlers, ensure_installed = { "lua_ls", "rust_analyzer", "clangd" } }
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { buffer = bufnr })
+    vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', { buffer = bufnr })
+    vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', { buffer = bufnr })
+    vim.keymap.set('n', '<leader>S', '<cmd>Telescope lsp_workspace_symbols<CR>', { buffer = bufnr })
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<space>F', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+
+    if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint(0, true)
+    end
+  end,
 })
-require 'cmp'.setup({
+local cmp = require 'cmp'
+cmp.setup({
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
-  mapping = {
-    ['<CR>'] = require 'cmp'.mapping.confirm({ select = false }),
-    ['<C-Space>'] = require 'cmp'.mapping.complete(),
-    ['<C-u>'] = require 'cmp'.mapping.scroll_docs(-4),
-    ['<C-d>'] = require 'cmp'.mapping.scroll_docs(4),
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
-  sources = require 'cmp'.config.sources({ { name = 'path' }, { name = 'nvim_lsp' }, { name = 'buffer' },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.confirm({
+          select = true,
+          behavior = cmp.ConfirmBehavior.Insert,
+        })
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }),
+  sources = cmp.config.sources({ { name = 'path' }, { name = 'nvim_lsp' }, { name = 'buffer' },
     { name = 'luasnip' }, { name = 'nvim_lsp_signature_help' }
   }),
 })
 
-require 'cmp'.setup.cmdline({ '/', '?' }, {
-  mapping = require 'cmp'.mapping.preset.cmdline(),
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' }
   }
 })
 
-require 'cmp'.setup.cmdline(':', {
-  mapping = require 'cmp'.mapping.preset.cmdline(),
-  sources = require 'cmp'.config.sources({
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
     { name = 'path' }
   }, {
     { name = 'cmdline' }
   })
 })
-require 'lspconfig'.clangd.setup { cmd = { "clangd",
-  "--background-index",
-  "--clang-tidy",
-  "--all-scopes-completion",
-  "--completion-style=detailed",
-  "--header-insertion-decorators",
-  "--header-insertion=never" } }
 vim.keymap.set("x", "<leader>vp", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>vd", [["_d]])
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
@@ -461,54 +511,12 @@ vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.g.rainbow_delimiters = {
-  strategy = {
-    [''] = require 'rainbow-delimiters'.strategy['global'],
-    vim = require 'rainbow-delimiters'.strategy['local'],
-  },
-  query = { [''] = 'rainbow-delimiters', lua = 'rainbow-blocks', },
-  highlight = {
-    'RainbowDelimiterRed', 'RainbowDelimiterYellow', 'RainbowDelimiterBlue', 'RainbowDelimiterOrange',
-    'RainbowDelimiterGreen', 'RainbowDelimiterViolet', 'RainbowDelimiterCyan', },
-}
+
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = "󰋽 " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 vim.fn.sign_define('DapBreakpoint', { text = '⚫', texthl = 'red', linehl = '', numhl = '' })
-local highlight = {
-  "RainbowRed",
-  "RainbowYellow",
-  "RainbowBlue",
-  "RainbowOrange",
-  "RainbowGreen",
-  "RainbowViolet",
-  "RainbowCyan",
-}
-local hooks = require "ibl.hooks"
--- create the highlight groups in the highlight setup hook, so they are reset
--- every time the colorscheme changes
-hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-  vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-  vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-  vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-  vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-  vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-  vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-  vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
-end)
 
-vim.g.rainbow_delimiters = { highlight = highlight }
-require("ibl").setup { scope = { highlight = highlight } }
-
-hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  once = true,
-  callback = function(ev)
-    if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.inlayHintProvider then
-      vim.lsp.inlay_hint(0, true)
-    end
-  end,
-})
+require("ibl").setup()
