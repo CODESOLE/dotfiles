@@ -102,7 +102,6 @@ require('pckr').add {
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
   'saadparwaiz1/cmp_luasnip',
-  { 'RRethy/vim-illuminate' },
 }
 vim.g.loaded_netrw = 1
 vim.wo.wrap = false
@@ -121,9 +120,6 @@ endif
 vim.cmd [[colorscheme moonfly]]
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
-vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "ColorColumn" })
-vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "ColorColumn" })
-vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "ColorColumn" })
 
 vim.bo.tabstop     = 2
 vim.o.tabstop      = 2
@@ -273,7 +269,7 @@ require 'nvim-treesitter.configs'.setup {
   textobjects = {
     lsp_interop = {
       enable = true,
-      border = 'none',
+      border = 'rounded',
       floating_preview_opts = {},
       peek_definition_code = {
         ["<leader>df"] = "@function.outer",
@@ -422,11 +418,18 @@ local handlers = {
     }
   end,
 }
+
 require('mason').setup()
 require('mason-lspconfig').setup { handlers = handlers, ensure_installed = { "lua_ls", "rust_analyzer", "clangd" } }
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+      border = "rounded",
+    })
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+      border = "rounded",
+    })
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
@@ -449,6 +452,31 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.format { async = true }
     end, opts)
 
+    if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.documentHighlightProvider then
+      vim.cmd [[
+    hi! LspReferenceRead cterm=bold ctermbg=red guibg=LightGray
+    hi! LspReferenceText cterm=bold ctermbg=red guibg=LightGray
+    hi! LspReferenceWrite cterm=bold ctermbg=red guibg=LightGray
+  ]]
+      vim.api.nvim_create_augroup('lsp_document_highlight', {
+        clear = false
+      })
+      vim.api.nvim_clear_autocmds({
+        buffer = bufnr,
+        group = 'lsp_document_highlight',
+      })
+      vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+        group = 'lsp_document_highlight',
+        buffer = bufnr,
+        callback = vim.lsp.buf.document_highlight,
+      })
+      vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+        group = 'lsp_document_highlight',
+        buffer = bufnr,
+        callback = vim.lsp.buf.clear_references,
+      })
+    end
+
     if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.inlayHintProvider then
       vim.lsp.inlay_hint(0, true)
     end
@@ -470,18 +498,6 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.confirm({
-          select = true,
-          behavior = cmp.ConfirmBehavior.Insert,
-        })
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = cmp.config.sources({ { name = 'path' }, { name = 'nvim_lsp' }, { name = 'buffer' },
