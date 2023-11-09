@@ -264,6 +264,12 @@ vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 require 'neogit'.setup { integrations = { diffview = true }, use_telescope = true }
+vim.api.nvim_create_augroup("neogit-additions", {})
+vim.api.nvim_create_autocmd("FileType", {
+		group = "neogit-additions",
+		pattern = "NeogitCommitMessage";
+		command = "silent! set filetype=gitcommit",
+})
 require 'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "lua", "cpp", "cmake", "rust", "gdscript", "meson", "toml" },
   textobjects = {
