@@ -454,9 +454,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.documentHighlightProvider then
       vim.cmd [[
-    hi! LspReferenceRead cterm=bold ctermbg=red guibg=LightGray
-    hi! LspReferenceText cterm=bold ctermbg=red guibg=LightGray
-    hi! LspReferenceWrite cterm=bold ctermbg=red guibg=LightGray
+    hi! LspReferenceRead cterm=bold ctermbg=red guibg=Gray
+    hi! LspReferenceText cterm=bold ctermbg=red guibg=Gray
+    hi! LspReferenceWrite cterm=bold ctermbg=red guibg=Gray
   ]]
       vim.api.nvim_create_augroup('lsp_document_highlight', {
         clear = false
