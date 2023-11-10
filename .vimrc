@@ -7,6 +7,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
 packadd! editorconfig
 set termguicolors
@@ -27,7 +28,8 @@ set ignorecase
 set smartcase
 set showmatch
 let mapleader=" "
-set clipboard=unnamedplus
+set clipboard=unnamed
+set clipboard+=unnamedplus
 noremap gl $
 noremap gh 0
 set splitbelow splitright
