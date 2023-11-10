@@ -14,7 +14,7 @@ set termguicolors
 colorscheme moonfly
 set gp=git\ grep\ -n
 set laststatus=0 ruler
-set guioptions=Ace
+set guioptions=Ac
 set wildmode=list,full
 set wildmenu
 set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*,**/*.out
