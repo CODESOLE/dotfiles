@@ -12,7 +12,7 @@ call plug#end()
 packadd! editorconfig
 set termguicolors
 colorscheme moonfly
-set gp=git\ grep\ -n
+set gp=git\ grep\ -rn
 set laststatus=0 ruler
 set guioptions=Ac
 set wildmode=list,full
