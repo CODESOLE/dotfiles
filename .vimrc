@@ -13,6 +13,7 @@ packadd! editorconfig
 set termguicolors
 colorscheme moonfly
 set gp=git\ grep\ -rn
+set backspace=2
 set laststatus=0 ruler
 set guioptions=Ac
 set wildmode=list,full
