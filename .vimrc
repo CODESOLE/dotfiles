@@ -16,8 +16,8 @@ set gp=git\ grep\ -rn
 set backspace=2
 set laststatus=2
 set statusline=
-set statusline+=%2*
-set statusline+=%1*
+set statusline+=\ 
+set statusline+=%{GitStatus()}
 set statusline+=\ 
 set statusline+=%f
 set statusline+=\ 
@@ -26,17 +26,13 @@ set statusline+=%m
 set statusline+=%h
 set statusline+=%r
 set statusline+=\ 
-set statusline+=%3*
 set statusline+=%{b:gitbranch}
-set statusline+=%1*
-set statusline+=%5*
 set statusline+=%l
 set statusline+=/
 set statusline+=%L
 set statusline+=:
 set statusline+=%c
-set statusline+=%1*
-
+hi StatusLine guibg=gray guifg=white
 function! StatuslineGitBranch()
   let b:gitbranch=""
   if &modifiable
@@ -50,11 +46,14 @@ function! StatuslineGitBranch()
     endtry
   endif
 endfunction
-
 augroup GetGitBranch
   autocmd!
   autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
 set guioptions=Ac
 set wildmode=list,full
 set wildmenu
