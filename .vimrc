@@ -66,8 +66,9 @@ set encoding=utf-8
 set nobackup
 set nowritebackup
 set noswapfile
-set updatetime=300
+set updatetime=200
 set signcolumn=yes
+hi Cursor guifg=black guibg=red
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
