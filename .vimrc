@@ -20,9 +20,9 @@ set statusline+=\
 set statusline+=%{GitStatus()}
 set statusline+=\ 
 set statusline+=%f
+set statusline+=%m
 set statusline+=\ 
 set statusline+=%=
-set statusline+=%m
 set statusline+=%h
 set statusline+=%r
 set statusline+=\ 
