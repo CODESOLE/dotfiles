@@ -11,7 +11,9 @@ Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
 packadd! editorconfig
 set termguicolors
+let g:moonflyCursorColor = v:true
 colorscheme moonfly
+hi Cursor guifg=black guibg=red
 set gp=git\ grep\ -rn
 set backspace=2
 set laststatus=0 ruler
@@ -68,7 +70,6 @@ set nowritebackup
 set noswapfile
 set updatetime=200
 set signcolumn=yes
-hi Cursor guifg=black guibg=red
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
