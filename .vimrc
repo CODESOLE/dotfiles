@@ -2,6 +2,7 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
 Plug 'airblade/vim-gitgutter'
+Plug 'honza/vim-snippets'
 Plug 'mg979/vim-visual-multi'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
