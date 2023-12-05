@@ -1,3 +1,4 @@
+language en_US.utf8
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
