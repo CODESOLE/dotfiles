@@ -40,7 +40,6 @@ config.window_padding = { left = 0, right = 0, top = 0, bottom = 0, }
 config.use_fancy_tab_bar = false
 config.keys = {}
 for i = 1, 8 do
-  -- CTRL+ALT + number to activate that tab
   table.insert(config.keys, {
     key = tostring(i),
     mods = 'CTRL',
