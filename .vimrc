@@ -100,8 +100,6 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 nnoremap <leader>H <C-w>t<C-w>H
 nnoremap <leader>K <C-w>t<C-w>K
-nnoremap n nzz
-nnoremap N Nzz
 set encoding=utf-8
 set nobackup
 set nowritebackup
