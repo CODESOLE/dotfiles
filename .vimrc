@@ -12,7 +12,6 @@ call plug#end()
 packadd! editorconfig
 set termguicolors
 colorscheme moonfly
-set guifont=Cascadia\ Mono:h8
 set gp=git\ grep\ -rn
 set backspace=2
 set laststatus=2
