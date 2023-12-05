@@ -15,6 +15,7 @@ set termguicolors
 colorscheme moonfly
 set gp=git\ grep\ -rn
 set backspace=2
+set shortmess-=S
 set laststatus=2
 set statusline=
 set statusline+=\ 
