@@ -15,7 +15,6 @@ set termguicolors
 colorscheme moonfly
 set gp=git\ grep\ -rn
 set backspace=2
-set shortmess-=S
 set laststatus=2
 set statusline=
 set statusline+=\ 
@@ -34,6 +33,7 @@ set statusline+=/
 set statusline+=%L
 set statusline+=:
 set statusline+=%c
+set shortmess-=S
 hi StatusLine guibg=gray guifg=white
 function! StatuslineGitBranch()
   let b:gitbranch=""
