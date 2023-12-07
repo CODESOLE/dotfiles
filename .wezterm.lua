@@ -24,6 +24,11 @@ local launch_menu = {}
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   table.insert(launch_menu, {
+    label = 'Git Bash',
+    args = { 'C:/Program Files/Git/bin/bash.exe', '-i', '-l' },
+  })
+
+  table.insert(launch_menu, {
     label = 'Developer Command Prompt',
     args = { 'cmd.exe', '/k', 'C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvars64.bat' },
   })
