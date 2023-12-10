@@ -13,6 +13,7 @@ call plug#end()
 packadd! editorconfig
 set termguicolors
 colorscheme moonfly
+set guioptions=Ac
 set gp=git\ grep\ -rn
 set backspace=2
 set laststatus=2
