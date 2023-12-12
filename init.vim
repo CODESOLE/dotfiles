@@ -37,7 +37,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'karb94/neoscroll.nvim'
 Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
 Plug 'williamboman/mason-lspconfig.nvim'
-
+Plug 'Bekaboo/dropbar.nvim'
 call plug#end()
 
 lua << EOF
