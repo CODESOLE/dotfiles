@@ -1,5 +1,7 @@
 {
   "semanticTokens.enable": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
   "rust-analyzer.semanticHighlighting.operator.specialization.enable": true,
   "rust-analyzer.semanticHighlighting.punctuation.enable": true,
   "rust-analyzer.semanticHighlighting.punctuation.separate.macro.bang": true,
