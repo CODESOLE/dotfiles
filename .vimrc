@@ -52,7 +52,7 @@ set is hlsearch
 nmap <leader><CR> :nohlsearch<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
-nnoremap <leader>n :tabnext<CR>
+nnoremap <leader>b :VimspectorBreakpoints<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 nnoremap <leader>o :cw<cr>
