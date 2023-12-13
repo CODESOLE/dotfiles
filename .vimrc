@@ -2,7 +2,6 @@ language en_US.utf8
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
-Plug 'airblade/vim-gitgutter'
 Plug 'honza/vim-snippets'
 Plug 'mg979/vim-visual-multi'
 Plug 'easymotion/vim-easymotion'
@@ -18,6 +17,7 @@ set guifont='Hack Nerd Font Mono Regular:h10'
 set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
+set signcolumn=no
 set noshowmode
 set noshowcmd
 set ruler
@@ -73,7 +73,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 set updatetime=200
-set signcolumn=yes
 hi HighlightedyankRegion term=bold ctermbg=0 guibg=#FFFF00
 nnoremap <space>E <Cmd>CocCommand explorer<CR>
 inoremap <silent><expr> <TAB>
