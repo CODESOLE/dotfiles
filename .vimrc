@@ -17,25 +17,12 @@ set guioptions=Ac
 set guifont='Hack Nerd Font Mono Regular:h10'
 set gp=git\ grep\ -rn
 set backspace=2
-set laststatus=2
-set statusline=
-set statusline+=\ 
-set statusline+=%{GitStatus()}
-set statusline+=\ 
-set statusline+=%f
-set statusline+=%m
-set statusline+=\ 
-set statusline+=%=
-set statusline+=%h
-set statusline+=%r
-set statusline+=\ 
-set statusline+=%{b:gitbranch}
-set statusline+=%l
-set statusline+=/
-set statusline+=%L
-set statusline+=:
-set statusline+=%c
 set shortmess-=S
+set noshowmode
+set noshowcmd
+set ruler
+set laststatus=-
+set statusline=0
 hi StatusLine guibg=gray guifg=white
 function! StatuslineGitBranch()
   let b:gitbranch=""
