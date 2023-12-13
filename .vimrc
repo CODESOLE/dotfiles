@@ -22,7 +22,7 @@ set noshowmode
 set noshowcmd
 set ruler
 set laststatus=-
-set statusline=0
+set statusline=%f
 set wildmode=list,full
 set wildmenu
 set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*,**/*.out
