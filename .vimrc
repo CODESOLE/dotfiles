@@ -20,7 +20,6 @@ set noshowmode
 set noshowcmd
 set ruler
 set laststatus=-
-set statusline=%f
 set wildmode=list,full
 set wildmenu
 set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*,**/*.out
@@ -142,7 +141,6 @@ augroup mygroup
 	      command! -nargs=0 Format :call CocActionAsync('format')
 	      command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 	      command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
-	      set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 	      nnoremap <silent><nowait> <space>e  :<C-u>CocList diagnostics<cr>
 	      nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
