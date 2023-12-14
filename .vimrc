@@ -149,5 +149,3 @@ augroup mygroup
 	      nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 	      nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 	      nnoremap <silent><nowait> <leader>p  :call CocAction('jumpDefinition', v:false)<CR>
-	      nnoremap <Leader>dk <Plug>VimspectorStepInto
-	      nnoremap <Leader>dj <Plug>VimspectorStepOver
