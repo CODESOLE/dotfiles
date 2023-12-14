@@ -1,8 +1,6 @@
 language en_US.utf8
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'puremourning/vimspector'
-Plug 'honza/vim-snippets'
 Plug 'mg979/vim-visual-multi'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
@@ -52,7 +50,6 @@ set is hlsearch
 nmap <leader><CR> :nohlsearch<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
-nnoremap <leader>b :VimspectorBreakpoints<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 nnoremap <leader>o :cw<cr>
@@ -74,7 +71,6 @@ set nowritebackup
 set noswapfile
 set updatetime=200
 hi HighlightedyankRegion term=bold ctermbg=0 guibg=#FFFF00
-nnoremap <space>E <Cmd>CocCommand explorer<CR>
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
             \ CheckBackspace() ? "\<Tab>" :
@@ -153,14 +149,5 @@ augroup mygroup
 	      nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 	      nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 	      nnoremap <silent><nowait> <leader>p  :call CocAction('jumpDefinition', v:false)<CR>
-	      nnoremap <Leader>dr <Plug>VimpectorRestart
-	      nnoremap <Leader>de <Plug>VimspectorStop
-	      nnoremap <Leader>dc <Plug>VimspectorContinue
-	      nnoremap <Leader>dt <Plug>VimspectorRunToCursor
-	      nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
-	      nnoremap <Leader>dl <Plug>VimspectorToggleConditionalBreakpoint
-	      nnoremap <Leader><Up> <Plug>VimspectorUpFrame
-	      nnoremap <Leader><Down> <Plug>VimspectorDownFrame
-	      nnoremap <Leader>dh <Plug>VimspectorStepOut
 	      nnoremap <Leader>dk <Plug>VimspectorStepInto
 	      nnoremap <Leader>dj <Plug>VimspectorStepOver
