@@ -6,6 +6,18 @@
   "rust-analyzer.semanticHighlighting.punctuation.enable": true,
   "rust-analyzer.semanticHighlighting.punctuation.separate.macro.bang": true,
   "rust-analyzer.semanticHighlighting.punctuation.specialization.enable": true,
+  "go.goplsOptions": {
+  "semanticTokens": true,
+    "hints": {
+      "assignVariableTypes": true,
+      "compositeLiteralFields": true,
+      "compositeLiteralTypes": true,
+      "constantValues": true,
+      "functionTypeParameters": true,
+      "parameterNames": true,
+      "rangeVariableTypes": true
+    }
+  },
   "clangd.arguments": [
     "--background-index",
     "--clang-tidy",
