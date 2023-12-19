@@ -12,5 +12,5 @@
  - npm
  - git
  - 7z or unzip
- - coc-yank | coc-clangd | coc-rust-analyzer | coc-json | coc-toml
+ - coc-go | coc-clangd | coc-rust-analyzer | coc-json | coc-toml
  - pyhton/pip
