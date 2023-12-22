@@ -7,6 +7,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'fidian/hexmode'
+Plug 'mattn/vim-xxdcursor'
 call plug#end()
 packadd! editorconfig
 let g:hexmode_patterns = '*.dll,*.bin,*.exe,*.dat,*.o,*.so,*.a,*.obj,*.out'
