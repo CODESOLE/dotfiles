@@ -6,8 +6,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'bluz71/vim-moonfly-colors'
+Plug 'fidian/hexmode'
 call plug#end()
 packadd! editorconfig
+let g:hexmode_patterns = '*.dll,*.bin,*.exe,*.dat,*.o,*.so,*.a,*.obj,*.out'
 set termguicolors
 colorscheme moonfly
 set guioptions=Ac
