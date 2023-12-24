@@ -11,7 +11,7 @@ packadd! editorconfig
 set termguicolors
 colorscheme moonfly
 set guioptions=Ac
-set guifont='Hack Nerd Font Mono Regular:h10'
+set guifont=Hack\ Nerd\ Font\ Mono\ Regular:h10
 set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
