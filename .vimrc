@@ -6,11 +6,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'bluz71/vim-moonfly-colors'
-Plug 'fidian/hexmode'
-Plug 'mattn/vim-xxdcursor'
 call plug#end()
 packadd! editorconfig
-let g:hexmode_patterns = '*.dll,*.bin,*.exe,*.dat,*.o,*.so,*.a,*.obj,*.out'
 set termguicolors
 colorscheme moonfly
 set guioptions=Ac
@@ -58,6 +55,8 @@ nnoremap <leader>o :cw<cr>
 nnoremap <leader>O :ccl<cr>
 nnoremap <leader>g :tab term lazygit<cr>
 nnoremap <leader>t :tab term<CR>
+nnoremap <leader>n :tabn<CR>
+nnoremap <leader>p :tabp<CR>
 nnoremap <leader>L :Lex<CR>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
@@ -156,4 +155,3 @@ augroup mygroup
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 	      nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 	      nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-	      nnoremap <silent><nowait> <leader>p  :call CocAction('jumpDefinition', v:false)<CR>
