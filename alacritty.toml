@@ -1,0 +1,5 @@
+shell = "wsl.exe"
+working_directory = "C:/Users/serce/Documents/Github"
+
+[window]
+startup_mode = "Maximized"
