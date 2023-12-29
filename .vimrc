@@ -154,3 +154,5 @@ augroup mygroup
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 	      nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 	      nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+
+au VimEnter * let &t_SI = "\033[2 q"
