@@ -1,6 +1,7 @@
 language en_US.utf8
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'puremourning/vimspector'
 Plug 'mg979/vim-visual-multi'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
@@ -156,3 +157,15 @@ augroup mygroup
 	      nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 
 au VimEnter * let &t_SI = "\033[2 q"
+
+nnoremap <Leader>dr <Plug>VimspectorRestart
+nnoremap <Leader>de <Plug>VimspectorStop
+nnoremap <Leader>dc <Plug>VimspectorContinue
+nnoremap <Leader>dt <Plug>VimspectorRunToCursor
+nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dl <Plug>VimspectorToggleConditionalBreakpoint
+nnoremap <Leader><Up> <Plug>VimspectorUpFrame
+nnoremap <Leader><Down> <Plug>VimspectorDownFrame
+nnoremap <Leader>dh <Plug>VimspectorStepOut
+nnoremap <Leader>dk <Plug>VimspectorStepInto
+nnoremap <Leader>dj <Plug>VimspectorStepOver
