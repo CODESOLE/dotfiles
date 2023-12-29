@@ -1,3 +1,7 @@
+import = [
+  "~\\AppData\\Roaming\\alacritty\\themes\\themes\\terminal_app.toml"
+]
+
 shell = "wsl.exe"
 working_directory = "~/Documents/Github"
 
