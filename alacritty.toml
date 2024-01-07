@@ -7,3 +7,9 @@ working_directory = "~/Documents/Github"
 
 [window]
 startup_mode = "Maximized"
+resize_increments = true
+decorations = "None"
+
+[font]
+normal = { family = "Cascadia Mono", style = "Regular" }
+size = 10.0
