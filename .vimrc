@@ -51,7 +51,7 @@ nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
-nnoremap <leader>o :cw<cr>
+nnoremap <leader>o :CocOutline<cr>
 nnoremap <leader>O :ccl<cr>
 nnoremap <leader>g :tab term lazygit<cr>
 nnoremap <leader>t :tab term<CR>
