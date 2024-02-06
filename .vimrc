@@ -180,3 +180,4 @@ nnoremap <Leader>dh <Plug>VimspectorStepOut
 nnoremap <Leader>dk <Plug>VimspectorStepInto
 nnoremap <Leader>dj <Plug>VimspectorStepOver
 nnoremap <Leader>dp <Plug>VimspectorBalloonEval
+vnoremap <Leader>dp <Plug>VimspectorBalloonEval
