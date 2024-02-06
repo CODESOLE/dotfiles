@@ -79,6 +79,7 @@ set nowritebackup
 set noswapfile
 set updatetime=200
 hi HighlightedyankRegion term=bold ctermbg=0 guibg=#FFFF00
+hi Cursor guibg=#ff5100
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
             \ CheckBackspace() ? "\<Tab>" :
