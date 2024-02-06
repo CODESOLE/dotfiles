@@ -8,6 +8,15 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
+if has("win32") || has("win64")
+    set shell=wsl.exe
+    set shellslash
+    set shellpipe=|
+    set shellredir=>
+    set shellquote=\"
+    set shellxquote=
+    set shellcmdflag=-c
+endif
 packadd! editorconfig
 set termguicolors
 colorscheme moonfly
