@@ -23,9 +23,9 @@ set guioptions=Ace
 colorscheme moonfly
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-inoremap ş <Esc>:nohlsearch<cr>
-vnoremap ş <Esc>:nohlsearch<cr>
-cnoremap ş <Esc>:nohlsearch<cr>
+inoremap ş <Esc>
+vnoremap ş <Esc>
+cnoremap ş <Esc>
 set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
