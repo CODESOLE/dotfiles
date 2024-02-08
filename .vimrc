@@ -2,25 +2,14 @@ language en_US.utf8
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
-Plug 'mg979/vim-visual-multi'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
-if has("win32") || has("win64")
-    set shell=wsl.exe
-    set shellslash
-    set shellpipe=|
-    set shellredir=>
-    set shellquote=\"
-    set shellxquote=
-    set shellcmdflag=-c
-endif
 packadd! editorconfig
 set termguicolors
 set guioptions=Ace
-colorscheme moonfly
+colorscheme retrobox
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 inoremap ş <Esc>
