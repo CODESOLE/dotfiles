@@ -7,6 +7,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 call plug#end()
 packadd! editorconfig
+set bg=dark
 set termguicolors
 set guioptions=Ace
 colorscheme retrobox
