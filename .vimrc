@@ -21,7 +21,8 @@ set backspace=2
 set shortmess-=S
 set signcolumn=no
 set noshowcmd
-set ruler
+set noshowmode
+set noruler
 set laststatus=-
 set wildmode=list,full
 set wildmenu
