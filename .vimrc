@@ -5,6 +5,7 @@ Plug 'tpope/vim-commentary'
 call plug#end()
 packadd lsp
 packadd! editorconfig
+nnoremap s <Plug>(easymotion-s2)
 set bg=dark
 set termguicolors
 colorscheme retrobox
