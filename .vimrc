@@ -141,7 +141,7 @@ hi LspInlayHintsType guibg=#111111 guifg=#444444
 nnoremap <leader>ac :LspCodeAction<CR>
 nnoremap <leader>e :LspDiag show<CR>
 nnoremap <leader>l :LspDiag next<CR>
-nnoremap <leader>h :LspDiag previous<CR>
+nnoremap <leader>h :LspDiag prev<CR>
 nnoremap <leader>d :LspDiag current<CR>
 nnoremap <leader>s :LspDocumentSymbol<CR>
 nnoremap <leader>ws :LspSymbolSearch<CR>
