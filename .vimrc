@@ -1,9 +1,7 @@
-call plug#begin()
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-call plug#end()
 packadd lsp
+packadd vim-easymotion
+packadd vim-surround
+packadd vim-commentary
 packadd! editorconfig
 nnoremap s <Plug>(easymotion-s2)
 set bg=dark
