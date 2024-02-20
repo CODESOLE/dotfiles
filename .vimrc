@@ -96,7 +96,7 @@ call LspOptionsSet(#{
         \   autoHighlight: v:true,
         \   autoHighlightDiags: v:true,
         \   autoPopulateDiags: v:true,
-        \   completionMatcher: 'fuzzy',
+        \   completionMatcher: 'icase',
         \   completionMatcherValue: 1,
         \   diagSignErrorText: 'E>',
         \   diagSignHintText: 'H>',
