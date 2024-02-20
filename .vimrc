@@ -151,5 +151,5 @@ nnoremap gy :LspGotoDeclaration<CR>
 nnoremap gi :LspGotoImpl<CR>
 nnoremap gt :LspGotoTypeDef<CR>
 nnoremap <leader>rp :LspPeekReferences<CR>
-nnoremap <leader>rn :LspRename<CR>
+nnoremap <leader>r :LspRename<CR>
 nnoremap gs :LspShowSignature<CR>
