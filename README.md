@@ -1,5 +1,12 @@
 # dotfiles
 
+```shell
+git clone https://github.com/tpope/vim-commentary ~/.vim/pack/plugin/opt/
+git clone https://github.com/tpope/vim-surround ~/.vim/pack/plugin/opt/
+git clone https://github.com/easymotion/vim-easymotion ~/.vim/pack/plugin/opt/
+git clone https://github.com/yegappan/lsp ~/.vim/pack/plugin/opt/
+```
+
  - lazygit
  - delta
  - cmake
@@ -7,7 +14,4 @@
  - meson
  - rustup
  - fzf, rg, fd
- - npm
  - git
- - 7z or unzip
- - coc-go | coc-clangd | coc-rust-analyzer | coc-json | coc-toml
