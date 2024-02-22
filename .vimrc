@@ -7,8 +7,6 @@ nnoremap s <Plug>(easymotion-s2)
 set bg=dark
 set termguicolors
 colorscheme retrobox
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
