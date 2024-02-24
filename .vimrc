@@ -136,6 +136,7 @@ call LspOptionsSet(#{
 	\ })
 hi LspInlayHintsParam guibg=#111111 guifg=#444444
 hi LspInlayHintsType guibg=#111111 guifg=#444444
+hi LspSemanticNamespace guifg=#ff0000
 nnoremap <leader>ac :LspCodeAction<CR>
 nnoremap <leader>e :LspDiag show<CR>
 nnoremap <leader>l :LspDiag next<CR>
