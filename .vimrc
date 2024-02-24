@@ -79,13 +79,13 @@ cnoremap ş <Esc>:nohlsearch<cr>
 call LspAddServer([#{
 	\    name: 'clangd',
 	\    filetype: ['c', 'cpp'],
-	\    path: '/data/data/com.termux/files/usr/bin/clangd',
+	\    path: 'clangd',
 	\    args: ['--background-index','--all-scopes-completion','--header-insertion=never',]
 	\  }])
 call LspAddServer([#{
 	\    name: 'rustlang',
 	\    filetype: ['rust'],
-	\    path: '/data/data/com.termux/files/usr/bin/rust-analyzer',
+	\    path: 'rust-analyzer',
 	\    args: [],
 	\    syncInit: v:true
 	\  }])
