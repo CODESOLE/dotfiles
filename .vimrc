@@ -1,3 +1,4 @@
+language en_US.utf8
 packadd lsp
 packadd vim-easymotion
 packadd vim-surround
