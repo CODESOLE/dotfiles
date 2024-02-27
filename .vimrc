@@ -80,7 +80,7 @@ call LspAddServer([#{
 	\    name: 'clangd',
 	\    filetype: ['c', 'cpp'],
 	\    path: 'clangd',
-	\    args: ['--background-index','--all-scopes-completion','--header-insertion=never',]
+	\    args: ['--background-index','--all-scopes-completion','--header-insertion=never', '--completion-style=detailed']
 	\  }])
 call LspAddServer([#{
 	\    name: 'rustlang',
