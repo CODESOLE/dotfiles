@@ -42,7 +42,7 @@ let g:netrw_preview=1
 let g:netrw_winsize=25
 autocmd FileType netrw setl bufhidden=delete
 set is hlsearch
-nmap <leader><CR> :nohlsearch<CR>
+nmap <silent> <leader><CR> :nohlsearch<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
@@ -68,9 +68,9 @@ set nowritebackup
 set noswapfile
 set updatetime=200
 set guioptions=Ace
-inoremap ş <Esc>:nohlsearch<cr>
-vnoremap ş <Esc>:nohlsearch<cr>
-cnoremap ş <Esc>:nohlsearch<cr>
+inoremap <silent> ş <Esc>:nohlsearch<cr>
+vnoremap <silent> ş <Esc>:nohlsearch<cr>
+cnoremap <silent> ş <Esc>:nohlsearch<cr>
 call LspAddServer([#{
 	\    name: 'clangd',
 	\    filetype: ['c', 'cpp'],
@@ -132,19 +132,20 @@ call LspOptionsSet(#{
 hi LspInlayHintsParam guibg=#111111 guifg=#444444
 hi LspInlayHintsType guibg=#111111 guifg=#444444
 hi LspSemanticNamespace guifg=#ff0000
-nnoremap <leader>ac :LspCodeAction<CR>
-nnoremap <leader>e :LspDiag show<CR>
-nnoremap <leader>l :LspDiag next<CR>
-nnoremap <leader>h :LspDiag prev<CR>
-nnoremap <leader>d :LspDiag current<CR>
-nnoremap <leader>s :LspDocumentSymbol<CR>
-nnoremap <leader>ws :LspSymbolSearch<CR>
-nnoremap <leader>f :LspFormat<CR>
-nnoremap K :LspHover<CR>
-nnoremap gd :LspGotoDefinition<CR>
-nnoremap gy :LspGotoDeclaration<CR>
-nnoremap gi :LspGotoImpl<CR>
-nnoremap gt :LspGotoTypeDef<CR>
-nnoremap <leader>P :LspPeekReferences<CR>
-nnoremap <leader>r :LspRename<CR>
-nnoremap gs :LspShowSignature<CR>
+nnoremap <silent> <leader>ac :LspCodeAction<CR>
+nnoremap <silent> <leader>e :LspDiag show<CR>
+nnoremap <silent> <leader>l :LspDiag next<CR>
+nnoremap <silent> <leader>h :LspDiag prev<CR>
+nnoremap <silent> <leader>d :LspDiag current<CR>
+nnoremap <silent> <leader>s :LspDocumentSymbol<CR>
+nnoremap <silent> <leader>ws :LspSymbolSearch<CR>
+nnoremap <silent> <leader>f :LspFormat<CR>
+nnoremap <silent> K :LspHover<CR>
+nnoremap <silent> gd :LspGotoDefinition<CR>
+nnoremap <silent> gy :LspGotoDeclaration<CR>
+nnoremap <silent> gi :LspGotoImpl<CR>
+nnoremap <silent> gt :LspGotoTypeDef<CR>
+nnoremap <silent> <leader>P :LspPeekReferences<CR>
+nnoremap <silent> <leader>r :LspRename<CR>
+nnoremap <silent> gs :LspShowSignature<CR>
+set fillchars+=eob:\ 
