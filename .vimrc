@@ -165,4 +165,5 @@ nnoremap <Leader>dk <Plug>VimspectorStepInto
 nnoremap <Leader>dj <Plug>VimspectorStepOver
 nnoremap <Leader>dp <Plug>VimspectorBalloonEval
 vnoremap <Leader>dp <Plug>VimspectorBalloonEval
+nnoremap <Leader>B <Plug>VimspectorBreakpoints
 set fillchars+=eob:\ 
