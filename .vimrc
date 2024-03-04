@@ -71,7 +71,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 set updatetime=200
-set guioptions=Ace
+set guioptions=Ac
 inoremap <silent> ş <Esc>:nohlsearch<cr>
 vnoremap <silent> ş <Esc>:nohlsearch<cr>
 cnoremap <silent> ş <Esc>:nohlsearch<cr>
