@@ -15,6 +15,7 @@ colorscheme retrobox
 set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
+set shortmess+=I
 set signcolumn=no
 set noshowcmd
 set noshowmode
