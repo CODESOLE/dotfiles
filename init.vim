@@ -8,7 +8,6 @@ nnoremap s <Plug>(easymotion-s2)
 set bg=dark
 set termguicolors
 set gp=git\ grep\ -rn
-set backspace=2
 set shortmess-=S
 set shortmess+=I
 set signcolumn=no
