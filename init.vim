@@ -7,6 +7,7 @@ call plug#end()
 nnoremap s <Plug>(easymotion-s2)
 set bg=dark
 set termguicolors
+colorscheme retrobox
 set gp=git\ grep\ -rn
 set shortmess-=S
 set shortmess+=I
