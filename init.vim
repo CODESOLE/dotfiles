@@ -3,14 +3,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
 nnoremap s <Plug>(easymotion-s2)
 set bg=dark
 set termguicolors
-set guifont=Hack\ Nerd\ Font\ Mono:h10
-colorscheme moonfly
 set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
@@ -33,8 +29,6 @@ set ignorecase
 set smartcase
 set showmatch
 let mapleader=" "
-set clipboard=unnamed
-set clipboard+=unnamedplus
 noremap gl $
 noremap gh 0
 set splitbelow splitright
@@ -66,16 +60,12 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 nnoremap <leader>H <C-w>t<C-w>H
 nnoremap <leader>K <C-w>t<C-w>K
-set encoding=utf-8
 set nobackup
 set nowritebackup
 set noswapfile
-set updatetime=200
-set guioptions=Ac
 inoremap <silent> ş <Esc>:nohlsearch<cr>
 vnoremap <silent> ş <Esc>:nohlsearch<cr>
 cnoremap <silent> ş <Esc>:nohlsearch<cr>
-hi Cursor guibg=#ff5100
 hi CocInlayHint guibg=#111111 guifg=#444444
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
@@ -166,4 +156,3 @@ nnoremap <Leader>dj <Plug>VimspectorStepOver
 nnoremap <Leader>dp <Plug>VimspectorBalloonEval
 vnoremap <Leader>dp <Plug>VimspectorBalloonEval
 nnoremap <Leader>B <Plug>VimspectorBreakpoints
-set fillchars+=eob:\ 
