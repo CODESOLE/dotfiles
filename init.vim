@@ -5,7 +5,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 call plug#end()
 nnoremap s <Plug>(easymotion-s2)
-set bg=dark
 set termguicolors
 colorscheme retrobox
 set gp=git\ grep\ -rn
@@ -22,7 +21,6 @@ set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clang
 set path+=**
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 syntax enable
-set mouse=a
 filetype on
 filetype plugin on
 set ignorecase
