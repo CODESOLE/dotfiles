@@ -8,7 +8,6 @@ nnoremap s <Plug>(easymotion-s2)
 set termguicolors
 colorscheme retrobox
 set gp=git\ grep\ -rn
-set shortmess-=S
 set shortmess+=I
 set signcolumn=no
 set noshowcmd
