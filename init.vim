@@ -14,7 +14,6 @@ set noshowmode
 set noruler
 set laststatus=-
 set wildmode=list,full
-set wildmenu
 set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*
 set path+=**
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
