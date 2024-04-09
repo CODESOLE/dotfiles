@@ -5,7 +5,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 call plug#end()
 nnoremap s <Plug>(easymotion-s2)
-set termguicolors
 colorscheme retrobox
 set gp=git\ grep\ -rn
 set shortmess+=I
