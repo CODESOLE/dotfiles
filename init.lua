@@ -192,4 +192,7 @@ vim.cmd 'nnoremap <Leader>dj <Plug>VimspectorStepOver'
 vim.cmd 'nnoremap <Leader>dp <Plug>VimspectorBalloonEval'
 vim.cmd 'vnoremap <Leader>dp <Plug>VimspectorBalloonEval'
 vim.cmd 'nnoremap <Leader>B <Plug>VimspectorBreakpoints'
+vim.cmd 'vnoremap ş <Esc>'
+vim.cmd 'inoremap ş <Esc>'
+vim.cmd 'cnoremap ş <Esc>'
 vim.cmd('hi CocInlayHint guibg=#111111 guifg=#444444')
