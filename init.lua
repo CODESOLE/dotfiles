@@ -23,7 +23,6 @@ end
 bootstrap_paq {
   "savq/paq-nvim",
   "ggandor/leap.nvim",
-  "stevearc/oil.nvim",
   "puremourning/vimspector",
   {"neoclide/coc.nvim", branch = "release"},
 }
@@ -57,13 +56,11 @@ vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch
 vim.cmd('set shortmess+=I')
 vim.cmd('colorscheme retrobox')
 require('leap').create_default_mappings()
-require("oil").setup()
 vim.keymap.set('n', '<Leader><CR>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gl', '$')
 vim.keymap.set('n', 'gh', '0')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
-vim.keymap.set('n', '<leader>m', require('oil').open_float)
 vim.keymap.set('i', '<C-k>', '<Up>')
 vim.keymap.set('i', '<C-j>', '<Down>')
 vim.keymap.set('i', '<C-h>', '<Left>')
