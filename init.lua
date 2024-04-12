@@ -193,3 +193,4 @@ vim.cmd 'vnoremap ş <Esc>'
 vim.cmd 'inoremap ş <Esc>'
 vim.cmd 'cnoremap ş <Esc>'
 vim.cmd('hi CocInlayHint guibg=#111111 guifg=#444444')
+keyset("n", "q", "<nop>", {})
