@@ -1,0 +1,5 @@
+theme = "nightfox_custom.toml"
+
+[editor.lsp]
+display-inlay-hints = true
+display-messages = true
