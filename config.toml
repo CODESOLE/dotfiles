@@ -1,4 +1,4 @@
-theme = "nightfox_custom.toml"
+theme = "nightfox_custom"
 
 [editor.lsp]
 display-inlay-hints = true
