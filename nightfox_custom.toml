@@ -16,7 +16,7 @@
 "ui.text.info" = { fg = "fg2", bg = "sel0" } # Info popup contents (space mode menu).
 
 "ui.cursor" = { bg = "fg3", fg = "bg1" } # Fallback cursor colour, non-primary cursors when there are multiple (shift-c).
-"ui.cursor.primary" = { bg = "fg1", fg = "bg1" } # The primary cursor when there are multiple (shift-c).
+"ui.cursor.primary" = { bg = "orange", fg = "bg1" } # The primary cursor when there are multiple (shift-c).
 "ui.cursor.match" = { fg = "yellow", modifiers = ["bold"] } # The matching parentheses of that under the cursor.
 
 "ui.selection" = { bg = "bg4" } # All currently selected text.
@@ -179,7 +179,7 @@ pink-bright    = "#dc8ed9"
 comment        = "#738091"
 # spec
 bg0            = "#131a24" # Dark bg (status line and float)
-bg1            = "#192330" # Default bg
+bg1            = "#0f1419" # Default bg
 bg2            = "#212e3f" # Lighter bg (colorcolm folds)
 bg3            = "#29394f" # Lighter bg (cursor line)
 bg4            = "#39506d" # Conceal, border fg
