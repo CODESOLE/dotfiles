@@ -9,8 +9,8 @@ insert = "bar"
 select = "underline"
 
 [editor.statusline]
-left = ["version-control", "separator", "file-name", "file-modification-indicator"]
-right = ["workspace-diagnostics", "selections", "position"]
+left = ["version-control", "file-name", "file-modification-indicator"]
+right = ["workspace-diagnostics", "selections"]
 
 [editor.indent-guides]
 render = true
