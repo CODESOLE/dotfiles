@@ -60,6 +60,8 @@ nnoremap <leader>O :ccl<cr>
 nnoremap <leader>n :tabn<CR>
 nnoremap <leader>p :tabp<CR>
 nnoremap <leader>L :Lex<CR>
+nnoremap <leader>g :!lazygit<cr><cr>
+nnoremap <leader>t :term<cr>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
@@ -79,7 +81,6 @@ set guioptions=Ac
 inoremap <silent> ş <Esc>:nohlsearch<cr>
 vnoremap <silent> ş <Esc>:nohlsearch<cr>
 cnoremap <silent> ş <Esc>:nohlsearch<cr>
-hi Cursor guibg=#ff5100
 hi CocInlayHint guibg=#111111 guifg=#444444
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
