@@ -7,7 +7,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 call plug#end()
 packadd! editorconfig
-nnoremap s <Plug>(easymotion-s2)
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
 set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
