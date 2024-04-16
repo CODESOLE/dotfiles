@@ -26,6 +26,8 @@ set wildmenu
 set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*
 set path+=**
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+set autoindent
+set smartindent
 syntax enable
 set mouse=a
 filetype on
