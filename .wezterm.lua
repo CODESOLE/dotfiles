@@ -35,6 +35,7 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 end
 
 config.launch_menu = launch_menu
+config.default_prog = { 'C:/Program Files/Git/bin/bash.exe', '-i', '-l' }
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = 'TITLE|RESIZE'
 config.use_resize_increments = true
