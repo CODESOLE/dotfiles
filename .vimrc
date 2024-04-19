@@ -81,7 +81,6 @@ set guioptions=Ac
 inoremap <silent> ş <Esc>:nohlsearch<cr>
 vnoremap <silent> ş <Esc>:nohlsearch<cr>
 cnoremap <silent> ş <Esc>:nohlsearch<cr>
-hi Normal guibg=#0f1419
 hi CocInlayHint guibg=#111111 guifg=#444444
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
