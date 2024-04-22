@@ -19,3 +19,7 @@ CapsLock::Esc
 #HotIf WinActive("ahk_exe Code.exe")
 CapsLock::Esc
 #HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
+
+#HotIf WinActive("ahk_exe emacs.exe")
+CapsLock::Esc
+#HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
