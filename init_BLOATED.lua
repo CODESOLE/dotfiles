@@ -1,5 +1,9 @@
 vim.cmd("language en_US")
 vim.cmd("set termguicolors")
+vim.keymap.set("n", "q", "<nop>", {})
+vim.keymap.set("v", "ş", "<Esc>", {})
+vim.keymap.set("i", "ş", "<Esc>", {})
+vim.keymap.set("c", "ş", "<Esc>", {})
 local function clone_paq()
   local path = vim.fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
   local is_installed = vim.fn.empty(vim.fn.glob(path)) == 0
