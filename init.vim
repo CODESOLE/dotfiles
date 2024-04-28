@@ -12,6 +12,7 @@ set signcolumn=no
 set noshowcmd
 set noshowmode
 set noruler
+set updatetime=200
 set laststatus=-
 set wildmode=list,full
 set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*
