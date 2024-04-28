@@ -50,9 +50,6 @@ nmap <silent> <leader><CR> :nohlsearch<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>g :!lazygit<cr><cr>
-nnoremap <leader>t :!git-bash<cr><cr>
-nnoremap <leader>l :cn<cr>
-nnoremap <leader>h :cp<cr>
 nnoremap <leader>o :LspOutline<cr>
 nnoremap <leader>O :lcl<cr>
 nnoremap <leader>n :tabn<CR>
