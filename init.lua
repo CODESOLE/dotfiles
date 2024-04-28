@@ -33,6 +33,7 @@ vim.bo.shiftwidth  = 2
 vim.o.shiftwidth   = 2
 vim.bo.softtabstop = 2
 vim.o.softtabstop  = 2
+vim.g.updatetime = 200
 vim.bo.expandtab   = true
 vim.o.expandtab    = true
 vim.o.showmode     = false
