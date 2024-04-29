@@ -33,18 +33,9 @@ set ignorecase
 set smartcase
 set showmatch
 let mapleader=" "
-set clipboard=unnamed
-set clipboard+=unnamedplus
 noremap gl $
 noremap gh 0
 set splitbelow splitright
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_browse_split=4
-let g:netrw_altv=1
-let g:netrw_preview=1
-let g:netrw_winsize=25
-autocmd FileType netrw setl bufhidden=delete
 set is hlsearch
 nmap <silent> <leader><CR> :nohlsearch<CR>
 nmap gn :bn<CR>
@@ -54,7 +45,6 @@ nnoremap <leader>o :LspOutline<cr>
 nnoremap <leader>O :lcl<cr>
 nnoremap <leader>n :tabn<CR>
 nnoremap <leader>p :tabp<CR>
-nnoremap <leader>L :Lex<CR>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
