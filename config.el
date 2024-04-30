@@ -36,7 +36,8 @@
 (setq doom-font (font-spec :family "Cascadia Mono" :size 12))
 (setq doom-themes-treemacs-theme "doom-colors")
 (setq lsp-semantic-tokens-enable t)
-(setq lsp-clients-clangd-args '("--header-insertion=never"))
+(setq lsp-inlay-hint-enable t)
+(setq lsp-headerline-breadcrumb-enable t)
 (require 'dap-lldb)
 (setq dap-lldb-debug-program '("/usr/bin/lldb-vscode"))
 (setq global-hl-todo-mode t)
@@ -45,6 +46,8 @@
   (evil-define-key 'insert global-map (kbd "C-l") 'evil-forward-char)
   (evil-define-key 'insert global-map (kbd "C-h") 'evil-backward-char)
   (evil-define-key 'normal global-map (kbd "gl") 'evil-end-of-line)
+  (evil-define-key 'normal global-map (kbd "ş") 'evil-escape)
+  (evil-define-key 'insert global-map (kbd "ş") 'evil-escape)
   (evil-define-key 'normal global-map (kbd "gh") 'evil-beginning-of-line))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
