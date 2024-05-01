@@ -1,14 +1,11 @@
 language en_US.utf8
 packadd lsp
 packadd vimspector
-packadd fuzzyy
 packadd easymotion
 packadd surround
 packadd commentary
 packadd! editorconfig
 let g:EasyMotion_smartcase = 1
-let g:files_respect_gitignore = 1
-let g:enable_fuzzyy_keymaps = 1
 nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
 set termguicolors
