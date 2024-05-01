@@ -56,7 +56,7 @@ vim.cmd('colorscheme habamax')
 require('leap').create_default_mappings()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
-vim.keymap.set('n', '<Leader><CR>', ':nohlsearch<CR>')
+vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gl', '$')
 vim.keymap.set('n', 'gh', '0')
 vim.keymap.set('n', 'gn', ':bn<CR>')
