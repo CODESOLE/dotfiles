@@ -1,5 +1,5 @@
 vim.cmd("set termguicolors")
-bootstrap_paq {
+require "paq" {
   "savq/paq-nvim",
   "ggandor/leap.nvim",
   "puremourning/vimspector",
