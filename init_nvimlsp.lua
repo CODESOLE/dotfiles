@@ -60,6 +60,3 @@ vim.cmd 'nnoremap <Leader>dp <Plug>VimspectorBalloonEval'
 vim.cmd 'vnoremap <Leader>dp <Plug>VimspectorBalloonEval'
 vim.cmd 'nnoremap <Leader>B <Plug>VimspectorBreakpoints'
 vim.keymap.set("n", "q", "<nop>", {})
-vim.keymap.set("i", "ş", "<Esc>", {})
-vim.keymap.set("v", "ş", "<Esc>", {})
-vim.keymap.set("c", "ş", "<Esc>", {})
