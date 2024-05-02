@@ -48,7 +48,6 @@ vim.o.hidden       = true
 vim.g.mapleader    = ' '
 vim.o.cmdheight = 0
 vim.o.signcolumn = "no"
-vim.o.grepprg = "set gp=git grep -rn"
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('set shortmess+=I')
