@@ -26,8 +26,6 @@ require('leap').create_default_mappings()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
-vim.keymap.set('n', 'gl', '$')
-vim.keymap.set('n', 'gh', '0')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
 vim.keymap.set('i', '<C-k>', '<Up>')
