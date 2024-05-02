@@ -27,14 +27,6 @@ bootstrap_paq {
   "neovim/nvim-lspconfig",
 }
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
-vim.bo.tabstop     = 2
-vim.o.tabstop      = 2
-vim.bo.shiftwidth  = 2
-vim.o.shiftwidth   = 2
-vim.bo.softtabstop = 2
-vim.o.softtabstop  = 2
-vim.bo.expandtab   = true
-vim.o.expandtab    = true
 vim.o.showmode     = false
 vim.o.swapfile     = false
 vim.o.backup     = false
