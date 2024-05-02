@@ -21,7 +21,6 @@ vim.o.cmdheight = 0
 vim.o.signcolumn = "no"
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
-vim.cmd('set shortmess+=I')
 vim.cmd('colorscheme habamax')
 require('leap').create_default_mappings()
 require('lspconfig').clangd.setup{}
