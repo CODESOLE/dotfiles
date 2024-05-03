@@ -39,7 +39,6 @@ vim.keymap.set('c', '<C-l>', '<Right>')
 vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>O', ':ccl<cr>', { noremap = true, silent = true })
 vim.cmd 'nnoremap <Leader>dr <Plug>VimspectorRestart'
 vim.cmd 'nnoremap <Leader>de <Plug>VimspectorStop'
 vim.cmd 'nnoremap <Leader>dc <Plug>VimspectorContinue'
