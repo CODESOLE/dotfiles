@@ -2,6 +2,10 @@ vim.cmd("set termguicolors")
 require "paq" {
   "savq/paq-nvim",
   "ggandor/leap.nvim",
+  "NeogitOrg/neogit",
+  "sindrets/diffview.nvim",
+  "bluz71/vim-moonfly-colors",
+  "nvim-lua/plenary.nvim",
   "puremourning/vimspector",
   "neovim/nvim-lspconfig",
 }
@@ -21,7 +25,9 @@ vim.o.cmdheight = 0
 vim.o.signcolumn = "no"
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
-vim.cmd('colorscheme habamax')
+vim.cmd('colorscheme moonfly')
+require('neogit').setup{}
+require('diffview').setup{ use_icons = false }
 require('leap').create_default_mappings()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
