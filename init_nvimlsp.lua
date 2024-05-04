@@ -6,6 +6,7 @@ require "paq" {
   "sindrets/diffview.nvim",
   "bluz71/vim-moonfly-colors",
   "echasnovski/mini.completion",
+  "echasnovski/mini.pairs",
   "nvim-lua/plenary.nvim",
   "puremourning/vimspector",
   "neovim/nvim-lspconfig",
@@ -29,6 +30,7 @@ vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch
 vim.cmd('colorscheme moonfly')
 require('neogit').setup{}
 require('mini.completion').setup()
+require('mini.pairs').setup()
 require('diffview').setup{ use_icons = false }
 require('leap').create_default_mappings()
 require('lspconfig').clangd.setup{}
