@@ -5,7 +5,7 @@ require "paq" {
   "NeogitOrg/neogit",
   "sindrets/diffview.nvim",
   "bluz71/vim-moonfly-colors",
-  "echasnovski/mini.completion",
+  "tpope/vim-sleuth",
   "echasnovski/mini.pairs",
   "nvim-lua/plenary.nvim",
   "puremourning/vimspector",
@@ -29,7 +29,6 @@ vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
 require('neogit').setup{}
-require('mini.completion').setup()
 require('mini.pairs').setup()
 require('diffview').setup{ use_icons = false }
 require('leap').create_default_mappings()
