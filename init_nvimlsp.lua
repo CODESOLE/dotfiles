@@ -10,6 +10,7 @@ require "paq" {
   "nvim-lua/plenary.nvim",
   "puremourning/vimspector",
   "neovim/nvim-lspconfig",
+  "Bekaboo/dropbar.nvim",
 }
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
 vim.o.showmode     = false
@@ -34,6 +35,7 @@ require('diffview').setup{ use_icons = false }
 require('leap').create_default_mappings()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
+vim.lsp.inlay_hint.enable(true)
 vim.keymap.set('n', '<leader>g', ':Neogit<CR>')
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
