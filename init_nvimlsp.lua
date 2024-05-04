@@ -12,6 +12,7 @@ require "paq" {
   "neovim/nvim-lspconfig",
   "Bekaboo/dropbar.nvim",
 }
+vim.g.moonflyWinSeparator = 2
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
 vim.o.showmode     = false
 vim.o.swapfile     = false
