@@ -34,6 +34,7 @@ require('diffview').setup{ use_icons = false }
 require('leap').create_default_mappings()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
+vim.keymap.set('n', '<leader>g', ':Neogit<CR>')
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
