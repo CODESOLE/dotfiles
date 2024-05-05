@@ -12,6 +12,7 @@ require "paq" {
   "puremourning/vimspector",
   "neovim/nvim-lspconfig",
   "Bekaboo/dropbar.nvim",
+  "stevearc/oil.nvim",
 }
 vim.g.moonflyWinSeparator = 2
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
@@ -32,6 +33,7 @@ vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
 require('neogit').setup{}
+require('oil').setup()
 require('mini.pairs').setup()
 require('mini.completion').setup()
 require('diffview').setup{ use_icons = false }
@@ -39,6 +41,7 @@ require('leap').create_default_mappings()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
 vim.lsp.inlay_hint.enable(true)
+vim.keymap.set('n', '<leader>o', ':Oil --float<CR>')
 vim.keymap.set('n', '<leader>g', ':Neogit<CR>')
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
