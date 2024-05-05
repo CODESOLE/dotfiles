@@ -13,6 +13,7 @@ require "paq" {
   "neovim/nvim-lspconfig",
   "Bekaboo/dropbar.nvim",
   "stevearc/oil.nvim",
+  { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
 }
 vim.g.moonflyWinSeparator = 2
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
@@ -40,6 +41,11 @@ require('diffview').setup{ use_icons = false }
 require('leap').create_default_mappings()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.lsp.inlay_hint.enable(true)
 vim.keymap.set('n', '<leader>o', ':Oil --float<CR>')
 vim.keymap.set('n', '<leader>g', ':Neogit<CR>')
