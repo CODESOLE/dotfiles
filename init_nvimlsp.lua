@@ -13,7 +13,7 @@ require "paq" {
   "neovim/nvim-lspconfig",
   "Bekaboo/dropbar.nvim",
   "stevearc/oil.nvim",
-  { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
+  { "nvim-telescope/telescope.nvim" , branch = "0.1.6" },
 }
 vim.g.moonflyWinSeparator = 2
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
@@ -45,7 +45,10 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>fd', builtin.lsp_document_symbols, {})
+vim.keymap.set('n', '<leader>fs', builtin.lsp_workspace_symbols, {})
+vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
+vim.keymap.set('n', '<leader>fe', builtin.diagnostics, {})
 vim.lsp.inlay_hint.enable(true)
 vim.keymap.set('n', '<leader>o', ':Oil --float<CR>')
 vim.keymap.set('n', '<leader>g', ':Neogit<CR>')
