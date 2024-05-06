@@ -34,6 +34,7 @@ bootstrap_paq {
   "nvim-lualine/lualine.nvim",
   "Bekaboo/dropbar.nvim",
   "stevearc/oil.nvim",
+  "j-hui/fidget.nvim",
   { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
 }
 vim.cmd("set termguicolors")
@@ -55,6 +56,7 @@ vim.o.signcolumn = "no"
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
+require('fidget').setup()
 require('lualine').setup { options = {
   component_separators = { left = '', right = '' },
   section_separators = { left = '', right = '' },
