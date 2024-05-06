@@ -62,8 +62,8 @@ require('lualine').setup { options = {
   section_separators = { left = '', right = '' },
 }, sections = {
   lualine_a = { 'branch' },
-  lualine_b = { 'diff', 'diagnostics' },
-  lualine_c = { 'filename' },
+  lualine_b = { {'filename', path = 1} },
+  lualine_c = { 'diff', 'diagnostics' },
   lualine_x = { '', '', '' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
