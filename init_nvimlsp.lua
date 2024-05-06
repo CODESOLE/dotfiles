@@ -1,5 +1,25 @@
-vim.cmd("set termguicolors")
-require "paq" {
+local function clone_paq()
+  local path = vim.fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
+  local is_installed = vim.fn.empty(vim.fn.glob(path)) == 0
+  if not is_installed then
+    vim.fn.system { "git", "clone", "--depth=1", "https://github.com/savq/paq-nvim.git", path }
+    return true
+  end
+end
+
+local function bootstrap_paq(packages)
+  local first_install = clone_paq()
+  vim.cmd.packadd("paq-nvim")
+  local paq = require("paq")
+  if first_install then
+    vim.notify("Installing plugins... If prompted, hit Enter to continue.")
+  end
+
+  paq(packages)
+  paq.install()
+end
+
+bootstrap_paq {
   "savq/paq-nvim",
   "ggandor/leap.nvim",
   "NeogitOrg/neogit",
@@ -11,10 +31,12 @@ require "paq" {
   "nvim-lua/plenary.nvim",
   "puremourning/vimspector",
   "neovim/nvim-lspconfig",
+  "nvim-lualine/lualine.nvim",
   "Bekaboo/dropbar.nvim",
   "stevearc/oil.nvim",
-  { "nvim-telescope/telescope.nvim" , branch = "0.1.6" },
+  { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
 }
+vim.cmd("set termguicolors")
 vim.g.moonflyWinSeparator = 2
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
 vim.o.showmode     = false
@@ -33,6 +55,17 @@ vim.o.signcolumn = "no"
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
+require('lualine').setup { options = {
+  component_separators = { left = '', right = '' },
+  section_separators = { left = '', right = '' },
+}, sections = {
+  lualine_a = { 'branch' },
+  lualine_b = { 'diff', 'diagnostics' },
+  lualine_c = { 'filename' },
+  lualine_x = { '', '', '' },
+  lualine_y = { '' },
+  lualine_z = { 'searchcount' },
+} }
 require('neogit').setup{}
 require('oil').setup()
 require('mini.pairs').setup()
@@ -41,6 +74,16 @@ require('diffview').setup{ use_icons = false }
 require('leap').create_default_mappings()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
+require('telescope').setup {
+  pickers = {
+    buffers = {
+      mappings = {
+        i = { ["<c-d>"] = "delete_buffer" },
+        n = { ["d"] = "delete_buffer" },
+      }
+    }
+  }
+}
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
@@ -81,4 +124,3 @@ vim.cmd 'nnoremap <Leader>dj <Plug>VimspectorStepOver'
 vim.cmd 'nnoremap <Leader>dp <Plug>VimspectorBalloonEval'
 vim.cmd 'vnoremap <Leader>dp <Plug>VimspectorBalloonEval'
 vim.cmd 'nnoremap <Leader>B <Plug>VimspectorBreakpoints'
-vim.keymap.set("n", "q", "<nop>", {})
