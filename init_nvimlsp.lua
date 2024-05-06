@@ -39,6 +39,7 @@ bootstrap_paq {
 }
 vim.cmd("set termguicolors")
 vim.g.moonflyWinSeparator = 2
+vim.g.moonflyVirtualTextColor = true
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
 vim.o.showmode     = false
 vim.o.swapfile     = false
