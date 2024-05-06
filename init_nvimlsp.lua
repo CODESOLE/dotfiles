@@ -64,10 +64,11 @@ require('lualine').setup { options = {
 }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { {'filename', path = 1} },
-  lualine_c = { 'diff', 'diagnostics' },
-  lualine_x = { '', '', '' },
+  lualine_c = { 'diff', '' },
+  lualine_x = { '', '', 'diagnostics' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
+
 } }
 require('neogit').setup{}
 require('oil').setup()
