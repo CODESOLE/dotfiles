@@ -36,7 +36,7 @@ bootstrap_paq {
   "stevearc/oil.nvim",
   "j-hui/fidget.nvim",
   { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
-  { "nvim-telescope/telescope-fzf-native.nvim" , build = "make"},
+  { "nvim-telescope/telescope-fzf-native.nvim" , build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"},
 }
 vim.cmd("set termguicolors")
 vim.g.moonflyWinSeparator = 2
