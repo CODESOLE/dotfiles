@@ -63,7 +63,7 @@ require('lualine').setup { options = {
   lualine_b = { 'diff', 'diagnostics' },
   lualine_c = { 'filename' },
   lualine_x = { '', '', '' },
-  lualine_y = { '' },
+  lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 } }
 require('neogit').setup{}
