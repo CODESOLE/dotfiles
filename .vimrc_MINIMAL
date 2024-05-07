@@ -11,7 +11,7 @@ set bg=dark
 set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
 colorscheme retrobox
-set gp=rg\ --vimgrep\ -uu
+set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
 set signcolumn=no
