@@ -35,6 +35,7 @@ bootstrap_paq {
   "Bekaboo/dropbar.nvim",
   "stevearc/oil.nvim",
   "j-hui/fidget.nvim",
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
   { "nvim-telescope/telescope-fzf-native.nvim" , build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"},
 }
@@ -58,13 +59,18 @@ vim.o.signcolumn = "no"
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "cpp", "rust", "zig", "go" },
+  auto_install = false,
+  highlight = { enable = true },
+}
 require('fidget').setup()
 require('lualine').setup { options = {
   component_separators = { left = '', right = '' },
   section_separators = { left = '', right = '' },
 }, sections = {
   lualine_a = { 'branch' },
-  lualine_b = { {'filename', path = 1} },
+  lualine_b = { 'filename' },
   lualine_c = { 'diff', '' },
   lualine_x = { '', '', 'diagnostics' },
   lualine_y = { 'location' },
