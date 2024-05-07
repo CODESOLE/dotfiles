@@ -1,8 +1,8 @@
 packadd coc.nvim
 packadd vimspector
-packadd easymotion
-packadd surround
-packadd commentary
+packadd vim-easymotion
+packadd vim-surround
+packadd vim-commentary
 packadd vim-sleuth
 packadd! editorconfig
 let g:EasyMotion_smartcase = 1
