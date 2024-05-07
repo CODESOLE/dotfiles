@@ -137,7 +137,7 @@ vim.keymap.set('t', '<A-j>', '<C-\\><C-N><C-w>j')
 vim.keymap.set('t', '<A-k>', '<C-\\><C-N><C-w>k')
 vim.keymap.set('t', '<A-h>', '<C-\\><C-N><C-w>h')
 vim.keymap.set('t', '<A-l>', '<C-\\><C-N><C-w>l')
-vim.cmd [[autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif]] 
+vim.api.nvim_create_autocmd({ "TermOpen", "WinEnter" }, { pattern = "term://*", command = "startinsert" })
 vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
