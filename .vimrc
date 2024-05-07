@@ -1,10 +1,15 @@
-language en_US.utf8
+let data_dir = has('unix') ? '~/.vim' : '~/vimfiles'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sleuth'
 call plug#end()
 packadd! editorconfig
 let g:EasyMotion_smartcase = 1
@@ -16,7 +21,6 @@ colorscheme retrobox
 set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
-set shortmess+=I
 set signcolumn=no
 set noshowcmd
 set noshowmode
@@ -26,9 +30,6 @@ set wildmode=list,full
 set wildmenu
 set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*
 set path+=**
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-set autoindent
-set smartindent
 syntax enable
 set mouse=a
 filetype on
@@ -37,31 +38,17 @@ set ignorecase
 set smartcase
 set showmatch
 let mapleader=" "
-set clipboard=unnamed
-set clipboard+=unnamedplus
 noremap gl $
 noremap gh 0
-set splitbelow splitright
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_browse_split=4
-let g:netrw_altv=1
-let g:netrw_preview=1
-let g:netrw_winsize=25
-autocmd FileType netrw setl bufhidden=delete
 set is hlsearch
-nmap <silent> <leader><CR> :nohlsearch<CR>
+nmap <silent> <leader><leader> :nohlsearch<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
+nnoremap <leader>g :!lazygit<cr><cr>
 nnoremap <leader>o :CocOutline<cr>
 nnoremap <leader>O :ccl<cr>
-nnoremap <leader>n :tabn<CR>
-nnoremap <leader>p :tabp<CR>
-nnoremap <leader>L :Lex<CR>
-nnoremap <leader>g :!lazygit<cr><cr>
-nnoremap <leader>t :term<cr>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
@@ -70,17 +57,14 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
-nnoremap <leader>H <C-w>t<C-w>H
-nnoremap <leader>K <C-w>t<C-w>K
 set encoding=utf-8
 set nobackup
 set nowritebackup
 set noswapfile
-set updatetime=200
 set guioptions=Ac
-inoremap <silent> ş <Esc>:nohlsearch<cr>
-vnoremap <silent> ş <Esc>:nohlsearch<cr>
-cnoremap <silent> ş <Esc>:nohlsearch<cr>
+inoremap <silent> ş <Esc>
+vnoremap <silent> ş <Esc>
+cnoremap <silent> ş <Esc>
 hi CocInlayHint guibg=#111111 guifg=#444444
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
@@ -157,18 +141,3 @@ augroup mygroup
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 	      nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 	      nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-nnoremap <Leader>dr <Plug>VimspectorRestart
-nnoremap <Leader>de <Plug>VimspectorStop
-nnoremap <Leader>dc <Plug>VimspectorContinue
-nnoremap <Leader>dt <Plug>VimspectorRunToCursor
-nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
-nnoremap <Leader>dl <Plug>VimspectorToggleConditionalBreakpoint
-nnoremap <Leader><Up> <Plug>VimspectorUpFrame
-nnoremap <Leader><Down> <Plug>VimspectorDownFrame
-nnoremap <Leader>dh <Plug>VimspectorStepOut
-nnoremap <Leader>dk <Plug>VimspectorStepInto
-nnoremap <Leader>dj <Plug>VimspectorStepOver
-nnoremap <Leader>dp <Plug>VimspectorBalloonEval
-vnoremap <Leader>dp <Plug>VimspectorBalloonEval
-nnoremap <Leader>B <Plug>VimspectorBreakpoints
-set fillchars+=eob:\ 
