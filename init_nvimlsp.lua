@@ -69,7 +69,6 @@ require('lualine').setup { options = {
   lualine_x = { '', '', 'diagnostics' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
-
 } }
 require('neogit').setup{}
 require('oil').setup()
