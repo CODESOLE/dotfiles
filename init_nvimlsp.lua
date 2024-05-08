@@ -29,7 +29,6 @@ bootstrap_paq {
   "echasnovski/mini.pairs",
   "echasnovski/mini.completion",
   "nvim-lua/plenary.nvim",
-  "puremourning/vimspector",
   "neovim/nvim-lspconfig",
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
