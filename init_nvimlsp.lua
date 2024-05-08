@@ -64,12 +64,45 @@ vim.o.showmatch    = true
 vim.o.hidden       = true
 vim.g.mapleader    = ' '
 vim.o.cmdheight = 0
-vim.o.signcolumn = "no"
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
 require('mini.surround').setup()
 require('mini.jump2d').setup()
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "cpp", "rust", "zig", "go" },
+  auto_install = false,
+  highlight = { enable = true },
+}
+require('fidget').setup()
+require('lualine').setup { sections = {
+  lualine_a = { 'branch' },
+  lualine_b = { 'filename' },
+  lualine_c = { 'diff', '' },
+  lualine_x = { '', '', 'diagnostics' },
+  lualine_y = { 'location' },
+  lualine_z = { 'searchcount' },
+} }
+require('neogit').setup{}
+require('oil').setup()
+require('mini.pairs').setup()
+require('mini.completion').setup()
+require('diffview').setup()
+require('mason').setup()
+require('mason-nvim-dap').setup()
+require('mason-lspconfig').setup()
+require('lspconfig').clangd.setup{}
+require('lspconfig').rust_analyzer.setup{}
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local opts = { buffer = args.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action, opts)
+  end,
+})
 require('overseer').setup{ dap = false }
 require 'dap.ext.vscode'.json_decode = require "overseer.json".decode
 require 'dap.ext.vscode'.load_launchjs(nil, { codelldb = { 'c', 'cpp', 'rust' } })
@@ -110,40 +143,6 @@ vim.keymap.set('n', '<Leader>ds', function()
   local widgets = require('dap.ui.widgets')
   widgets.centered_float(widgets.scopes)
 end)
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "rust", "zig", "go" },
-  auto_install = false,
-  highlight = { enable = true },
-}
-require('fidget').setup()
-require('lualine').setup { sections = {
-  lualine_a = { 'branch' },
-  lualine_b = { 'filename' },
-  lualine_c = { 'diff', '' },
-  lualine_x = { '', '', 'diagnostics' },
-  lualine_y = { 'location' },
-  lualine_z = { 'searchcount' },
-} }
-require('neogit').setup{}
-require('oil').setup()
-require('mini.pairs').setup()
-require('mini.completion').setup()
-require('diffview').setup()
-require('mason').setup()
-require('mason-nvim-dap').setup()
-require('mason-lspconfig').setup()
-require('lspconfig').clangd.setup{}
-require('lspconfig').rust_analyzer.setup{}
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local opts = { buffer = args.buf }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action, opts)
-  end,
-})
 require('telescope').setup {
   pickers = {
     buffers = {
