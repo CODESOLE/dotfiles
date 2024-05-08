@@ -130,6 +130,7 @@ require('mini.pairs').setup()
 require('mini.completion').setup()
 require('diffview').setup()
 require('mason').setup()
+require('mason-nvim-dap').setup()
 require('mason-lspconfig').setup()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
