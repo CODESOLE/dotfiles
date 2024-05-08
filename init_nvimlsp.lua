@@ -23,13 +23,13 @@ bootstrap_paq {
   "savq/paq-nvim",
   "NeogitOrg/neogit",
   "sindrets/diffview.nvim",
-  "bluz71/vim-moonfly-colors",
   "nvim-tree/nvim-web-devicons",
+  "bluz71/vim-moonfly-colors",
   "tpope/vim-sleuth",
-  "easymotion/vim-easymotion",
-  "tpope/vim-surround",
   "echasnovski/mini.pairs",
   "echasnovski/mini.completion",
+  "echasnovski/mini.surround",
+  "echasnovski/mini.jump2d",
   "nvim-lua/plenary.nvim",
   "neovim/nvim-lspconfig",
   "williamboman/mason.nvim",
@@ -49,6 +49,8 @@ bootstrap_paq {
   { "nvim-telescope/telescope-fzf-native.nvim" , build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"},
 }
 vim.cmd("set termguicolors")
+vim.cmd("let g:EasyMotion_smartcase = 1")
+vim.cmd("nmap s <Plug>(easymotion-overwin-f2)")
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
@@ -68,6 +70,8 @@ vim.o.signcolumn = "no"
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
+require('mini.surround').setup()
+require('mini.jump2d').setup()
 require('overseer').setup{ dap = false }
 require 'dap.ext.vscode'.json_decode = require "overseer.json".decode
 require 'dap.ext.vscode'.load_launchjs(nil, { codelldb = { 'c', 'cpp', 'rust' } })
@@ -75,6 +79,15 @@ require 'overseer'.patch_dap(true)
 require("dapui").setup()
 local dap, dapui = require("dap"), require("dapui")
 require("nvim-dap-virtual-text").setup()
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "13000",
+  executable = {
+    command = vim.fn.stdpath('data') .. '/mason/bin/codelldb',
+    args = { "--port", "13000" },
+    detached = false,
+  }
+}
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
@@ -105,10 +118,7 @@ require'nvim-treesitter.configs'.setup {
   highlight = { enable = true },
 }
 require('fidget').setup()
-require('lualine').setup { options = {
-  component_separators = { left = '', right = '' },
-  section_separators = { left = '', right = '' },
-}, sections = {
+require('lualine').setup { sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'filename' },
   lualine_c = { 'diff', '' },
@@ -120,7 +130,7 @@ require('neogit').setup{}
 require('oil').setup()
 require('mini.pairs').setup()
 require('mini.completion').setup()
-require('diffview').setup{ use_icons = false }
+require('diffview').setup()
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('lspconfig').clangd.setup{}
