@@ -84,7 +84,7 @@ require('lualine').setup { sections = {
   lualine_z = { 'searchcount' },
 } }
 require('neogit').setup{}
-require('oil').setup()
+require('oil').setup{view_options = {show_hidden = true }}
 require('mini.pairs').setup()
 require('mini.completion').setup()
 require('diffview').setup()
