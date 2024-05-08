@@ -24,6 +24,7 @@ bootstrap_paq {
   "NeogitOrg/neogit",
   "sindrets/diffview.nvim",
   "bluz71/vim-moonfly-colors",
+  "nvim-tree/nvim-web-devicons",
   "tpope/vim-sleuth",
   "easymotion/vim-easymotion",
   "tpope/vim-surround",
