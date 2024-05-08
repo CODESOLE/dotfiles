@@ -49,8 +49,6 @@ bootstrap_paq {
   { "nvim-telescope/telescope-fzf-native.nvim" , build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"},
 }
 vim.cmd("set termguicolors")
-vim.cmd("let g:EasyMotion_smartcase = 1")
-vim.cmd("nmap s <Plug>(easymotion-overwin-f2)")
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
