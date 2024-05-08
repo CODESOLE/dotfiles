@@ -31,6 +31,8 @@ bootstrap_paq {
   "nvim-lua/plenary.nvim",
   "puremourning/vimspector",
   "neovim/nvim-lspconfig",
+   "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
   "nvim-lualine/lualine.nvim",
   "Bekaboo/dropbar.nvim",
   "stevearc/oil.nvim",
@@ -82,6 +84,8 @@ require('mini.pairs').setup()
 require('mini.completion').setup()
 require('diffview').setup{ use_icons = false }
 require('leap').create_default_mappings()
+require('mason').setup()
+require('mason-lspconfig').setup()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
 vim.api.nvim_create_autocmd("LspAttach", {
