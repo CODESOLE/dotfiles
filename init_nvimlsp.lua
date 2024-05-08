@@ -21,11 +21,12 @@ end
 
 bootstrap_paq {
   "savq/paq-nvim",
-  "ggandor/leap.nvim",
   "NeogitOrg/neogit",
   "sindrets/diffview.nvim",
   "bluz71/vim-moonfly-colors",
   "tpope/vim-sleuth",
+  "easymotion/vim-easymotion",
+  "tpope/vim-surround",
   "echasnovski/mini.pairs",
   "echasnovski/mini.completion",
   "nvim-lua/plenary.nvim",
@@ -119,7 +120,6 @@ require('oil').setup()
 require('mini.pairs').setup()
 require('mini.completion').setup()
 require('diffview').setup{ use_icons = false }
-require('leap').create_default_mappings()
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('lspconfig').clangd.setup{}
