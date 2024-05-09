@@ -66,7 +66,6 @@ require('lualine').setup { sections = {
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 } }
-require('oil').setup()
 require('mini.pairs').setup()
 require('mini.completion').setup()
 require('lspconfig').clangd.setup{}
