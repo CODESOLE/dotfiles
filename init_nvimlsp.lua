@@ -22,20 +22,17 @@ end
 bootstrap_paq {
   "savq/paq-nvim",
   "puremourning/vimspector",
-  "NeogitOrg/neogit",
-  "sindrets/diffview.nvim",
-  "nvim-tree/nvim-web-devicons",
   "bluz71/vim-moonfly-colors",
   "tpope/vim-sleuth",
   "echasnovski/mini.pairs",
   "echasnovski/mini.completion",
   "echasnovski/mini.surround",
   "echasnovski/mini.jump2d",
-  "nvim-lua/plenary.nvim",
   "neovim/nvim-lspconfig",
   "stevearc/oil.nvim",
   "j-hui/fidget.nvim",
   "nvim-lualine/lualine.nvim",
+  "nvim-lua/plenary.nvim",
   { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
 }
 vim.cmd("set termguicolors")
@@ -69,11 +66,9 @@ require('lualine').setup { sections = {
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 } }
-require('neogit').setup{}
 require('oil').setup()
 require('mini.pairs').setup()
 require('mini.completion').setup()
-require('diffview').setup()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -110,7 +105,7 @@ vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
 vim.lsp.inlay_hint.enable(true)
 vim.keymap.set('n', '<leader>o', ':Oil --float<CR>')
 vim.keymap.set('n', '<leader>t', ':sp | term<CR>')
-vim.keymap.set('n', '<leader>g', ':Neogit<CR>')
+vim.keymap.set('n', '<leader>g', ':!lazygit<CR>')
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
