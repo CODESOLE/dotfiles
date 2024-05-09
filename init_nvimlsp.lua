@@ -27,7 +27,7 @@ bootstrap_paq {
   "echasnovski/mini.pairs",
   "echasnovski/mini.completion",
   "echasnovski/mini.surround",
-  "echasnovski/mini.jump2d",
+  "rlane/pounce.nvim",
   "neovim/nvim-lspconfig",
   "j-hui/fidget.nvim",
   "nvim-lualine/lualine.nvim",
@@ -36,6 +36,7 @@ bootstrap_paq {
   { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
 }
 vim.cmd("set termguicolors")
+vim.keymap.set("n", "<CR>", function() require'pounce'.pounce { } end)
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
