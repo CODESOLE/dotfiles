@@ -29,10 +29,10 @@ bootstrap_paq {
   "echasnovski/mini.surround",
   "echasnovski/mini.jump2d",
   "neovim/nvim-lspconfig",
-  "stevearc/oil.nvim",
   "j-hui/fidget.nvim",
   "nvim-lualine/lualine.nvim",
   "nvim-lua/plenary.nvim",
+  "nvim-telescope/telescope-file-browser.nvim",
   { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
 }
 vim.cmd("set termguicolors")
@@ -91,7 +91,9 @@ require('telescope').setup {
     }
   }
 }
+require("telescope").load_extension "file_browser"
 local builtin = require('telescope.builtin')
+vim.keymap.set("n", "<space>fm", ":Telescope file_browser<CR>")
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
@@ -103,7 +105,6 @@ vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
 vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
 vim.lsp.inlay_hint.enable(true)
-vim.keymap.set('n', '<leader>o', ':Oil --float<CR>')
 vim.keymap.set('n', '<leader>t', ':sp | term<CR>')
 vim.keymap.set('n', '<leader>g', ':!lazygit<CR>')
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
