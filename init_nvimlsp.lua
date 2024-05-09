@@ -57,7 +57,6 @@ vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
 require('mini.surround').setup()
-require('mini.jump2d').setup()
 require('fidget').setup()
 require('lualine').setup { sections = {
   lualine_a = { 'branch' },
