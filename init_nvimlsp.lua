@@ -52,6 +52,7 @@ vim.o.smartindent  = true
 vim.o.autoindent   = true
 vim.o.showmatch    = true
 vim.o.hidden       = true
+vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.o.cmdheight = 0
 vim.o.path="**"
