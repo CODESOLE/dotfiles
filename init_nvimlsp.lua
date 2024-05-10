@@ -50,8 +50,6 @@ require('lspconfig').rust_analyzer.setup{}
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local opts = { buffer = args.buf }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action, opts)
