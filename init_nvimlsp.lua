@@ -27,7 +27,7 @@ bootstrap_paq {
   "echasnovski/mini.pairs",
   "echasnovski/mini.completion",
   "echasnovski/mini.surround",
-  "rlane/pounce.nvim",
+  "echasnovski/mini.jump2d",
   "neovim/nvim-lspconfig",
   "j-hui/fidget.nvim",
   "nvim-lualine/lualine.nvim",
@@ -36,7 +36,6 @@ bootstrap_paq {
   { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
 }
 vim.cmd("set termguicolors")
-vim.keymap.set("n", "<CR>", function() require'pounce'.pounce { } end)
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
 vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
@@ -57,6 +56,7 @@ vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
 require('mini.surround').setup()
+require('mini.jump2d').setup()
 require('fidget').setup()
 require('lualine').setup { sections = {
   lualine_a = { 'branch' },
