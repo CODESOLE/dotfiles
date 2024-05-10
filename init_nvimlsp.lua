@@ -40,7 +40,6 @@ vim.cmd 'nmap s <Plug>(easymotion-overwin-f2)'
 vim.cmd("set termguicolors")
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
-vim.opt.wildignore:append{'*/builddir/*', '*/build/*', 'tags', 'node_modules/*', '.git/*', '.cache/*', '.clangd/*', 'target/*'}
 vim.o.showmode     = false
 vim.o.swapfile     = false
 vim.o.backup     = false
@@ -53,7 +52,6 @@ vim.o.showmatch    = true
 vim.o.hidden       = true
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
-vim.o.cmdheight = 0
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
@@ -113,18 +111,6 @@ vim.keymap.set('i', '<C-k>', '<Up>')
 vim.keymap.set('i', '<C-j>', '<Down>')
 vim.keymap.set('i', '<C-h>', '<Left>')
 vim.keymap.set('i', '<C-l>', '<Right>')
-vim.keymap.set('c', '<C-j>', '<Down>')
-vim.keymap.set('c', '<C-k>', '<Up>')
-vim.keymap.set('c', '<C-h>', '<Left>')
-vim.keymap.set('c', '<C-l>', '<Right>')
-vim.keymap.set('n', '<A-j>', '<C-w>j')
-vim.keymap.set('n', '<A-k>', '<C-w>k')
-vim.keymap.set('n', '<A-h>', '<C-w>h')
-vim.keymap.set('n', '<A-l>', '<C-w>l')
-vim.keymap.set('i', '<A-j>', '<C-\\><C-N><C-w>j')
-vim.keymap.set('i', '<A-k>', '<C-\\><C-N><C-w>k')
-vim.keymap.set('i', '<A-h>', '<C-\\><C-N><C-w>h')
-vim.keymap.set('i', '<A-l>', '<C-\\><C-N><C-w>l')
 vim.keymap.set('t', '<A-j>', '<C-\\><C-N><C-w>j')
 vim.keymap.set('t', '<A-k>', '<C-\\><C-N><C-w>k')
 vim.keymap.set('t', '<A-h>', '<C-\\><C-N><C-w>h')
