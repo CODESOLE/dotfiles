@@ -26,8 +26,8 @@ bootstrap_paq {
   "tpope/vim-sleuth",
   "echasnovski/mini.pairs",
   "echasnovski/mini.completion",
-  "echasnovski/mini.surround",
-  "echasnovski/mini.jump2d",
+  "tpope/vim-surround",
+  "easymotion/vim-easymotion",
   "neovim/nvim-lspconfig",
   "j-hui/fidget.nvim",
   "nvim-lualine/lualine.nvim",
@@ -35,6 +35,8 @@ bootstrap_paq {
   "nvim-telescope/telescope-file-browser.nvim",
   { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
 }
+vim.cmd 'let g:EasyMotion_smartcase = 1'
+vim.cmd 'nmap s <Plug>(easymotion-overwin-f2)'
 vim.cmd("set termguicolors")
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
@@ -55,8 +57,6 @@ vim.o.cmdheight = 0
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
-require('mini.surround').setup()
-require('mini.jump2d').setup()
 require('fidget').setup()
 require('lualine').setup { sections = {
   lualine_a = { 'branch' },
