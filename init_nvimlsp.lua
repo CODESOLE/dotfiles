@@ -25,10 +25,8 @@ vim.o.ignorecase   = true
 vim.o.smartindent  = true
 vim.o.autoindent   = true
 vim.o.showmatch    = true
-vim.o.hidden       = true
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
-vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
 require('lualine').setup { sections = {
