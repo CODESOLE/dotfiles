@@ -1,18 +1,15 @@
 require 'paq' {
   "savq/paq-nvim",
-  "puremourning/vimspector",
   "bluz71/vim-moonfly-colors",
   "tpope/vim-sleuth",
-  "echasnovski/mini.pairs",
-  "echasnovski/mini.completion",
   "tpope/vim-surround",
   "easymotion/vim-easymotion",
+  "echasnovski/mini.pairs",
+  "echasnovski/mini.completion",
   "neovim/nvim-lspconfig",
-  "j-hui/fidget.nvim",
+  "puremourning/vimspector",
   "nvim-lualine/lualine.nvim",
-  "nvim-lua/plenary.nvim",
-  "nvim-telescope/telescope-file-browser.nvim",
-  { "nvim-telescope/telescope.nvim" , branch = "0.1.6"},
+  "ibhagwan/fzf-lua",
 }
 vim.cmd 'let g:EasyMotion_smartcase = 1'
 vim.cmd 'nmap s <Plug>(easymotion-overwin-f2)'
@@ -34,7 +31,6 @@ vim.g.mapleader    = ' '
 vim.o.path="**"
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
-require('fidget').setup()
 require('lualine').setup { sections = {
   lualine_a = { 'branch' },
   lualine_b = { { 'filename', path = 1 } },
@@ -47,37 +43,19 @@ require('mini.pairs').setup()
 require('mini.completion').setup()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local opts = { buffer = args.buf }
-    vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action, opts)
-  end,
-})
-require('telescope').setup {
-  pickers = {
-    buffers = {
-      mappings = {
-        i = { ["<c-d>"] = "delete_buffer" },
-        n = { ["d"] = "delete_buffer" },
-      }
-    }
-  }
-}
-require("telescope").load_extension "file_browser"
-local builtin = require('telescope.builtin')
-vim.keymap.set("n", "<space>fm", ":Telescope file_browser<CR>")
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
-vim.keymap.set('n', '<leader>fw', builtin.lsp_workspace_symbols, {})
-vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
-vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
-vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
-vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
+require('fzf-lua').setup({'fzf-native'})
+vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fl", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').git_files()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fb", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fs", "<cmd>lua require('fzf-lua').lsp_document_symbols()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fw", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fa", "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fd", "<cmd>lua require('fzf-lua').diagnostics_document()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fD", "<cmd>lua require('fzf-lua').diagnostics_workspace()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fo", "<cmd>lua require('fzf-lua').oldfiles()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fc", "<cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true })
 vim.lsp.inlay_hint.enable(true)
 vim.keymap.set('n', '<leader>t', ':sp | term<CR>')
 vim.keymap.set('n', '<leader>g', ':!lazygit<CR>')
@@ -88,6 +66,22 @@ vim.keymap.set('i', '<C-k>', '<Up>')
 vim.keymap.set('i', '<C-j>', '<Down>')
 vim.keymap.set('i', '<C-h>', '<Left>')
 vim.keymap.set('i', '<C-l>', '<Right>')
+vim.keymap.set('c', '<C-j>', '<Down>')
+vim.keymap.set('c', '<C-k>', '<Up>')
+vim.keymap.set('c', '<C-h>', '<Left>')
+vim.keymap.set('c', '<C-l>', '<Right>')
+vim.keymap.set('n', '<A-j>', '<C-w>j')
+vim.keymap.set('n', '<A-k>', '<C-w>k')
+vim.keymap.set('n', '<A-h>', '<C-w>h')
+vim.keymap.set('n', '<A-l>', '<C-w>l')
+vim.keymap.set('i', '<A-j>', '<C-\\><C-N><C-w>j')
+vim.keymap.set('i', '<A-k>', '<C-\\><C-N><C-w>k')
+vim.keymap.set('i', '<A-h>', '<C-\\><C-N><C-w>h')
+vim.keymap.set('i', '<A-l>', '<C-\\><C-N><C-w>l')
+vim.keymap.set('t', '<A-j>', '<C-\\><C-N><C-w>j')
+vim.keymap.set('t', '<A-k>', '<C-\\><C-N><C-w>k')
+vim.keymap.set('t', '<A-h>', '<C-\\><C-N><C-w>h')
+vim.keymap.set('t', '<A-l>', '<C-\\><C-N><C-w>l')
 vim.api.nvim_create_autocmd({ "TermOpen", "WinEnter" }, { pattern = "term://*", command = "startinsert" })
 vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
