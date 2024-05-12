@@ -3,7 +3,7 @@ require 'paq' {
   "bluz71/vim-moonfly-colors",
   "tpope/vim-sleuth",
   "tpope/vim-surround",
-  "easymotion/vim-easymotion",
+  "ggandor/leap.nvim",
   "echasnovski/mini.pairs",
   "echasnovski/mini.completion",
   "neovim/nvim-lspconfig",
@@ -11,8 +11,6 @@ require 'paq' {
   "nvim-lualine/lualine.nvim",
   "ibhagwan/fzf-lua",
 }
-vim.cmd 'let g:EasyMotion_smartcase = 1'
-vim.cmd 'nmap s <Plug>(easymotion-overwin-f2)'
 vim.cmd("set termguicolors")
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
@@ -37,6 +35,7 @@ require('lualine').setup { sections = {
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 } }
+require('leap').create_default_mappings()
 require('mini.pairs').setup()
 require('mini.completion').setup()
 require('lspconfig').clangd.setup{}
