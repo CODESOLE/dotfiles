@@ -23,6 +23,7 @@ vim.o.ignorecase   = true
 vim.o.smartindent  = true
 vim.o.autoindent   = true
 vim.o.showmatch    = true
+vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
