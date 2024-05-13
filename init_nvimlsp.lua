@@ -28,11 +28,11 @@ vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
-require('lualine').setup { sections = {
-  lualine_a = { 'branch' },
+require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
+  lualine_a = { { 'branch', icon = '' } },
   lualine_b = { { 'filename', path = 1 } },
   lualine_c = { 'diff', '' },
-  lualine_x = { '', '', 'diagnostics' },
+  lualine_x = { '', 'selectioncount', 'diagnostics', },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 } }
