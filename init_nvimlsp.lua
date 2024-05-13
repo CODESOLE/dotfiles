@@ -2,7 +2,7 @@ require 'paq' {
   "savq/paq-nvim",
   "bluz71/vim-moonfly-colors",
   "tpope/vim-sleuth",
-  "tpope/vim-surround",
+  "kylechui/nvim-surround",
   "ggandor/leap.nvim",
   "echasnovski/mini.pairs",
   "echasnovski/mini.completion",
@@ -39,6 +39,7 @@ require('lualine').setup { sections = {
 require('leap').create_default_mappings()
 require('mini.pairs').setup()
 require('mini.completion').setup()
+require('nvim-surround').setup()
 require('lspconfig').clangd.setup{}
 require('lspconfig').rust_analyzer.setup{}
 vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
