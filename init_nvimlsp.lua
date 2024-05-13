@@ -31,8 +31,8 @@ vim.cmd('colorscheme moonfly')
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { { 'branch', icon = '' } },
   lualine_b = { { 'filename', path = 1 } },
-  lualine_c = { 'diff', '' },
-  lualine_x = { '', 'selectioncount', 'diagnostics', },
+  lualine_c = { 'diff', 'filesize' },
+  lualine_x = { 'selectioncount', 'diagnostics', 'progress' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 } }
