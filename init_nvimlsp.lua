@@ -3,13 +3,18 @@ require 'paq' {
   "bluz71/vim-moonfly-colors",
   "tpope/vim-sleuth",
   "kylechui/nvim-surround",
-  "ggandor/leap.nvim",
-  "echasnovski/mini.pairs",
   "echasnovski/mini.completion",
+  "echasnovski/mini.pairs",
+  "ggandor/leap.nvim",
   "neovim/nvim-lspconfig",
-  "puremourning/vimspector",
+  "mfussenegger/nvim-dap",
+  "nvim-neotest/nvim-nio",
+  "rcarriga/nvim-dap-ui",
+  "theHamsta/nvim-dap-virtual-text",
   "nvim-lualine/lualine.nvim",
   "ibhagwan/fzf-lua",
+  "Bekaboo/dropbar.nvim",
+  { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
 }
 vim.cmd("set termguicolors")
 vim.g.moonflyWinSeparator = 2
@@ -28,6 +33,15 @@ vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "cpp", "rust", "toml", "zig", "lua", "vim", "vimdoc", "query" },
+  sync_install = false,
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { { 'filename', path = 1 } },
@@ -86,17 +100,90 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
-vim.cmd 'nnoremap <Leader>dr <Plug>VimspectorRestart'
-vim.cmd 'nnoremap <Leader>de <Plug>VimspectorStop'
-vim.cmd 'nnoremap <Leader>dc <Plug>VimspectorContinue'
-vim.cmd 'nnoremap <Leader>dt <Plug>VimspectorRunToCursor'
-vim.cmd 'nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>'
-vim.cmd 'nnoremap <Leader>dl <Plug>VimspectorToggleConditionalBreakpoint'
-vim.cmd 'nnoremap <Leader><Up> <Plug>VimspectorUpFrame'
-vim.cmd 'nnoremap <Leader><Down> <Plug>VimspectorDownFrame'
-vim.cmd 'nnoremap <Leader>dh <Plug>VimspectorStepOut'
-vim.cmd 'nnoremap <Leader>dk <Plug>VimspectorStepInto'
-vim.cmd 'nnoremap <Leader>dj <Plug>VimspectorStepOver'
-vim.cmd 'nnoremap <Leader>dp <Plug>VimspectorBalloonEval'
-vim.cmd 'vnoremap <Leader>dp <Plug>VimspectorBalloonEval'
-vim.cmd 'nnoremap <Leader>B <Plug>VimspectorBreakpoints'
+require("dapui").setup()
+require("nvim-dap-virtual-text").setup()
+local dap, dapui = require("dap"), require("dapui")
+dap.adapters.lldb = {
+  type = 'executable',
+  command = 'C:/Program Files/LLVM/bin/lldb-dap.exe', -- adjust as needed, must be absolute path
+  name = 'lldb'
+}
+dap.configurations.cpp = {
+  {
+    name = 'Launch',
+    type = 'lldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+ }
+}
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = {
+  {
+    name = 'Launch',
+    type = 'lldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+    initCommands = function()
+      -- Find out where to look for the pretty printer Python module
+      local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
+
+      local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
+      local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
+
+      local commands = {}
+      local file = io.open(commands_file, 'r')
+      if file then
+        for line in file:lines() do
+          table.insert(commands, line)
+        end
+        file:close()
+      end
+      table.insert(commands, 1, script_import)
+
+      return commands
+    end,
+  }
+}
+dap.listeners.before.attach.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dapui.close()
+end
+vim.keymap.set('n', '<leader>D', function() require('dapui').close() end, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>dc', function() require('dap').continue() end)
+vim.keymap.set('n', '<leader>dj', function() require('dap').step_over() end)
+vim.keymap.set('n', '<leader>dk', function() require('dap').step_into() end)
+vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+vim.keymap.set('n', '<Leader>lp',
+  function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function() require('dap.ui.widgets').hover() end)
+vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function() require('dap.ui.widgets').preview() end)
+vim.keymap.set('n', '<Leader>dd', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.scopes)
+end)
