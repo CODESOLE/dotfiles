@@ -23,3 +23,11 @@ CapsLock::Esc
 #HotIf WinActive("ahk_exe emacs.exe")
 CapsLock::Esc
 #HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
+
+#HotIf WinActive("ahk_exe Nvy.exe")
+CapsLock::Esc
+#HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
+
+#HotIf WinActive("ahk_exe nvim-qt.exe")
+CapsLock::Esc
+#HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
