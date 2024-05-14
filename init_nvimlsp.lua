@@ -34,7 +34,7 @@ vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('colorscheme moonfly')
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "rust", "toml", "zig", "lua", "vim", "vimdoc", "query" },
+  ensure_installed = { "go", "c", "cpp", "rust", "toml", "zig", "lua", "vim", "vimdoc", "query" },
   sync_install = false,
   auto_install = true,
   highlight = {
