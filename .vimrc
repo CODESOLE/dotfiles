@@ -18,7 +18,6 @@ let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
 set termguicolors
-set guifont=Hack\ Nerd\ Font\ Mono:h10
 colorscheme moonfly
 set gp=git\ grep\ -rn
 set backspace=2
