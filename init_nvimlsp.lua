@@ -105,36 +105,13 @@ require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
 dap.adapters.lldb = {
   type = 'executable',
-  command = 'C:/Program Files/LLVM/bin/lldb-dap.exe', -- adjust as needed, must be absolute path
+  command = 'lldb-dap',
   name = 'lldb'
 }
-dap.configurations.cpp = {
-  {
-    name = 'Launch',
-    type = 'lldb',
-    request = 'launch',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = {},
- }
-}
-dap.configurations.c = dap.configurations.cpp
+require('dap.ext.vscode').load_launchjs("launch.json", { lldb = {'c', 'cpp', 'rust'} })
 dap.configurations.rust = {
   {
-    name = 'Launch',
-    type = 'lldb',
-    request = 'launch',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = {},
     initCommands = function()
-      -- Find out where to look for the pretty printer Python module
       local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
 
       local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
