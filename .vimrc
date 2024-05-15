@@ -13,7 +13,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/fugitive.vim'
+Plug 'tpope/vim-fugitive.vim'
 call plug#end()
 packadd! editorconfig
 let g:EasyMotion_smartcase = 1
