@@ -46,7 +46,7 @@ let mapleader=" "
 noremap gl $
 noremap gh 0
 set is hlsearch
-nmap <silent> <leader><leader> :nohlsearch<CR>
+nmap <silent> <leader><CR> :nohlsearch<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
