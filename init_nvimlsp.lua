@@ -68,7 +68,7 @@ vim.keymap.set("n", "<leader>fo", "<cmd>lua require('fzf-lua').oldfiles()<CR>", 
 vim.keymap.set("n", "<leader>fc", "<cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true })
 vim.lsp.inlay_hint.enable(true)
 vim.keymap.set('n', '<leader>t', ':sp | term<CR>')
-vim.keymap.set('n', '<leader>g', ':!lazygit<CR>')
+vim.keymap.set('n', '<leader>g', ':tabnew term://lazygit<CR>')
 vim.keymap.set('n', '<leader><CR>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
