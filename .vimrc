@@ -11,14 +11,17 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
 Plug 'jiangmiao/auto-pairs'
-Plug 'bluz71/vim-moonfly-colors'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/fugitive.vim'
 call plug#end()
 packadd! editorconfig
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
 set termguicolors
-colorscheme moonfly
+set guifont=Hack\ Nerd\ Font\ Mono:h10
+colorscheme retrobox
 set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
@@ -64,6 +67,12 @@ set nobackup
 set nowritebackup
 set noswapfile
 set guioptions=Ac
+nnoremap <silent> <leader>ff :Files<CR>
+nnoremap <silent> <leader>fl :Rg<CR>
+nnoremap <silent> <leader>fg :GitFiles<CR>
+nnoremap <silent> <leader>fb :Buffers<CR>
+nnoremap <silent> <leader>fo :History<CR>
+nnoremap <silent> <leader>fc :BLines<CR>
 inoremap <silent> ş <Esc>
 vnoremap <silent> ş <Esc>
 cnoremap <silent> ş <Esc>
