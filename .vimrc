@@ -51,7 +51,7 @@ nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
-nnoremap <leader>g :!lazygit<cr><cr>
+nnoremap <leader>g :Git<cr>
 nnoremap <leader>o :CocOutline<cr>
 nnoremap <leader>O :ccl<cr>
 inoremap <C-k> <Up>
