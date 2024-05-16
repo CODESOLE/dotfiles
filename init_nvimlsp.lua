@@ -103,15 +103,19 @@ vim.keymap.set("n", "q", "<nop>", {})
 require("dapui").setup()
 require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
-dap.adapters.lldb = {
-  type = 'executable',
-  command = '/data/data/com.termux/files/usr/bin/lldb-dap',
-  name = 'lldb'
-}
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "13000",
+  executable = {
+    command = vim.fn.stdpath('data') .. '/codelldb/extension/adapter/codelldb',
+    args = { "--port", "13000" },
+    -- On windows you may have to uncomment this:
+    detached = false,
+  }}
 dap.configurations.cpp = {
   {
     name = 'Launch',
-    type = 'lldb',
+    type = 'codelldb',
     request = 'launch',
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
@@ -132,47 +136,7 @@ dap.configurations.cpp = {
   },
 }
 dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = {
-  {
-    name = 'Launch',
-    type = 'lldb',
-    request = 'launch',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = function()
-      local args = vim.fn.input('Args: ', '', 'file')
-      local words = {}
-      for v in args:gmatch('%S+') do
-        table.insert(words, v)
-      end
-      if #words == 0 then
-        return {}
-      end
-      return words
-    end,
-    initCommands = function()
-      local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
-
-      local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
-      local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
-
-      local commands = {}
-      local file = io.open(commands_file, 'r')
-      if file then
-        for line in file:lines() do
-          table.insert(commands, line)
-        end
-        file:close()
-      end
-      table.insert(commands, 1, script_import)
-
-      return commands
-    end,
-  },
-}
+dap.configurations.rust = dap.configurations.cpp
 dap.listeners.before.attach.dapui_config = function()
   dapui.open()
   vim.cmd'set signcolumn=yes'
