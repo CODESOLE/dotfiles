@@ -16,9 +16,9 @@ require 'paq' {
   "Bekaboo/dropbar.nvim",
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
 }
-vim.cmd("set termguicolors")
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
+vim.cmd('colorscheme moonfly')
 vim.o.showmode     = false
 vim.o.swapfile     = false
 vim.o.backup     = false
@@ -32,7 +32,6 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
-vim.cmd('colorscheme moonfly')
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "go", "c", "cpp", "rust", "toml", "zig", "lua", "vim", "vimdoc", "query" },
   sync_install = false,
