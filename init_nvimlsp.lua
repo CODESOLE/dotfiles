@@ -1,6 +1,7 @@
 require 'paq' {
   "savq/paq-nvim",
   "bluz71/vim-moonfly-colors",
+  "j-hui/fidget.nvim",
   "tpope/vim-sleuth",
   "kylechui/nvim-surround",
   "echasnovski/mini.completion",
@@ -33,6 +34,7 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
+require'fidget'.setup()
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "go", "c", "cpp", "rust", "toml", "zig", "lua", "vim", "vimdoc", "query" },
   sync_install = false,
@@ -70,7 +72,7 @@ require'nvim-treesitter.configs'.setup {
     },
     lsp_interop = {
       enable = true,
-      floating_preview_opts = { border = 'rounded' },
+      floating_preview_opts = { border = 'none' },
       peek_definition_code = {
         ["<leader>p"] = "@function.outer",
         ["<leader>P"] = "@class.outer",
