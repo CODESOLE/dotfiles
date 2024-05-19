@@ -72,7 +72,7 @@ require'nvim-treesitter.configs'.setup {
     },
     lsp_interop = {
       enable = true,
-      floating_preview_opts = { border = 'none' },
+      floating_preview_opts = { border = 'rounded' },
       peek_definition_code = {
         ["<leader>p"] = "@function.outer",
         ["<leader>P"] = "@class.outer",
@@ -110,7 +110,7 @@ vim.keymap.set("n", "<leader>fc", "<cmd>lua require('fzf-lua').lgrep_curbuf()<CR
 vim.lsp.inlay_hint.enable(true)
 vim.keymap.set('n', '<leader>t', ':sp | term<CR>')
 vim.keymap.set('n', '<leader>g', ':tabnew term://lazygit<CR>')
-vim.keymap.set('n', '<leader><CR>', ':nohlsearch<CR>')
+vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
 vim.keymap.set('i', '<C-k>', '<Up>')
