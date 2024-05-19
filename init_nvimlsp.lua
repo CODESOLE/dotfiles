@@ -7,6 +7,9 @@ require 'paq' {
   "echasnovski/mini.completion",
   "echasnovski/mini.pairs",
   "ggandor/leap.nvim",
+  "sindrets/diffview.nvim",
+  "nvim-lua/plenary.nvim",
+  "NeogitOrg/neogit",
   "neovim/nvim-lspconfig",
   "mfussenegger/nvim-dap",
   "nvim-neotest/nvim-nio",
@@ -35,6 +38,8 @@ vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 require'fidget'.setup()
+require'neogit'.setup()
+require'diffview'.setup{ use_icons = false, }
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "go", "c", "cpp", "rust", "toml", "zig", "lua", "vim", "vimdoc", "query" },
   sync_install = false,
@@ -109,7 +114,7 @@ vim.keymap.set("n", "<leader>fo", "<cmd>lua require('fzf-lua').oldfiles()<CR>", 
 vim.keymap.set("n", "<leader>fc", "<cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true })
 vim.lsp.inlay_hint.enable(true)
 vim.keymap.set('n', '<leader>t', ':sp | term<CR>')
-vim.keymap.set('n', '<leader>g', ':tabnew term://lazygit<CR>')
+vim.keymap.set('n', '<leader>g', ':Neogit<CR>')
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
