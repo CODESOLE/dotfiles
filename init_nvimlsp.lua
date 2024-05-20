@@ -6,6 +6,8 @@ require 'paq' {
   "kylechui/nvim-surround",
   "echasnovski/mini.completion",
   "echasnovski/mini.pairs",
+  "echasnovski/mini.files",
+  "nvim-tree/nvim-web-devicons",
   "ggandor/leap.nvim",
   "sindrets/diffview.nvim",
   "nvim-lua/plenary.nvim",
@@ -38,6 +40,8 @@ vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 require'fidget'.setup()
+require'mini.files'.setup{ windows = { preview = true } }
+vim.keymap.set("n", "<leader>m", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
 require'neogit'.setup()
 require'diffview'.setup{ use_icons = false, }
 require'nvim-treesitter.configs'.setup {
