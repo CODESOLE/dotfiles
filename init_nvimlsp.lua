@@ -3,6 +3,7 @@ require 'paq' {
   "bluz71/vim-moonfly-colors",
   "j-hui/fidget.nvim",
   "tpope/vim-sleuth",
+  "mg979/vim-visual-multi",
   "kylechui/nvim-surround",
   "echasnovski/mini.completion",
   "echasnovski/mini.pairs",
