@@ -44,7 +44,7 @@ require'fidget'.setup()
 require'mini.files'.setup{ windows = { preview = true } }
 vim.keymap.set("n", "<leader>m", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
 require'neogit'.setup()
-require'diffview'.setup{ use_icons = false, }
+require'diffview'.setup()
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "go", "c", "cpp", "rust", "toml", "zig", "lua", "vim", "vimdoc", "query" },
   sync_install = false,
