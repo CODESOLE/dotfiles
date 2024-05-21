@@ -39,3 +39,7 @@ CapsLock::Esc
 #HotIf WinActive("ahk_exe VSCodium.exe")
 CapsLock::Esc
 #HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
+
+#HotIf WinActive("ahk_exe neovide.exe")
+CapsLock::Esc
+#HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
