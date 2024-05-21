@@ -14,10 +14,7 @@ require 'paq' {
   "nvim-lua/plenary.nvim",
   "NeogitOrg/neogit",
   "neovim/nvim-lspconfig",
-  "mfussenegger/nvim-dap",
-  "nvim-neotest/nvim-nio",
-  "rcarriga/nvim-dap-ui",
-  "theHamsta/nvim-dap-virtual-text",
+  "puremourning/vimspector",
   "nvim-lualine/lualine.nvim",
   "ibhagwan/fzf-lua",
   "Bekaboo/dropbar.nvim",
@@ -148,87 +145,17 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
-require("dapui").setup()
-require("nvim-dap-virtual-text").setup()
-local dap, dapui = require("dap"), require("dapui")
-dap.adapters.codelldb = {
-  type = 'server',
-  port = "13000",
-  executable = {
-    command = vim.fn.stdpath('data') .. '/codelldb/extension/adapter/codelldb',
-    args = { "--port", "13000" },
-    -- On windows you may have to uncomment this:
-    detached = false,
-  }}
-dap.configurations.cpp = {
-  {
-    name = 'Launch',
-    type = 'codelldb',
-    request = 'launch',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = function()
-      local args = vim.fn.input('Args: ', '', 'file')
-      local words = {}
-      for v in args:gmatch('%S+') do
-        table.insert(words, v)
-      end
-      if #words == 0 then
-        return {}
-      end
-      return words
-    end,
-  },
-}
-dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = dap.configurations.cpp
-dap.listeners.before.attach.dapui_config = function()
-  dapui.open()
-  vim.cmd'set signcolumn=yes'
-end
-dap.listeners.before.launch.dapui_config = function()
-  dapui.open()
-  vim.cmd'set signcolumn=yes'
-end
-dap.listeners.before.event_terminated.dapui_config = function()
-  dapui.close()
-  vim.cmd'set signcolumn=no'
-end
-dap.listeners.before.event_exited.dapui_config = function()
-  dapui.close()
-  vim.cmd'set signcolumn=no'
-end
-vim.keymap.set('n', '<leader>D', function() require('dapui').close() end, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>dc', function() require('dap').continue() end)
-vim.keymap.set('n', '<leader>dj', function() require('dap').step_over() end)
-vim.keymap.set('n', '<leader>dk', function() require('dap').step_into() end)
-vim.keymap.set('n', '<leader>do', function() require('dap').step_out() end)
-vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
-vim.keymap.set('n', '<Leader>B', function()
-  require('dap').list_breakpoints()
-  vim.cmd('copen')
-end)
-vim.keymap.set('n', '<Leader>c', function()
-  require('dap').clear_breakpoints()
-  vim.cmd('copen')
-end)
-vim.keymap.set('n', '<Leader>dt', function() require('dap').run_to_cursor() end)
-vim.keymap.set('n', '<Leader><Up>', function() require('dap').up() end)
-vim.keymap.set('n', '<Leader><Down>', function() require('dap').down() end)
-vim.keymap.set('n', '<Leader>L',
-  function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
-vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function() require('dap.ui.widgets').hover() end)
-vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function() require('dap.ui.widgets').preview() end)
-vim.keymap.set('n', '<Leader>df', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.frames)
-end)
-vim.keymap.set('n', '<Leader>ds', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.scopes)
-end)
+vim.cmd 'nnoremap <Leader>dr <Plug>VimspectorRestart'
+vim.cmd 'nnoremap <Leader>de <Plug>VimspectorStop'
+vim.cmd 'nnoremap <Leader>dc <Plug>VimspectorContinue'
+vim.cmd 'nnoremap <Leader>dt <Plug>VimspectorRunToCursor'
+vim.cmd 'nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>'
+vim.cmd 'nnoremap <Leader>dl <Plug>VimspectorToggleConditionalBreakpoint'
+vim.cmd 'nnoremap <Leader><Up> <Plug>VimspectorUpFrame'
+vim.cmd 'nnoremap <Leader><Down> <Plug>VimspectorDownFrame'
+vim.cmd 'nnoremap <Leader>dh <Plug>VimspectorStepOut'
+vim.cmd 'nnoremap <Leader>dk <Plug>VimspectorStepInto'
+vim.cmd 'nnoremap <Leader>dj <Plug>VimspectorStepOver'
+vim.cmd 'nnoremap <Leader>dp <Plug>VimspectorBalloonEval'
+vim.cmd 'vnoremap <Leader>dp <Plug>VimspectorBalloonEval'
+vim.cmd 'nnoremap <Leader>B <Plug>VimspectorBreakpoints'
