@@ -42,7 +42,7 @@ vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 require'fidget'.setup()
 require'mini.files'.setup{ windows = { preview = true } }
-vim.keymap.set("n", "<leader>m", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>o", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
 require'neogit'.setup()
 require'diffview'.setup()
 require'nvim-treesitter.configs'.setup {
