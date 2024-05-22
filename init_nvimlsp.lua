@@ -115,6 +115,18 @@ vim.keymap.set("n", "<leader>fD", "<cmd>lua require('fzf-lua').diagnostics_works
 vim.keymap.set("n", "<leader>fo", "<cmd>lua require('fzf-lua').oldfiles()<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fc", "<cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true })
 vim.lsp.inlay_hint.enable(true)
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, opts)
+  end,
+})
 vim.keymap.set('n', '<leader>t', ':sp | term<CR>')
 vim.keymap.set('n', '<leader>g', ':Neogit<CR>')
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
