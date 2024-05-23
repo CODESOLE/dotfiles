@@ -23,6 +23,7 @@ require 'paq' {
 }
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
+vim.o.updatetime = 1000
 vim.cmd('colorscheme moonfly')
 vim.o.showmode     = false
 vim.o.swapfile     = false
@@ -125,6 +126,28 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, opts)
+    if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.documentHighlightProvider then
+          vim.cmd [[
+            hi! LspReferenceRead cterm=bold ctermbg=Gray guibg=#323437
+            hi! LspReferenceText cterm=bold ctermbg=Gray guibg=#323437
+            hi! LspReferenceWrite cterm=bold ctermbg=Gray guibg=#323437
+          ]]
+          vim.api.nvim_create_augroup('lsp_document_highlight', { clear = false })
+          vim.api.nvim_clear_autocmds({
+            buffer = ev.buf,
+            group = 'lsp_document_highlight',
+          })
+          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+            group = 'lsp_document_highlight',
+            buffer = ev.buf,
+            callback = vim.lsp.buf.document_highlight,
+          })
+          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+            group = 'lsp_document_highlight',
+            buffer = ev.buf,
+            callback = vim.lsp.buf.clear_references,
+          })
+    end
   end,
 })
 vim.keymap.set('n', '<leader>t', ':sp | term<CR>')
