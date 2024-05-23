@@ -87,7 +87,7 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
-require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
+require('lualine').setup { options = { section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'filename' },
   lualine_c = { 'diff', 'filesize' },
