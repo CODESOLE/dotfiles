@@ -17,7 +17,6 @@ require 'paq' {
   "puremourning/vimspector",
   "nvim-lualine/lualine.nvim",
   "ibhagwan/fzf-lua",
-  "Bekaboo/dropbar.nvim",
   "nvim-treesitter/nvim-treesitter-textobjects",
   "nvim-treesitter/nvim-treesitter-context",
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
