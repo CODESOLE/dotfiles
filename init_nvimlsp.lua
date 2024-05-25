@@ -23,7 +23,7 @@ require 'paq' {
 }
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
-vim.o.updatetime = 1000
+vim.o.updatetime = 500
 vim.cmd('colorscheme moonfly')
 vim.o.showmode     = false
 vim.o.swapfile     = false
