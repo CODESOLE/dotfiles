@@ -8,7 +8,6 @@ require 'paq' {
   "echasnovski/mini.completion",
   "echasnovski/mini.pairs",
   "echasnovski/mini.files",
-  "nvim-tree/nvim-web-devicons",
   "ggandor/leap.nvim",
   "neovim/nvim-lspconfig",
   "puremourning/vimspector",
