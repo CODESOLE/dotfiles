@@ -100,7 +100,23 @@ require('leap').create_default_mappings()
 require('mini.pairs').setup()
 require('mini.completion').setup()
 require('nvim-surround').setup()
+require('lspconfig').gopls.setup{
+  settings = {
+    gopls = {
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      }
+    }
+  }
+}
 require('lspconfig').clangd.setup{}
+require('lspconfig').zls.setup{}
 require('lspconfig').rust_analyzer.setup{}
 require('fzf-lua').setup{'fzf-native'}
 vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
