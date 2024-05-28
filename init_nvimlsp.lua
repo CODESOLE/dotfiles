@@ -17,6 +17,12 @@ require 'paq' {
   "nvim-treesitter/nvim-treesitter-context",
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
 }
+vim.o.shell = 'nu'
+vim.o.shellcmdflag='-c'
+vim.o.shellredir = '2>&1 | save --raw %s'
+vim.o.shellpipe = '2>&1 | save --raw %s'
+vim.o.shellquote = "'"
+vim.o.shellxquote = ""
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
 vim.o.updatetime = 500
