@@ -10,9 +10,6 @@ require 'paq' {
   "echasnovski/mini.files",
   "nvim-tree/nvim-web-devicons",
   "ggandor/leap.nvim",
-  "sindrets/diffview.nvim",
-  "nvim-lua/plenary.nvim",
-  "NeogitOrg/neogit",
   "neovim/nvim-lspconfig",
   "puremourning/vimspector",
   "nvim-lualine/lualine.nvim",
@@ -41,8 +38,6 @@ vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch
 require'fidget'.setup()
 require'mini.files'.setup{ windows = { preview = true } }
 vim.keymap.set("n", "<leader>o", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
-require'neogit'.setup()
-require'diffview'.setup()
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "go", "c", "cpp", "rust", "toml", "zig", "lua", "vim", "vimdoc", "query" },
   sync_install = false,
@@ -88,7 +83,7 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
-require('lualine').setup { options = { section_separators = '', component_separators = '' }, sections = {
+require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'filename' },
   lualine_c = { 'diff', 'filesize' },
@@ -118,7 +113,6 @@ require('lspconfig').gopls.setup{
 require('lspconfig').clangd.setup{}
 require('lspconfig').zls.setup{}
 require('lspconfig').rust_analyzer.setup{}
-require('fzf-lua').setup{'fzf-native'}
 vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fl", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').git_files()<CR>", { silent = true })
@@ -167,7 +161,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 vim.keymap.set('n', '<leader>t', ':sp | term<CR>')
-vim.keymap.set('n', '<leader>g', ':Neogit<CR>')
+vim.keymap.set('n', '<leader>g', ':!lazygit<CR>')
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
