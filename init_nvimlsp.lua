@@ -3,7 +3,7 @@ require 'paq' {
   "bluz71/vim-moonfly-colors",
   "j-hui/fidget.nvim",
   "tpope/vim-sleuth",
-  "mg979/vim-visual-multi",
+  "akinsho/toggleterm.nvim",
   "kylechui/nvim-surround",
   "echasnovski/mini.completion",
   "echasnovski/mini.pairs",
@@ -40,6 +40,13 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
+require'toggleterm'.setup{ open_mapping = [[<leader>t]] }
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ direction = "float", cmd = "lazygit", hidden = true })
+function Lazygit_toggle()
+  lazygit:toggle()
+end
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua Lazygit_toggle()<CR>", {noremap = true, silent = true})
 require'fidget'.setup()
 require'mini.files'.setup{ windows = { preview = true } }
 vim.keymap.set("n", "<leader>o", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
@@ -165,8 +172,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
-vim.keymap.set('n', '<leader>t', ':sp | term<CR>')
-vim.keymap.set('n', '<leader>g', ':!lazygit<CR>')
 vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
