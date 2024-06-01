@@ -40,7 +40,7 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
-require'toggleterm'.setup{ open_mapping = [[<leader>t]] }
+require'toggleterm'.setup{ insert_mappings = false, open_mapping = [[<leader>t]] }
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ direction = "float", cmd = "lazygit", hidden = true })
 function Lazygit_toggle()
