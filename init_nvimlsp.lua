@@ -40,7 +40,7 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
-require'toggleterm'.setup{ insert_mappings = false, open_mapping = [[<leader>t]] }
+require'toggleterm'.setup{ open_mapping = [[<C-t>]] }
 vim.keymap.set("n", "<leader>g", function() require('toggleterm.terminal').Terminal:new({ direction = "float", cmd = "lazygit", hidden = true }):toggle() end, {noremap = true, silent = true})
 require'fidget'.setup()
 require'mini.files'.setup{ windows = { preview = true } }
