@@ -23,6 +23,10 @@
       "rangeVariableTypes": true
     }
   },
+  "zig.enabled": true,
+  "zig.startUpMessage": true,
+  "zig.path": "zls",
+  "zig.debugLog": false,
   "clangd.arguments": [
     "--background-index",
     "--clang-tidy",
