@@ -13,7 +13,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
+Plug 'voldikss/vim-floaterm'
+Plug 'wellle/context.vim'
 call plug#end()
 packadd! editorconfig
 let g:EasyMotion_smartcase = 1
@@ -51,7 +52,10 @@ nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
-nnoremap <leader>g :Git<cr>
+nnoremap <leader>g :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
+nnoremap <C-t> :FloatermToggle<CR>
+nnoremap <C-n> :FloatermNew<CR>
+nnoremap <C-p> :FloatermPrev<CR>
 nnoremap <leader>o :CocOutline<cr>
 nnoremap <leader>O :ccl<cr>
 inoremap <C-k> <Up>
