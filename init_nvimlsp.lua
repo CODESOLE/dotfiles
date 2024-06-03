@@ -1,11 +1,30 @@
-require 'paq' {
+local function clone_paq()
+  local path = vim.fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
+  local is_installed = vim.fn.empty(vim.fn.glob(path)) == 0
+  if not is_installed then
+    vim.fn.system { "git", "clone", "--depth=1", "https://github.com/savq/paq-nvim.git", path }
+    return true
+  end
+end
+local function bootstrap_paq(packages)
+  local first_install = clone_paq()
+  vim.cmd.packadd("paq-nvim")
+  local paq = require("paq")
+  if first_install then
+    vim.notify("Installing plugins... If prompted, hit Enter to continue.")
+  end
+  paq(packages)
+  paq.install()
+end
+bootstrap_paq {
   "savq/paq-nvim",
   "bluz71/vim-moonfly-colors",
   "j-hui/fidget.nvim",
   "tpope/vim-sleuth",
-  "akinsho/toggleterm.nvim",
+  "mg979/vim-visual-multi",
   "kylechui/nvim-surround",
   "echasnovski/mini.completion",
+  "akinsho/toggleterm.nvim",
   "echasnovski/mini.pairs",
   "echasnovski/mini.files",
   "ggandor/leap.nvim",
@@ -13,8 +32,8 @@ require 'paq' {
   "puremourning/vimspector",
   "nvim-lualine/lualine.nvim",
   "ibhagwan/fzf-lua",
-  "nvim-treesitter/nvim-treesitter-textobjects",
   "nvim-treesitter/nvim-treesitter-context",
+  "nvim-treesitter/nvim-treesitter-textobjects",
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
 }
 vim.o.shell = 'nu'
@@ -40,6 +59,7 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
+require'fzf-lua'.setup {'fzf-native'}
 require'toggleterm'.setup{ open_mapping = [[<C-t>]] }
 vim.keymap.set("n", "<leader>g", function() require('toggleterm.terminal').Terminal:new({ direction = "float", cmd = "lazygit", hidden = true }):toggle() end, {noremap = true, silent = true})
 require'fidget'.setup()
