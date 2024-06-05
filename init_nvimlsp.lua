@@ -60,8 +60,9 @@ vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 require'fzf-lua'.setup {'fzf-native'}
-require'toggleterm'.setup{ open_mapping = [[<C-t>]] }
-vim.keymap.set("n", "<leader>g", function() require('toggleterm.terminal').Terminal:new({ direction = "float", cmd = "lazygit", hidden = true }):toggle() end, {noremap = true, silent = true})
+require'toggleterm'.setup{ open_mapping = [[<C-s>]] }
+vim.keymap.set("n", "<C-p>", ":ToggleTerm direction=float<CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "<C-m>", function() require('toggleterm.terminal').Terminal:new({ direction = "float", cmd = "lazygit", hidden = true }):toggle() end, {noremap = true, silent = true})
 require'fidget'.setup()
 require'mini.files'.setup{ windows = { preview = true } }
 vim.keymap.set("n", "<leader>o", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
@@ -210,8 +211,7 @@ vim.keymap.set('t', '<A-j>', '<C-\\><C-N><C-w>j')
 vim.keymap.set('t', '<A-k>', '<C-\\><C-N><C-w>k')
 vim.keymap.set('t', '<A-h>', '<C-\\><C-N><C-w>h')
 vim.keymap.set('t', '<A-l>', '<C-\\><C-N><C-w>l')
-vim.api.nvim_create_autocmd({ "TermOpen", "WinEnter" }, { pattern = "term://*", command = "startinsert" })
-vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
+vim.keymap.set('t', '<M-m>', '<C-\\><C-N>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
