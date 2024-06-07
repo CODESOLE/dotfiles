@@ -141,6 +141,8 @@ require('lspconfig').gopls.setup{
 require('lspconfig').clangd.setup{}
 require('lspconfig').zls.setup{}
 require('lspconfig').rust_analyzer.setup{}
+require('lspconfig').v_analyzer.setup{}
+vim.cmd([[au BufNewFile,BufRead *.v set filetype=vlang]])
 vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fl", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').git_files()<CR>", { silent = true })
