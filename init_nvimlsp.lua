@@ -190,7 +190,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
-vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
 vim.keymap.set('i', '<C-k>', '<Up>')
