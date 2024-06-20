@@ -1,8 +1,3 @@
-"let data_dir = has('unix') ? '~/.vim' : '~/vimfiles'
-"if empty(glob(data_dir . '/autoload/plug.vim'))
-"  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-"endif
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
@@ -10,6 +5,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
+Plug 'mg979/vim-visual-multi'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -47,12 +43,11 @@ let mapleader=" "
 noremap gl $
 noremap gh 0
 set is hlsearch
-nmap <silent> <leader><CR> :nohlsearch<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
-nnoremap <leader>g :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
+nnoremap <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
 nnoremap <C-t> :FloatermToggle<CR>
 nnoremap <C-n> :FloatermNew<CR>
 nnoremap <C-p> :FloatermPrev<CR>
