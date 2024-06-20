@@ -14,7 +14,7 @@ call plug#end()
 packadd! editorconfig
 packadd! comment
 set shell=nu.exe
-set shellcmdflag='-c'
+set shellcmdflag="-c"
 set shellredir="2>&1 | save --raw %s"
 set shellpipe="2>&1 | save --raw %s"
 set shellquote=""
@@ -56,6 +56,9 @@ nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 nnoremap <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
+tnoremap <C-d> <C-\><C-n>:FloatermKill<CR>
+nnoremap <C-y> :FloatermNew<CR>
+tnoremap <C-y> <C-\><C-n>:FloatermNew<CR>
 nnoremap <C-t> :FloatermToggle<CR>
 tnoremap <C-t> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <C-n> <C-\><C-n>:FloatermNext<CR>
