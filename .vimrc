@@ -3,7 +3,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
 Plug 'mg979/vim-visual-multi'
 Plug 'jiangmiao/auto-pairs'
@@ -13,6 +12,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'wellle/context.vim'
 call plug#end()
 packadd! editorconfig
+packadd! comment
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
