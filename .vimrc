@@ -13,6 +13,7 @@ Plug 'wellle/context.vim'
 call plug#end()
 packadd! editorconfig
 packadd! comment
+packadd! cfilter
 set shell=nu.exe
 set shellcmdflag="-c"
 set shellredir="2>&1 | save --raw %s"
