@@ -58,7 +58,6 @@ nnoremap <leader>h :cp<cr>
 tnoremap ˆ[m <C-\><C-n>
 nnoremap <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
 tnoremap <C-d> <C-\><C-n>:FloatermKill<CR>
-nnoremap <C-y> :FloatermNew<CR>
 tnoremap <C-y> <C-\><C-n>:FloatermNew<CR>
 nnoremap <C-t> :FloatermToggle<CR>
 tnoremap <C-t> <C-\><C-n>:FloatermToggle<CR>
