@@ -13,6 +13,12 @@ Plug 'wellle/context.vim'
 call plug#end()
 packadd! editorconfig
 packadd! comment
+set shell=nu.exe
+set shellcmdflag='-c'
+set shellredir="2>&1 | save --raw %s"
+set shellpipe="2>&1 | save --raw %s"
+set shellquote=""
+set shellxquote=""
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
@@ -51,8 +57,9 @@ nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 nnoremap <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
 nnoremap <C-t> :FloatermToggle<CR>
-nnoremap <C-n> :FloatermNew<CR>
-nnoremap <C-p> :FloatermPrev<CR>
+tnoremap <C-t> <C-\><C-n>:FloatermToggle<CR>
+tnoremap <C-n> <C-\><C-n>:FloatermNext<CR>
+tnoremap <C-p> <C-\><C-n>:FloatermPrev<CR>
 nnoremap <leader>o :CocOutline<cr>
 nnoremap <leader>O :ccl<cr>
 inoremap <C-k> <Up>
