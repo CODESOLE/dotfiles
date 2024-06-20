@@ -5,7 +5,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
-Plug 'mg979/vim-visual-multi'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -34,15 +33,17 @@ set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clang
 set path+=**
 syntax enable
 set mouse=a
+set is hlsearch ignorecase smartcase showmatch
+set encoding=utf-8
+set nobackup
+set nowritebackup
+set noswapfile
+set guioptions=Ac
 filetype on
 filetype plugin on
-set ignorecase
-set smartcase
-set showmatch
 let mapleader=" "
 noremap gl $
 noremap gh 0
-set is hlsearch
 nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
@@ -61,11 +62,6 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
-set encoding=utf-8
-set nobackup
-set nowritebackup
-set noswapfile
-set guioptions=Ac
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>fl :Rg<CR>
 nnoremap <silent> <leader>fg :GitFiles<CR>
