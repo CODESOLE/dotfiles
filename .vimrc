@@ -54,10 +54,10 @@ tnoremap <C-d> <C-\><C-n>:FloatermKill<CR>
 tnoremap <C-y> <C-\><C-n>:FloatermNew<CR>
 nnoremap <C-t> :FloatermToggle<CR>
 tnoremap <C-t> <C-\><C-n>:FloatermToggle<CR>
-tnoremap <C-n> <C-\><C-n>:FloatermNext<CR>
-tnoremap <C-p> <C-\><C-n>:FloatermPrev<CR>
-nnoremap <leader>o :CocOutline<cr>
-nnoremap <leader>O :ccl<cr>
+tnoremap <C-j> <C-\><C-n>:FloatermNext<CR>
+tnoremap <C-k> <C-\><C-n>:FloatermPrev<CR>
+nnoremap <leader>o :Dir<cr>
+nnoremap <leader>O :CocOutline<cr>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
