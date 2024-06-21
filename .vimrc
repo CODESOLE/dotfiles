@@ -9,6 +9,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'voldikss/vim-floaterm'
+Plug 'habamax/vim-dir'
 Plug 'wellle/context.vim'
 Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
