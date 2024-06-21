@@ -14,12 +14,6 @@ call plug#end()
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
-set shell=nu.exe
-set shellcmdflag="-c"
-set shellredir="2>&1 | save --raw %s"
-set shellpipe="2>&1 | save --raw %s"
-set shellquote=""
-set shellxquote=""
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
