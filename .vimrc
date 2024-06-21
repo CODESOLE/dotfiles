@@ -16,6 +16,7 @@ call plug#end()
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
+packadd! nohlsearch
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
