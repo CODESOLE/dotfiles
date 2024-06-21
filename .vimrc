@@ -23,10 +23,7 @@ colorscheme retrobox
 set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
-set shortmess+=I
 set signcolumn=no
-set noshowcmd
-set noshowmode
 set laststatus=-
 set wildmode=list,full
 set wildmenu
@@ -165,4 +162,3 @@ nnoremap <Leader>dj <Plug>VimspectorStepOver
 nnoremap <Leader>dp <Plug>VimspectorBalloonEval
 vnoremap <Leader>dp <Plug>VimspectorBalloonEval
 nnoremap <Leader>B <Plug>VimspectorBreakpoints
-set fillchars+=eob:\ 
