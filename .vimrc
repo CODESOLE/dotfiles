@@ -10,6 +10,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'wellle/context.vim'
+Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
 packadd! editorconfig
 packadd! comment
@@ -19,7 +20,7 @@ nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
 set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
-colorscheme retrobox
+colorscheme moonfly
 set gp=git\ grep\ -rn
 set backspace=2
 set shortmess-=S
@@ -72,7 +73,6 @@ nnoremap <silent> <leader>fc :BLines<CR>
 inoremap <silent> ş <Esc>
 vnoremap <silent> ş <Esc>
 cnoremap <silent> ş <Esc>
-hi CocInlayHint guibg=#111111 guifg=#444444
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
             \ CheckBackspace() ? "\<Tab>" :
