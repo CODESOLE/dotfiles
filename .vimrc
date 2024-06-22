@@ -11,11 +11,13 @@ Plug 'voldikss/vim-floaterm'
 Plug 'habamax/vim-dir'
 Plug 'wellle/context.vim'
 Plug 'bluz71/vim-moonfly-colors'
+Plug 'bluz71/vim-mistfly-statusline'
+Plug 'mhinz/vim-signify'
 call plug#end()
+set updatetime=100
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
-packadd! nohlsearch
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
