@@ -29,6 +29,7 @@ set signcolumn=no
 set laststatus=-
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu
 set wildmenu
+set wildmode=list,full
 set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*
 set path+=**
 syntax enable
