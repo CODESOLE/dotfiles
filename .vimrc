@@ -28,6 +28,7 @@ set backspace=2 ruler
 set shortmess-=S
 set signcolumn=no
 set laststatus=-
+set path+=**
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu
 set wildmode=list,full
 set wildmenu
