@@ -28,7 +28,6 @@ set gp=git\ grep\ -rn
 set backspace=2 ruler
 set shortmess-=S
 set signcolumn=no
-set laststatus=-
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu
 set wildmenu
 set wildmode=list,full
