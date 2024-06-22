@@ -6,8 +6,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'mg979/vim-visual-multi'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'Donaldttt/fuzzyy'
 Plug 'voldikss/vim-floaterm'
 Plug 'habamax/vim-dir'
 Plug 'wellle/context.vim'
@@ -68,12 +67,15 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
-nnoremap <silent> <leader>ff :Files<CR>
-nnoremap <silent> <leader>fl :Rg<CR>
-nnoremap <silent> <leader>fg :GitFiles<CR>
-nnoremap <silent> <leader>fb :Buffers<CR>
-nnoremap <silent> <leader>fo :History<CR>
-nnoremap <silent> <leader>fc :BLines<CR>
+let g:enable_fuzzyy_MRU_files=1
+let g:enable_fuzzyy_keymaps=0
+nnoremap <silent> <leader>fi :FuzzyCommands<CR>
+nnoremap <silent> <leader>ff :FuzzyFiles<CR>
+nnoremap <silent> <leader>fl :FuzzyGrep<CR>
+nnoremap <silent> <leader>fg :FuzzyGitFiles<CR>
+nnoremap <silent> <leader>fb :FuzzyBuffers<CR>
+nnoremap <silent> <leader>fo :FuzzyMRUFiles<CR>
+nnoremap <silent> <leader>fc :FuzzyInBuffer<CR>
 inoremap <silent> ş <Esc>
 vnoremap <silent> ş <Esc>
 cnoremap <silent> ş <Esc>
