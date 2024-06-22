@@ -25,7 +25,7 @@ set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
 colorscheme moonfly
 set gp=git\ grep\ -rn
-set backspace=2 ruler
+set backspace=2 noruler
 set shortmess-=S noshowmode
 set signcolumn=no
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu
