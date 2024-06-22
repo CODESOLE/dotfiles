@@ -27,11 +27,10 @@ set backspace=2 ruler
 set shortmess-=S
 set signcolumn=no
 set laststatus=-
-set path+=**
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu
-set wildmode=list,full
 set wildmenu
 set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*
+set path+=**
 syntax enable
 set mouse=a
 set is hlsearch ignorecase smartcase showmatch
