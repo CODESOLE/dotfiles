@@ -24,7 +24,7 @@ set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
 colorscheme moonfly
 set gp=git\ grep\ -rn
-set backspace=2
+set backspace=2 ruler
 set shortmess-=S
 set signcolumn=no
 set laststatus=-
@@ -50,6 +50,7 @@ nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 nnoremap <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
+tnoremap <C-space> <C-\><C-n>
 tnoremap <C-d> <C-\><C-n>:FloatermKill<CR>
 tnoremap <C-y> <C-\><C-n>:FloatermNew<CR>
 nnoremap <C-t> :FloatermToggle<CR>
