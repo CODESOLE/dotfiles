@@ -11,11 +11,13 @@ Plug 'voldikss/vim-floaterm'
 Plug 'habamax/vim-dir'
 Plug 'wellle/context.vim'
 Plug 'bluz71/vim-moonfly-colors'
-Plug 'vim-airline/vim-airline'
-Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
 call plug#end()
-set updatetime=100
+set laststatus=-
+set rulerformat^=%{coc#status()}
+set rulerformat^=%{FugitiveStatusline()}
 set guicursor+=a:block,a:blinkoff0
+set updatetime=100
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
@@ -26,8 +28,8 @@ set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
 colorscheme moonfly
 set gp=git\ grep\ -rn
-set backspace=2 noruler
-set shortmess-=S noshowmode
+set backspace=2 ruler
+set shortmess-=S
 set signcolumn=no
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu
 set wildmenu
