@@ -16,7 +16,6 @@ set laststatus=-
 set rulerformat^=%{coc#status()}
 set rulerformat^=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}
 set guicursor+=a:block,a:blinkoff0
-set updatetime=100
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
