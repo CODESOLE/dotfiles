@@ -1,6 +1,6 @@
 # dotfiles
 
-`coc-clangd` `coc-zig` `coc-rust-analyzer` `coc-go` `coc-json` `coc-floaterm`
+`coc-clangd` `coc-zig` `coc-rust-analyzer` `coc-go` `coc-json` `coc-floaterm` `coc-git`
 
 
         require("dapui").setup()
