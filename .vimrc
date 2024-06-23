@@ -13,8 +13,8 @@ Plug 'wellle/context.vim'
 Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
 set laststatus=-
-set rulerformat^=%{coc#status()}
-set rulerformat^=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}
+set rulerformat^=%100(%{coc#status()}%)
+set rulerformat^=%100(%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
 set guicursor+=a:block,a:blinkoff0
 packadd! editorconfig
 packadd! comment
