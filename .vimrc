@@ -15,6 +15,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-signify'
 call plug#end()
 set updatetime=100
+set guicursor+=a:block,a:blinkoff0
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
