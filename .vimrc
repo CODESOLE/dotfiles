@@ -85,6 +85,9 @@ nnoremap [h <Plug>(coc-git-prevchunk)
 nnoremap ]h <Plug>(coc-git-nextchunk)
 nnoremap [c <Plug>(coc-git-prevconflict)
 nnoremap ]c <Plug>(coc-git-nextconflict)
+nnoremap <leader>u <Plug>(coc-git-keepcurrent)
+nnoremap <leader>t <Plug>(coc-git-keepincoming)
+nnoremap <leader>b <Plug>(coc-git-keepboth)
 nnoremap <leader>g <Plug>(coc-git-chunkinfo)
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
