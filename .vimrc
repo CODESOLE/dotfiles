@@ -11,7 +11,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'habamax/vim-dir'
 Plug 'wellle/context.vim'
 Plug 'bluz71/vim-moonfly-colors'
-Plug 'bluz71/vim-mistfly-statusline'
+Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-signify'
 call plug#end()
 set updatetime=100
