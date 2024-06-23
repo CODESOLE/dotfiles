@@ -11,11 +11,10 @@ Plug 'voldikss/vim-floaterm'
 Plug 'habamax/vim-dir'
 Plug 'wellle/context.vim'
 Plug 'bluz71/vim-moonfly-colors'
-Plug 'tpope/vim-fugitive'
 call plug#end()
 set laststatus=-
 set rulerformat^=%{coc#status()}
-set rulerformat^=%{FugitiveStatusline()}
+set rulerformat^=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}
 set guicursor+=a:block,a:blinkoff0
 set updatetime=100
 packadd! editorconfig
