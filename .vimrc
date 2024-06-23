@@ -81,6 +81,11 @@ nnoremap <silent> <leader>fc :FuzzyInBuffer<CR>
 inoremap <silent> ş <Esc>
 vnoremap <silent> ş <Esc>
 cnoremap <silent> ş <Esc>
+nnoremap [h <Plug>(coc-git-prevchunk)
+nnoremap ]h <Plug>(coc-git-nextchunk)
+nnoremap [c <Plug>(coc-git-prevconflict)
+nnoremap ]c <Plug>(coc-git-nextconflict)
+nnoremap <leader>g <Plug>(coc-git-chunkinfo)
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
             \ CheckBackspace() ? "\<Tab>" :
