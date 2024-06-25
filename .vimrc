@@ -50,6 +50,7 @@ nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
+let g:floaterm_shell="nu.exe"
 nnoremap <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
 tnoremap <C-s> <C-\><C-n>
 tnoremap <C-d> <C-\><C-n>:FloatermKill<CR>
