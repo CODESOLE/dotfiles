@@ -38,9 +38,7 @@ syntax enable
 set mouse=a
 set is hlsearch ignorecase smartcase showmatch
 set encoding=utf-8
-set nobackup
-set nowritebackup
-set noswapfile
+set nobackup nowritebackup noswapfile
 set guioptions=Ac
 filetype on
 filetype plugin on
