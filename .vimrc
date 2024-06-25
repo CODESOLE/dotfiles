@@ -90,6 +90,7 @@ nnoremap <leader>u <Plug>(coc-git-keepcurrent)
 nnoremap <leader>t <Plug>(coc-git-keepincoming)
 nnoremap <leader>b <Plug>(coc-git-keepboth)
 nnoremap <leader>g <Plug>(coc-git-chunkinfo)
+hi Cursor guibg=#F7A41D
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
             \ CheckBackspace() ? "\<Tab>" :
