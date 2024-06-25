@@ -12,8 +12,8 @@ Plug 'habamax/vim-dir'
 Plug 'wellle/context.vim'
 Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
-set laststatus=-
-set rulerformat=%150(%l,\ %c\ %{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
+set laststatus=- fillchars+=eob:\ 
+set rulerformat=%150(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
 set guicursor+=a:block,a:blinkoff0
 packadd! editorconfig
 packadd! comment
@@ -27,6 +27,7 @@ colorscheme moonfly
 set gp=git\ grep\ -rn
 set backspace=2 ruler
 set shortmess-=S
+set shortmess+=I noshowcmd
 set signcolumn=no
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu
 set wildmenu
