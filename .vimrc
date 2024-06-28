@@ -6,24 +6,23 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'mg979/vim-visual-multi'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Donaldttt/fuzzyy'
 Plug 'voldikss/vim-floaterm'
 Plug 'habamax/vim-dir'
 Plug 'wellle/context.vim'
 Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
-set laststatus=- fillchars+=eob:\ 
-set rulerformat=%150(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
-set guicursor+=a:block,a:blinkoff0
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
+colorscheme moonfly
+set laststatus=- fillchars+=eob:\ 
+set rulerformat=%150(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
+set guicursor+=a:block,a:blinkoff0
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
 set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
-colorscheme moonfly
 set gp=git\ grep\ -rn
 set backspace=2 ruler
 set shortmess-=S
@@ -38,7 +37,7 @@ syntax enable
 set mouse=a
 set is hlsearch ignorecase smartcase showmatch
 set encoding=utf-8
-set nobackup nowritebackup noswapfile
+set nobackup noswapfile nowritebackup
 set guioptions=Ac
 filetype on
 filetype plugin on
@@ -70,13 +69,6 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 let g:enable_fuzzyy_MRU_files=1
 let g:enable_fuzzyy_keymaps=0
-nnoremap <silent> <leader>fi :FuzzyCommands<CR>
-nnoremap <silent> <leader>ff :FuzzyFiles<CR>
-nnoremap <silent> <leader>fl :FuzzyGrep<CR>
-nnoremap <silent> <leader>fg :FuzzyGitFiles<CR>
-nnoremap <silent> <leader>fb :FuzzyBuffers<CR>
-nnoremap <silent> <leader>fo :FuzzyMRUFiles<CR>
-nnoremap <silent> <leader>fc :FuzzyInBuffer<CR>
 inoremap <silent> ş <Esc>
 vnoremap <silent> ş <Esc>
 cnoremap <silent> ş <Esc>
@@ -160,6 +152,7 @@ augroup mygroup
 	      command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 	      command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 	      nnoremap <silent><nowait> <space>e  :<C-u>CocList diagnostics<cr>
+	      nnoremap <silent><nowait> <space>ff  :<C-u>CocList gfiles<cr>
 	      nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 	      nnoremap <silent><nowait> <space>w  :<C-u>CocList -I symbols<cr>
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList outline<cr>
