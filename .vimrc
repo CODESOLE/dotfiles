@@ -162,6 +162,7 @@ augroup mygroup
 	      nnoremap <silent><nowait> <space>e  :<C-u>CocList diagnostics<cr>
 	      nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+	      nnoremap <silent><nowait> <space>w  :<C-u>CocList outline<cr>
 	      nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 	      nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <Leader>dr <Plug>VimspectorRestart
