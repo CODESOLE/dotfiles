@@ -115,7 +115,6 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 augroup mygroup
 	  autocmd!
 	    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
@@ -152,7 +151,7 @@ augroup mygroup
 	      command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 	      command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 	      nnoremap <silent><nowait> <space>e  :<C-u>CocList diagnostics<cr>
-	      nnoremap <silent><nowait> <space>ff  :<C-u>CocList gfiles<cr>
+	      nnoremap <silent><nowait> <space>f  :<C-u>CocList gfiles<cr>
 	      nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 	      nnoremap <silent><nowait> <space>w  :<C-u>CocList -I symbols<cr>
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList outline<cr>
