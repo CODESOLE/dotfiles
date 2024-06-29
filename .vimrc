@@ -49,14 +49,14 @@ nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 let g:floaterm_shell="nu.exe"
-nnoremap <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
-tnoremap <C-s> <C-\><C-n>
-tnoremap <C-d> <C-\><C-n>:FloatermKill<CR>
-tnoremap <C-y> <C-\><C-n>:FloatermNew<CR>
-nnoremap <C-t> :FloatermToggle<CR>
-tnoremap <C-t> <C-\><C-n>:FloatermToggle<CR>
-tnoremap <C-j> <C-\><C-n>:FloatermNext<CR>
-tnoremap <C-k> <C-\><C-n>:FloatermPrev<CR>
+nnoremap <silent> <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
+tnoremap <silent> <C-s> <C-\><C-n>
+tnoremap <silent> <C-d> <C-\><C-n>:FloatermKill<CR>
+tnoremap <silent> <C-y> <C-\><C-n>:FloatermNew<CR>
+nnoremap <silent> <C-t> :FloatermToggle<CR>
+tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> <C-j> <C-\><C-n>:FloatermNext<CR>
+tnoremap <silent> <C-k> <C-\><C-n>:FloatermPrev<CR>
 nnoremap <leader>o :Dir<cr>
 nnoremap <leader>O :CocOutline<cr>
 inoremap <C-k> <Up>
@@ -67,8 +67,6 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
-let g:enable_fuzzyy_MRU_files=1
-let g:enable_fuzzyy_keymaps=0
 inoremap <silent> ş <Esc>
 vnoremap <silent> ş <Esc>
 cnoremap <silent> ş <Esc>
