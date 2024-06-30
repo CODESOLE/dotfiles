@@ -6,7 +6,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'jiangmiao/auto-pairs'
 Plug 'voldikss/vim-floaterm'
-Plug 'habamax/vim-dir'
 Plug 'wellle/context.vim'
 Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
@@ -56,8 +55,7 @@ nnoremap <silent> <C-t> :FloatermToggle<CR>
 tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> <C-j> <C-\><C-n>:FloatermNext<CR>
 tnoremap <silent> <C-k> <C-\><C-n>:FloatermPrev<CR>
-nnoremap <leader>o :Dir<cr>
-nnoremap <leader>O :CocOutline<cr>
+nnoremap <leader>o :CocOutline<cr>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
