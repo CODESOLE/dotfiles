@@ -4,14 +4,14 @@ theme = "custom"
 display-inlay-hints = true
 display-messages = true
 
-[editor.cursor-shape]
-insert = "bar"
-select = "underline"
 
 [editor.statusline]
-left = ["version-control", "file-name", "file-modification-indicator"]
+left = ["mode", "version-control", "file-name", "file-modification-indicator"]
 center = ["read-only-indicator"]
 right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "workspace-diagnostics"]
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
 
 [editor.indent-guides]
 render = true
