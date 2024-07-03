@@ -10,6 +10,7 @@ select = "underline"
 
 [editor.statusline]
 left = ["version-control", "file-name", "file-modification-indicator"]
+center = ["diagnostics"]
 right = ["workspace-diagnostics", "selections"]
 
 [editor.indent-guides]
