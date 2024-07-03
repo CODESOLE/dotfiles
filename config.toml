@@ -1,4 +1,4 @@
-theme = "nightfox_custom"
+theme = "custom"
 
 [editor.lsp]
 display-inlay-hints = true
@@ -10,8 +10,8 @@ select = "underline"
 
 [editor.statusline]
 left = ["version-control", "file-name", "file-modification-indicator"]
-center = ["diagnostics"]
-right = ["workspace-diagnostics", "selections"]
+center = ["read-only-indicator"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "workspace-diagnostics"]
 
 [editor.indent-guides]
 render = true
