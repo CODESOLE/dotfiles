@@ -55,7 +55,8 @@ nnoremap <silent> <C-t> :FloatermToggle<CR>
 tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> <C-j> <C-\><C-n>:FloatermNext<CR>
 tnoremap <silent> <C-k> <C-\><C-n>:FloatermPrev<CR>
-nnoremap <leader>o :CocOutline<cr>
+nnoremap <silent> <leader>o :CocCommand explorer<cr>
+nnoremap <silent> <leader>O :CocOutline<cr>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
