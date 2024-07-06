@@ -76,6 +76,33 @@ nnoremap <leader>u <Plug>(coc-git-keepcurrent)
 nnoremap <leader>t <Plug>(coc-git-keepincoming)
 nnoremap <leader>b <Plug>(coc-git-keepboth)
 nnoremap <leader>g <Plug>(coc-git-chunkinfo)
+hi! link CocSemModDeprecated	 MoonflyGrey0
+hi! link CocSemTypeBuiltin   	 MoonflyCranberry
+hi! link CocUnusedHighlight      MoonflyGrey70
+hi! link CocSemTypeComment	 MoonflyGrey27
+hi! link CocSemTypeDecorator     MoonflyOrange
+hi! link CocSemTypeClass         MoonflyEmerald
+hi! link CocSemTypeEnum          MoonflyEmerald
+hi! link CocSemTypeStruct        MoonflyEmerald
+hi! link CocSemTypeEnumMember    MoonflyPurple
+hi! link CocSemTypeInterface     MoonflyViolet
+hi! link CocSemTypeKeyword       MoonflyRed
+hi! link CocSemTypeMacro         MoonflyCrimson
+hi! link CocSemTypeMethod        MoonflySky
+hi! link CocSemTypeFunction      MoonflySky
+hi! link CocSemTypeModifier      MoonflyYellow
+hi! link CocSemTypeType		 MoonflyTurquoise
+hi! link CocSemTypeTypeParameter MoonflyCoral
+hi! link CocSemTypeVariable	 MoonflyWhite
+hi! link CocSemTypeNamespace	 MoonflyLime
+hi! link CocSemTypeProperty	 MoonflyLavender
+hi! link CocSemTypeParameter     MoonflyOrchid
+hi! link CocSemTypeOperator      MoonflyBlue
+hi! link CocSemTypeNumber	 MoonflyGreen
+hi! link CocSemTypeString	 MoonflyKhaki
+hi! link CocSemTypeRegexp	 MoonflyTurquoise
+hi CocSemTypeBoolean   	 guifg=#FF0000
+hi CocSemTypeEvent	 guifg=#1E4F0A
 hi Cursor guibg=#F7A41D
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
