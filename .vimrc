@@ -2,26 +2,23 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
 Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-sleuth'
-Plug 'jiangmiao/auto-pairs'
 Plug 'voldikss/vim-floaterm'
 Plug 'wellle/context.vim'
-Plug 'bluz71/vim-moonfly-colors'
 call plug#end()
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
-colorscheme moonfly
-set ut=200
 set laststatus=- fillchars+=eob:\ 
-set rulerformat=%150(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
+set rulerformat=%100(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set guicursor+=a:block,a:blinkoff0
+set ut=200
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 set bg=dark
 set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
+colorscheme retrobox
 set gp=git\ grep\ -rn
 set backspace=2 ruler
 set shortmess-=S
@@ -36,7 +33,7 @@ syntax enable
 set mouse=a
 set is hlsearch ignorecase smartcase showmatch
 set encoding=utf-8
-set nobackup noswapfile nowritebackup
+set nobackup nowritebackup noswapfile
 set guioptions=Ac
 filetype on
 filetype plugin on
@@ -47,7 +44,6 @@ nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
-let g:floaterm_shell="nu.exe"
 nnoremap <silent> <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
 tnoremap <silent> <C-s> <C-\><C-n>
 tnoremap <silent> <C-d> <C-\><C-n>:FloatermKill<CR>
@@ -57,7 +53,7 @@ tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> <C-j> <C-\><C-n>:FloatermNext<CR>
 tnoremap <silent> <C-k> <C-\><C-n>:FloatermPrev<CR>
 nnoremap <silent> <leader>o :CocCommand explorer<cr>
-nnoremap <silent> <leader>O :CocOutline<cr>
+nnoremap <leader>O :CocOutline<cr>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
@@ -77,33 +73,49 @@ nnoremap <leader>u <Plug>(coc-git-keepcurrent)
 nnoremap <leader>t <Plug>(coc-git-keepincoming)
 nnoremap <leader>b <Plug>(coc-git-keepboth)
 nnoremap <leader>g <Plug>(coc-git-chunkinfo)
-hi! link CocSemModDeprecated	 MoonflyGrey0
-hi! link CocSemTypeBuiltin   	 MoonflyCranberry
-hi! link CocUnusedHighlight      MoonflyGrey70
-hi! link CocSemTypeComment	 MoonflyGrey27
-hi! link CocSemTypeDecorator     MoonflyOrange
-hi! link CocSemTypeClass         MoonflyEmerald
-hi! link CocSemTypeEnum          MoonflyEmerald
-hi! link CocSemTypeStruct        MoonflyEmerald
-hi! link CocSemTypeEnumMember    MoonflyPurple
-hi! link CocSemTypeInterface     MoonflyViolet
-hi! link CocSemTypeKeyword       MoonflyRed
-hi! link CocSemTypeMacro         MoonflyCrimson
-hi! link CocSemTypeMethod        MoonflySky
-hi! link CocSemTypeFunction      MoonflySky
-hi! link CocSemTypeModifier      MoonflyYellow
-hi! link CocSemTypeType		 MoonflyTurquoise
-hi! link CocSemTypeTypeParameter MoonflyCoral
-hi! link CocSemTypeVariable	 MoonflyWhite
-hi! link CocSemTypeNamespace	 MoonflyLime
-hi! link CocSemTypeProperty	 MoonflyLavender
-hi! link CocSemTypeParameter     MoonflyOrchid
-hi! link CocSemTypeOperator      MoonflyBlue
-hi! link CocSemTypeNumber	 MoonflyGreen
-hi! link CocSemTypeString	 MoonflyKhaki
-hi! link CocSemTypeRegexp	 MoonflyTurquoise
-hi CocSemTypeBoolean   	 guifg=#FF0000
-hi CocSemTypeEvent	 guifg=#1E4F0A
+xmap ' :s/\%V\(.*\)\%V/'\1'/ <CR>
+xmap " :s/\%V\(.*\)\%V/"\1"/ <CR>
+xmap ( :s/\%V\(.*\)\%V/\(\1\)/ <CR>
+xmap ) :s/\%V\(.*\)\%V/\(\1\)/ <CR>
+xmap { :s/\%V\(.*\)\%V/\{\1\}/ <CR>
+xmap } :s/\%V\(.*\)\%V/\{\1\}/ <CR>
+xmap [ :s/\%V\(.*\)\%V/\[\1\]/ <CR>
+xmap ] :s/\%V\(.*\)\%V/\[\1\]/ <CR>
+xmap < :s/\%V\(.*\)\%V/<\1>/ <CR>
+xmap > :s/\%V\(.*\)\%V/<\1>/ <CR>
+imap { {}<left>
+imap ( ()<left>
+imap [ []<left>
+imap " ""<left>
+imap ' ''<left>
+" hi! link CocSemModDeprecated     MoonflyGrey0
+" hi! link CocSemTypeBuiltin       MoonflyCranberry
+" hi! link CocUnusedHighlight      MoonflyGrey70
+" hi! link CocSemTypeComment       MoonflyGrey27
+" hi! link CocSemTypeDecorator     MoonflyOrange
+" hi! link CocSemTypeClass         MoonflyEmerald
+" hi! link CocSemTypeEnum          MoonflyEmerald
+" hi! link CocSemTypeStruct        MoonflyEmerald
+" hi! link CocSemTypeEnumMember    MoonflyPurple
+" hi! link CocSemTypeInterface     MoonflyViolet
+" hi! link CocSemTypeKeyword       MoonflyRed
+" hi! link CocSemTypeMacro         MoonflyCrimson
+" hi! link CocSemTypeMethod        MoonflySky
+" hi! link CocSemTypeFunction      MoonflySky
+" hi! link CocSemTypeModifier      MoonflyYellow
+" hi! link CocSemTypeType          MoonflyTurquoise
+" hi! link CocSemTypeTypeParameter MoonflyCoral
+" hi! link CocSemTypeVariable      MoonflyWhite
+" hi! link CocSemTypeNamespace     MoonflyLime
+" hi! link CocSemTypeProperty      MoonflyLavender
+" hi! link CocSemTypeParameter     MoonflyOrchid
+" hi! link CocSemTypeOperator      MoonflyBlue
+" hi! link CocSemTypeNumber        MoonflyGreen
+" hi! link CocSemTypeString        MoonflyKhaki
+" hi! link CocSemTypeRegexp        MoonflyTurquoise
+hi CocSemTypeBoolean	 guifg=#FF0000
+hi CocSemTypeEvent guifg=#1E4F0A
+hi CocInlayHint guibg=#111111 guifg=#333333
 hi Cursor guibg=#F7A41D
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
@@ -177,8 +189,8 @@ augroup mygroup
 	      nnoremap <silent><nowait> <space>e  :<C-u>CocList diagnostics<cr>
 	      nnoremap <silent><nowait> <space>f  :<C-u>CocList gfiles<cr>
 	      nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-	      nnoremap <silent><nowait> <space>w  :<C-u>CocList -I symbols<cr>
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList outline<cr>
+	      nnoremap <silent><nowait> <space>w  :<C-u>CocList -I symbols<cr>
 	      nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 	      nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <Leader>dr <Plug>VimspectorRestart
