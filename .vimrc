@@ -44,6 +44,7 @@ nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
+let g:floaterm_shell="nu.exe"
 nnoremap <silent> <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
 tnoremap <silent> <C-s> <C-\><C-n>
 tnoremap <silent> <C-d> <C-\><C-n>:FloatermKill<CR>
@@ -53,7 +54,7 @@ tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> <C-j> <C-\><C-n>:FloatermNext<CR>
 tnoremap <silent> <C-k> <C-\><C-n>:FloatermPrev<CR>
 nnoremap <silent> <leader>o :CocCommand explorer<cr>
-nnoremap <leader>O :CocOutline<cr>
+nnoremap <silent> <leader>O :CocOutline<cr>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
