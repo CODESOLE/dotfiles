@@ -7,6 +7,9 @@ call plug#end()
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
+let g:context_highlight_tag = '<hide>'
+let g:context_highlight_border = '<hide>'
+let g:context_highlight_normal = 'PMenu'
 set laststatus=- fillchars+=eob:\ 
 set rulerformat=%100(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
