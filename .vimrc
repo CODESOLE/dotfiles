@@ -13,6 +13,7 @@ packadd! editorconfig
 packadd! comment
 packadd! cfilter
 colorscheme moonfly
+set ut=200
 set laststatus=- fillchars+=eob:\ 
 set rulerformat=%150(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
 set guicursor+=a:block,a:blinkoff0
