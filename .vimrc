@@ -2,7 +2,6 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
 Plug 'easymotion/vim-easymotion'
-Plug 'voldikss/vim-floaterm'
 Plug 'wellle/context.vim'
 call plug#end()
 packadd! editorconfig
@@ -44,15 +43,8 @@ nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
-let g:floaterm_shell="nu.exe"
-nnoremap <silent> <CR> :FloatermNew --height=0.9 --width=0.9 --wintype=float --name=floaterm1 --position=center --autoclose=2 lazygit<CR>
-tnoremap <silent> <C-s> <C-\><C-n>
-tnoremap <silent> <C-d> <C-\><C-n>:FloatermKill<CR>
-tnoremap <silent> <C-y> <C-\><C-n>:FloatermNew<CR>
-nnoremap <silent> <C-t> :FloatermToggle<CR>
-tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<CR>
-tnoremap <silent> <C-j> <C-\><C-n>:FloatermNext<CR>
-tnoremap <silent> <C-k> <C-\><C-n>:FloatermPrev<CR>
+nnoremap <silent> <CR> :!lazygit<CR><CR>
+nnoremap <silent> <C-t> :term<CR>
 nnoremap <silent> <leader>o :CocCommand explorer<cr>
 nnoremap <silent> <leader>O :CocOutline<cr>
 inoremap <C-k> <Up>
@@ -74,21 +66,21 @@ nnoremap <leader>u <Plug>(coc-git-keepcurrent)
 nnoremap <leader>t <Plug>(coc-git-keepincoming)
 nnoremap <leader>b <Plug>(coc-git-keepboth)
 nnoremap <leader>g <Plug>(coc-git-chunkinfo)
-xmap ' :s/\%V\(.*\)\%V/'\1'/ <CR>
-xmap " :s/\%V\(.*\)\%V/"\1"/ <CR>
-xmap ( :s/\%V\(.*\)\%V/\(\1\)/ <CR>
-xmap ) :s/\%V\(.*\)\%V/\(\1\)/ <CR>
-xmap { :s/\%V\(.*\)\%V/\{\1\}/ <CR>
-xmap } :s/\%V\(.*\)\%V/\{\1\}/ <CR>
-xmap [ :s/\%V\(.*\)\%V/\[\1\]/ <CR>
-xmap ] :s/\%V\(.*\)\%V/\[\1\]/ <CR>
-xmap < :s/\%V\(.*\)\%V/<\1>/ <CR>
-xmap > :s/\%V\(.*\)\%V/<\1>/ <CR>
-imap { {}<left>
-imap ( ()<left>
-imap [ []<left>
-imap " ""<left>
-imap ' ''<left>
+vnoremap ' :s/\%V\(.*\)\%V/'\1'/ <CR>
+vnoremap " :s/\%V\(.*\)\%V/"\1"/ <CR>
+vnoremap ( :s/\%V\(.*\)\%V/\(\1\)/ <CR>
+vnoremap ) :s/\%V\(.*\)\%V/\(\1\)/ <CR>
+vnoremap { :s/\%V\(.*\)\%V/\{\1\}/ <CR>
+vnoremap } :s/\%V\(.*\)\%V/\{\1\}/ <CR>
+vnoremap [ :s/\%V\(.*\)\%V/\[\1\]/ <CR>
+vnoremap ] :s/\%V\(.*\)\%V/\[\1\]/ <CR>
+vnoremap < :s/\%V\(.*\)\%V/<\1>/ <CR>
+vnoremap > :s/\%V\(.*\)\%V/<\1>/ <CR>
+inoremap { {}<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap " ""<left>
+inoremap ' ''<left>
 " hi! link CocSemModDeprecated     MoonflyGrey0
 " hi! link CocSemTypeBuiltin       MoonflyCranberry
 " hi! link CocUnusedHighlight      MoonflyGrey70
@@ -114,8 +106,8 @@ imap ' ''<left>
 " hi! link CocSemTypeNumber        MoonflyGreen
 " hi! link CocSemTypeString        MoonflyKhaki
 " hi! link CocSemTypeRegexp        MoonflyTurquoise
-hi CocSemTypeBoolean	 guifg=#FF0000
-hi CocSemTypeEvent guifg=#1E4F0A
+" hi CocSemTypeBoolean	 guifg=#FF0000
+" hi CocSemTypeEvent guifg=#1E4F0A
 hi CocInlayHint guibg=#111111 guifg=#333333
 hi Cursor guibg=#F7A41D
 inoremap <silent><expr> <TAB>
