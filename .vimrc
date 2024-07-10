@@ -13,7 +13,6 @@ let g:context_highlight_normal = 'PMenu'
 set laststatus=- fillchars+=eob:\ 
 set rulerformat=%100(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
-set guicursor+=a:block,a:blinkoff0
 set ut=200
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
@@ -48,7 +47,7 @@ nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 nnoremap <silent> <CR> :!lazygit<CR><CR>
-nnoremap <silent> <C-t> :term<CR>
+nnoremap <silent> <C-t> :term nu<CR>
 nnoremap <silent> <leader>o :CocCommand explorer<cr>
 nnoremap <silent> <leader>O :CocOutline<cr>
 inoremap <C-k> <Up>
@@ -71,7 +70,6 @@ nnoremap <leader>t <Plug>(coc-git-keepincoming)
 nnoremap <leader>b <Plug>(coc-git-keepboth)
 nnoremap <leader>g <Plug>(coc-git-chunkinfo)
 vnoremap ' :s/\%V\(.*\)\%V/'\1'/ <CR>
-vnoremap " :s/\%V\(.*\)\%V/"\1"/ <CR>
 vnoremap ( :s/\%V\(.*\)\%V/\(\1\)/ <CR>
 vnoremap ) :s/\%V\(.*\)\%V/\(\1\)/ <CR>
 vnoremap { :s/\%V\(.*\)\%V/\{\1\}/ <CR>
@@ -85,35 +83,35 @@ inoremap ( ()<left>
 inoremap [ []<left>
 inoremap " ""<left>
 inoremap ' ''<left>
-" hi! link CocSemModDeprecated     MoonflyGrey0
-" hi! link CocSemTypeBuiltin       MoonflyCranberry
-" hi! link CocUnusedHighlight      MoonflyGrey70
-" hi! link CocSemTypeComment       MoonflyGrey27
-" hi! link CocSemTypeDecorator     MoonflyOrange
-" hi! link CocSemTypeClass         MoonflyEmerald
-" hi! link CocSemTypeEnum          MoonflyEmerald
-" hi! link CocSemTypeStruct        MoonflyEmerald
-" hi! link CocSemTypeEnumMember    MoonflyPurple
-" hi! link CocSemTypeInterface     MoonflyViolet
-" hi! link CocSemTypeKeyword       MoonflyRed
-" hi! link CocSemTypeMacro         MoonflyCrimson
-" hi! link CocSemTypeMethod        MoonflySky
-" hi! link CocSemTypeFunction      MoonflySky
-" hi! link CocSemTypeModifier      MoonflyYellow
-" hi! link CocSemTypeType          MoonflyTurquoise
-" hi! link CocSemTypeTypeParameter MoonflyCoral
-" hi! link CocSemTypeVariable      MoonflyWhite
-" hi! link CocSemTypeNamespace     MoonflyLime
-" hi! link CocSemTypeProperty      MoonflyLavender
-" hi! link CocSemTypeParameter     MoonflyOrchid
-" hi! link CocSemTypeOperator      MoonflyBlue
-" hi! link CocSemTypeNumber        MoonflyGreen
-" hi! link CocSemTypeString        MoonflyKhaki
-" hi! link CocSemTypeRegexp        MoonflyTurquoise
-" hi CocSemTypeBoolean	 guifg=#FF0000
-" hi CocSemTypeEvent guifg=#1E4F0A
-hi CocInlayHint guibg=#111111 guifg=#333333
+hi CocSemModDeprecated     guifg=#323437
+hi CocSemTypeBuiltin       guifg=#e65e72
+hi CocUnusedHighlight      guifg=#b2b2b2
+hi CocSemTypeComment       guifg=#444444
+hi CocSemTypeDecorator     guifg=#de935f
+hi CocSemTypeClass         guifg=#36c692
+hi CocSemTypeEnum          guifg=#36c692
+hi CocSemTypeStruct        guifg=#36c692
+hi CocSemTypeEnumMember    guifg=#ae81ff
+hi CocSemTypeInterface     guifg=#cf87e8
+hi CocSemTypeKeyword       guifg=#ff5454
+hi CocSemTypeMacro         guifg=#ff5189
+hi CocSemTypeMethod        guifg=#74b2ff
+hi CocSemTypeFunction      guifg=#74b2ff
+hi CocSemTypeModifier      guifg=#e3c78a
+hi CocSemTypeType          guifg=#8cc85f
+hi CocSemTypeTypeParameter guifg=#f09479
+hi CocSemTypeVariable      guifg=#c6c6c6
+hi CocSemTypeNamespace     guifg=#a744ab
+hi CocSemTypeProperty      guifg=#adadf3
+hi CocSemTypeParameter     guifg=#e196a2
+hi CocSemTypeOperator      guifg=#80a0ff
+hi CocSemTypeNumber        guifg=#79dac8
+hi CocSemTypeString        guifg=#c6c684
+hi CocSemTypeRegexp        guifg=#79dac8
+hi CocSemTypeBoolean	     guifg=#FF0000
 hi Normal guibg=#080808
+hi CocSemTypeEvent guifg=#1E4F0A
+hi CocInlayHint guibg=#1c1c1c guifg=#949494
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
             \ CheckBackspace() ? "\<Tab>" :
