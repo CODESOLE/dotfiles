@@ -47,7 +47,7 @@ nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-nnoremap <silent> <CR> :!lazygit<CR><CR>
+nnoremap <silent> <CR> :term lazygit<CR>
 nnoremap <silent> <C-t> :term nu<CR>
 nnoremap <silent> <leader>o :CocCommand explorer<cr>
 nnoremap <silent> <leader>O :CocOutline<cr>
