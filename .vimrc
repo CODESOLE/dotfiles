@@ -1,7 +1,6 @@
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
-Plug 'easymotion/vim-easymotion'
 Plug 'wellle/context.vim'
 call plug#end()
 packadd! editorconfig
@@ -15,8 +14,7 @@ set laststatus=- fillchars+=eob:\
 set rulerformat=%100(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}%)
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set ut=200
-let g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-overwin-f2)
+nmap s /
 set bg=dark
 set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
