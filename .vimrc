@@ -117,7 +117,7 @@ hi CocSemTypeBoolean	     guifg=#FF0000
 hi Normal guibg=#080808
 hi CocSemTypeEvent guifg=#1E4F0A
 hi CocInlayHint guibg=#1c1c1c guifg=#949494
-hi Cursor guibg=#F7A41D
+hi Cursor guibg=#FF4000
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
             \ CheckBackspace() ? "\<Tab>" :
