@@ -15,6 +15,7 @@ set rulerformat=%100(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set ut=200
 nmap s /
+nmap S ?
 nmap <silent> <esc> :noh<CR>
 augroup auto_nohlsearch | au!
     noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
