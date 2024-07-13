@@ -15,6 +15,11 @@ set rulerformat=%100(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set ut=200
 nmap s /
+augroup auto_nohlsearch | au!
+    noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
+    noremap! <expr> <Plug>(nohlsearch) execute('nohlsearch')[-1]
+    au InsertEnter * call feedkeys("\<Plug>(nohlsearch)", 'm')
+augroup END
 set bg=dark
 set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
