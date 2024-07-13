@@ -15,6 +15,7 @@ set rulerformat=%100(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set ut=200
 nmap s /
+nmap <silent> <esc> :noh<CR>
 augroup auto_nohlsearch | au!
     noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
     noremap! <expr> <Plug>(nohlsearch) execute('nohlsearch')[-1]
@@ -49,7 +50,6 @@ nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
-nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 nnoremap <silent> <CR> :term lazygit<CR>
 nnoremap <silent> <C-t> :term nu<CR>
 nnoremap <silent> <leader>o :CocCommand explorer<cr>
