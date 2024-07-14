@@ -88,6 +88,7 @@ inoremap ( ()<left>
 inoremap [ []<left>
 inoremap " ""<left>
 inoremap ' ''<left>
+hi CocSemTypeDerive        guifg=#ffff00
 hi CocSemModDeprecated     guifg=#323437
 hi CocSemTypeBuiltin       guifg=#e65e72
 hi CocUnusedHighlight      guifg=#b2b2b2
