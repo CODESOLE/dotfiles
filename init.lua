@@ -227,25 +227,69 @@ dap.adapters.lldb = {
   command = 'C:/Program Files/LLVM/bin/lldb-dap.exe',
   name = 'lldb'
 }
+dap.configurations.cpp = {
+  {
+    name = 'Launch',
+    type = 'lldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = function()
+      local args = vim.fn.input('Args: ', '', 'file')
+      local words = {}
+      for v in args:gmatch('%S+') do
+        table.insert(words, v)
+      end
+      if #words == 0 then
+        return {}
+      end
+      return words
+    end,
+  },
+}
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.zig = dap.configurations.cpp
 dap.configurations.rust = {
   {
+    name = 'Launch',
+    type = 'lldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = function()
+      local args = vim.fn.input('Args: ', '', 'file')
+      local words = {}
+      for v in args:gmatch('%S+') do
+        table.insert(words, v)
+      end
+      if #words == 0 then
+        return {}
+      end
+      return words
+    end,
     initCommands = function()
-          local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
+      local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
 
-          local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
-          local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
+      local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
+      local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
 
-          local commands = {}
-          local file = io.open(commands_file, 'r')
-          if file then
-            for line in file:lines() do
-              table.insert(commands, line)
-            end
-            file:close()
-          end
-          table.insert(commands, 1, script_import)
+      local commands = {}
+      local file = io.open(commands_file, 'r')
+      if file then
+        for line in file:lines() do
+          table.insert(commands, line)
+        end
+        file:close()
+      end
+      table.insert(commands, 1, script_import)
 
-          return commands
+      return commands
     end,
   },
 }
