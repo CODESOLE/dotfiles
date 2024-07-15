@@ -9,4 +9,4 @@
  - fd
  - rg
  - fzf
- - pyhton3.11
+ - LLVM
