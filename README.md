@@ -4,9 +4,9 @@
 
  - git
  - lazygit
- - vim
+ - nvim
  - nushell / fish
  - fd
  - rg
- - nodejs
+ - fzf
  - pyhton3.11
