@@ -229,7 +229,7 @@ dap.adapters.lldb = {
 }
 dap.configurations.cpp = {
   {
-    name = 'Launch',
+    name = 'Launch Manually',
     type = 'lldb',
     request = 'launch',
     program = function()
@@ -254,7 +254,7 @@ dap.configurations.c = dap.configurations.cpp
 dap.configurations.zig = dap.configurations.cpp
 dap.configurations.rust = {
   {
-    name = 'Launch',
+    name = 'Launch Manually',
     type = 'lldb',
     request = 'launch',
     program = function()
