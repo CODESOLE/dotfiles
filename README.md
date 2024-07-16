@@ -9,4 +9,4 @@
  - fd
  - rg
  - fzf
- - LLVM
+ - LLVM / Pyhton
