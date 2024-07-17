@@ -249,6 +249,15 @@ dap.configurations.cpp = {
       return words
     end,
   },
+  {
+    name = '[LLDB] Attach to Process',
+    type = 'lldb',
+    request = 'attach',
+    pid = function()
+      return vim.fn.input('Path to executable: ', '', 'file')
+    end,
+    args = {},
+  },
 }
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.zig = dap.configurations.cpp
@@ -268,6 +277,7 @@ dap.configurations.rust[1].initCommands = function()
       table.insert(commands, 1, script_import)
       return commands
 end
+dap.configurations.rust[2].initCommands = dap.configurations.rust[1].initCommands
 dap.listeners.before.attach.dapui_config = function()
   dapui.open()
   vim.cmd'set signcolumn=yes'
@@ -310,4 +320,3 @@ vim.keymap.set('n', '<Leader>ds', function()
   local widgets = require('dap.ui.widgets')
   widgets.centered_float(widgets.scopes)
 end)
-
