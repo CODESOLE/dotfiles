@@ -254,7 +254,7 @@ dap.configurations.cpp = {
     type = 'lldb',
     request = 'attach',
     pid = function()
-      return vim.fn.input('Path to executable: ', '', 'file')
+      return vim.fn.input('PID of running process: ', '', 'file')
     end,
     args = {},
   },
