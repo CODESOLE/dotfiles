@@ -163,6 +163,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, opts)
+    vim.keymap.set({'n', 'v'}, '<space>F', vim.lsp.buf.format, opts)
     if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.documentHighlightProvider then
           vim.cmd [[
             hi! LspReferenceRead cterm=bold ctermbg=Gray guibg=#323437
