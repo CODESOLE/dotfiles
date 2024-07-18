@@ -248,6 +248,13 @@ dap.configurations.cpp = {
       end
       return words
     end,
+    env = function()
+      local variables = {}
+      for k, v in pairs(vim.fn.environ()) do
+        table.insert(variables, string.format("%s=%s", k, v))
+      end
+      return variables
+    end,
   },
   {
     name = '[LLDB] Attach to Process',
@@ -257,6 +264,13 @@ dap.configurations.cpp = {
       return vim.fn.input('PID of running process: ', '', 'file')
     end,
     args = {},
+    env = function()
+      local variables = {}
+      for k, v in pairs(vim.fn.environ()) do
+        table.insert(variables, string.format("%s=%s", k, v))
+      end
+      return variables
+    end,
   },
 }
 dap.configurations.c = dap.configurations.cpp
