@@ -116,6 +116,13 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
   lualine_x = { 'selectioncount', 'diagnostics', 'overseer' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
+}, inactive_sections = {
+  lualine_a = { 'branch' },
+  lualine_b = { { 'filename', path=1 } },
+  lualine_c = { 'diff', 'filesize' },
+  lualine_x = { 'selectioncount', 'diagnostics', 'progress' },
+  lualine_y = { 'location' },
+  lualine_z = { 'searchcount' },
 } }
 require('leap').create_default_mappings()
 require('mini.pairs').setup()
