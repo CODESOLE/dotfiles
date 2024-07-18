@@ -39,12 +39,6 @@ bootstrap_paq {
   "nvim-treesitter/nvim-treesitter-textobjects",
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
 }
-vim.o.shell = 'nu'
-vim.o.shellcmdflag='-c'
-vim.o.shellredir = '2>&1 | save --raw %s'
-vim.o.shellpipe = '2>&1 | save --raw %s'
-vim.o.shellquote = ""
-vim.o.shellxquote = ""
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
 vim.o.updatetime = 500
@@ -63,7 +57,7 @@ vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 require'fzf-lua'.setup {'fzf-native'}
-require'toggleterm'.setup{ open_mapping = [[<C-s>]] }
+require'toggleterm'.setup{ open_mapping = [[<C-s>]], shell = 'nu.exe' }
 vim.keymap.set("n", "<C-p>", ":ToggleTerm direction=float<CR>", { silent = true, noremap = true })
 vim.keymap.set("n", "<C-m>", function() require('toggleterm.terminal').Terminal:new({ direction = "float", cmd = "lazygit", hidden = true }):toggle() end, {noremap = true, silent = true})
 require'fidget'.setup()
