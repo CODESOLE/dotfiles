@@ -113,7 +113,7 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
   lualine_a = { 'branch' },
   lualine_b = { 'filename' },
   lualine_c = { 'diff', 'filesize' },
-  lualine_x = { 'selectioncount', 'diagnostics', 'progress' },
+  lualine_x = { 'selectioncount', 'diagnostics', 'overseer' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 } }
