@@ -218,6 +218,7 @@ vim.keymap.set("n", "q", "<nop>", {})
 require("dapui").setup()
 require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
+require("dap.ext.vscode").json_decode = require('overseer.json').decode
 dap.adapters.lldb = {
   type = 'executable',
   command = 'C:/Program Files/LLVM/bin/lldb-dap.exe',
