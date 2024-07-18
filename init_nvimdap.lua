@@ -20,7 +20,7 @@ bootstrap_paq {
   "savq/paq-nvim",
   "bluz71/vim-moonfly-colors",
   "j-hui/fidget.nvim",
-  "tpope/vim-sleuth",
+  "stevearc/overseer.nvim",
   "mg979/vim-visual-multi",
   "kylechui/nvim-surround",
   "echasnovski/mini.completion",
@@ -56,6 +56,7 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
+require('overseer').setup()
 require'fzf-lua'.setup {'fzf-native'}
 require'toggleterm'.setup{ open_mapping = [[<C-s>]], shell = 'nu.exe' }
 vim.keymap.set("n", "<C-p>", ":ToggleTerm direction=float<CR>", { silent = true, noremap = true })
@@ -64,7 +65,7 @@ require'fidget'.setup()
 require'mini.files'.setup{ windows = { preview = true } }
 vim.keymap.set("n", "<leader>o", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "go", "c", "cpp", "rust", "toml", "zig", "lua", "vim", "vimdoc", "query" },
+  ensure_installed = { "go", "c", "cpp", "rust", "toml", "zig", "lua", "query" },
   sync_install = false,
   auto_install = true,
   highlight = {
@@ -219,7 +220,7 @@ require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
 dap.adapters.lldb = {
   type = 'executable',
-  command = '/usr/bin/lldb-dap',
+  command = 'C:/Program Files/LLVM/bin/lldb-dap.exe',
   name = 'lldb'
 }
 dap.configurations.cpp = {
@@ -248,6 +249,7 @@ dap.configurations.cpp = {
       for k, v in pairs(vim.fn.environ()) do
         table.insert(variables, string.format("%s=%s", k, v))
       end
+      table.insert(variables, function() return vim.fn.input('ENV var: ', '', 'file') end)
       return variables
     end,
   },
