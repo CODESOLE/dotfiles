@@ -260,9 +260,7 @@ dap.configurations.cpp = {
     name = '[LLDB] Attach to Process',
     type = 'lldb',
     request = 'attach',
-    pid = function()
-      return vim.fn.input('PID of running process: ', '', 'file')
-    end,
+    pid = require('dap.utils').pick_process,
     args = {},
   },
 }
