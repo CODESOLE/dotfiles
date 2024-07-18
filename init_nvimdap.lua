@@ -111,7 +111,7 @@ require'nvim-treesitter.configs'.setup {
 }
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
-  lualine_b = { 'filename' },
+  lualine_b = { { 'filename', path=1 } },
   lualine_c = { 'diff', 'filesize' },
   lualine_x = { 'selectioncount', 'diagnostics', 'overseer' },
   lualine_y = { 'location' },
