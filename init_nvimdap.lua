@@ -268,19 +268,21 @@ dap.configurations.c = dap.configurations.cpp
 dap.configurations.zig = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 dap.configurations.rust[1].initCommands = function()
-      local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
-      local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
-      local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
-      local commands = {}
-      local file = io.open(commands_file, 'r')
-      if file then
-        for line in file:lines() do
-          table.insert(commands, line)
-        end
-        file:close()
+  if jit.os == "Linux" or jit.os == "BSD" or jit.os == "OSX" or jit.os == "POSIX" then
+    local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
+    local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
+    local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
+    local commands = {}
+    local file = io.open(commands_file, 'r')
+    if file then
+      for line in file:lines() do
+        table.insert(commands, line)
       end
-      table.insert(commands, 1, script_import)
-      return commands
+      file:close()
+    end
+    table.insert(commands, 1, script_import)
+    return commands
+  end
 end
 dap.configurations.rust[2].initCommands = dap.configurations.rust[1].initCommands
 dap.listeners.before.attach.dapui_config = function()
