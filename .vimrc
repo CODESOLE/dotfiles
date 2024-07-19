@@ -1,8 +1,5 @@
-call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'puremourning/vimspector'
-Plug 'wellle/context.vim'
-call plug#end()
+packadd! coc
+packadd! vimspector
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
@@ -30,7 +27,7 @@ set gp=git\ grep\ -E
 set backspace=2 ruler
 set shortmess-=S
 set shortmess+=I noshowcmd
-set signcolumn=no
+set signcolumn=no noshowmode
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu
 set wildmenu
 set wildmode=list,full
