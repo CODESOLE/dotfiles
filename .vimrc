@@ -49,7 +49,7 @@ nmap gn :bn<CR>
 nmap gp :bp<CR>
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
-nnoremap <silent> <CR> :term lazygit<CR>
+nnoremap <silent> <CR> :tab term lazygit<CR>
 nnoremap <silent> <C-t> :term<CR>
 nnoremap <silent> <leader>o :CocCommand explorer<cr>
 nnoremap <silent> <leader>O :CocOutline<cr>
