@@ -8,5 +8,5 @@
  - nushell / fish
  - fd
  - rg
- - fzf
+ - fzf / NodeJS
  - LLVM & Pyhton
