@@ -13,6 +13,7 @@ set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set ut=200
 nmap s /
 nmap S ?
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 nmap <silent> <esc> :noh<CR>
 augroup auto_nohlsearch | au!
     noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
