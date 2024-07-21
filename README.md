@@ -6,7 +6,7 @@ coc-clangd coc-zig coc-rust-analyzer coc-go coc-json coc-git coc-explorer coc-ya
 
  - git
  - lazygit
- - nvim
+ - vim
  - nushell / fish
  - fd
  - rg
