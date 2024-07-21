@@ -187,7 +187,11 @@ augroup mygroup
 	      command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 	      command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 	      nnoremap <silent><nowait> <space>e  :<C-u>CocList diagnostics<cr>
-	      nnoremap <silent><nowait> <space>f  :<C-u>CocList gfiles<cr>
+	      nnoremap <silent><nowait> <space>ff  :<C-u>CocList files<cr>
+	      nnoremap <silent><nowait> <space>fg  :<C-u>CocList gfiles<cr>
+	      nnoremap <silent><nowait> <space>fl  :<C-u>CocList grep<cr>
+	      nnoremap <silent><nowait> <space>fc  :<C-u>CocList lines<cr>
+	      nnoremap <silent><nowait> <space>fb  :<C-u>CocList buffers<cr>
 	      nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList outline<cr>
 	      nnoremap <silent><nowait> <space>w  :<C-u>CocList -I symbols<cr>
