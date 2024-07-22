@@ -51,7 +51,7 @@ nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 nnoremap <silent> <CR> :tab term lazygit<CR>
 nnoremap <silent> <C-t> :term<CR>
-nnoremap <silent> <leader>p :tab term nu<CR>
+nnoremap <silent> <C-p> :tab term nu<CR>
 nnoremap <silent> <leader>o :CocCommand explorer<cr>
 nnoremap <silent> <leader>O :CocOutline<cr>
 inoremap <C-k> <Up>
