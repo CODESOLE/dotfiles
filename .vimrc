@@ -51,6 +51,7 @@ nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
 nnoremap <silent> <CR> :tab term lazygit<CR>
 nnoremap <silent> <C-t> :term<CR>
+nnoremap <silent> <leader>p :tab term nu<CR>
 nnoremap <silent> <leader>o :CocCommand explorer<cr>
 nnoremap <silent> <leader>O :CocOutline<cr>
 inoremap <C-k> <Up>
@@ -149,6 +150,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>F  :Format<CR>
 augroup mygroup
 	  autocmd!
 	    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
