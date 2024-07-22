@@ -79,8 +79,6 @@ vnoremap { :s/\%V\(.*\)\%V/\{\1\}/ <CR>
 vnoremap } :s/\%V\(.*\)\%V/\{\1\}/ <CR>
 vnoremap [ :s/\%V\(.*\)\%V/\[\1\]/ <CR>
 vnoremap ] :s/\%V\(.*\)\%V/\[\1\]/ <CR>
-vnoremap < :s/\%V\(.*\)\%V/<\1>/ <CR>
-vnoremap > :s/\%V\(.*\)\%V/<\1>/ <CR>
 inoremap { {}<left>
 inoremap ( ()<left>
 inoremap [ []<left>
