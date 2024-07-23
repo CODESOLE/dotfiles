@@ -29,7 +29,6 @@ bootstrap_paq {
   "echasnovski/mini.files",
   "ggandor/leap.nvim",
   "neovim/nvim-lspconfig",
-  "theHamsta/nvim-dap-virtual-text",
   "mfussenegger/nvim-dap",
   "nvim-neotest/nvim-nio",
   "rcarriga/nvim-dap-ui",
@@ -234,7 +233,6 @@ vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
 require("dapui").setup()
-require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
 require("dap.ext.vscode").json_decode = require('overseer.json').decode
 dap.adapters.lldb = {
