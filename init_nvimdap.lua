@@ -124,7 +124,8 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 } }
-require('leap').create_default_mappings()
+vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap)')
+vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
 require('mini.pairs').setup()
 require('mini.completion').setup()
 require('nvim-surround').setup()
