@@ -34,7 +34,8 @@ bootstrap_paq {
   "nvim-neotest/nvim-nio",
   "rcarriga/nvim-dap-ui",
   "nvim-lualine/lualine.nvim",
-  "ibhagwan/fzf-lua",
+  "nvim-telescope/telescope.nvim",
+  "nvim-lua/plenary.nvim",
   "nvim-treesitter/nvim-treesitter-context",
   "nvim-treesitter/nvim-treesitter-textobjects",
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
@@ -57,7 +58,6 @@ vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 require('overseer').setup()
-require'fzf-lua'.setup {'fzf-native'}
 require'toggleterm'.setup{ open_mapping = [[<C-s>]], shell = 'nu.exe' }
 vim.keymap.set("n", "<C-p>", ":ToggleTerm direction=float<CR>", { silent = true, noremap = true })
 vim.keymap.set("n", "<C-m>", function() require('toggleterm.terminal').Terminal:new({ direction = "float", cmd = "lazygit", hidden = true }):toggle() end, {noremap = true, silent = true})
@@ -148,18 +148,27 @@ require('lspconfig').zls.setup{}
 require('lspconfig').rust_analyzer.setup{}
 vim.filetype.add{ extension = { v = 'vlang' } }
 require('lspconfig').v_analyzer.setup{ filetypes = { 'vlang' } }
-vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fl", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').git_files()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fb", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fs", "<cmd>lua require('fzf-lua').lsp_document_symbols()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fw", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fa", "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fd", "<cmd>lua require('fzf-lua').diagnostics_document()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fD", "<cmd>lua require('fzf-lua').diagnostics_workspace()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fo", "<cmd>lua require('fzf-lua').oldfiles()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fc", "<cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true })
+local builtin = require('telescope.builtin')
+require('telescope').setup {
+  pickers = {
+    buffers = {
+      mappings = {
+        i = { ["<c-d>"] = "delete_buffer" },
+        n = { ["d"] = "delete_buffer" },
+      }
+    }
+  }
+}
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
+vim.keymap.set('n', '<leader>fw', builtin.lsp_dynamic_workspace_symbols, {})
+vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
+vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
+vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
 vim.lsp.inlay_hint.enable(true)
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -170,6 +179,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<space>fa', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, opts)
     vim.keymap.set({'n', 'v'}, '<space>F', vim.lsp.buf.format, opts)
     if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.documentHighlightProvider then
@@ -313,8 +323,14 @@ vim.keymap.set('n', '<leader>dk', function() require('dap').step_into() end)
 vim.keymap.set('n', '<leader>do', function() require('dap').step_out() end)
 vim.keymap.set('n', '<Leader>db', function() require('dap').toggle_breakpoint() end)
 vim.keymap.set('n', '<Leader>de', ':DapTerminate<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<Leader>b', ':FzfLua dap_breakpoints<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<Leader>c', ':FzfLua dap_configurations<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>b', function()
+  require('dap').list_breakpoints()
+  vim.cmd('copen')
+end)
+vim.keymap.set('n', '<Leader>c', function()
+  require('dap').clear_breakpoints()
+  vim.cmd('copen')
+end)
 vim.keymap.set('n', '<Leader>dt', function() require('dap').run_to_cursor() end)
 vim.keymap.set('n', '<Leader><Up>', function() require('dap').up() end)
 vim.keymap.set('n', '<Leader><Down>', function() require('dap').down() end)
