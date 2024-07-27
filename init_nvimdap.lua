@@ -1,3 +1,6 @@
+vim.keymap.set("v", "ş", "<Esc>")
+vim.keymap.set("c", "ş", "<Esc>")
+vim.keymap.set("i", "ş", "<Esc>")
 local function clone_paq()
   local path = vim.fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
   local is_installed = vim.fn.empty(vim.fn.glob(path)) == 0
@@ -20,7 +23,7 @@ bootstrap_paq {
   "savq/paq-nvim",
   "bluz71/vim-moonfly-colors",
   "j-hui/fidget.nvim",
-  "stevearc/overseer.nvim",
+  "NeogitOrg/neogit",
   "mg979/vim-visual-multi",
   "kylechui/nvim-surround",
   "echasnovski/mini.completion",
@@ -36,7 +39,7 @@ bootstrap_paq {
   "nvim-telescope/telescope.nvim",
   "nvim-lua/plenary.nvim",
   "nvim-treesitter/nvim-treesitter-context",
-  "nvim-treesitter/nvim-treesitter-textobjects",
+  "sindrets/diffview.nvim",
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
 }
 vim.g.moonflyWinSeparator = 2
@@ -56,11 +59,12 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
-require('overseer').setup()
+require('neogit').setup{}
+vim.keymap.set("n", "<CR>", require'neogit'.open, { silent = true, noremap = true })
 require'toggleterm'.setup{ open_mapping = [[<C-s>]], shell = 'nu.exe' }
 vim.keymap.set("n", "<C-p>", ":ToggleTerm direction=float<CR>", { silent = true, noremap = true })
-vim.keymap.set("n", "<C-m>", function() require('toggleterm.terminal').Terminal:new({ direction = "float", cmd = "lazygit", hidden = true }):toggle() end, {noremap = true, silent = true})
 require'fidget'.setup()
+require("diffview").setup({use_icons=false})
 require'mini.files'.setup{ windows = { preview = true } }
 vim.keymap.set("n", "<leader>o", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
 require'nvim-treesitter.configs'.setup {
@@ -71,48 +75,12 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-  textobjects = {
-    swap = {
-        enable = true,
-        swap_next = {
-          ["<leader>a"] = "@parameter.inner",
-        },
-        swap_previous = {
-          ["<leader>A"] = "@parameter.inner",
-        },
-    },
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-        ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-      },
-      selection_modes = {
-        ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'V', -- linewise
-        ['@class.outer'] = '<c-v>', -- blockwise
-      },
-      include_surrounding_whitespace = true,
-    },
-    lsp_interop = {
-      enable = true,
-      floating_preview_opts = { border = 'rounded' },
-      peek_definition_code = {
-        ["<leader>p"] = "@function.outer",
-        ["<leader>P"] = "@class.outer",
-      },
-    },
-  },
 }
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { { 'filename', path=1 } },
   lualine_c = { 'diff', 'filesize' },
-  lualine_x = { 'selectioncount', 'diagnostics', 'overseer' },
+  lualine_x = { 'selectioncount', 'diagnostics', 'progress' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 }, inactive_sections = {
@@ -206,6 +174,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+vim.keymap.set('n', 'gl', '$')
+vim.keymap.set('n', 'gh', '0')
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
 vim.keymap.set('i', '<C-k>', '<Up>')
@@ -234,7 +204,6 @@ vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
 require("dapui").setup()
 local dap, dapui = require("dap"), require("dapui")
-require("dap.ext.vscode").json_decode = require('overseer.json').decode
 dap.adapters.lldb = {
   type = 'executable',
   command = 'C:/Program Files/LLVM/bin/lldb-dap.exe',
@@ -349,7 +318,6 @@ vim.keymap.set('n', '<Leader>b', function()
 end)
 vim.keymap.set('n', '<Leader>c', function()
   require('dap').clear_breakpoints()
-  vim.cmd('copen')
 end)
 vim.keymap.set('n', '<Leader>dt', function() require('dap').run_to_cursor() end)
 vim.keymap.set('n', '<Leader><Up>', function() require('dap').up() end)
