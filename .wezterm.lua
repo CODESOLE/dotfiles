@@ -34,8 +34,9 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   })
 end
 
+config.default_prog = { 'nu.exe' }
+config.default_cwd = "C:/Users/serce/Documents/Github"
 config.launch_menu = launch_menu
-config.default_prog = { 'C:/Program Files/Git/bin/bash.exe', '-i', '-l' }
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = 'TITLE|RESIZE'
 config.use_resize_increments = true
@@ -47,7 +48,7 @@ config.keys = {}
 for i = 1, 8 do
   table.insert(config.keys, {
     key = tostring(i),
-    mods = 'CTRL',
+    mods = 'ALT',
     action = wezterm.action.ActivateTab(i - 1),
   })
 end
