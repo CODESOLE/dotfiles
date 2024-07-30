@@ -78,18 +78,22 @@ require'nvim-treesitter.configs'.setup {
 }
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
-  lualine_b = { { 'filename', path=1 } },
-  lualine_c = { 'diff', 'filesize' },
-  lualine_x = { 'selectioncount', 'diagnostics', 'mode' },
-  lualine_y = { 'location' },
-  lualine_z = { 'searchcount' },
-}, inactive_sections = {
-  lualine_a = { 'branch' },
-  lualine_b = { { 'filename', path=1 } },
+  lualine_b = { 'fileformat', 'encoding', 'filetype' },
   lualine_c = { 'diff', 'filesize' },
   lualine_x = { 'selectioncount', 'diagnostics', 'progress' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
+}, inactive_sections = {
+  lualine_a = { 'branch' },
+  lualine_b = { 'fileformat', 'encoding', 'filetype' },
+  lualine_c = { 'diff', 'filesize' },
+  lualine_x = { 'selectioncount', 'diagnostics', 'progress' },
+  lualine_y = { 'location' },
+  lualine_z = { 'searchcount' },
+}, winbar = {
+  lualine_a = { { 'filename', path=1 } },
+}, inactive_winbar = {
+  lualine_a = { { 'filename', path=1 } },
 } }
 vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap)')
 vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
