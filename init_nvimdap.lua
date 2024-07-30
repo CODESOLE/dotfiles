@@ -127,7 +127,7 @@ require('telescope').setup {
     }
   }
 }
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>ff', ':Telescope find_files no_ignore=true<CR>', {silent = true, noremap = true})
 vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
