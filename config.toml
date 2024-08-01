@@ -19,6 +19,7 @@ character = "|"
 skip-levels = 2
 
 [keys.insert]
+j.j = ["normal_mode"]
 C-h = ["move_char_left"]
 C-l = ["move_char_right"]
 C-j = ["move_visual_line_down"]
