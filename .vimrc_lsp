@@ -1,0 +1,204 @@
+language en_US.UTF-8
+packadd lsp
+packadd fuzzyy
+packadd vimspector
+packadd! editorconfig
+packadd! comment
+packadd! cfilter
+set laststatus=- fillchars+=eob:\ 
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
+set ut=200
+nmap s /
+nmap S ?
+nmap <silent> <esc> :noh<CR>
+augroup auto_nohlsearch | au!
+    noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
+    noremap! <expr> <Plug>(nohlsearch) execute('nohlsearch')[-1]
+    au InsertEnter * call feedkeys("\<Plug>(nohlsearch)", 'm')
+augroup END
+set bg=dark
+set termguicolors
+set guifont=Hack\ Nerd\ Font\ Mono:h10
+colorscheme retrobox
+set gp=git\ grep\ -E
+set backspace=2 ruler
+set shortmess-=S
+set shortmess+=I noshowcmd
+set signcolumn=no noshowmode
+set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu
+set wildmenu
+set wildmode=list,full
+set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*
+set path+=**
+syntax enable
+set mouse=a
+set is hlsearch ignorecase smartcase showmatch
+set encoding=utf-8
+set nobackup nowritebackup noswapfile
+set guioptions=Ac
+filetype on
+filetype plugin on
+let mapleader=" "
+noremap gl $
+noremap gh 0
+nmap gn :bn<CR>
+nmap gp :bp<CR>
+let g:enable_fuzzyy_keymaps = 0
+nnoremap <leader>ff :FuzzyFiles<cr>
+nnoremap <leader>fg :FuzzyGitFiles<cr>
+nnoremap <leader>fb :FuzzyBuffers<cr>
+nnoremap <leader>fl :FuzzyGrep<cr>
+nnoremap <leader>fc :FuzzyInBuffer<cr>
+vnoremap <leader>p "_dP
+nnoremap <leader>l :cn<cr>
+nnoremap <leader>h :cp<cr>
+nnoremap <silent> <C-k> :tabn<CR>
+tnoremap <silent> <C-k> <C-w>:tabn<CR>
+nnoremap <silent> <CR> :tab term lazygit<CR>
+nnoremap <silent> <C-t> :term nu<CR>
+nnoremap <silent> <C-p> :tab term nu<CR>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+cnoremap <C-k> <Up>
+cnoremap <C-j> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+inoremap <silent> ş <Esc>
+vnoremap <silent> ş <Esc>
+cnoremap <silent> ş <Esc>
+vnoremap ' :s/\%V\(.*\)\%V/'\1'/ <CR>
+vnoremap ( :s/\%V\(.*\)\%V/\(\1\)/ <CR>
+vnoremap ) :s/\%V\(.*\)\%V/\(\1\)/ <CR>
+vnoremap { :s/\%V\(.*\)\%V/\{\1\}/ <CR>
+vnoremap } :s/\%V\(.*\)\%V/\{\1\}/ <CR>
+vnoremap [ :s/\%V\(.*\)\%V/\[\1\]/ <CR>
+vnoremap ] :s/\%V\(.*\)\%V/\[\1\]/ <CR>
+inoremap { {}<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap " ""<left>
+inoremap ' ''<left>
+hi LspSemanticComment       guifg=#444444
+hi LspSemanticDecorator     guifg=#de935f
+hi LspSemanticClass         guifg=#36c692
+hi LspSemanticEnum          guifg=#fa81ef
+hi LspSemanticStruct        guifg=#36c692
+hi LspSemanticEnumMember    guifg=#ae81ff
+hi LspSemanticInterface     guifg=#cf87e8
+hi LspSemanticKeyword       guifg=#ff5454
+hi LspSemanticMacro         guifg=#ff5189
+hi LspSemanticMethod        guifg=#74b2ff
+hi LspSemanticFunction      guifg=#74b2ff
+hi LspSemanticModifier      guifg=#e3c78a
+hi LspSemanticType          guifg=#8cc85f
+hi LspSemanticTypeParameter guifg=#f09479
+hi LspSemanticVariable      guifg=#c6c6c6
+hi LspSemanticNamespace     guifg=#a744ab
+hi LspSemanticProperty      guifg=#adadf3
+hi LspSemanticParameter     guifg=#e196a2
+hi LspSemanticOperator      guifg=#80a0ff
+hi LspSemanticNumber        guifg=#79dac8
+hi LspSemanticString        guifg=#c6c684
+hi LspSemanticRegexp        guifg=#79dac8
+hi LspSemanticEvent guifg=#1E4F0A
+hi Normal guibg=#080808
+hi Cursor guibg=#FF4000
+call LspAddServer([#{
+	\    name: 'clangd',
+	\    filetype: ['c', 'cpp'],
+	\    path: 'clangd',
+	\    args: ['--background-index','--all-scopes-completion','--header-insertion=never',]
+	\  }])
+call LspAddServer([#{
+	\    name: 'rustlang',
+	\    filetype: ['rust'],
+	\    path: 'rust-analyzer',
+	\    args: [],
+	\    syncInit: v:true
+	\  }])
+call LspAddServer([#{
+	\    name: 'zig',
+	\    filetype: ['zig'],
+	\    path: 'zls',
+	\    args: [],
+	\  }])
+call LspOptionsSet(#{
+        \   aleSupport: v:false,
+        \   autoComplete: v:true,
+        \   autoHighlight: v:true,
+        \   autoHighlightDiags: v:true,
+        \   autoPopulateDiags: v:true,
+        \   completionMatcher: 'fuzzy',
+        \   completionMatcherValue: 1,
+        \   diagSignErrorText: 'E>',
+        \   diagSignHintText: 'H>',
+        \   diagSignInfoText: 'I>',
+        \   diagSignWarningText: 'W>',
+        \   echoSignature: v:false,
+        \   hideDisabledCodeActions: v:false,
+        \   highlightDiagInline: v:true,
+        \   hoverInPreview: v:false,
+        \   ignoreMissingServer: v:false,
+        \   keepFocusInDiags: v:true,
+        \   keepFocusInReferences: v:true,
+        \   completionTextEdit: v:true,
+        \   diagVirtualTextAlign: 'after',
+        \   diagVirtualTextWrap: 'truncate',
+        \   noNewlineInCompletion: v:true,
+        \   omniComplete: v:false,
+        \   outlineOnRight: v:true,
+        \   outlineWinSize: 30,
+        \   semanticHighlight: v:true,
+        \   showDiagInBalloon: v:true,
+        \   showDiagInPopup: v:true,
+        \   showDiagOnStatusLine: v:false,
+        \   showDiagWithSign: v:true,
+        \   showDiagWithVirtualText: v:true,
+        \   showInlayHints: v:true,
+        \   showSignature: v:true,
+        \   snippetSupport: v:false,
+        \   ultisnipsSupport: v:false,
+        \   useBufferCompletion: v:false,
+        \   usePopupInCodeAction: v:true,
+        \   useQuickfixForLocations: v:false,
+        \   vsnipSupport: v:false,
+        \   bufferCompletionTimeout: 100,
+        \   customCompletionKinds: v:false,
+        \   completionKinds: {},
+        \   filterCompletionDuplicates: v:false,
+	\ })
+hi LspInlayHintsParam guibg=#111111 guifg=#444444
+hi LspInlayHintsType guibg=#111111 guifg=#444444
+nnoremap <leader>ac :LspCodeAction<CR>
+nnoremap <leader>e :LspDiag show<CR>
+nnoremap <leader>l :LspDiag next<CR>
+nnoremap <leader>h :LspDiag previous<CR>
+nnoremap <leader>h :LspDiag prev<CR>
+nnoremap <leader>d :LspDiag current<CR>
+nnoremap <leader>s :LspDocumentSymbol<CR>
+nnoremap <leader>ws :LspSymbolSearch<CR>
+nnoremap <leader>f :LspFormat<CR>
+nnoremap K :LspHover<CR>
+nnoremap gd :LspGotoDefinition<CR>
+nnoremap gy :LspGotoDeclaration<CR>
+nnoremap gi :LspGotoImpl<CR>
+nnoremap gt :LspGotoTypeDef<CR>
+nnoremap <leader>rp :LspPeekReferences<CR>
+nnoremap <leader>rn :LspRename<CR>
+nnoremap gs :LspShowSignature<CR>
+nnoremap <Leader>dr <Plug>VimspectorRestart
+nnoremap <Leader>de <Plug>VimspectorStop
+nnoremap <Leader>dc <Plug>VimspectorContinue
+nnoremap <Leader>dt <Plug>VimspectorRunToCursor
+nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dl <Plug>VimspectorToggleConditionalBreakpoint
+nnoremap <Leader><Up> <Plug>VimspectorUpFrame
+nnoremap <Leader><Down> <Plug>VimspectorDownFrame
+nnoremap <Leader>dh <Plug>VimspectorStepOut
+nnoremap <Leader>dk <Plug>VimspectorStepInto
+nnoremap <Leader>dj <Plug>VimspectorStepOver
+nnoremap <Leader>dp <Plug>VimspectorBalloonEval
+vnoremap <Leader>dp <Plug>VimspectorBalloonEval
+nnoremap <Leader>B <Plug>VimspectorBreakpoints
