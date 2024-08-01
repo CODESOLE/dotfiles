@@ -97,8 +97,8 @@
 [palette]
 # background = "#282a36"
 # background_dark = "#21222c"
-background = "#0b0e14"
-background_dark = "#000000"
+background = "#080808"
+background_dark = "#1c1c1c"
 primary_highlight = "#800049"
 secondary_highlight = "#4d4f66"
 foreground = "#eff0eb"
