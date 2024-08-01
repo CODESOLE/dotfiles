@@ -99,8 +99,8 @@
 # background_dark = "#21222c"
 background = "#080808"
 background_dark = "#1c1c1c"
-primary_highlight = "#800049"
-secondary_highlight = "#4d4f66"
+primary_highlight = "#444444"
+secondary_highlight = "#444444"
 foreground = "#eff0eb"
 comment = "#a39e9b"
 
