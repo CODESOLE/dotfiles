@@ -1,8 +1,9 @@
 theme = "custom"
 
-[editor.lsp]
-display-inlay-hints = true
-display-messages = true
+[editor]
+scrolloff = 0
+lsp.display-inlay-hints = true
+lsp.display-messages = true
 
 [editor.statusline]
 left = ["mode", "version-control", "file-name", "file-modification-indicator"]
