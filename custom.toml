@@ -100,7 +100,7 @@
 background = "#080808"
 background_dark = "#1c1c1c"
 primary_highlight = "#444444"
-secondary_highlight = "#444444"
+secondary_highlight = "#111111"
 foreground = "#eff0eb"
 comment = "#a39e9b"
 
