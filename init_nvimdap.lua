@@ -80,14 +80,14 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
   lualine_a = { 'branch' },
   lualine_b = { 'fileformat', 'encoding', 'filetype' },
   lualine_c = { 'filesize' },
-  lualine_x = { '', 'selectioncount', 'progress' },
+  lualine_x = { '%L', 'selectioncount', 'progress' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 }, inactive_sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'fileformat', 'encoding', 'filetype' },
   lualine_c = { 'filesize' },
-  lualine_x = { '', 'selectioncount', 'progress' },
+  lualine_x = { '%L', 'selectioncount', 'progress' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 }, winbar = {
