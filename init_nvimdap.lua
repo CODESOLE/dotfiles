@@ -92,10 +92,12 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
   lualine_z = { 'searchcount' },
 }, winbar = {
   lualine_b = { { 'filename', path=1 } },
-  lualine_c = { 'diff', 'diagnostics' },
+  lualine_c = { 'diagnostics' },
+  lualine_y = { 'diff' },
 }, inactive_winbar = {
   lualine_b = { { 'filename', path=1 } },
-  lualine_c = { 'diff', 'diagnostics' },
+  lualine_c = { 'diagnostics' },
+  lualine_y = { 'diff' },
 } }
 vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap)')
 vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
