@@ -11,6 +11,7 @@ set ut=200
 nmap s /
 nmap S ?
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 nmap <silent> <esc> :noh<CR>
 augroup auto_nohlsearch | au!
     noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
