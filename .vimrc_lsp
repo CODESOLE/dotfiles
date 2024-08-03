@@ -10,6 +10,7 @@ set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set ut=200
 nmap s /
 nmap S ?
+nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 nmap <silent> <esc> :noh<CR>
 augroup auto_nohlsearch | au!
     noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
