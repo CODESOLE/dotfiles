@@ -71,11 +71,24 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = { "go", "c", "cpp", "rust", "toml", "zig", "lua", "query" },
   sync_install = false,
   auto_install = true,
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn", -- set to `false` to disable one of the mappings
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  indent = { enable = true },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
 }
+vim.wo.foldmethod = 'expr'
+vim.o.foldenable = false
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'fileformat', 'encoding', 'filetype' },
