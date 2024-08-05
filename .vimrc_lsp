@@ -1,7 +1,5 @@
-language en_US.UTF-8
 packadd lsp
 packadd ctrlp
-packadd vimspector
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
@@ -46,11 +44,12 @@ noremap <silent> <leader>h :cprev<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
 vnoremap <leader>p "_dP
+nnoremap <silent> <C-b> :CtrlPBuffer<CR>
 nnoremap <silent> <C-k> :tabn<CR>
 tnoremap <silent> <C-k> <C-w>:tabn<CR>
 nnoremap <silent> <leader>g :tab term lazygit<CR>
-nnoremap <silent> <C-t> :term<CR>
-nnoremap <silent> <C-a> :tab term<CR>
+nnoremap <silent> <C-t> :term nu<CR>
+nnoremap <silent> <C-a> :tab term nu<CR>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
@@ -62,18 +61,6 @@ cnoremap <C-l> <Right>
 inoremap <silent> ş <Esc>
 vnoremap <silent> ş <Esc>
 cnoremap <silent> ş <Esc>
-vnoremap ' :s/\%V\(.*\)\%V/'\1'/ <CR>
-vnoremap ( :s/\%V\(.*\)\%V/\(\1\)/ <CR>
-vnoremap ) :s/\%V\(.*\)\%V/\(\1\)/ <CR>
-vnoremap { :s/\%V\(.*\)\%V/\{\1\}/ <CR>
-vnoremap } :s/\%V\(.*\)\%V/\{\1\}/ <CR>
-vnoremap [ :s/\%V\(.*\)\%V/\[\1\]/ <CR>
-vnoremap ] :s/\%V\(.*\)\%V/\[\1\]/ <CR>
-inoremap { {}<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap " ""<left>
-inoremap ' ''<left>
 hi LspSemanticComment       guifg=#444444
 hi LspSemanticDecorator     guifg=#de935f
 hi LspSemanticClass         guifg=#36c692
@@ -181,17 +168,3 @@ nnoremap gt :LspGotoTypeDef<CR>
 nnoremap <leader>rp :LspPeekReferences<CR>
 nnoremap <leader>rn :LspRename<CR>
 nnoremap gs :LspShowSignature<CR>
-nnoremap <Leader>dr <Plug>VimspectorRestart
-nnoremap <Leader>de <Plug>VimspectorStop
-nnoremap <Leader>dc <Plug>VimspectorContinue
-nnoremap <Leader>dt <Plug>VimspectorRunToCursor
-nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
-nnoremap <Leader>dl <Plug>VimspectorToggleConditionalBreakpoint
-nnoremap <Leader><Up> <Plug>VimspectorUpFrame
-nnoremap <Leader><Down> <Plug>VimspectorDownFrame
-nnoremap <Leader>dh <Plug>VimspectorStepOut
-nnoremap <Leader>dk <Plug>VimspectorStepInto
-nnoremap <Leader>dj <Plug>VimspectorStepOver
-nnoremap <Leader>dp <Plug>VimspectorBalloonEval
-vnoremap <Leader>dp <Plug>VimspectorBalloonEval
-nnoremap <Leader>B <Plug>VimspectorBreakpoints
