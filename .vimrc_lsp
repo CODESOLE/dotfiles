@@ -1,5 +1,5 @@
 packadd lsp
-packadd ctrlp
+packadd fuzzyy
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
@@ -37,6 +37,14 @@ set guioptions=Ac
 filetype on
 filetype plugin on
 let mapleader=" "
+let g:enable_fuzzyy_keymaps = 0
+let g:enable_fuzzyy_MRU_files = 1
+nnoremap <leader>ff :FuzzyFiles<cr>
+nnoremap <leader>fg :FuzzyGitFiles<cr>
+nnoremap <leader>fb :FuzzyBuffers<cr>
+nnoremap <leader>fl :FuzzyGrep<cr>
+nnoremap <leader>fo :FuzzyMRUFiles<cr>
+nnoremap <leader>fc :FuzzyInBuffer<cr>
 noremap gl $
 noremap gh 0
 noremap <silent> <leader>l :cnext<CR>
