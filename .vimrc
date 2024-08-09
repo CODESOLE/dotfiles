@@ -112,7 +112,7 @@ hi CocSemTypeNumber        guifg=#79dac8
 hi CocSemTypeString        guifg=#c6c684
 hi CocSemTypeRegexp        guifg=#79dac8
 hi CocSemTypeBoolean	     guifg=#FF0000
-hi Normal guibg=#080808
+hi Normal guibg=#000000
 hi CocSemTypeEvent guifg=#1E4F0A
 hi CocInlayHint guibg=#1c1c1c guifg=#949494
 hi Cursor guibg=#FF4000
