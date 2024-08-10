@@ -1,4 +1,5 @@
 {
+  "git.branchCharacter": "Y",
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "colors.enable": true,
   "semanticTokens.enable": true,
