@@ -44,8 +44,13 @@ bootstrap_paq {
 }
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
-vim.o.updatetime = 500
+vim.wo.wrap = false
+vim.wo.list = true
+vim.wo.listchars = "extends:>,precedes:<"
+vim.o.updatetime = 200
 vim.cmd('colorscheme moonfly')
+vim.api.nvim_set_hl(0, 'NonText', {bg='#999999', fg='black'})
+vim.api.nvim_set_hl(0, 'EndOfBuffer', {bg='NONE'})
 vim.o.showmode     = false
 vim.o.swapfile     = false
 vim.o.backup     = false
