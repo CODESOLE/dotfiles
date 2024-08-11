@@ -47,6 +47,7 @@ vim.g.moonflyVirtualTextColor = true
 vim.wo.wrap = false
 vim.wo.list = true
 vim.wo.listchars = "extends:>,precedes:<"
+vim.wo.fillchars = "eob: "
 vim.o.updatetime = 200
 vim.cmd('colorscheme moonfly')
 vim.api.nvim_set_hl(0, 'NonText', {bg='#999999', fg='black'})
