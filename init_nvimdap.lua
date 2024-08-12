@@ -44,11 +44,10 @@ bootstrap_paq {
 }
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
-vim.go.wrap = false
-vim.go.list = true
-vim.go.listchars = "extends:>,precedes:<"
 vim.go.guicursor = "a:block"
-vim.go.fillchars = "eob: "
+vim.cmd[[set nowrap]]
+vim.cmd[[set list lcs=extends:>,precedes:<]]
+vim.cmd[[set fillchars+=eob:\ ]]
 vim.o.updatetime = 200
 vim.cmd.colorscheme('moonfly')
 vim.api.nvim_set_hl(0, 'NonText', {bg='#999999', fg='black'})
