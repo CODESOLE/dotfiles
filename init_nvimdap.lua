@@ -47,6 +47,7 @@ vim.g.moonflyVirtualTextColor = true
 vim.go.wrap = false
 vim.go.list = true
 vim.go.listchars = "extends:>,precedes:<"
+vim.go.guicursor = "n-v-c-sm:block,i-ci-ve:block,r-cr-o:block"
 vim.go.fillchars = "eob: "
 vim.o.updatetime = 200
 vim.cmd.colorscheme('moonfly')
