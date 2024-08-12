@@ -68,7 +68,7 @@ vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 require('neogit').setup{}
 vim.keymap.set("n", "<leader>g", require'neogit'.open, { silent = true, noremap = true })
-require'toggleterm'.setup{ open_mapping = [[<C-s>]], shell = 'nu.exe' }
+require'toggleterm'.setup{ open_mapping = [[<C-j>]], shell = 'nu.exe' }
 vim.keymap.set("n", "<C-p>", ":ToggleTerm direction=float<CR>", { silent = true, noremap = true })
 require'fidget'.setup()
 require("diffview").setup({use_icons=false})
