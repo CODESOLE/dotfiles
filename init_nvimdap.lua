@@ -24,7 +24,6 @@ bootstrap_paq {
   "bluz71/vim-moonfly-colors",
   "j-hui/fidget.nvim",
   "NeogitOrg/neogit",
-  "mg979/vim-visual-multi",
   "kylechui/nvim-surround",
   "echasnovski/mini.completion",
   "akinsho/toggleterm.nvim",
@@ -37,9 +36,10 @@ bootstrap_paq {
   "rcarriga/nvim-dap-ui",
   "nvim-lualine/lualine.nvim",
   "nvim-telescope/telescope.nvim",
+  "sindrets/diffview.nvim",
   "nvim-lua/plenary.nvim",
   "nvim-treesitter/nvim-treesitter-context",
-  "sindrets/diffview.nvim",
+  "nvim-treesitter/nvim-treesitter-textobjects",
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
 }
 vim.g.moonflyWinSeparator = 2
@@ -94,6 +94,42 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
+  },
+  textobjects = {
+    swap = {
+        enable = true,
+        swap_next = {
+          ["<leader>a"] = "@parameter.inner",
+        },
+        swap_previous = {
+          ["<leader>A"] = "@parameter.inner",
+        },
+    },
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+      },
+      selection_modes = {
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V', -- linewise
+        ['@class.outer'] = '<c-v>', -- blockwise
+      },
+      include_surrounding_whitespace = true,
+    },
+    lsp_interop = {
+      enable = true,
+      floating_preview_opts = { border = 'rounded' },
+      peek_definition_code = {
+        ["<leader>p"] = "@function.outer",
+        ["<leader>P"] = "@class.outer",
+      },
+    },
   },
 }
 vim.wo.foldmethod = 'expr'
