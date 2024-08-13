@@ -47,10 +47,10 @@ vim.g.moonflyVirtualTextColor = true
 vim.go.guicursor = "a:block"
 vim.go.wrap = false
 vim.go.list = true
-vim.go.listchars = "extends:>,precedes:<"
+vim.go.listchars = "tab:> ,trail:-,nbsp:+,extends:>,precedes:<"
 vim.go.fillchars = "eob: "
 -- vim.cmd[[set nowrap]]
--- vim.cmd[[set list lcs=extends:>,precedes:<]]
+-- vim.cmd[[set list lcs+=extends:>,precedes:<]]
 -- vim.cmd[[set fillchars+=eob:\ ]]
 vim.o.updatetime = 200
 vim.cmd.colorscheme('moonfly')
