@@ -45,10 +45,10 @@ bootstrap_paq {
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyVirtualTextColor = true
 vim.go.guicursor = "a:block"
-vim.go.wrap = false
-vim.go.list = true
-vim.go.listchars = "tab:> ,trail:-,nbsp:+,extends:>,precedes:<"
-vim.go.fillchars = "eob: "
+vim.wo.wrap = false
+vim.wo.list = true
+vim.wo.listchars = "tab:> ,trail:-,nbsp:+,extends:>,precedes:<"
+vim.wo.fillchars = "eob: "
 -- vim.cmd[[set nowrap]]
 -- vim.cmd[[set list lcs+=extends:>,precedes:<]]
 -- vim.cmd[[set fillchars+=eob:\ ]]
