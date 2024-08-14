@@ -48,7 +48,7 @@ vim.go.guicursor = "a:block"
 vim.wo.wrap = false
 vim.wo.list = true
 vim.wo.listchars = "tab:> ,trail:-,nbsp:+,extends:>,precedes:<"
-vim.wo.fillchars = "eob: "
+vim.go.fillchars = "eob: "
 -- vim.cmd[[set nowrap]]
 -- vim.cmd[[set list lcs+=extends:>,precedes:<]]
 -- vim.cmd[[set fillchars+=eob:\ ]]
