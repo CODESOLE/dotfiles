@@ -185,6 +185,9 @@ vim.filetype.add{ extension = { v = 'vlang' } }
 require('lspconfig').v_analyzer.setup{ filetypes = { 'vlang' } }
 local builtin = require('telescope.builtin')
 require('telescope').setup {
+  defaults = {
+    borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+  },
   pickers = {
     buffers = {
       mappings = {
