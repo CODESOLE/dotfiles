@@ -114,7 +114,7 @@ hi CocSemTypeRegexp        guifg=#79dac8
 hi CocSemTypeBoolean	     guifg=#FF0000
 hi Normal guibg=#000000
 hi CocSemTypeEvent guifg=#1E4F0A
-hi CocInlayHint guibg=#1c1c1c guifg=#949494
+hi CocInlayHint guibg=#080808 guifg=#444444
 hi Cursor guibg=#FF4000
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
