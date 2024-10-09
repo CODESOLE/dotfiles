@@ -25,7 +25,13 @@ bootstrap_paq {
   "j-hui/fidget.nvim",
   "NeogitOrg/neogit",
   "kylechui/nvim-surround",
-  "echasnovski/mini.completion",
+  "L3MON4D3/LuaSnip",
+  "saadparwaiz1/cmp_luasnip",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
+  "hrsh7th/nvim-cmp",
   "akinsho/toggleterm.nvim",
   "echasnovski/mini.pairs",
   "echasnovski/mini.files",
@@ -161,9 +167,88 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
 vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap)')
 vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
 require('mini.pairs').setup()
-require('mini.completion').setup()
 require('nvim-surround').setup()
+local cmp = require'cmp'
+local luasnip = require'luasnip'
+cmp.setup({
+   snippet = {
+     -- REQUIRED - you must specify a snippet engine
+     expand = function(args)
+       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+     end,
+   },
+   window = {
+     completion = cmp.config.window.bordered(),
+     documentation = cmp.config.window.bordered(),
+   },
+   mapping = cmp.mapping.preset.insert({
+     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+     ['<C-Space>'] = cmp.mapping.complete(),
+     ['<C-e>'] = cmp.mapping.abort(),
+     ['<CR>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            if luasnip.expandable() then
+                luasnip.expand()
+            else
+                cmp.confirm({
+                    select = true,
+                })
+            end
+        else
+            fallback()
+        end
+    end),
+
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+   }),
+   sources = cmp.config.sources({
+     { name = 'nvim_lsp' },
+     { name = 'luasnip' }, -- For luasnip users.
+   }, {
+     { name = 'buffer' },
+   })
+ })
+ -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+ cmp.setup.cmdline({ '/', '?' }, {
+   mapping = cmp.mapping.preset.cmdline(),
+   sources = {
+     { name = 'buffer' }
+   }
+ })
+
+ -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+ cmp.setup.cmdline(':', {
+   mapping = cmp.mapping.preset.cmdline(),
+   sources = cmp.config.sources({
+     { name = 'path' }
+   }, {
+     { name = 'cmdline' }
+   }),
+   matching = { disallow_symbol_nonprefix_matching = false }
+ })
+ -- Set up lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('lspconfig').gopls.setup{
+  capabilities = capabilities,
   settings = {
     gopls = {
       hints = {
@@ -178,11 +263,11 @@ require('lspconfig').gopls.setup{
     }
   }
 }
-require('lspconfig').clangd.setup{}
-require('lspconfig').zls.setup{}
-require('lspconfig').rust_analyzer.setup{}
+require('lspconfig').clangd.setup{capabilities = capabilities}
+require('lspconfig').zls.setup{capabilities = capabilities}
+require('lspconfig').rust_analyzer.setup{capabilities = capabilities}
 vim.filetype.add{ extension = { v = 'vlang' } }
-require('lspconfig').v_analyzer.setup{ filetypes = { 'vlang' } }
+require('lspconfig').v_analyzer.setup{ filetypes = { 'vlang' }, capabilities = capabilities}
 local builtin = require('telescope.builtin')
 require('telescope').setup {
   defaults = {
