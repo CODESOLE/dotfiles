@@ -23,6 +23,7 @@ bootstrap_paq {
   "savq/paq-nvim",
   "bluz71/vim-moonfly-colors",
   "j-hui/fidget.nvim",
+  "nmac427/guess-indent.nvim",
   "NeogitOrg/neogit",
   "kylechui/nvim-surround",
   "L3MON4D3/LuaSnip",
@@ -79,6 +80,7 @@ require('neogit').setup{}
 vim.keymap.set("n", "<leader>g", require'neogit'.open, { silent = true, noremap = true })
 require'toggleterm'.setup{ open_mapping = [[<C-j>]], shell = 'nu.exe' }
 vim.keymap.set("n", "<C-p>", ":ToggleTerm direction=float<CR>", { silent = true, noremap = true })
+require('guess-indent').setup {}
 require'fidget'.setup()
 require("diffview").setup({use_icons=false})
 require'mini.files'.setup{ windows = { preview = true } }
