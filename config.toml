@@ -10,13 +10,8 @@ insert = "bar"
 
 [editor.statusline]
 left = ["version-control", "file-name", "file-modification-indicator"]
-center = ["read-only-indicator"]
+center = ["read-only-indicator", "total-line-numbers"]
 right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "workspace-diagnostics"]
-
-[editor.indent-guides]
-render = true
-character = "|"
-skip-levels = 2
 
 [keys.insert]
 "ş" = ["normal_mode"]
