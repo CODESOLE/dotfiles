@@ -21,6 +21,7 @@ local function bootstrap_paq(packages)
 end
 bootstrap_paq {
   "savq/paq-nvim",
+  "TaDaa/vimade",
   "bluz71/vim-moonfly-colors",
   "j-hui/fidget.nvim",
   "nmac427/guess-indent.nvim",
