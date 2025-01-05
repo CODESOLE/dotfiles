@@ -1,6 +1,7 @@
 theme = "custom"
 
 [editor]
+end-of-line-diagnostics = "hint"
 scrolloff = 0
 lsp.display-inlay-hints = true
 lsp.display-messages = true
