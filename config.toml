@@ -1,5 +1,8 @@
 theme = "custom"
 
+[editor.gutters]
+layout = []
+
 [editor]
 end-of-line-diagnostics = "hint"
 scrolloff = 0
