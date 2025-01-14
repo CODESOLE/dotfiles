@@ -10,5 +10,7 @@ coc-clangd coc-zig coc-rust-analyzer coc-go coc-json coc-git coc-explorer coc-ya
  - nushell / fish
  - fd
  - rg
+ - bat
+ - delta
  - fzf / NodeJS
  - LLVM & Pyhton
