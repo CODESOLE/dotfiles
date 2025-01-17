@@ -27,7 +27,7 @@ bootstrap_paq {
   "nmac427/guess-indent.nvim",
   "NeogitOrg/neogit",
   "kylechui/nvim-surround",
-  { "saghen/blink.cmp", branch = 'v0.8.1' },
+  { "saghen/blink.cmp", branch = 'v0.10.0' },
   "akinsho/toggleterm.nvim",
   "echasnovski/mini.pairs",
   "echasnovski/mini.files",
