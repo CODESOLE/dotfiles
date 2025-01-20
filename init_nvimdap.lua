@@ -166,7 +166,7 @@ vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap)')
 vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
 require('mini.pairs').setup()
 require('nvim-surround').setup()
-require('blink.cmp').setup{keymap = {preset = 'enter' }}
+require('blink.cmp').setup{signature = {enabled = true}}
  -- Set up lspconfig.
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 require('lspconfig').gopls.setup{
