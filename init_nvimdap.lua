@@ -166,7 +166,7 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
 vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap)')
 vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
 require('mini.pairs').setup()
-require('visual-surround').setup{enable_wrapped_deletion = false}
+require('visual-surround').setup{enable_wrapped_deletion = true}
 require('blink.cmp').setup{completion = { documentation = { auto_show = true } }, signature = {enabled = true}}
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 require('lspconfig').gopls.setup{
