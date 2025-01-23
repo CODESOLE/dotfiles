@@ -46,6 +46,7 @@ bootstrap_paq {
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
 }
 vim.g.moonflyWinSeparator = 2
+vim.g.moonflyItalics = false
 vim.g.moonflyVirtualTextColor = true
 vim.go.guicursor = "a:block"
 vim.wo.wrap = false
