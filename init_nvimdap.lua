@@ -26,7 +26,7 @@ bootstrap_paq {
   "j-hui/fidget.nvim",
   "nmac427/guess-indent.nvim",
   "NeogitOrg/neogit",
-  "kylechui/nvim-surround",
+  "NStefan002/visual-surround.nvim",
   { "saghen/blink.cmp", branch = 'v0.10.0' },
   "akinsho/toggleterm.nvim",
   "echasnovski/mini.pairs",
@@ -72,6 +72,7 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
+vim.keymap.set("v", "<leader>y", '"*y', { silent = true })
 require('neogit').setup{}
 vim.keymap.set("n", "<leader>g", require'neogit'.open, { silent = true, noremap = true })
 require'toggleterm'.setup{ open_mapping = [[<C-j>]], shell = 'nu.exe' }
@@ -165,7 +166,7 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
 vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap)')
 vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
 require('mini.pairs').setup()
-require('nvim-surround').setup()
+require('visual-surround').setup{enable_wrapped_deletion = false}
 require('blink.cmp').setup{completion = { documentation = { auto_show = true } }, signature = {enabled = true}}
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 require('lspconfig').gopls.setup{
