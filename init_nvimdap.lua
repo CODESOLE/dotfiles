@@ -33,7 +33,6 @@ bootstrap_paq {
   "echasnovski/mini.files",
   "ggandor/leap.nvim",
   "neovim/nvim-lspconfig",
-  "theHamsta/nvim-dap-virtual-text",
   "mfussenegger/nvim-dap",
   "nvim-neotest/nvim-nio",
   "rcarriga/nvim-dap-ui",
@@ -54,9 +53,6 @@ vim.wo.wrap = false
 vim.wo.list = true
 vim.wo.listchars = "tab:> ,trail:-,nbsp:+,extends:>,precedes:<"
 vim.go.fillchars = "eob: "
--- vim.cmd[[set nowrap]]
--- vim.cmd[[set list lcs+=extends:>,precedes:<]]
--- vim.cmd[[set fillchars+=eob:\ ]]
 vim.o.updatetime = 200
 vim.cmd.colorscheme('moonfly')
 vim.api.nvim_set_hl(0, 'NonText', {bg='#999999', fg='black'})
@@ -145,25 +141,17 @@ vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'fileformat', 'encoding', 'filetype' },
-  lualine_c = { 'filesize' },
-  lualine_x = { '%L', 'selectioncount', 'progress' },
+  lualine_c = { 'filesize', 'filename', 'diff' },
+  lualine_x = { 'diagnostics', '%L', 'selectioncount', 'progress' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 }, inactive_sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'fileformat', 'encoding', 'filetype' },
-  lualine_c = { 'filesize' },
-  lualine_x = { '%L', 'selectioncount', 'progress' },
+  lualine_c = { 'filesize', 'filename', 'diff' },
+  lualine_x = { 'diagnostics', '%L', 'selectioncount', 'progress' },
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
-}, winbar = {
-  lualine_b = { { 'filename', path=1 } },
-  lualine_c = { 'diagnostics' },
-  lualine_y = { 'diff' },
-}, inactive_winbar = {
-  lualine_b = { { 'filename', path=1 } },
-  lualine_c = { 'diagnostics' },
-  lualine_y = { 'diff' },
 } }
 vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap)')
 vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
@@ -283,7 +271,6 @@ vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
 require("dapui").setup()
-require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
 dap.adapters.lldb = {
   type = 'executable',
