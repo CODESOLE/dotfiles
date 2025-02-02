@@ -43,7 +43,7 @@ bootstrap_paq {
   "nvim-lua/plenary.nvim",
   "nvim-treesitter/nvim-treesitter-context",
   "nvim-treesitter/nvim-treesitter-textobjects",
-  { "nvim-telescope/telescope-fzf-native.nvim", build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'},
+  { "nvim-telescope/telescope-fzf-native.nvim", build = 'make'},
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' }
 }
 vim.g.moonflyWinSeparator = 2
@@ -56,6 +56,8 @@ vim.wo.listchars = "tab:> ,trail:-,nbsp:+,extends:>,precedes:<"
 vim.go.fillchars = "eob: "
 vim.o.updatetime = 200
 vim.cmd.colorscheme('moonfly')
+vim.api.nvim_set_hl(0, 'Normal', {bg='#000000'})
+vim.api.nvim_set_hl(0, 'FloatBorder', {bg='#000000'})
 vim.api.nvim_set_hl(0, 'NonText', {bg='#999999', fg='black'})
 vim.api.nvim_set_hl(0, 'EndOfBuffer', {bg='NONE'})
 vim.o.showmode     = false
