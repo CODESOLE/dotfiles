@@ -10,6 +10,7 @@ set laststatus=- fillchars+=eob:\
 set rulerformat=%100(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}%)
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set ut=200
+let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
