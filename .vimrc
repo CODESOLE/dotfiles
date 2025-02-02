@@ -49,7 +49,7 @@ nmap gp :bp<CR>
 vnoremap <leader>p "_dP
 nnoremap <leader>l :cn<cr>
 nnoremap <leader>h :cp<cr>
-nnoremap <silent> <C-k> :tabn<CR>
+nnoremap <silent> <C-h> :tabn<CR>
 tnoremap <silent> <C-k> <C-w>:tabn<CR>
 nnoremap <silent> <CR> :tab term lazygit<CR>
 nnoremap <silent> <C-t> :term<CR>
