@@ -201,6 +201,12 @@ augroup mygroup
 	      nnoremap <silent><nowait> <space>fc  :FuzzyInBuffer<cr>
 	      nnoremap <silent><nowait> <space>fb  :FuzzyBuffers<cr>
 	      nnoremap <silent><nowait> <space>fo  :FuzzyMru<cr>
+	      " nnoremap <silent><nowait> <space>ff  :<C-u>CocList files<cr>
+	      " nnoremap <silent><nowait> <space>fg  :<C-u>CocList gfiles<cr>
+	      " nnoremap <silent><nowait> <space>fl  :<C-u>CocList grep<cr>
+	      " nnoremap <silent><nowait> <space>fc  :<C-u>CocList lines<cr>
+	      " nnoremap <silent><nowait> <space>fb  :<C-u>CocList buffers<cr>
+	      " nnoremap <silent><nowait> <space>fo  :<C-u>CocList mru<cr>
 	      nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList outline<cr>
 	      nnoremap <silent><nowait> <space>w  :<C-u>CocList -I symbols<cr>
