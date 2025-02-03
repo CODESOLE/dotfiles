@@ -12,6 +12,8 @@ set laststatus=- fillchars+=eob:\
 set rulerformat=%100(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}%)
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set ut=200
+set nowrap
+set list lcs=extends:>,precedes:<
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
@@ -121,6 +123,7 @@ hi CocSemTypeEvent guifg=#1E4F0A
 hi CocInlayHint guibg=#080808 guifg=#444444
 hi Cursor guibg=#FF4000
 hi Pmenu guibg=#111111
+hi NonText guibg=#999999
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
             \ CheckBackspace() ? "\<Tab>" :
