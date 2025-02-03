@@ -1,6 +1,9 @@
-packadd! coc
-packadd! vimspector
-packadd! vim-easymotion
+call plug#begin()
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'Donaldttt/fuzzyy',
+Plug 'easymotion/vim-easymotion',
+Plug 'puremourning/vimspector',
+call plug#end()
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
@@ -190,12 +193,15 @@ augroup mygroup
 	      command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 	      command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 	      nnoremap <silent><nowait> <space>e  :<C-u>CocList diagnostics<cr>
-	      nnoremap <silent><nowait> <space>ff  :<C-u>CocList files<cr>
-	      nnoremap <silent><nowait> <space>fg  :<C-u>CocList gfiles<cr>
-	      nnoremap <silent><nowait> <space>fl  :<C-u>CocList grep<cr>
-	      nnoremap <silent><nowait> <space>fc  :<C-u>CocList lines<cr>
-	      nnoremap <silent><nowait> <space>fb  :<C-u>CocList buffers<cr>
-	      nnoremap <silent><nowait> <space>fo  :<C-u>CocList mru<cr>
+	      let g:fuzzyy_enable_mappings = 0
+              let g:fuzzyy_respect_gitignore = 1
+              let g:fuzzyy_devicons = 0
+	      nnoremap <silent><nowait> <space>ff  :FuzzyFiles<cr>
+	      nnoremap <silent><nowait> <space>fg  :FuzzyGitFiles<cr>
+	      nnoremap <silent><nowait> <space>fl  :FuzzyGrep<cr>
+	      nnoremap <silent><nowait> <space>fc  :FuzzyInBuffer<cr>
+	      nnoremap <silent><nowait> <space>fb  :FuzzyBuffers<cr>
+	      nnoremap <silent><nowait> <space>fo  :FuzzyMru<cr>
 	      nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 	      nnoremap <silent><nowait> <space>s  :<C-u>CocList outline<cr>
 	      nnoremap <silent><nowait> <space>w  :<C-u>CocList -I symbols<cr>
