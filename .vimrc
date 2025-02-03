@@ -7,7 +7,6 @@ call plug#end()
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
-set shell=nu
 set guicursor+=a:block,a:blinkoff0
 set laststatus=- fillchars+=eob:\ 
 set rulerformat=%100(%{coc#status()}%=%{get(g:,'coc_git_status','')}\ %{get(b:,'coc_git_status','')}\ %{get(b:,'coc_current_function','')}%)
