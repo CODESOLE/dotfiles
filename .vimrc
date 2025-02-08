@@ -27,7 +27,7 @@ augroup auto_nohlsearch | au!
 augroup END
 set bg=dark
 set termguicolors
-set guifont=Hack\ Nerd\ Font\ Mono:h10
+set guifont=Cascadia\ Mono:h9
 colorscheme retrobox
 set gp=git\ grep\ -E
 set backspace=2 ruler
