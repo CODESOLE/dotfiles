@@ -19,6 +19,7 @@ nmap s <Plug>(easymotion-overwin-f2)
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 nmap <silent> <esc> :noh<CR>
+vmap <leader>k :!curl -sF 'text=<-' vpaste.net<CR>
 augroup auto_nohlsearch | au!
     noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
     noremap! <expr> <Plug>(nohlsearch) execute('nohlsearch')[-1]
