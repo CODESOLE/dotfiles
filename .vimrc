@@ -1,7 +1,7 @@
 call plug#begin()
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'Donaldttt/fuzzyy',
-Plug 'easymotion/vim-easymotion',
+Plug 'monkoose/vim9-stargate',
 Plug 'puremourning/vimspector',
 call plug#end()
 packadd! editorconfig
@@ -14,8 +14,7 @@ set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set ut=200
 set nowrap
 set list lcs=extends:>,precedes:<
-let g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-overwin-f2)
+nmap s <Cmd>call stargate#OKvim(2)<CR>
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 nmap <silent> <esc> :noh<CR>
