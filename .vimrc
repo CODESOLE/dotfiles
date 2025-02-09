@@ -125,6 +125,9 @@ hi CocInlayHint guibg=#080808 guifg=#444444
 hi Cursor guibg=#FF4000
 hi Pmenu guibg=#111111
 hi NonText guibg=#999999
+hi Tabline guibg=#050505
+hi TablineFill guibg=#000000
+hi TablineSel guibg=#111111
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
             \ CheckBackspace() ? "\<Tab>" :
