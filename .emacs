@@ -17,3 +17,4 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (set-fringe-mode 0)
+(setq inhibit-startup-screen t)
