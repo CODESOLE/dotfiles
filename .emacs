@@ -6,8 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(modus-vivendi))
  '(package-selected-packages
-   '(avy consult embark embark-consult marginalia orderless rust-mode
-	 vertico wgrep zig-mode)))
+   '(avy company consult embark embark-consult marginalia orderless
+	 rust-mode vertico wgrep zig-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -23,6 +23,8 @@
 (setq inhibit-startup-screen t)
 (global-set-key (kbd "C-,") 'avy-goto-char-2)
 (which-key-mode 1)
+
+(add-hook 'after-init-hook 'global-company-mode)
 
 (use-package orderless
   :ensure t
