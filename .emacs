@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(modus-vivendi))
  '(package-selected-packages
-   '(avy company consult embark embark-consult marginalia orderless
+   '(avy company consult embark embark-consult magit marginalia orderless
 	 rust-mode vertico wgrep zig-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
