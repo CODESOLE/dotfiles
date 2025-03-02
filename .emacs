@@ -3,7 +3,7 @@
  '(custom-enabled-themes '(modus-vivendi))
  '(package-selected-packages
    '(avy company consult embark embark-consult magit marginalia orderless
-	 rust-mode vertico wgrep zig-mode)))
+	 rust-mode vertico zig-mode)))
 (custom-set-faces)
 (set-frame-font "-outline-Typestar OCR-medium-normal-normal-*-*-*-*-*-c-*-iso10646-1" nil t)
 (menu-bar-mode 0)
