@@ -18,7 +18,7 @@
 (setq lazy-count-prefix-format "(%s/%s) ")
 (setq lazy-count-suffix-format nil)
 (add-hook 'after-init-hook 'global-company-mode)
-
+(setq search-whitespace-regexp ".*?")
 (use-package orderless
   :ensure t
   :custom
