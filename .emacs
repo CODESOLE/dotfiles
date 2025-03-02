@@ -14,7 +14,9 @@
 (setq inhibit-startup-screen t)
 (global-set-key (kbd "C-,") 'avy-goto-char-2)
 (which-key-mode 1)
-
+(setq isearch-lazy-count t)
+(setq lazy-count-prefix-format "(%s/%s) ")
+(setq lazy-count-suffix-format nil)
 (add-hook 'after-init-hook 'global-company-mode)
 
 (use-package orderless
