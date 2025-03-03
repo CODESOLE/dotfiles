@@ -7,6 +7,8 @@
 (custom-set-faces)
 (set-frame-font "-outline-Typestar OCR-medium-normal-normal-*-*-*-*-*-c-*-iso10646-1" nil t)
 (menu-bar-mode 0)
+(column-number-mode 1)
+(add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
 (when (display-graphic-p)
   (tool-bar-mode 0)
   (scroll-bar-mode 0)
