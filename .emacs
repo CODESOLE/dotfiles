@@ -1,13 +1,14 @@
 ;;; -*- lexical-binding: t -*-
 (custom-set-variables '(custom-enabled-themes '(modus-vivendi))
  '(package-selected-packages
-   '(avy company consult embark embark-consult magit marginalia
+   '(avy breadcrumb company consult embark embark-consult magit marginalia
 	 multiple-cursors orderless rust-mode vertico zig-mode)))
 (custom-set-faces)
 (set-frame-font "-outline-Typestar OCR-medium-normal-normal-*-*-*-*-*-c-*-iso10646-1" nil t)
 (menu-bar-mode 0)
 (column-number-mode 1)
 (electric-pair-mode 1)
+(breadcrumb-mode 1)
 (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
 (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
     (add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode))
