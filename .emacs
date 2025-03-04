@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t -*-
-(custom-set-variables
- '(custom-enabled-themes '(modus-vivendi))
+(custom-set-variables '(custom-enabled-themes '(modus-vivendi))
  '(package-selected-packages
    '(avy company consult embark embark-consult magit marginalia
 	 multiple-cursors orderless rust-mode vertico zig-mode)))
@@ -16,16 +15,17 @@
   (set-fringe-mode 0))
 (setq inhibit-startup-screen t)
 (global-set-key (kbd "C-,") 'avy-goto-char-2)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (which-key-mode 1)
 (setq isearch-lazy-count t)
 (setq lazy-count-prefix-format "(%s/%s) ")
 (setq lazy-count-suffix-format nil)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq search-whitespace-regexp ".*?")
+
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C-S-c C-S-c" . mc/edit-lines) ("C->" . mc/mark-next-like-this) ("C-<" . mc/mark-previous-like-this) ("C-c C-<" . mc/mark-all-like-this)))
+
 (use-package orderless
   :ensure t
   :custom
