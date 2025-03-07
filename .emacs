@@ -36,7 +36,7 @@
 
 (use-package avy
   :ensure t
-  :bind (global-set-key (kbd "M-o") 'avy-goto-char-2))
+  :bind (("M-o" . avy-goto-char-2)))
 
 (use-package company
   :ensure t
