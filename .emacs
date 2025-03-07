@@ -1,14 +1,7 @@
 ;;; -*- lexical-binding: t -*-
-(custom-set-variables '(custom-enabled-themes '(modus-vivendi))
- '(package-selected-packages
-   '(avy breadcrumb company consult embark embark-consult magit marginalia
-	 multiple-cursors orderless rust-mode vertico zig-mode)))
-(custom-set-faces)
-(set-frame-font "-outline-Typestar OCR-medium-normal-normal-*-*-*-*-*-c-*-iso10646-1" nil t)
 (menu-bar-mode 0)
+(load-theme 'modus-vivendi t)
 (column-number-mode 1)
-(electric-pair-mode 1)
-(breadcrumb-mode 1)
 (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
 (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
 (add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode))
@@ -18,15 +11,36 @@
   (scroll-bar-mode 0)
   (set-fringe-mode 0))
 (setq inhibit-startup-screen t)
-(global-set-key (kbd "M-o") 'avy-goto-char-2)
-(global-set-key (kbd "M-n") 'next-buffer)
-(global-set-key (kbd "M-p") 'previous-buffer)
 (which-key-mode 1)
 (setq isearch-lazy-count t)
 (setq lazy-count-prefix-format "(%s/%s) ")
 (setq lazy-count-suffix-format nil)
-(add-hook 'after-init-hook 'global-company-mode)
 (setq search-whitespace-regexp ".*?")
+
+(use-package smartparens
+  :ensure t
+  :init (add-hook 'after-init-hook 'smartparens-mode)
+  :config
+  (require 'smartparens-config))
+
+(use-package breadcrumb
+  :ensure t
+  :config
+  (breadcrumb-mode))
+
+(use-package magit
+  :ensure t)
+
+(use-package consult
+  :ensure t)
+
+(use-package avy
+  :ensure t
+  :bind (global-set-key (kbd "M-o") 'avy-goto-char-2))
+
+(use-package company
+  :ensure t
+  :init (add-hook 'after-init-hook #'global-company-mode))
 
 (use-package multiple-cursors
   :ensure t
@@ -47,27 +61,3 @@
   :ensure t
   :config
   (marginalia-mode))
-
-(use-package embark
-  :ensure t
-
-  :bind
-  (("C-." . embark-act)         ;; pick some comfortable binding
-   ("C-;" . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-
-  :init
-
-  (setq prefix-help-command #'embark-prefix-help-command)
-
-  :config
-
-  (add-to-list 'display-buffer-alist
-               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                 nil
-                 (window-parameters (mode-line-format . none)))))
-
-(use-package embark-consult
-  :ensure t ; only need to install it, embark loads it after consult if found
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
