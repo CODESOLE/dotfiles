@@ -17,11 +17,13 @@
 (setq lazy-count-suffix-format nil)
 (setq search-whitespace-regexp ".*?")
 
+(use-package dash
+  :ensure t)
+
 (use-package smartparens
   :ensure t
-  :init (add-hook 'after-init-hook 'smartparens-mode)
   :config
-  (require 'smartparens-config))
+  (progn (require 'smartparens-config) (smartparens-mode)))
 
 (use-package breadcrumb
   :ensure t
@@ -44,7 +46,7 @@
 
 (use-package multiple-cursors
   :ensure t
-  :bind (("C-S-c C-S-c" . mc/edit-lines) ("C->" . mc/mark-next-like-this) ("C-<" . mc/mark-previous-like-this) ("C-c C-<" . mc/mark-all-like-this)))
+  :bind (("C-S-c C-S-c" . mc/edit-lines) ("M-n" . mc/mark-next-like-this) ("M-p" . mc/mark-previous-like-this) ("C-c C-<" . mc/mark-all-like-this)))
 
 (use-package orderless
   :ensure t
