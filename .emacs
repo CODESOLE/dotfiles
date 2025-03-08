@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 (menu-bar-mode 0)
+(electric-pair-mode 1)
 (load-theme 'modus-vivendi t)
 (column-number-mode 1)
 (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
