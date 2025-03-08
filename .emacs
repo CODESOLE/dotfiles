@@ -17,11 +17,15 @@
 (setq lazy-count-suffix-format nil)
 (setq search-whitespace-regexp ".*?")
 
-(use-package dash
-  :ensure t)
+(use-package dash :ensure t)
+(use-package rust-mode :ensure t)
+(use-package zig-mode :ensure t)
+(use-package magit :ensure t)
+(use-package consult :ensure t)
 
 (use-package smartparens
   :ensure t
+  :init (add-hook 'after-init-hook 'smartparens-mode)
   :config
   (progn (require 'smartparens-config) (smartparens-mode)))
 
@@ -29,12 +33,6 @@
   :ensure t
   :config
   (breadcrumb-mode))
-
-(use-package magit
-  :ensure t)
-
-(use-package consult
-  :ensure t)
 
 (use-package avy
   :ensure t
