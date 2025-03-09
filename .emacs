@@ -32,9 +32,14 @@
   :ensure t
   :bind (("M-o" . avy-goto-char-2)))
 
-(use-package company
+(use-package corfu
   :ensure t
-  :init (add-hook 'after-init-hook #'global-company-mode))
+  :init
+  (global-corfu-mode)
+  :config
+  (setq corfu-auto t
+      corfu-quit-no-match 'separator
+      corfu-auto-prefix 2))
 
 (use-package multiple-cursors
   :ensure t
