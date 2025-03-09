@@ -38,7 +38,7 @@
 
 (use-package multiple-cursors
   :ensure t
-  :bind (("C-S-c C-S-c" . mc/edit-lines) ("M-n" . mc/mark-next-like-this) ("M-p" . mc/mark-previous-like-this) ("C-c C-<" . mc/mark-all-like-this)))
+  :bind (("M-n" . mc/mark-next-like-this) ("M-p" . mc/mark-previous-like-this) ("C-c C-n" . mc/mark-all-like-this)))
 
 (use-package orderless
   :ensure t
