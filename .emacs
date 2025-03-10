@@ -19,6 +19,7 @@
 (setq search-whitespace-regexp ".*?")
 (setq-default xref-show-xrefs-function #'consult-xref)
 (setq-default xref-show-definitions-function #'consult-xref)
+(setq completion-ignore-case t)
 (use-package markdown-mode :ensure t)
 (use-package rust-mode :ensure t)
 (use-package zig-mode :ensure t)
