@@ -23,16 +23,20 @@
 (use-package zig-mode :ensure t)
 (use-package magit :ensure t)
 (use-package consult :ensure t)
-
+(use-package cape
+  :bind ("C-c p" . cape-prefix-map)
+  :init
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block)
+  (add-hook 'completion-at-point-functions #'cape-history))
 (use-package breadcrumb
   :ensure t
   :config
   (breadcrumb-mode))
-
 (use-package avy
   :ensure t
   :bind (("M-o" . avy-goto-char-2)))
-
 (use-package corfu
   :ensure t
   :init
@@ -41,22 +45,18 @@
   (setq corfu-auto t
       corfu-quit-no-match 'separator
       corfu-auto-prefix 2))
-
 (use-package multiple-cursors
   :ensure t
   :bind (("M-n" . mc/mark-next-like-this) ("M-p" . mc/mark-previous-like-this) ("C-c C-n" . mc/mark-all-like-this)))
-
 (use-package orderless
   :ensure t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
-
 (use-package vertico
   :ensure t
   :config
   (vertico-mode))
-
 (use-package marginalia
   :ensure t
   :config
