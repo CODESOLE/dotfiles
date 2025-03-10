@@ -17,7 +17,8 @@
 (setq lazy-count-prefix-format "(%s/%s) ")
 (setq lazy-count-suffix-format nil)
 (setq search-whitespace-regexp ".*?")
-
+(setq-default xref-show-xrefs-function #'consult-xref)
+(setq-default xref-show-definitions-function #'consult-xref)
 (use-package rust-mode :ensure t)
 (use-package zig-mode :ensure t)
 (use-package magit :ensure t)
