@@ -25,6 +25,7 @@
 (use-package magit :ensure t)
 (use-package consult :ensure t)
 (use-package cape
+  :ensure t
   :bind ("C-c p" . cape-prefix-map)
   :init
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
