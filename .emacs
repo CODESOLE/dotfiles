@@ -43,6 +43,7 @@
   :ensure t
   :init
   (global-corfu-mode)
+  (corfu-popupinfo-mode)
   :config
   (setq corfu-auto t
       corfu-quit-no-match 'separator
