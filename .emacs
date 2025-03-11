@@ -15,6 +15,7 @@
 (setq inhibit-startup-screen t)
 (setq imenu-flatten t)
 (which-key-mode 1)
+(setq-default flymake-indicator-type 'fringes)
 (setq isearch-lazy-count t)
 (setq lazy-count-prefix-format "(%s/%s) ")
 (setq lazy-count-suffix-format nil)
