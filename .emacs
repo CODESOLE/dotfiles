@@ -66,16 +66,10 @@
   :config
   (marginalia-mode))
 (defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
-  "Show the information of git diff on modeline."
   (setq ad-return-value
-	(concat (propertize ad-return-value 'face '(:foreground "white" :weight bold))
-		" ["
-		(let ((plus-minus (vc-git--run-command-string
-				   file "diff" "--numstat" "--")))
-		  (if (and plus-minus
-		       (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus))
-		       (concat
-			(propertize (format "+%s" (match-string 1 plus-minus)) 'face '(:foreground "green3"))
-			(propertize (format "-%s" (match-string 2 plus-minus)) 'face '(:inherit font-lock-warning-face)))
-		    (propertize "" 'face '(:foreground "green3" :weight bold))))
-		"]")))
+    (concat ad-return-value
+            (let ((plus-minus (vc-git--run-command-string
+                               file "diff" "--numstat" "--")))
+              (and plus-minus
+                   (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus)
+                   (format " +%s-%s" (match-string 1 plus-minus) (match-string 2 plus-minus)))))))
