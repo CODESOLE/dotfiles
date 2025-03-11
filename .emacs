@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 (menu-bar-mode 0)
 (electric-pair-mode 1)
+(which-function-mode)
 (load-theme 'modus-vivendi t)
 (column-number-mode 1)
 (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
@@ -34,10 +35,6 @@
   (add-hook 'completion-at-point-functions #'cape-file)
   (add-hook 'completion-at-point-functions #'cape-elisp-block)
   (add-hook 'completion-at-point-functions #'cape-history))
-(use-package breadcrumb
-  :ensure t
-  :config
-  (breadcrumb-mode))
 (use-package avy
   :ensure t
   :bind (("M-o" . avy-goto-char-2)))
@@ -66,7 +63,6 @@
   :ensure t
   :config
   (marginalia-mode))
-(setq-default mode-line-format (remove 'mode-line-buffer-identification mode-line-format))
 (defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
   (setq ad-return-value
     (concat ad-return-value
