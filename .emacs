@@ -12,6 +12,7 @@
   (scroll-bar-mode 0)
   (set-fringe-mode 0))
 (setq inhibit-startup-screen t)
+(setq imenu-flatten t)
 (which-key-mode 1)
 (setq isearch-lazy-count t)
 (setq lazy-count-prefix-format "(%s/%s) ")
