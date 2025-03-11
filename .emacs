@@ -65,6 +65,7 @@
   :ensure t
   :config
   (marginalia-mode))
+(setq-default mode-line-format (remove 'mode-line-buffer-identification mode-line-format))
 (defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
   (setq ad-return-value
     (concat ad-return-value
