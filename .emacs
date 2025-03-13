@@ -14,6 +14,7 @@
   (tool-bar-mode 0)
   (scroll-bar-mode 0)
   (set-fringe-mode 0))
+(global-set-key (kbd "C-c C-v") 'duplicate-dwim)
 (setq inhibit-startup-screen t)
 (setq imenu-flatten t)
 (which-key-mode 1)
