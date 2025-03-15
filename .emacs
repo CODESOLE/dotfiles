@@ -53,7 +53,12 @@
       corfu-auto-prefix 2))
 (use-package multiple-cursors
   :ensure t
-  :bind (("M-n" . mc/mark-next-like-this) ("M-p" . mc/mark-previous-like-this) ("C-c C-n" . mc/mark-all-like-this)))
+  :bind (
+	 ("M-n" . mc/mark-next-like-this)
+	 ("M-N" . mc/skip-to-next-like-this)
+	 ("M-p" . mc/mark-previous-like-this)
+	 ("M-P" . mc/skip-to-previous-like-this)
+	 ("C-c C-n" . mc/mark-all-like-this)))
 (use-package orderless
   :ensure t
   :custom
