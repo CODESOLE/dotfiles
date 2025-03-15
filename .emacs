@@ -2,6 +2,7 @@
 (menu-bar-mode 0)
 (electric-pair-mode 1)
 (which-function-mode)
+(savehist-mode 1)
 (editorconfig-mode)
 (load-theme 'modus-vivendi t)
 (column-number-mode 1)
