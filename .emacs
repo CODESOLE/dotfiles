@@ -11,7 +11,7 @@
 (add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode))
 (add-to-list 'major-mode-remap-alist '(c-or-c++-mode . c-or-c++-ts-mode))
 (when (display-graphic-p)
-  (set-cursor-color "orange")
+  (set-cursor-color "yellow")
   (tool-bar-mode 0)
   (scroll-bar-mode 0)
   (set-fringe-mode 0))
