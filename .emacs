@@ -6,10 +6,6 @@
 (editorconfig-mode)
 (load-theme 'modus-vivendi t)
 (column-number-mode 1)
-(add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
-(add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
-(add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode))
-(add-to-list 'major-mode-remap-alist '(c-or-c++-mode . c-or-c++-ts-mode))
 (when (display-graphic-p)
   (set-cursor-color "yellow")
   (tool-bar-mode 0)
@@ -32,6 +28,12 @@
 (use-package zig-mode :ensure t)
 (use-package magit :ensure t)
 (use-package consult :ensure t)
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 (use-package cape
   :ensure t
   :bind ("C-c p" . cape-prefix-map)
