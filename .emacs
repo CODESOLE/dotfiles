@@ -12,6 +12,7 @@
   (scroll-bar-mode 0)
   (set-fringe-mode 0))
 (global-set-key (kbd "C-c C-v") 'duplicate-dwim)
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
 (setq inhibit-startup-screen t)
 (setq imenu-flatten t)
 (which-key-mode 1)
