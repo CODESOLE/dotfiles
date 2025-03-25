@@ -30,6 +30,10 @@
 (use-package zig-mode :ensure t)
 (use-package magit :ensure t)
 (use-package consult :ensure t)
+(use-package rainbow-delimiters-mode
+  :ensure t
+  :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+(use-package rainbow-mode :ensure t)
 (use-package treesit-auto
   :custom
   (treesit-auto-install 'prompt)
