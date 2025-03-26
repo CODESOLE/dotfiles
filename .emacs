@@ -30,7 +30,7 @@
 (use-package zig-mode :ensure t)
 (use-package magit :ensure t)
 (use-package consult :ensure t)
-(use-package rainbow-delimiters-mode
+(use-package rainbow-delimiters
   :ensure t
   :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 (use-package rainbow-mode :ensure t)
