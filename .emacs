@@ -5,6 +5,7 @@
 (savehist-mode 1)
 (editorconfig-mode)
 (load-theme 'modus-vivendi t)
+(setopt treesit-font-lock-level 4)
 (column-number-mode 1)
 (delete-selection-mode 1)
 (when (display-graphic-p)
