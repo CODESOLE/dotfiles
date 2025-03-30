@@ -17,6 +17,7 @@
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 (setq inhibit-startup-screen t)
 (setq imenu-flatten t)
+(setq display-buffer-alist '(("*" (display-buffer-reuse-mode-window display-buffer-below-selected) (dedicated . t) (window-height . fit-window-to-buffer) (body-function . (lambda (window) (select-window window))))))
 (setq corfu-popupinfo-delay (cons 1.0 0.5))
 (which-key-mode 1)
 (setq-default flymake-indicator-type 'fringes)
