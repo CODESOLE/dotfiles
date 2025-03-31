@@ -15,6 +15,8 @@
   (set-fringe-mode 0))
 (global-set-key (kbd "C-c C-v") 'duplicate-dwim)
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
+(global-set-key (kbd "M-F") 'forward-whitespace)
+(global-set-key (kbd "M-B") (lambda () (interactive) (forward-whitespace -1)))
 (setq inhibit-startup-screen t)
 (setq imenu-flatten t)
 (setq corfu-popupinfo-delay (cons 1.0 0.5))
