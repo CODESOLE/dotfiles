@@ -1,39 +1,40 @@
 ;;; -*- lexical-binding: t -*-
+(set-frame-font "-outline-Cascadia Code-regular-normal-normal-mono-13-*-*-*-c-*-iso10646-1" nil t)
 (menu-bar-mode 0)
-(electric-pair-mode 1)
-(which-function-mode)
 (savehist-mode 1)
+(electric-pair-mode 1)
+(delete-selection-mode 1)
+(which-function-mode)
 (editorconfig-mode)
 (load-theme 'modus-vivendi t)
-(setopt treesit-font-lock-level 4)
 (column-number-mode 1)
-(delete-selection-mode 1)
+(setopt treesit-font-lock-level 4)
 (when (display-graphic-p)
   (set-cursor-color "yellow")
   (tool-bar-mode 0)
   (scroll-bar-mode 0)
   (set-fringe-mode 0))
 (defun move-text-internal (arg)
-   (cond
-    ((and mark-active transient-mark-mode)
-     (if (> (point) (mark))
-            (exchange-point-and-mark))
-     (let ((column (current-column))
-              (text (delete-and-extract-region (point) (mark))))
-       (forward-line arg)
-       (move-to-column column t)
-       (set-mark (point))
-       (insert text)
-       (exchange-point-and-mark)
-       (setq deactivate-mark nil)))
-    (t
-     (beginning-of-line)
-     (when (or (> arg 0) (not (bobp)))
-       (forward-line)
-       (when (or (< arg 0) (not (eobp)))
-            (transpose-lines arg))
-       (forward-line -1)))))
-
+    (cond
+     ((and mark-active transient-mark-mode)
+      (if (> (point) (mark))
+             (exchange-point-and-mark))
+      (let ((column (current-column))
+               (text (delete-and-extract-region (point) (mark))))
+        (forward-line arg)
+        (move-to-column column t)
+        (set-mark (point))
+        (insert text)
+        (exchange-point-and-mark)
+        (setq deactivate-mark nil)))
+     (t
+      (beginning-of-line)
+      (when (or (> arg 0) (not (bobp)))
+        (forward-line)
+        (when (or (< arg 0) (not (eobp)))
+             (transpose-lines arg))
+        (forward-line -1)))))
+ 
 (defun move-text-down (arg)
    "Move region (transient-mark-mode active) or current line
   arg lines down."
@@ -46,13 +47,14 @@
    (interactive "*p")
    (move-text-internal (- arg)))
 
-(global-set-key (kbd "M-<up>") 'move-text-up)
-(global-set-key (kbd "M-<down>") 'move-text-down)
+(global-set-key (kbd "C-<up>") 'move-text-up)
+(global-set-key (kbd "C-<down>") 'move-text-down)
 (global-set-key (kbd "C-c C-v") 'duplicate-dwim)
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 (global-set-key (kbd "C-F") 'forward-whitespace)
 (global-set-key (kbd "C-B") (lambda () (interactive) (forward-whitespace -1)))
 (setq inhibit-startup-screen t)
+(setq inferior-lisp-program "sbcl")
 (setq imenu-flatten t)
 (setq corfu-popupinfo-delay (cons 1.0 0.5))
 (which-key-mode 1)
@@ -64,21 +66,21 @@
 (setq-default xref-show-xrefs-function #'consult-xref)
 (setq-default xref-show-definitions-function #'consult-xref)
 (setq completion-ignore-case t)
-(use-package markdown-mode :ensure t)
-(use-package rust-mode :ensure t)
-(use-package zig-mode :ensure t)
-(use-package magit :ensure t)
-(use-package consult :ensure t)
-(use-package rainbow-delimiters
-  :ensure t
-  :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-(use-package rainbow-mode :ensure t)
 (use-package treesit-auto
   :custom
   (treesit-auto-install 'prompt)
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
+(use-package markdown-mode :ensure t)
+(use-package rust-mode :ensure t)
+(use-package rainbow-delimiters
+  :ensure t
+  :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+(use-package rainbow-mode :ensure t)
+(use-package zig-mode :ensure t)
+(use-package magit :ensure t)
+(use-package consult :ensure t)
 (use-package cape
   :ensure t
   :bind ("C-c p" . cape-prefix-map)
