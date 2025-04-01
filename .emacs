@@ -126,3 +126,9 @@
               (and plus-minus
                    (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus)
                    (format " +%s-%s" (match-string 1 plus-minus) (match-string 2 plus-minus)))))))
+(custom-set-faces
+ '(font-lock-number-face ((t (:foreground "brightred"))))
+ '(font-lock-property-name-face ((t (:foreground "chocolate"))))
+ '(font-lock-property-use-face ((t (:foreground "chocolate"))))
+ '(font-lock-variable-name-face ((t (:foreground "skyblue")))))
+
