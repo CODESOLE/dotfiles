@@ -1,5 +1,4 @@
 ;;; -*- lexical-binding: t -*-
-(set-frame-font "-outline-Cascadia Code-regular-normal-normal-mono-13-*-*-*-c-*-iso10646-1" nil t)
 (menu-bar-mode 0)
 (savehist-mode 1)
 (electric-pair-mode 1)
@@ -51,10 +50,7 @@
 (global-set-key (kbd "C-<down>") 'move-text-down)
 (global-set-key (kbd "C-c C-v") 'duplicate-dwim)
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
-(global-set-key (kbd "C-F") 'forward-whitespace)
-(global-set-key (kbd "C-B") (lambda () (interactive) (forward-whitespace -1)))
 (setq inhibit-startup-screen t)
-(setq inferior-lisp-program "sbcl")
 (setq imenu-flatten t)
 (setq corfu-popupinfo-delay (cons 1.0 0.5))
 (which-key-mode 1)
@@ -66,7 +62,7 @@
 (setq-default xref-show-xrefs-function #'consult-xref)
 (setq-default xref-show-definitions-function #'consult-xref)
 (setq completion-ignore-case t)
-(use-package treesit-auto
+(use-package treesit-auto ;; https://github.com/renzmann/treesit-auto.git
   :custom
   (treesit-auto-install 'prompt)
   :config
