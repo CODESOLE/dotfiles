@@ -62,7 +62,7 @@
 (setq-default xref-show-xrefs-function #'consult-xref)
 (setq-default xref-show-definitions-function #'consult-xref)
 (setq completion-ignore-case t)
-(use-package treesit-auto ;; https://github.com/renzmann/treesit-auto.git
+(use-package treesit-auto ;; package-vc-install RET https://github.com/renzmann/treesit-auto.git RET
   :custom
   (treesit-auto-install 'prompt)
   :config
