@@ -52,6 +52,7 @@
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 (setq inhibit-startup-screen t)
 (setq imenu-flatten t)
+(setq scroll-conservatively 10 scroll-margin 0)
 (setq corfu-popupinfo-delay (cons 1.0 0.5))
 (which-key-mode 1)
 (setq-default flymake-indicator-type 'fringes)
