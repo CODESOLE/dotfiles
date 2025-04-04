@@ -1,4 +1,5 @@
 ;;; -*- lexical-binding: t -*-
+(set-locale-environment "ENG")
 (menu-bar-mode 0)
 (savehist-mode 1)
 (electric-pair-mode 1)
