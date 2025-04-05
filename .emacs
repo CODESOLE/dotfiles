@@ -130,6 +130,7 @@
                    (format " +%s-%s" (match-string 1 plus-minus) (match-string 2 plus-minus)))))))
 (custom-set-faces
  '(eglot-highlight-symbol-face ((t (:inherit bold :background "gray14"))))
+ '(font-lock-type-face ((t (:inherit modus-themes-bold :foreground "sea green"))))
  '(font-lock-operator-face ((t (:foreground "green"))))
  '(font-lock-number-face ((t (:foreground "lightslateblue"))))
  '(font-lock-property-name-face ((t (:foreground "chocolate"))))
