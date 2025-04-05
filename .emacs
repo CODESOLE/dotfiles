@@ -46,7 +46,7 @@
   arg lines up."
    (interactive "*p")
    (move-text-internal (- arg)))
-
+(global-set-key (kbd "C-,") #'xref-go-forward)
 (global-set-key (kbd "C-<up>") 'move-text-up)
 (global-set-key (kbd "C-<down>") 'move-text-down)
 (global-set-key (kbd "C-c C-v") 'duplicate-dwim)
