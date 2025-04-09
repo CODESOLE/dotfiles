@@ -70,14 +70,15 @@
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
-(use-package markdown-mode :ensure t)
-(use-package rust-mode :ensure t)
+(use-package markdown-mode :ensure t :defer t)
+(use-package rust-mode :ensure t :defer t)
 (use-package rainbow-delimiters
+  :defer t
   :ensure t
   :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-(use-package rainbow-mode :ensure t)
-(use-package zig-mode :ensure t)
-(use-package magit :ensure t)
+(use-package rainbow-mode :ensure t :defer t)
+(use-package zig-mode :ensure t :defer t)
+(use-package magit :ensure t :defer t)
 (use-package consult :ensure t)
 (use-package cape
   :ensure t
