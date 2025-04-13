@@ -64,6 +64,11 @@
 (setq-default xref-show-xrefs-function #'consult-xref)
 (setq-default xref-show-definitions-function #'consult-xref)
 (setq completion-ignore-case t)
+(use-package ace-window
+  :ensure t
+  :defer t
+  :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :bind (("C-<RETURN>" . ace-window)))
 (use-package treesit-auto ;; package-vc-install RET https://github.com/renzmann/treesit-auto.git RET
   :custom
   (treesit-auto-install 'prompt)
