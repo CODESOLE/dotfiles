@@ -10,12 +10,6 @@ set laststatus=- fillchars+=eob:\
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set rnu
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-nmap <silent> <esc> :noh<CR>
-augroup auto_nohlsearch | au!
-    noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
-    noremap! <expr> <Plug>(nohlsearch) execute('nohlsearch')[-1]
-    au InsertEnter * call feedkeys("\<Plug>(nohlsearch)", 'm')
-augroup END
 set bg=dark
 set termguicolors
 colorscheme torte
