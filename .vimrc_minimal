@@ -8,8 +8,7 @@ set t_vb=
 set belloff=all
 set laststatus=- fillchars+=eob:\ 
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
-nmap s /
-nmap S ?
+set rnu
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 nmap <silent> <esc> :noh<CR>
 augroup auto_nohlsearch | au!
@@ -21,7 +20,7 @@ set bg=dark
 set termguicolors
 colorscheme torte
 set gp=git\ grep\ -nE
-set backspace=2 ruler
+set backspace=2
 set shortmess-=S
 set shortmess+=I noshowcmd
 set signcolumn=no noshowmode
