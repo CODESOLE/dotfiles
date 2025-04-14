@@ -36,11 +36,8 @@ noremap <silent> <leader>h :cprev<CR>
 nmap gn :bn<CR>
 nmap gp :bp<CR>
 vnoremap <leader>p "_dP
-nnoremap <silent> <C-k> :tabn<CR>
-tnoremap <silent> <C-k> <C-w>:tabn<CR>
-nnoremap <silent> <leader>g :tab term lazygit<CR>
-nnoremap <silent> <C-t> :term nu<CR>
-nnoremap <silent> <C-a> :tab term nu<CR>
+nnoremap <silent> <C-h> :tabn<CR>
+tnoremap <silent> <C-h> <C-w>:tabn<CR>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
