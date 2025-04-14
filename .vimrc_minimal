@@ -1,4 +1,3 @@
-language en_US.utf8
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
@@ -8,12 +7,12 @@ set t_vb=
 set belloff=all
 set laststatus=- fillchars+=eob:\ 
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
-set rnu
+set rnu nu
 set bg=dark
 set termguicolors
 colorscheme torte
 set gp=git\ grep\ -nE
-set backspace=2
+set backspace=2 noruler
 set shortmess-=S
 set shortmess+=I noshowcmd
 set signcolumn=no noshowmode
