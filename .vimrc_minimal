@@ -1,9 +1,9 @@
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
-set rnu nu wildmenu wildmode=list,full laststatus=- fillchars+=eob:\ 
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
-set backspace=2 noruler shortmess-=S noshowmode shortmess+=I
+set rnu nu wildmenu wildmode=list,full laststatus=- fillchars+=eob:\  noerrorbells
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent novisualbell
+set backspace=2 noruler shortmess-=S noshowmode shortmess+=I belloff=all t_vb=
 set completeopt=menuone,popup,fuzzy completefuzzycollect=keyword,files,whole_line
 set is hlsearch ignorecase smartcase showmatch nobackup nowritebackup noswapfile
 syntax enable
