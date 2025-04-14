@@ -1,0 +1,62 @@
+packadd! editorconfig
+packadd! comment
+packadd! cfilter
+set noerrorbells
+set novisualbell
+set t_vb=
+set belloff=all
+set laststatus=- fillchars+=eob:\ 
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
+set ut=200
+nmap s /
+nmap S ?
+nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+nmap <silent> <esc> :noh<CR>
+augroup auto_nohlsearch | au!
+    noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
+    noremap! <expr> <Plug>(nohlsearch) execute('nohlsearch')[-1]
+    au InsertEnter * call feedkeys("\<Plug>(nohlsearch)", 'm')
+augroup END
+set bg=dark
+set termguicolors
+colorscheme torte
+set gp=git\ grep\ -nE
+set backspace=2 ruler
+set shortmess-=S
+set shortmess+=I noshowcmd
+set signcolumn=no noshowmode
+set completeopt=menuone,popup,noselect completepopup=highlight:Pmenu
+set wildmenu
+set wildmode=list,full
+syntax enable
+set mouse=a
+set is hlsearch ignorecase smartcase showmatch
+set encoding=utf-8
+set nobackup nowritebackup noswapfile
+set guioptions=Ac
+filetype on
+filetype plugin on
+let mapleader=" "
+noremap gl $
+noremap gh 0
+noremap <silent> <leader>l :cnext<CR>
+noremap <silent> <leader>h :cprev<CR>
+nmap gn :bn<CR>
+nmap gp :bp<CR>
+vnoremap <leader>p "_dP
+nnoremap <silent> <C-k> :tabn<CR>
+tnoremap <silent> <C-k> <C-w>:tabn<CR>
+nnoremap <silent> <leader>g :tab term lazygit<CR>
+nnoremap <silent> <C-t> :term nu<CR>
+nnoremap <silent> <C-a> :tab term nu<CR>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+cnoremap <C-k> <Up>
+cnoremap <C-j> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+inoremap <silent> ş <Esc>
+vnoremap <silent> ş <Esc>
+cnoremap <silent> ş <Esc>
