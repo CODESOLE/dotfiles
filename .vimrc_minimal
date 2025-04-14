@@ -9,7 +9,6 @@ set belloff=all
 set laststatus=- fillchars+=eob:\ 
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set rnu
-nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 set bg=dark
 set termguicolors
 colorscheme torte
