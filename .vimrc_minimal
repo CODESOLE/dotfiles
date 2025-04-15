@@ -1,19 +1,9 @@
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
-set wildmenu wildmode=list,full laststatus=- fillchars+=eob:\  noerrorbells
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent novisualbell
-set backspace=2 noru shortmess-=S noshowmode shortmess+=I belloff=all t_vb=
-set completeopt=menuone,popup,fuzzy completefuzzycollect=keyword,files,whole_line
-set is hlsearch ignorecase smartcase showmatch nobackup nowritebackup noswapfile
+set wildmenu wildmode=list,full laststatus=- fillchars+=eob:\  noerrorbells tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent novisualbell backspace=2 noru shortmess-=S noshowmode shortmess+=I belloff=all t_vb= completeopt=menuone,popup,fuzzy is hlsearch ignorecase smartcase showmatch nobackup nowritebackup noswapfile completefuzzycollect=keyword,files,whole_line
 syntax enable
-filetype plugin on
-nmap gn :bn<CR>
-nmap gp :bp<CR>
-nmap gl :cn<CR>
-nmap gh :cp<CR>
-nnoremap <silent> <C-h> :tabn<CR>
-tnoremap <silent> <C-h> <C-w>:tabn<CR>
+filetype plugin indent on
 inoremap <silent> ş <Esc>
 vnoremap <silent> ş <Esc>
 cnoremap <silent> ş <Esc>
