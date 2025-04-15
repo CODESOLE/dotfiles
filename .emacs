@@ -121,14 +121,6 @@
   :ensure t
   :config
   (marginalia-mode))
-(defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
-  (setq ad-return-value
-    (concat ad-return-value
-            (let ((plus-minus (vc-git--run-command-string
-                               file "diff" "--numstat" "--")))
-              (and plus-minus
-                   (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus)
-                   (format " +%s-%s" (match-string 1 plus-minus) (match-string 2 plus-minus)))))))
 (custom-set-faces
  '(eglot-highlight-symbol-face ((t (:inherit bold :background "gray14"))))
  '(font-lock-type-face ((t (:inherit modus-themes-bold :foreground "sea green"))))
