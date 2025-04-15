@@ -137,4 +137,3 @@
  '(font-lock-property-name-face ((t (:foreground "chocolate"))))
  '(font-lock-property-use-face ((t (:foreground "chocolate"))))
  '(font-lock-variable-name-face ((t (:foreground "skyblue")))))
-
