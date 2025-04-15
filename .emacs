@@ -121,10 +121,6 @@
   :ensure t
   :config
   (marginalia-mode))
-(setq-default mode-line-buffer-identification
-              (list 'buffer-file-name
-                    (propertized-buffer-identification "%12f")
-                    (propertized-buffer-identification "%12b")))
 (defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
   (setq ad-return-value
     (concat ad-return-value
