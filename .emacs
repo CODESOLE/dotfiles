@@ -1,5 +1,8 @@
 ;;; -*- lexical-binding: t -*-
 (set-locale-environment "ENG")
+(setq auto-save-file-name-transforms '((".*" "~/.emacs-saves/" t)))
+(setq lock-file-name-transforms '((".*" "~/.emacs-saves/" t)))
+(setq backup-directory-alist '((".*" . "~/.emacs-saves/")))
 (menu-bar-mode 0)
 (savehist-mode 1)
 (electric-pair-mode 1)
