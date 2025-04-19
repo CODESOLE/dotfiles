@@ -129,6 +129,14 @@
   :ensure t
   :config
   (marginalia-mode))
+(use-package dape
+  :ensure t
+  :defer t
+  :config
+  (setq dape-buffer-window-arrangement 'right)
+  (add-hook 'dape-display-source-hook 'pulse-momentary-highlight-one-line)
+  (setq dape-inlay-hints t)
+  (add-hook 'dape-compile-hook 'kill-buffer))
 (custom-set-faces
  '(eglot-highlight-symbol-face ((t (:inherit bold :background "gray14"))))
  '(font-lock-type-face ((t (:inherit modus-themes-bold :foreground "sea green"))))
