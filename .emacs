@@ -15,6 +15,7 @@
 (setopt treesit-font-lock-level 4)
 (if (eq system-type 'windows-nt)
   (setq explicit-shell-file-name "~/scoop/apps/git/current/bin/bash.exe")
+  (setopt compile-command "sh -c 'make -k'")
   (setq shell-file-name explicit-shell-file-name)
   (setq explicit-bash-args '("--login" "-i"))
   (setenv "SHELL" shell-file-name))
