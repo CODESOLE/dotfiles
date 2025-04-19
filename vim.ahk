@@ -13,7 +13,7 @@ CapsLock::Esc
 #HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
 
 #HotIf WinActive("ahk_exe WindowsTerminal.exe")
-CapsLock::Esc
+CapsLock::Ctrl
 #HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
 
 #HotIf WinActive("ahk_class org.wezfurlong.wezterm")
@@ -24,7 +24,11 @@ CapsLock::Esc
 CapsLock::Esc
 #HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
 
-#HotIf WinActive("ahk_exe emacs.exe")
+#HotIf WinActive("ahk_class Emacs")
+CapsLock::Ctrl
+#HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
+
+#HotIf WinActive("ahk_class mintty")
 CapsLock::Ctrl
 #HotIf  ; This puts subsequent remappings and hotkeys in effect for all windows.
 
