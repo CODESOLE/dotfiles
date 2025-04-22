@@ -4,7 +4,6 @@
 (setq lock-file-name-transforms '((".*" "~/.emacs-saves/" t)))
 (setq backup-directory-alist '((".*" . "~/.emacs-saves/")))
 (setq default-directory "~/code/")
-(setq package-gnupghome-dir "~/.emacs.d/elpa/gnupg")
 (menu-bar-mode 0)
 (savehist-mode 1)
 (electric-pair-mode 1)
