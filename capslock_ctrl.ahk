@@ -1,42 +1,48 @@
 ; === AutoHotkey v2 Script ===
-; Purpose: Map Caps Lock to Left Control ONLY when Emacs is the active window.
-;          Otherwise, Caps Lock behaves as the standard Caps Lock key.
+; Purpose: Map Caps Lock to Left Control ONLY when Emacs, Mintty, or Windows Terminal
+;          is the active window. Otherwise, Caps Lock behaves normally.
 ; Fix: Addresses potential "stuck Ctrl" issue when switching windows.
 
 #Requires AutoHotkey v2.0
 
-; --- Global flag to track if CapsLock was pressed down while Emacs was active ---
-global _capsLockWasDownInEmacs := false
+; --- Global flag to track if CapsLock was pressed down while a target app was active ---
+global _ctrlRemapActive := false
+
+; --- Helper Function to check if the active window belongs to a target app ---
+IsTargetAppActive() {
+    ; Add or remove executable names from this list as needed
+    Return WinActive("ahk_exe emacs.exe")
+        || WinActive("ahk_exe mintty.exe")
+        || WinActive("ahk_exe WindowsTerminal.exe")
+}
 
 ; --- Conditional Down Action ---
 ; Use the * prefix so it fires even if other modifiers are held.
-#HotIf WinActive("ahk_exe emacs.exe")
+#HotIf IsTargetAppActive() ; Use the helper function for the condition
     *CapsLock::
     {
-        ; When CapsLock is pressed DOWN in Emacs:
+        ; When CapsLock is pressed DOWN in a target app:
         Send("{LCtrl Down}")      ; Send the Control key DOWN event
-        global _capsLockWasDownInEmacs := true ; Set the flag
+        global _ctrlRemapActive := true ; Set the flag
         Return                    ; Block the native CapsLock DOWN function
     }
-#HotIf
+#HotIf ; End the conditional block
 
 ; --- Unconditional Up Action ---
 ; This handles the CapsLock UP event REGARDLESS of the currently active window.
 ; Use the * prefix so it fires even if other modifiers are held.
 *CapsLock Up::
 {
-    ; Check if the flag is true (meaning the DOWN press happened in Emacs)
-    if (_capsLockWasDownInEmacs)
+    ; Check if the flag is true (meaning the DOWN press happened in a target app)
+    if (_ctrlRemapActive)
     {
         Send("{LCtrl Up}")          ; Send the corresponding Control key UP event
-        global _capsLockWasDownInEmacs := false ; Reset the flag
+        global _ctrlRemapActive := false ; Reset the flag
     }
     else
     {
-        ; If the flag is false, the DOWN press happened outside Emacs.
-        ; Since this hotkey definition overrides the default OS behavior
-        ; for CapsLock Up, we need to manually toggle the state here
-        ; to replicate the normal Caps Lock behavior.
+        ; If the flag is false, the DOWN press happened outside a target app.
+        ; Manually toggle the CapsLock state to replicate normal behavior.
         SetCapsLockState !GetKeyState("CapsLock", "T")
     }
     Return ; Generally good practice for Up handlers like this
@@ -45,27 +51,24 @@ global _capsLockWasDownInEmacs := false
 ; === End of Script ===
 
 ; --- How it Works ---
-; 1. Flag Initialization: A variable `_capsLockWasDownInEmacs` is created and set to `false`.
-; 2. CapsLock Down (In Emacs):
-;    - The `#HotIf WinActive...` checks if Emacs is active.
-;    - If yes, the `*CapsLock::` hotkey triggers when CapsLock is pressed down.
-;    - It sends `LCtrl Down` to the system.
-;    - It sets the `_capsLockWasDownInEmacs` flag to `true`.
-;    - `Return` prevents the normal CapsLock action.
-; 3. CapsLock Down (Outside Emacs):
-;    - The `#HotIf` condition is false.
-;    - The `*CapsLock::` hotkey inside the `#HotIf` block does NOT trigger.
-;    - The default OS behavior for CapsLock Down occurs (preparing to toggle state).
-; 4. CapsLock Up (Any Window):
-;    - The `*CapsLock Up::` hotkey triggers *unconditionally* when CapsLock is released.
-;    - It checks the `_capsLockWasDownInEmacs` flag:
-;      - If `true`: It means the corresponding DOWN press was in Emacs and sent `LCtrl Down`. So, this UP handler sends `LCtrl Up` and resets the flag to `false`.
-;      - If `false`: It means the DOWN press happened outside Emacs. To mimic default behavior (which this hotkey now overrides), it manually toggles the CapsLock state using `SetCapsLockState !GetKeyState("CapsLock", "T")`.
-; 5. `Return` in the `Up` handler ensures no other unintended actions occur.
+; 1. Helper Function `IsTargetAppActive()`: Checks if the active window's executable
+;    is emacs.exe, mintty.exe, OR WindowsTerminal.exe. Returns true if any match.
+; 2. Flag `_ctrlRemapActive`: Tracks if CapsLock was pressed while one of the
+;    target apps was active.
+; 3. CapsLock Down (In Target App): If `IsTargetAppActive()` is true, pressing
+;    CapsLock sends LCtrl Down and sets the flag.
+; 4. CapsLock Down (Outside Target App): The conditional hotkey doesn't fire.
+;    Default OS CapsLock behavior occurs for the down press.
+; 5. CapsLock Up (Any Window): Always triggers.
+;    - If the flag is true: Sends LCtrl Up and clears the flag.
+;    - If the flag is false: Toggles the actual CapsLock state.
 
 ; --- How to Use ---
-; 1. Make sure you have AutoHotkey v2 installed.
-; 2. Save this code, replacing the previous version (e.g., `emacs_capslock_conditional_fixed.ahk`).
-; 3. Close the old script (right-click -> Exit on the tray icon).
+; 1. Ensure AutoHotkey v2 is installed.
+; 2. Save this code (e.g., `multi_app_capslock_conditional.ahk`).
+; 3. Close any previous versions of the script (check system tray).
 ; 4. Run the new script.
-; 5. Test the switching scenario: Hold CapsLock in Emacs, Alt+Tab to another window, then release CapsLock. The Ctrl key should now release correctly. Then test normal CapsLock function outside Emacs.
+; 5. Test:
+;    - Open Emacs, Mintty, or Windows Terminal. CapsLock should act as Ctrl.
+;    - Switch to Notepad or another app. CapsLock should toggle capitalization.
+;    - Hold CapsLock in Emacs/Mintty/WT, Alt+Tab away, release CapsLock. Ctrl should not get stuck.
