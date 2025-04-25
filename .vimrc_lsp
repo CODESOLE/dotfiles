@@ -1,13 +1,14 @@
+filetype plugin indent on
 packadd lsp
 packadd! fuzzyy
+packadd! vim9-stargate
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
 set laststatus=- fillchars+=eob:\ 
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set ut=200
-nmap s /
-nmap S ?
+nmap s <Cmd>call stargate#OKvim(2)<CR>
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 nmap <silent> <esc> :noh<CR>
 augroup auto_nohlsearch | au!
@@ -34,8 +35,6 @@ set is hlsearch ignorecase smartcase showmatch
 set encoding=utf-8
 set nobackup nowritebackup noswapfile
 set guioptions=Ac
-filetype on
-filetype plugin on
 let mapleader=" "
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:enable_fuzzyy_keymaps = 0
