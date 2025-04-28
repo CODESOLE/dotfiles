@@ -92,7 +92,7 @@ hi LspSemanticNumber        guifg=#79dac8
 hi LspSemanticString        guifg=#c6c684
 hi LspSemanticRegexp        guifg=#79dac8
 hi LspSemanticEvent guifg=#1E4F0A
-hi Normal guibg=#080808
+hi Normal guibg=#000000
 hi Cursor guibg=#FF4000
 call LspAddServer([#{
 	\    name: 'clangd',
