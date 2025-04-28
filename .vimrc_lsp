@@ -37,7 +37,7 @@ set nobackup nowritebackup noswapfile
 set guioptions=Ac
 let mapleader=" "
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:enable_fuzzyy_keymaps = 0
+let g:enable_fuzzyy_mappings = 0
 let g:enable_fuzzyy_MRU_files = 1
 nnoremap <leader>ff :FuzzyFiles<cr>
 nnoremap <leader>fg :FuzzyGitFiles<cr>
