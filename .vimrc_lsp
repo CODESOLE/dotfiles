@@ -17,7 +17,7 @@ set bg=dark
 set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h10
 colorscheme retrobox
-set gp=git\ grep\ -E\ $*
+set gp=git\ grep\ $*
 set backspace=2 ruler
 set shortmess-=S
 set shortmess+=I noshowcmd
