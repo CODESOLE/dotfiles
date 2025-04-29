@@ -15,7 +15,6 @@ augroup auto_nohlsearch | au!
 augroup END
 set bg=dark
 set termguicolors
-set guifont=Hack\ Nerd\ Font\ Mono:h10
 colorscheme retrobox
 set gp=git\ grep\ $*
 set backspace=2 ruler
@@ -31,7 +30,6 @@ set mouse=a
 set is hlsearch ignorecase smartcase showmatch
 set encoding=utf-8
 set nobackup nowritebackup noswapfile
-set guioptions=Ac
 let mapleader=" "
 noremap gl $
 noremap gh 0
