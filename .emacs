@@ -87,14 +87,6 @@
 (use-package zig-mode :ensure t :defer t)
 (use-package magit :ensure t :defer t)
 (use-package consult :ensure t)
-(use-package cape
-  :ensure t
-  :bind ("C-c p" . cape-prefix-map)
-  :init
-  (add-hook 'completion-at-point-functions #'cape-dabbrev)
-  (add-hook 'completion-at-point-functions #'cape-file)
-  (add-hook 'completion-at-point-functions #'cape-elisp-block)
-  (add-hook 'completion-at-point-functions #'cape-history))
 (use-package avy
   :ensure t
   :bind (("M-o" . avy-goto-char-2)))
