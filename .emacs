@@ -62,7 +62,6 @@
 (setq inhibit-startup-screen t)
 (setq imenu-flatten t)
 (setq scroll-conservatively 10 scroll-margin 0)
-(setq corfu-popupinfo-delay (cons 1.0 0.5))
 (which-key-mode 1)
 (setq-default flymake-indicator-type 'fringes)
 (setq isearch-lazy-count t)
@@ -99,15 +98,9 @@
 (use-package avy
   :ensure t
   :bind (("M-o" . avy-goto-char-2)))
-(use-package corfu
+(use-package company
   :ensure t
-  :init
-  (global-corfu-mode)
-  (corfu-popupinfo-mode)
-  :config
-  (setq corfu-auto t
-      corfu-quit-no-match 'separator
-      corfu-auto-prefix 2))
+  :init (add-hook 'after-init-hook #'global-company-mode))
 (use-package multiple-cursors
   :ensure t
   :bind (
