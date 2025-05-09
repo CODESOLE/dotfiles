@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 (set-locale-environment "ENG")
 (setq auto-save-file-name-transforms '((".*" "~/.emacs-saves/" t)))
+(set-frame-font "-outline-Hack Nerd Font-regular-normal-normal-mono-*-*-*-*-p-*-iso10646-1")
 (setq lock-file-name-transforms '((".*" "~/.emacs-saves/" t)))
 (setq backup-directory-alist '((".*" . "~/.emacs-saves/")))
 (setq default-directory "~/code/")
@@ -62,6 +63,7 @@
 (setq inhibit-startup-screen t)
 (setq imenu-flatten t)
 (setq scroll-conservatively 10 scroll-margin 0)
+(setq corfu-popupinfo-delay (cons 1.0 0.5))
 (which-key-mode 1)
 (setq-default flymake-indicator-type 'fringes)
 (setq isearch-lazy-count t)
@@ -87,12 +89,26 @@
 (use-package zig-mode :ensure t :defer t)
 (use-package magit :ensure t :defer t)
 (use-package consult :ensure t)
+(use-package cape
+  :ensure t
+  :bind ("C-c p" . cape-prefix-map)
+  :init
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block)
+  (add-hook 'completion-at-point-functions #'cape-history))
 (use-package avy
   :ensure t
   :bind (("M-o" . avy-goto-char-2)))
-(use-package company
+(use-package corfu
   :ensure t
-  :init (add-hook 'after-init-hook #'global-company-mode))
+  :init
+  (global-corfu-mode)
+  (corfu-popupinfo-mode)
+  :config
+  (setq corfu-auto t
+      corfu-quit-no-match 'separator
+      corfu-auto-prefix 2))
 (use-package multiple-cursors
   :ensure t
   :bind (
@@ -124,9 +140,14 @@
   (add-hook 'dape-compile-hook 'kill-buffer))
 (custom-set-faces
  '(eglot-highlight-symbol-face ((t (:inherit bold :background "gray14"))))
- '(font-lock-type-face ((t (:inherit modus-themes-bold :foreground "sea green"))))
- '(font-lock-operator-face ((t (:foreground "green"))))
  '(font-lock-number-face ((t (:foreground "lightslateblue"))))
+ '(font-lock-operator-face ((t (:foreground "green"))))
  '(font-lock-property-name-face ((t (:foreground "chocolate"))))
  '(font-lock-property-use-face ((t (:foreground "chocolate"))))
+ '(font-lock-type-face ((t (:inherit modus-themes-bold :foreground "sea green"))))
  '(font-lock-variable-name-face ((t (:foreground "skyblue")))))
+(custom-set-variables
+ '(package-selected-packages nil)
+ '(package-vc-selected-packages
+   '((treesit-auto :vc-backend Git :url
+		   "https://github.com/renzmann/treesit-auto.git"))))
