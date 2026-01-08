@@ -1,5 +1,3 @@
-vim.keymap.set("v", "<leader>y", '"*y')
-vim.keymap.set("v", "<leader>p", '"*p')
 vim.keymap.set('n', 'gl', '$')
 vim.keymap.set('n', 'gh', '0')
 vim.keymap.set('n', 'gn', ':bn<CR>')
@@ -51,7 +49,6 @@ vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('packadd! nohlsearch')
 vim.pack.add({
-  "https://github.com/NStefan002/visual-surround.nvim",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/nmac427/guess-indent.nvim",
   "https://github.com/bluz71/vim-moonfly-colors",
@@ -69,7 +66,6 @@ vim.g.moonflyWinSeparator = 2
 vim.g.moonflyItalics = false
 vim.g.moonflyVirtualTextColor = true
 vim.cmd.colorscheme('moonfly')
-require('visual-surround').setup{enable_wrapped_deletion = true}
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'fileformat', 'encoding', 'filetype' },
