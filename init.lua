@@ -144,9 +144,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 vim.lsp.inlay_hint.enable(true)
-vim.lsp.enable('gdscript')
-vim.lsp.enable('zls')
-vim.lsp.enable('ols')
-vim.lsp.enable('clangd')
-vim.lsp.enable('rust_analyzer')
+vim.lsp.enable({'gdscript', 'zls', 'ols', 'clangd', 'rust_analyzer'})
 vim.api.nvim_set_hl(0, 'Normal', {bg='#000000'})
