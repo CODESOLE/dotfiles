@@ -4,11 +4,11 @@ vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
 vim.keymap.set('i', '<C-k>', '<Up>')
 vim.keymap.set('i', '<C-j>', '<Down>')
-vim.keymap.set('i', '<C-h>', '<Left>')
+vim.keymap.set('i', '<C-g>', '<Left>')
 vim.keymap.set('i', '<C-l>', '<Right>')
 vim.keymap.set('c', '<C-j>', '<Down>')
 vim.keymap.set('c', '<C-k>', '<Up>')
-vim.keymap.set('c', '<C-h>', '<Left>')
+vim.keymap.set('c', '<C-g>', '<Left>')
 vim.keymap.set('c', '<C-l>', '<Right>')
 vim.keymap.set('n', '<A-j>', '<C-w>j')
 vim.keymap.set('n', '<A-k>', '<C-w>k')
@@ -53,7 +53,7 @@ vim.pack.add({
   "https://github.com/nmac427/guess-indent.nvim",
   "https://github.com/bluz71/vim-moonfly-colors",
   "https://github.com/nvim-treesitter/nvim-treesitter-context",
-  "https://github.com/nvim-treesitter/nvim-treesitter",
+  {src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master"},
   "https://github.com/saghen/blink.cmp",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/echasnovski/mini.pairs",
@@ -66,6 +66,8 @@ vim.g.moonflyWinSeparator = 2
 vim.g.moonflyItalics = false
 vim.g.moonflyVirtualTextColor = true
 vim.cmd.colorscheme('moonfly')
+require("nvim-treesitter.install").update("all")
+require("nvim-treesitter.configs").setup({highlight={enable = true}, auto_install = true })
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'fileformat', 'encoding', 'filetype' },
