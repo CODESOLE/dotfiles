@@ -51,6 +51,7 @@
   :defer t
   :vc (:url "https://git.sr.ht/~mgmarlow/odin-mode"))
 (use-package treesit-auto
+  :ensure t
   :vc (:url "https://github.com/renzmann/treesit-auto.git")
   :custom
   (treesit-auto-install 'prompt)
@@ -111,3 +112,4 @@
   (add-hook 'dape-display-source-hook 'pulse-momentary-highlight-one-line)
   (setq dape-inlay-hints t)
   (add-hook 'dape-compile-hook 'kill-buffer))
+
