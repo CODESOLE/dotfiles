@@ -59,11 +59,6 @@
   (global-treesit-auto-mode))
 (use-package markdown-mode :ensure t :defer t)
 (use-package rust-mode :ensure t :defer t)
-(use-package rainbow-delimiters
-  :defer t
-  :ensure t
-  :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-(use-package rainbow-mode :ensure t :defer t)
 (use-package zig-mode :ensure t :defer t)
 (use-package magit :ensure t :defer t)
 (use-package consult :ensure t)
@@ -116,3 +111,4 @@
   (add-hook 'dape-display-source-hook 'pulse-momentary-highlight-one-line)
   (setq dape-inlay-hints t)
   (add-hook 'dape-compile-hook 'kill-buffer))
+
