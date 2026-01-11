@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t -*-
+(set-frame-font "-outline-Cascadia Code-regular-normal-normal-mono-13-*-*-*-c-*-iso10646-1")
 (set-locale-environment "ENG")
 (setq auto-save-file-name-transforms '((".*" "~/.emacs-saves/" t)))
-(set-frame-font "-outline-Hack Nerd Font-regular-normal-normal-mono-*-*-*-*-p-*-iso10646-1")
 (setq lock-file-name-transforms '((".*" "~/.emacs-saves/" t)))
 (setq backup-directory-alist '((".*" . "~/.emacs-saves/")))
 (setq default-directory "~/code/")
@@ -25,39 +25,7 @@
   (tool-bar-mode 0)
   (scroll-bar-mode 0)
   (set-fringe-mode 0))
-(defun move-text-internal (arg)
-    (cond
-     ((and mark-active transient-mark-mode)
-      (if (> (point) (mark))
-             (exchange-point-and-mark))
-      (let ((column (current-column))
-               (text (delete-and-extract-region (point) (mark))))
-        (forward-line arg)
-        (move-to-column column t)
-        (set-mark (point))
-        (insert text)
-        (exchange-point-and-mark)
-        (setq deactivate-mark nil)))
-     (t
-      (beginning-of-line)
-      (when (or (> arg 0) (not (bobp)))
-        (forward-line)
-        (when (or (< arg 0) (not (eobp)))
-             (transpose-lines arg))
-        (forward-line -1)))))
-(defun move-text-down (arg)
-   "Move region (transient-mark-mode active) or current line
-  arg lines down."
-   (interactive "*p")
-   (move-text-internal arg))
-(defun move-text-up (arg)
-   "Move region (transient-mark-mode active) or current line
-  arg lines up."
-   (interactive "*p")
-   (move-text-internal (- arg)))
 (global-set-key (kbd "C-,") #'xref-go-forward)
-(global-set-key (kbd "C-<up>") 'move-text-up)
-(global-set-key (kbd "C-<down>") 'move-text-down)
 (global-set-key (kbd "C-c C-v") 'duplicate-dwim)
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 (setq inhibit-startup-screen t)
@@ -73,7 +41,17 @@
 (setq-default xref-show-xrefs-function #'consult-xref)
 (setq-default xref-show-definitions-function #'consult-xref)
 (setq completion-ignore-case t)
-(use-package treesit-auto ;; package-vc-install RET https://github.com/renzmann/treesit-auto.git RET
+(use-package gdscript-mode
+  :vc (:url "https://github.com/godotengine/emacs-gdscript-mode")
+  :ensure t
+  :defer t
+  :mode ("\\.gd\\'" . gdscript-mode))
+(use-package odin-mode
+  :ensure t
+  :defer t
+  :vc (:url "https://git.sr.ht/~mgmarlow/odin-mode"))
+(use-package treesit-auto
+  :vc (:url "https://github.com/renzmann/treesit-auto.git")
   :custom
   (treesit-auto-install 'prompt)
   :config
@@ -138,16 +116,3 @@
   (add-hook 'dape-display-source-hook 'pulse-momentary-highlight-one-line)
   (setq dape-inlay-hints t)
   (add-hook 'dape-compile-hook 'kill-buffer))
-(custom-set-faces
- '(eglot-highlight-symbol-face ((t (:inherit bold :background "gray14"))))
- '(font-lock-number-face ((t (:foreground "lightslateblue"))))
- '(font-lock-operator-face ((t (:foreground "green"))))
- '(font-lock-property-name-face ((t (:foreground "chocolate"))))
- '(font-lock-property-use-face ((t (:foreground "chocolate"))))
- '(font-lock-type-face ((t (:inherit modus-themes-bold :foreground "sea green"))))
- '(font-lock-variable-name-face ((t (:foreground "skyblue")))))
-(custom-set-variables
- '(package-selected-packages nil)
- '(package-vc-selected-packages
-   '((treesit-auto :vc-backend Git :url
-		   "https://github.com/renzmann/treesit-auto.git"))))
