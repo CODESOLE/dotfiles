@@ -16,9 +16,6 @@
   (tool-bar-mode 0)
   (scroll-bar-mode 0)
   (set-fringe-mode 0))
-(global-set-key (kbd "C-,") #'xref-go-forward)
-(global-set-key (kbd "C-c C-v") 'duplicate-dwim)
-(global-set-key (kbd "M-Z") 'zap-up-to-char)
 (setq inhibit-startup-screen t)
 (setq imenu-flatten t)
 (setq scroll-conservatively 10 scroll-margin 0)
@@ -32,6 +29,10 @@
 (setq-default xref-show-xrefs-function #'consult-xref)
 (setq-default xref-show-definitions-function #'consult-xref)
 (setq completion-ignore-case t)
+(global-set-key (kbd "C-,") #'xref-go-forward)
+(global-set-key (kbd "C-c C-v") 'duplicate-dwim)
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
+(with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-c C-f") 'eglot-format))
 (use-package gdscript-mode
   :vc (:url "https://github.com/godotengine/emacs-gdscript-mode")
   :ensure t
@@ -103,3 +104,4 @@
   (add-hook 'dape-display-source-hook 'pulse-momentary-highlight-one-line)
   (setq dape-inlay-hints t)
   (add-hook 'dape-compile-hook 'kill-buffer))
+
