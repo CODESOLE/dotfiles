@@ -5,6 +5,7 @@
 (menu-bar-mode 0)
 (savehist-mode 1)
 (electric-pair-mode 1)
+(electric-indent-mode 0)
 (delete-selection-mode 1)
 (which-function-mode)
 (editorconfig-mode)
@@ -104,4 +105,5 @@
   (add-hook 'dape-display-source-hook 'pulse-momentary-highlight-one-line)
   (setq dape-inlay-hints t)
   (add-hook 'dape-compile-hook 'kill-buffer))
+
 
