@@ -105,5 +105,32 @@
   (add-hook 'dape-display-source-hook 'pulse-momentary-highlight-one-line)
   (setq dape-inlay-hints t)
   (add-hook 'dape-compile-hook 'kill-buffer))
-
-
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(eglot-highlight-symbol-face ((t (:inherit bold :background "gray14"))))
+ '(font-lock-number-face ((t (:foreground "lightslateblue"))))
+ '(font-lock-operator-face ((t (:foreground "green"))))
+ '(font-lock-property-name-face ((t (:foreground "chocolate"))))
+ '(font-lock-property-use-face ((t (:foreground "chocolate"))))
+ '(font-lock-type-face ((t (:inherit modus-themes-bold :foreground "sea green"))))
+ '(font-lock-variable-name-face ((t (:foreground "skyblue")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(avy cape consult corfu dape gdscript-mode magit marginalia
+	 markdown-mode multiple-cursors odin-mode orderless rust-mode
+	 treesit-auto vertico zig-mode))
+ '(package-vc-selected-packages
+   '((gdscript-mode :url
+		    "https://github.com/godotengine/emacs-gdscript-mode")
+     (treesit-auto :vc-backend Git :url
+		   "https://github.com/renzmann/treesit-auto.git")))
+ '(visible-bell t))
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
