@@ -2,6 +2,7 @@
 (setq auto-save-file-name-transforms '((".*" "~/.emacs-saves/" t)))
 (setq lock-file-name-transforms '((".*" "~/.emacs-saves/" t)))
 (setq backup-directory-alist '((".*" . "~/.emacs-saves/")))
+(add-hook 'compilation-filter-hook #'ansi-color-compilation-filter)
 (menu-bar-mode 0)
 (savehist-mode 1)
 (electric-pair-mode 1)
