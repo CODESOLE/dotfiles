@@ -1,3 +1,11 @@
+if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
+  vim.o.shell = vim.fs.joinpath(vim.loop.os_homedir(), "scoop", "apps", "git", "2.49.0", "usr", "bin", "bash.exe")
+  vim.o.shellcmdflag = '-ic'
+  vim.o.shellredir = '>%s 2>&1'
+  vim.o.shellpipe = '2>&1 | tee'
+  vim.o.shellquote = ''
+  vim.o.shellxquote = ''
+end
 vim.keymap.set('n', 'gl', '$')
 vim.keymap.set('n', 'gh', '0')
 vim.keymap.set('n', 'gn', ':bn<CR>')
@@ -13,7 +21,7 @@ vim.keymap.set('c', '<C-l>', '<Right>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
-vim.keymap.set("n", "<leader>t", ":sp | term<CR>")
+vim.keymap.set("n", "<C-t>", ":sp | term<CR>")
 vim.go.guicursor = "a:block"
 vim.wo.wrap = false
 vim.wo.list = true
@@ -32,6 +40,7 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.keymap.set({'n', 'v', 'i', 'c' }, 'ş', '<Esc>')
+vim.keymap.set('t', 'ş', '<C-\\><C-N>')
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('packadd! nohlsearch')
