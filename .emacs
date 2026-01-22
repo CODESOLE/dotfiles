@@ -28,7 +28,8 @@
 (setq imenu-flatten t)
 (setq scroll-conservatively 10 scroll-margin 0)
 (setq corfu-popupinfo-delay (cons 1.0 0.5))
-(which-key-mode 1)
+(which-key-mode 1)
+
 (setq isearch-lazy-count t)
 (setq lazy-count-prefix-format "(%s/%s) ")
 (setq lazy-count-suffix-format nil)
@@ -117,6 +118,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(eglot-highlight-symbol-face ((t (:inherit bold :background "gray14"))))
+ '(eglot-inlay-hint-face ((t (:inherit shadow :background "gray2" :height 0.7))))
  '(font-lock-number-face ((t (:foreground "lightslateblue"))))
  '(font-lock-operator-face ((t (:foreground "green"))))
  '(font-lock-property-name-face ((t (:foreground "chocolate"))))
@@ -140,3 +142,4 @@
  '(visible-bell t))
 (put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+
