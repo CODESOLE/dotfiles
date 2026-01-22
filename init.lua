@@ -21,7 +21,7 @@ vim.keymap.set('c', '<C-l>', '<Right>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
-vim.keymap.set("n", "<C-t>", ":sp | term<CR>")
+vim.keymap.set("n", "<C-t>", ":vs | term<CR>")
 vim.go.guicursor = "a:block"
 vim.wo.wrap = false
 vim.wo.list = true
