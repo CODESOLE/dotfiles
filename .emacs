@@ -13,7 +13,6 @@
 (load-theme 'modus-vivendi t)
 (column-number-mode 1)
 (setopt treesit-font-lock-level 4)
-(setopt compile-command "sh -c 'make -k'")
 (if (eq system-type 'windows-nt)
   (setq explicit-shell-file-name "~/scoop/apps/git/current/bin/bash.exe")
   (setq shell-file-name explicit-shell-file-name)
@@ -142,4 +141,5 @@
  '(visible-bell t))
 (put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+
 
