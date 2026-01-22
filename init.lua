@@ -93,6 +93,7 @@ vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
 vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
 require('guess-indent').setup {}
 require("blink.cmp").setup({
+  keymap = {preset = 'enter'},
   completion = {
     documentation = {
       auto_show = true,
