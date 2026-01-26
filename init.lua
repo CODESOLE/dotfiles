@@ -21,8 +21,9 @@ vim.keymap.set('c', '<C-l>', '<Right>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
-vim.keymap.set("n", "<C-t>", ":vs | term<CR>")
-vim.go.guicursor = "a:block"
+vim.keymap.set("n", "<C-t>", ":vs | term<CR>", {noremap = true})
+vim.keymap.set({'n', 'v', 'i', 'c' }, 'ş', '<Esc>')
+vim.keymap.set('t', 'ş', '<C-\\><C-N>')
 vim.wo.wrap = false
 vim.wo.list = true
 vim.wo.listchars = "tab:> ,trail:-,nbsp:+,extends:>,precedes:<"
@@ -39,14 +40,11 @@ vim.o.showmatch    = true
 vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
-vim.keymap.set({'n', 'v', 'i', 'c' }, 'ş', '<Esc>')
-vim.keymap.set('t', 'ş', '<C-\\><C-N>')
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('packadd! nohlsearch')
 vim.pack.add({
   "https://github.com/nvim-lualine/lualine.nvim",
-  "https://github.com/nmac427/guess-indent.nvim",
   "https://github.com/bluz71/vim-moonfly-colors",
   "https://github.com/nvim-treesitter/nvim-treesitter-context",
   {src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master"},
@@ -54,9 +52,8 @@ vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/echasnovski/mini.pairs",
   "https://github.com/echasnovski/mini.files",
-  "https://github.com/ggandor/leap.nvim",
-  "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/nvim-telescope/telescope.nvim"
+  "https://codeberg.org/andyg/leap.nvim",
+  "https://github.com/ibhagwan/fzf-lua"
 })
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyItalics = false
@@ -79,19 +76,8 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 } }
-local builtin = require('telescope.builtin')
-require('telescope').setup {}
-vim.keymap.set('n', '<leader>ff', ':Telescope find_files no_ignore=true<CR>', {silent = true, noremap = true})
-vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
-vim.keymap.set('n', '<leader>fw', builtin.lsp_dynamic_workspace_symbols, {})
-vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
-vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
-vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
-vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
-require('guess-indent').setup {}
+vim.keymap.set('n', '<C-p>', ':FzfLua global<CR>', {silent = true, noremap = true})
+vim.keymap.set('n', '<C-l>',  ':FzfLua live_grep<CR>', {silent = true, noremap = true})
 require("blink.cmp").setup({
   keymap = {preset = 'enter'},
   completion = {
