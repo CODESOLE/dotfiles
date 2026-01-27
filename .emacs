@@ -1,4 +1,6 @@
 ;;; -*- lexical-binding: t -*-
+(setq desktop-path '("." "~/.emacs.d" "~"))
+(setq default-directory "~/code/")
 (setq auto-save-file-name-transforms '((".*" "~/.emacs-saves/" t)))
 (setq lock-file-name-transforms '((".*" "~/.emacs-saves/" t)))
 (setq backup-directory-alist '((".*" . "~/.emacs-saves/")))
@@ -28,7 +30,6 @@
 (setq scroll-conservatively 10 scroll-margin 0)
 (setq corfu-popupinfo-delay (cons 1.0 0.5))
 (which-key-mode 1)
-
 (setq isearch-lazy-count t)
 (setq lazy-count-prefix-format "(%s/%s) ")
 (setq lazy-count-suffix-format nil)
@@ -141,5 +142,6 @@
  '(visible-bell t))
 (put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+
 
 
