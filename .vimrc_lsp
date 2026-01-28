@@ -3,9 +3,8 @@ packadd lsp
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
-set laststatus=- fillchars+=eob:\ 
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
-set ut=200
+set laststatus=- fillchars+=eob:\  noerrorbells novisualbell belloff=all
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent nowrap
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 nmap <silent> <esc> :noh<CR>
 augroup auto_nohlsearch | au!
@@ -15,21 +14,21 @@ augroup auto_nohlsearch | au!
 augroup END
 set bg=dark
 set termguicolors
+set guifont=Hack\ Nerd\ Font\ Mono:h10
 colorscheme retrobox
 set gp=git\ grep\ $*
-set backspace=2 ruler
+set backspace=2 noruler
 set shortmess-=S
 set shortmess+=I noshowcmd
 set signcolumn=no noshowmode
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu
 set wildmenu
-set wildmode=list,full
-set wildignore=*/builddir/*,*/build/*,tags,node_modules/*,.git/*,.cache/*,.clangd/*,target/*
 syntax enable
 set mouse=a
 set is hlsearch ignorecase smartcase showmatch
 set encoding=utf-8
 set nobackup nowritebackup noswapfile
+set guioptions=Ac
 let mapleader=" "
 noremap gl $
 noremap gh 0
@@ -41,8 +40,8 @@ vnoremap <leader>p "_dP
 nnoremap <silent> <C-k> :tabn<CR>
 tnoremap <silent> <C-k> <C-w>:tabn<CR>
 nnoremap <silent> <leader>g :tab term lazygit<CR>
-nnoremap <silent> <C-t> :term nu<CR>
-nnoremap <silent> <C-a> :tab term nu<CR>
+nnoremap <silent> <C-t> :term bash<CR>
+nnoremap <silent> <C-a> :tab term bash<CR>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
@@ -77,6 +76,8 @@ hi LspSemanticNumber        guifg=#79dac8
 hi LspSemanticString        guifg=#c6c684
 hi LspSemanticRegexp        guifg=#79dac8
 hi LspSemanticEvent guifg=#1E4F0A
+hi LspInlayHintsParam guibg=#111111 guifg=#444444
+hi LspInlayHintsType guibg=#111111 guifg=#444444
 hi Normal guibg=#000000
 hi Cursor guibg=#FF4000
 call LspAddServer([#{
@@ -93,10 +94,18 @@ call LspAddServer([#{
 	\    syncInit: v:true
 	\  }])
 call LspAddServer([#{
-	\    name: 'zig',
-	\    filetype: ['zig'],
-	\    path: 'zls',
+	\    name: 'vlang',
+	\    filetype: ['v'],
+	\    path: 'v-analyzer',
 	\    args: [],
+	\    syncInit: v:true
+	\  }])
+call LspAddServer([#{
+	\    name: 'odinlag',
+	\    filetype: ['odin'],
+	\    path: 'ols',
+	\    args: [],
+	\    syncInit: v:true
 	\  }])
 call LspOptionsSet(#{
         \   aleSupport: v:false,
@@ -143,8 +152,6 @@ call LspOptionsSet(#{
         \   completionKinds: {},
         \   filterCompletionDuplicates: v:false,
 	\ })
-hi LspInlayHintsParam guibg=#111111 guifg=#444444
-hi LspInlayHintsType guibg=#111111 guifg=#444444
 nnoremap <leader>ac :LspCodeAction<CR>
 nnoremap <leader>e :LspDiag show<CR>
 nnoremap [d :LspDiag next<CR>
