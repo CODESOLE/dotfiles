@@ -40,6 +40,10 @@
 (global-set-key (kbd "C-,") #'xref-go-forward)
 (global-set-key (kbd "C-c C-v") 'duplicate-dwim)
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
+(global-set-key (kbd "C-c h") 'windmove-left)
+(global-set-key (kbd "C-c j") 'windmove-down)
+(global-set-key (kbd "C-c k") 'windmove-up)
+(global-set-key (kbd "C-c l") 'windmove-right)
 (with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-c C-f") 'eglot-format))
 (use-package gdscript-mode
   :vc (:url "https://github.com/godotengine/emacs-gdscript-mode")
