@@ -17,4 +17,5 @@
 (which-key-mode 1)
 (setq isearch-lazy-count t)
 (setq completion-ignore-case t)
+(setq completion-styles '(flex))
 (fido-mode)
