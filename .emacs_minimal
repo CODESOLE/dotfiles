@@ -10,7 +10,6 @@
 (delete-selection-mode 1)
 (which-function-mode)
 (editorconfig-mode)
-(completion-preview-mode)
 (load-theme 'modus-vivendi t)
 (setopt treesit-font-lock-level 4)
 (global-set-key (kbd "C-,") #'xref-go-forward)
@@ -18,5 +17,27 @@
 (which-key-mode 1)
 (setq isearch-lazy-count t)
 (setq completion-ignore-case t)
-(setq completion-styles '(flex))
 (fido-mode)
+(setq completion-styles '(flex))
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq visible-bell nil)
+(setq ring-bell-function #'ignore)
+(setq inhibit-startup-screen t
+      inhibit-startup-echo-area-message user-login-name)
+(setq initial-buffer-choice nil
+      inhibit-startup-buffer-menu t
+      inhibit-x-resources t
+      initial-scratch-message nil
+      inhibit-splash-screen t)
+(advice-add 'display-startup-echo-area-message :override #'ignore)
+(advice-add 'display-startup-screen :override #'ignore)
+(setq imenu-auto-rescan t)
+(setq ansi-color-for-comint-mode t
+      comint-prompt-read-only t
+      comint-buffer-maximum-size 8198)
+(setq scroll-conservatively 20)
+(setq tab-always-indent 'complete)
+(windmove-default-keybindings 'none)
+(setq dired-deletion-confirmer 'yes-or-no-p)
+(setq flymake-show-diagnostics-at-end-of-line 1)
+(setq flymake-wrap-around nil)
