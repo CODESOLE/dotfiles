@@ -39,5 +39,3 @@
 (setq tab-always-indent 'complete)
 (windmove-default-keybindings 'none)
 (setq dired-deletion-confirmer 'yes-or-no-p)
-(setq flymake-show-diagnostics-at-end-of-line 1)
-(setq flymake-wrap-around nil)
