@@ -38,4 +38,3 @@
 (setq scroll-conservatively 20)
 (setq tab-always-indent 'complete)
 (windmove-default-keybindings 'none)
-(setq dired-deletion-confirmer 'yes-or-no-p)
