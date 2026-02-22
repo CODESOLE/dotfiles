@@ -17,7 +17,7 @@
 (which-key-mode 1)
 (setq isearch-lazy-count t)
 (setq completion-ignore-case t)
-(fido-mode)
+(fido-vertical-mode 1)
 (setq completion-styles '(flex))
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq visible-bell nil)
