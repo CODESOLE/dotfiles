@@ -38,3 +38,4 @@
 (setq scroll-conservatively 20)
 (setq tab-always-indent 'complete)
 (windmove-default-keybindings 'none)
+(repeat-mode 1)
