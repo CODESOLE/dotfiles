@@ -37,5 +37,5 @@
       comint-buffer-maximum-size 8198)
 (setq scroll-conservatively 20)
 (setq tab-always-indent 'complete)
-(windmove-default-keybindings 'none)
+(recentf-mode 1)
 (repeat-mode 1)
