@@ -13,6 +13,7 @@
 (delete-selection-mode 1)
 (which-function-mode)
 (editorconfig-mode)
+(setq reb-re-syntax 'string)
 (load-theme 'modus-vivendi t)
 (setopt treesit-font-lock-level 4)
 (global-set-key (kbd "C-,") #'xref-go-forward)
@@ -23,24 +24,12 @@
 (fido-mode 1)
 (setq completion-styles '(basic partial-completion substring initials flex))
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq visible-bell nil)
-(setq ring-bell-function #'ignore)
-(setq inhibit-startup-screen t
-      inhibit-startup-echo-area-message user-login-name)
-(setq initial-buffer-choice nil
-      inhibit-startup-buffer-menu t
-      inhibit-x-resources t
-      initial-scratch-message nil
-      inhibit-splash-screen t)
-(advice-add 'display-startup-echo-area-message :override #'ignore)
-(advice-add 'display-startup-screen :override #'ignore)
 (setq imenu-auto-rescan t)
 (setq ansi-color-for-comint-mode t
       comint-prompt-read-only t
       comint-buffer-maximum-size 8198)
 (setq scroll-conservatively 20)
-(setq reb-re-syntax 'string)
-(recentf-mode 1)
 (repeat-mode 1)
+(recentf-mode 1)
 (set-face-attribute 'mode-line-active nil :background "black")
 (set-face-attribute 'mode-line-inactive nil :background "black")
