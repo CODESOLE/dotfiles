@@ -15,7 +15,6 @@
 (editorconfig-mode)
 (setq reb-re-syntax 'string)
 (load-theme 'modus-vivendi t)
-(setopt treesit-font-lock-level 4)
 (global-set-key (kbd "C-,") #'xref-go-forward)
 (global-set-key (kbd "C-c C-v") 'duplicate-dwim)
 (which-key-mode 1)
@@ -25,10 +24,8 @@
 (setq completion-styles '(basic partial-completion substring initials flex))
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq imenu-auto-rescan t)
-(setq ansi-color-for-comint-mode t
-      comint-prompt-read-only t
-      comint-buffer-maximum-size 8198)
 (setq scroll-conservatively 20)
+(setq set-mark-command-repeat-pop t)
 (repeat-mode 1)
 (recentf-mode 1)
 (set-face-attribute 'mode-line-active nil :background "black")
