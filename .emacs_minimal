@@ -28,6 +28,5 @@
 (setq set-mark-command-repeat-pop t)
 (repeat-mode 1)
 (recentf-mode 1)
-(setq search-whitespace-regexp ".*?")
 (set-face-attribute 'mode-line-active nil :background "black")
 (set-face-attribute 'mode-line-inactive nil :background "black")
