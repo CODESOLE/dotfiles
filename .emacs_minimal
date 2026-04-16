@@ -15,6 +15,7 @@
 (editorconfig-mode)
 (setq reb-re-syntax 'string)
 (load-theme 'modus-vivendi t)
+(global-set-key (kbd "M-o") #'recompile)
 (global-set-key (kbd "C-,") #'xref-go-forward)
 (global-set-key (kbd "C-c C-v") 'duplicate-dwim)
 (which-key-mode 1)
