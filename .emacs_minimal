@@ -5,6 +5,7 @@
 (setq read-process-output-max (* 4 1024 1024))
 (setq save-interprogram-paste-before-kill t)
 (setq kill-do-not-save-duplicates t)
+(setq gdb-many-windows t)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
