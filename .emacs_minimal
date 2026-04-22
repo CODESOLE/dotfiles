@@ -32,5 +32,4 @@
 (recentf-mode 1)
 (set-face-attribute 'mode-line-active nil :background "black")
 (set-face-attribute 'mode-line-inactive nil :background "black")
-(with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-c C-f") 'eglot-format))
 (setq search-whitespace-regexp ".*?")
