@@ -1,5 +1,6 @@
 filetype plugin indent on
 packadd lsp
+packadd! termdebug
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
@@ -14,9 +15,8 @@ augroup auto_nohlsearch | au!
 augroup END
 set bg=dark
 set termguicolors
-set guifont=Hack\ Nerd\ Font\ Mono:h10
 colorscheme retrobox
-set gp=git\ grep\ $*
+set gp=grep\ -RHIn\ $*
 set backspace=2 noruler
 set shortmess-=S
 set shortmess+=I noshowcmd
@@ -28,7 +28,6 @@ set mouse=a
 set is hlsearch ignorecase smartcase showmatch
 set encoding=utf-8
 set nobackup nowritebackup noswapfile
-set guioptions=Ac
 let mapleader=" "
 noremap gl $
 noremap gh 0
@@ -86,27 +85,27 @@ call LspAddServer([#{
 	\    path: 'clangd',
 	\    args: ['--background-index','--all-scopes-completion','--header-insertion=never',]
 	\  }])
-call LspAddServer([#{
-	\    name: 'rustlang',
-	\    filetype: ['rust'],
-	\    path: 'rust-analyzer',
-	\    args: [],
-	\    syncInit: v:true
-	\  }])
-call LspAddServer([#{
-	\    name: 'vlang',
-	\    filetype: ['v'],
-	\    path: 'v-analyzer',
-	\    args: [],
-	\    syncInit: v:true
-	\  }])
-call LspAddServer([#{
-	\    name: 'odinlag',
-	\    filetype: ['odin'],
-	\    path: 'ols',
-	\    args: [],
-	\    syncInit: v:true
-	\  }])
+" call LspAddServer([#{
+" 	\    name: 'rustlang',
+" 	\    filetype: ['rust'],
+" 	\    path: 'rust-analyzer',
+" 	\    args: [],
+" 	\    syncInit: v:true
+" 	\  }])
+" call LspAddServer([#{
+" 	\    name: 'vlang',
+" 	\    filetype: ['v'],
+" 	\    path: 'v-analyzer',
+" 	\    args: [],
+" 	\    syncInit: v:true
+" 	\  }])
+" call LspAddServer([#{
+" 	\    name: 'odinlag',
+" 	\    filetype: ['odin'],
+" 	\    path: 'ols',
+" 	\    args: [],
+" 	\    syncInit: v:true
+" 	\  }])
 call LspOptionsSet(#{
         \   aleSupport: v:false,
         \   autoComplete: v:true,
