@@ -29,12 +29,12 @@ set is hlsearch ignorecase smartcase showmatch
 set encoding=utf-8
 set nobackup nowritebackup noswapfile
 let mapleader=" "
-noremap gl $
-noremap gh 0
+noremap <silent> gl $
+noremap <silent> gh 0
 noremap <silent> <leader>l :cnext<CR>
 noremap <silent> <leader>h :cprev<CR>
-nmap gn :bn<CR>
-nmap gp :bp<CR>
+nmap <silent> gn :bn<CR>
+nmap <silent> gp :bp<CR>
 vnoremap <leader>p "_dP
 nnoremap <silent> <C-k> :tabn<CR>
 tnoremap <silent> <C-k> <C-w>:tabn<CR>
@@ -106,28 +106,44 @@ call LspAddServer([#{
 " 	\    args: [],
 " 	\    syncInit: v:true
 " 	\  }])
+" call LspAddServer([#{
+" 	\    name: 'ziglang',
+" 	\    filetype: ['zig'],
+" 	\    path: 'zls',
+" 	\    args: [],
+" 	\    syncInit: v:true
+" 	\  }])
 call LspOptionsSet(#{
         \   aleSupport: v:false,
         \   autoComplete: v:true,
         \   autoHighlight: v:true,
         \   autoHighlightDiags: v:true,
         \   autoPopulateDiags: v:true,
+        \   bufferCompletionTimeout: 100,
+        \   customCompletionKinds: v:false,
+        \   completionKinds: {},
         \   completionMatcher: 'fuzzy',
         \   completionMatcherValue: 1,
+        \   completionTextEdit: v:true,
+        \   closePreviewOnComplete: v:false,
+        \   completionInPreview: v:false,
+        \   condensedCompletionMenu: v:false,
+        \   diagVirtualTextAlign: 'after',
+        \   diagVirtualTextWrap: 'truncate',
         \   diagSignErrorText: 'E>',
         \   diagSignHintText: 'H>',
         \   diagSignInfoText: 'I>',
         \   diagSignWarningText: 'W>',
         \   echoSignature: v:false,
+        \   filterCompletionDuplicates: v:false,
         \   hideDisabledCodeActions: v:false,
         \   highlightDiagInline: v:true,
         \   hoverInPreview: v:false,
-        \   ignoreMissingServer: v:false,
+        \   hoverOnCursorHold: v:false,
+        \   hoverDelay: 300,
+        \   ignoreMissingServer: v:true,
         \   keepFocusInDiags: v:true,
         \   keepFocusInReferences: v:true,
-        \   completionTextEdit: v:true,
-        \   diagVirtualTextAlign: 'after',
-        \   diagVirtualTextWrap: 'truncate',
         \   noNewlineInCompletion: v:true,
         \   omniComplete: v:false,
         \   outlineOnRight: v:true,
@@ -135,35 +151,34 @@ call LspOptionsSet(#{
         \   semanticHighlight: v:true,
         \   showDiagInBalloon: v:true,
         \   showDiagInPopup: v:true,
-        \   showDiagOnStatusLine: v:false,
+        \   showDiagOnStatusLine: v:true,
         \   showDiagWithSign: v:true,
         \   showDiagWithVirtualText: v:true,
         \   showInlayHints: v:true,
         \   showSignature: v:true,
+        \   showSignatureDocs: v:true,
         \   snippetSupport: v:false,
         \   ultisnipsSupport: v:false,
         \   useBufferCompletion: v:false,
         \   usePopupInCodeAction: v:true,
         \   useQuickfixForLocations: v:false,
         \   vsnipSupport: v:false,
-        \   bufferCompletionTimeout: 100,
-        \   customCompletionKinds: v:false,
-        \   completionKinds: {},
-        \   filterCompletionDuplicates: v:false,
 	\ })
-nnoremap <leader>ac :LspCodeAction<CR>
-nnoremap <leader>e :LspDiag show<CR>
-nnoremap [d :LspDiag next<CR>
-nnoremap ]d :LspDiag prev<CR>
-nnoremap <leader>d :LspDiag current<CR>
-nnoremap <leader>s :LspDocumentSymbol<CR>
-nnoremap <leader>w :LspSymbolSearch<CR>
-nnoremap <leader>f :LspFormat<CR>
-nnoremap K :LspHover<CR>
-nnoremap gd :LspGotoDefinition<CR>
-nnoremap gy :LspGotoDeclaration<CR>
-nnoremap gi :LspGotoImpl<CR>
-nnoremap gt :LspGotoTypeDef<CR>
-nnoremap <leader>rp :LspPeekReferences<CR>
-nnoremap <leader>rn :LspRename<CR>
-nnoremap gs :LspShowSignature<CR>
+nnoremap <silent> <leader>ac :LspCodeAction<CR>
+nnoremap <silent> <leader>e :LspDiag show<CR>
+nnoremap <silent> [d :LspDiag next<CR>
+nnoremap <silent> ]d :LspDiag prev<CR>
+nnoremap <silent> <leader>d :LspDiag current<CR>
+nnoremap <silent> <leader>s :LspDocumentSymbol<CR>
+nnoremap <silent> <leader>w :LspSymbolSearch<CR>
+nnoremap <silent> <leader>f :LspFormat<CR>
+nnoremap <silent> K :LspHover<CR>
+nnoremap <silent> gd :LspGotoDefinition<CR>
+nnoremap <silent> gy :LspGotoDeclaration<CR>
+nnoremap <silent> gi :LspGotoImpl<CR>
+nnoremap <silent> gt :LspGotoTypeDef<CR>
+nnoremap <silent> <leader>rp :LspPeekReferences<CR>
+nnoremap <silent> <leader>p :LspShowReferences<CR>
+nnoremap <silent> <leader>rn :LspRename<CR>
+nnoremap <silent> gs :LspShowSignature<CR>
+nnoremap <silent> <F2> :LspSwitchSourceHeader<CR>
