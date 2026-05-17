@@ -1,18 +1,13 @@
 filetype plugin indent on
 packadd lsp
 packadd! termdebug
+packadd! nohlsearch
+packadd! hlyank
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
 set laststatus=- fillchars+=eob:\  noerrorbells novisualbell belloff=all
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent nowrap
-nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-nmap <silent> <esc> :noh<CR>
-augroup auto_nohlsearch | au!
-    noremap <Plug>(nohlsearch) <cmd>nohlsearch<cr>
-    noremap! <expr> <Plug>(nohlsearch) execute('nohlsearch')[-1]
-    au InsertEnter * call feedkeys("\<Plug>(nohlsearch)", 'm')
-augroup END
 set bg=dark
 set termguicolors
 colorscheme retrobox
