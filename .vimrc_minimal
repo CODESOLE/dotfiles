@@ -1,17 +1,67 @@
+vim9script
+set nocompatible nobackup nowritebackup noswapfile noruler noshowmode noshowcmd
+filetype plugin indent on
+syntax on
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent nowrap
+set cot=fuzzy,menuone,popup,noselect inf wim=noselect:lastused,full
+set mouse=a incsearch hlsearch ignorecase smartcase showmatch wop=pum wcm=<C-@>
+set cfc=keyword,files,whole_line
+packadd! termdebug
+packadd! nohlsearch
+packadd! hlyank
+packadd! editorconfig
+packadd! comment
+packadd! cfilter
+packadd! osc52
+g:mapleader = "\<Space>"
+inoremap ş <Esc>
+vnoremap ş <Esc>
+cnoremap ş <Esc>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-cnoremap <C-k> <Up>
-cnoremap <C-j> <Down>
-cnoremap <C-h> <Left>
-cnoremap <C-l> <Right>
-inoremap <silent> ş <Esc>
-vnoremap <silent> ş <Esc>
-cnoremap <silent> ş <Esc>
-filetype plugin indent on
-syntax enable
-packadd! editorconfig
-packadd! comment
-packadd! cfilter
-set gp=grep\ -HRIn\ $* wildmenu mouse=a wildmode=list,full laststatus=- fillchars+=eob:\  noerrorbells tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent novisualbell backspace=2 noru nowrap shortmess-=S noshowcmd noshowmode shortmess+=I belloff=all t_vb= completeopt=menuone,popup,fuzzy,noselect,noinsert is hlsearch ignorecase smartcase showmatch nobackup nowritebackup noswapfile
+nmap <silent> gn :bn<CR>
+nmap <silent> gp :bp<CR>
+noremap <silent> gl $
+noremap <silent> gh 0
+noremap <silent> <leader>l :cnext<CR>
+noremap <silent> <leader>h :cprev<CR>
+nnoremap <silent> <C-k> :tabn<CR>
+tnoremap <silent> <C-k> <C-w>:tabn<CR>
+nnoremap <silent> <leader>g :tab term lazygit<CR>
+nnoremap <silent> <C-a> :tab term bash<CR>
+def InsComplete()
+    if getcharstr(1) == '' && getline('.')->strpart(0, col('.') - 1) =~ '\k$'
+        SkipTextChangedIEvent()
+        feedkeys("\<c-n>", "n")
+    endif
+enddef
+def SkipTextChangedIEvent(): string
+    # Suppress next event caused by <c-e> (or <c-n> when no matches found)
+    set eventignore+=TextChangedI
+    timer_start(1, (_) => {
+        set eventignore-=TextChangedI
+    })
+    return ''
+enddef
+autocmd TextChangedI * InsComplete()
+inoremap <silent> <c-e> <c-r>=<SID>SkipTextChangedIEvent()<cr><c-e>
+def CmdComplete()
+  var [cmdline, curpos, cmdmode] = [getcmdline(), getcmdpos(), expand('<afile>') == ':']
+  var trigger_char = '\%(\w\|[*/:.-]\)$'
+  var not_trigger_char = '^\%(\d\|,\|+\|-\)\+$'
+  if getchar(1, {number: true}) == 0
+      && !wildmenumode() && curpos == cmdline->len() + 1
+      && (!cmdmode || (cmdline =~ trigger_char && cmdline !~ not_trigger_char))
+    SkipCmdlineChanged()
+    feedkeys("\<C-@>", "t")
+    timer_start(0, (_) => getcmdline()->substitute('\%x00', '', 'ge')->setcmdline())
+  endif
+enddef
+def SkipCmdlineChanged(key = ''): string
+  set ei+=CmdlineChanged
+  timer_start(0, (_) => execute('set ei-=CmdlineChanged'))
+  return key == '' ? '' : ((wildmenumode() ? "\<C-E>" : '') .. key)
+enddef
+autocmd CmdlineChanged :,/,? CmdComplete()
