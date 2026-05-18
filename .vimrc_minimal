@@ -37,4 +37,4 @@ tnoremap <silent> <C-k> <C-w>:tabn<CR>
 nnoremap <silent> <leader>g :tab term lazygit<CR>
 nnoremap <silent> <C-a> :tab term bash<CR>
 nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
-nmap <silent> <C-i> :ptag <C-r><C-w><CR>
+nmap <silent> s :ptag <C-r><C-w><CR>
