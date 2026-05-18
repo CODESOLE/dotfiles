@@ -2,13 +2,10 @@ vim9script
 set nocompatible nobackup nowritebackup noswapfile noruler noshowmode noshowcmd
 filetype plugin indent on
 syntax on
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
-set completeopt=fuzzy,menuone,popup,noselect 
-set infercase 
-set wildmode=noselect:lastused,full
-set mouse=a incsearch hlsearch ignorecase smartcase showmatch 
-set wildoptions=pum 
-set wildcharm=<C-@>
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent infercase
+set completeopt=fuzzy,menuone,popup,noselect
+set wildmode=noselect:lastused,full wildoptions=pum wildcharm=<C-@>
+set mouse=a incsearch hlsearch ignorecase smartcase showmatch
 set completefunc=keyword,files,whole_line
 packadd! termdebug
 packadd! nohlsearch
@@ -25,6 +22,10 @@ imap <C-k> <Up>
 imap <C-j> <Down>
 imap <C-h> <Left>
 imap <C-l> <Right>
+cmap <C-k> <Up>
+cmap <C-j> <Down>
+cmap <C-h> <Left>
+cmap <C-l> <Right>
 nmap <silent> gn :bn<CR>
 nmap <silent> gp :bp<CR>
 noremap <silent> gl $
@@ -35,37 +36,5 @@ nnoremap <silent> <C-k> :tabn<CR>
 tnoremap <silent> <C-k> <C-w>:tabn<CR>
 nnoremap <silent> <leader>g :tab term lazygit<CR>
 nnoremap <silent> <C-a> :tab term bash<CR>
-def InsComplete()
-    if getcharstr(1) == '' && getline('.')->strpart(0, col('.') - 1) =~ '\k$'
-        SkipTextChangedIEvent()
-        feedkeys("\<c-n>", "n")
-    endif
-enddef
-def SkipTextChangedIEvent(): string
-    # Suppress next event caused by <c-e> (or <c-n> when no matches found)
-    set eventignore+=TextChangedI
-    timer_start(1, (_) => {
-        set eventignore-=TextChangedI
-    })
-    return ''
-enddef
-autocmd TextChangedI * InsComplete()
-inoremap <silent> <c-e> <c-r>=<SID>SkipTextChangedIEvent()<cr><c-e>
-def CmdComplete()
-  var [cmdline, curpos, cmdmode] = [getcmdline(), getcmdpos(), expand('<afile>') == ':']
-  var trigger_char = '\%(\w\|[*/:.-]\)$'
-  var not_trigger_char = '^\%(\d\|,\|+\|-\)\+$'
-  if getchar(1, {number: true}) == 0
-      && !wildmenumode() && curpos == cmdline->len() + 1
-      && (!cmdmode || (cmdline =~ trigger_char && cmdline !~ not_trigger_char))
-    SkipCmdlineChanged()
-    feedkeys("\<C-@>", "t")
-    timer_start(0, (_) => getcmdline()->substitute('\%x00', '', 'ge')->setcmdline())
-  endif
-enddef
-def SkipCmdlineChanged(key = ''): string
-  set ei+=CmdlineChanged
-  timer_start(0, (_) => execute('set ei-=CmdlineChanged'))
-  return key == '' ? '' : ((wildmenumode() ? "\<C-E>" : '') .. key)
-enddef
-autocmd CmdlineChanged :,/,? CmdComplete()
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
+nmap <silent> <C-i> :ptag <C-r><C-w><CR>
