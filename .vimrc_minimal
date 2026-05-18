@@ -2,7 +2,7 @@ vim9script
 set nocompatible nobackup nowritebackup noswapfile noruler noshowmode noshowcmd
 filetype plugin indent on
 syntax on
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent nowrap
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
 set completeopt=fuzzy,menuone,popup,noselect 
 set infercase 
 set wildmode=noselect:lastused,full
