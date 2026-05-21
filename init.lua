@@ -43,23 +43,28 @@ vim.g.mapleader    = ' '
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('packadd! nohlsearch')
+vim.o.autocomplete = true
+vim.o.autocompletedelay = 200
+vim.o.complete = ".,w,b,o"
+vim.o.completeopt = "menuone,noselect,fuzzy"
+vim.o.pumheight = 10
+vim.o.pummaxwidth = 80
+vim.opt.shortmess:append("c")
 vim.pack.add({
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/bluz71/vim-moonfly-colors",
   "https://github.com/nvim-treesitter/nvim-treesitter-context",
-  {src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master"},
-  "https://github.com/saghen/blink.cmp",
+  "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/echasnovski/mini.pairs",
   "https://github.com/echasnovski/mini.files",
   "https://codeberg.org/andyg/leap.nvim",
-  "https://github.com/ibhagwan/fzf-lua"
+  "https://github.com/ibhagwan/fzf-lua",
 })
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyItalics = false
 vim.g.moonflyVirtualTextColor = true
 vim.cmd.colorscheme('moonfly')
-require("nvim-treesitter.install").update("all")
 require("nvim-treesitter.configs").setup({highlight={enable = true}, auto_install = true })
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
@@ -78,17 +83,6 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
 } }
 vim.keymap.set('n', '<C-p>', ':FzfLua global<CR>', {silent = true, noremap = true})
 vim.keymap.set('n', '<C-l>',  ':FzfLua live_grep<CR>', {silent = true, noremap = true})
-require("blink.cmp").setup({
-  keymap = {preset = 'enter'},
-  completion = {
-    documentation = {
-      auto_show = true,
-    },
-  },
-  fuzzy = {
-    implementation = "lua",
-  },
-})
 require('mini.pairs').setup()
 require'mini.files'.setup{ windows = { preview = true } }
 vim.keymap.set("n", "<leader>o", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
@@ -97,7 +91,8 @@ vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    vim.lsp.completion.enable(true, ev.data.client_id, ev.buf)
+    vim.bo[ev.buf].complete = ".,w,b,o"
     local opts = { buffer = ev.buf }
     vim.keymap.set({'n', 'v'}, '<space>F', vim.lsp.buf.format, opts)
     if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.documentHighlightProvider then
@@ -125,5 +120,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 vim.lsp.inlay_hint.enable(true)
-vim.lsp.enable({'gdscript', 'zls', 'ols', 'clangd', 'rust_analyzer'})
+vim.lsp.enable({'ols', 'clangd'})
 vim.api.nvim_set_hl(0, 'Normal', {bg='#000000'})
