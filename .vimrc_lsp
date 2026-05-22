@@ -7,7 +7,7 @@ packadd! editorconfig
 packadd! comment
 packadd! cfilter
 set laststatus=- fillchars+=eob:\  noerrorbells novisualbell belloff=all
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent nowrap
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent nowrap title
 set bg=dark
 set termguicolors
 colorscheme retrobox
