@@ -41,7 +41,7 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.diagnostic.config({ virtual_text = true })
-vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}')
+vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank {higroup="IncSearch", timeout=500}')
 vim.cmd('packadd! nohlsearch')
 vim.o.autocomplete = true
 vim.o.autocompletedelay = 200
@@ -65,7 +65,6 @@ vim.g.moonflyWinSeparator = 2
 vim.g.moonflyItalics = false
 vim.g.moonflyVirtualTextColor = true
 vim.cmd.colorscheme('moonfly')
-require("nvim-treesitter.configs").setup({highlight={enable = true}, auto_install = true })
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'fileformat', 'encoding', 'filetype' },
