@@ -6,6 +6,7 @@ packadd! hlyank
 packadd! editorconfig
 packadd! comment
 packadd! cfilter
+set titlestring=%t\ -\ %l:%c\ (%p%%)
 set laststatus=- fillchars+=eob:\  noerrorbells novisualbell belloff=all
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent nowrap title
 set bg=dark
