@@ -180,7 +180,7 @@ nnoremap <silent> <leader>rn :LspRename<CR>
 nnoremap <silent> gs :LspShowSignature<CR>
 nnoremap <silent> <F2> :LspSwitchSourceHeader<CR>
 def g:SetLocalMakeCommand()
-    var line_num = search('compile-command:\s*.*', 'nw', 5)
+    var line_num = search('compile-command:\s*.*', 'nw', 1)
     if line_num > 0
         var cmd = matchstr(getline(line_num), 'compile-command:\s*\zs.*')
         execute 'setlocal makeprg=' .. escape(cmd, ' ')
