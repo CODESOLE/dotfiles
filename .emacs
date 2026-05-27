@@ -146,6 +146,3 @@
  '(visible-bell t))
 (put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
-
-
-
