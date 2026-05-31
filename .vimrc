@@ -1,3 +1,4 @@
+vim9script
 set nocompatible backspace=2 noshowcmd laststatus=- smartcase showmatch nobackup noswapfile
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu nowritebackup
 set wildignore=*.o,*.obj,*.pyc,*.git titlestring=%t\ -\ %l:%c\ (%p%%) noshowcmd noshowmode
@@ -18,3 +19,4 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
+# ./configure --with-features=tiny --disable-acl --disable-libsodium --disable-channel --disable-arabic --disable-canberra --disable-darwin --disable-desktop-database-update --disable-FEATURE --disable-gtktest --disable-icon-cache-update --disable-largefile --disable-netbeans --disable-nls --disable-option-checking --disable-rightleft --disable-selinux --disable-smack --disable-sysmouse --disable-xattr --disable-xsmp --disable-xsmp-interact
