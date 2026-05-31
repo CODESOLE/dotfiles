@@ -9,7 +9,7 @@ packadd! cfilter
 set titlestring=%t\ -\ %l:%c\ (%p%%)
 set laststatus=- fillchars+=eob:\  noerrorbells novisualbell belloff=all
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent nowrap title
-set bg=dark
+set bg=dark nomodelineexpr
 set termguicolors
 colorscheme retrobox
 set gp=grep\ -RHIn\ $*
