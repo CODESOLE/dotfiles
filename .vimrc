@@ -19,4 +19,4 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
-# ./configure --with-features=tiny --disable-acl --disable-libsodium --disable-channel --disable-arabic --disable-canberra --disable-darwin --disable-desktop-database-update --disable-FEATURE --disable-gtktest --disable-icon-cache-update --disable-largefile --disable-netbeans --disable-nls --disable-option-checking --disable-rightleft --disable-selinux --disable-smack --disable-sysmouse --disable-xattr --disable-xsmp --disable-xsmp-interact
+# ./configure --with-features=tiny --disable-acl --disable-libsodium --disable-channel --disable-arabic --disable-canberra --disable-darwin --disable-desktop-database-update --without-x --disable-gtktest --disable-icon-cache-update --disable-largefile --disable-netbeans --disable-nls --disable-option-checking --disable-rightleft --disable-selinux --disable-smack --disable-sysmouse --disable-xattr --disable-xsmp --disable-xsmp-interact
