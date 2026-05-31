@@ -5,7 +5,7 @@ syntax on
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent infercase
 set completeopt=fuzzy,menuone,popup,noselect laststatus=- title
 set wildmode=noselect:lastused,full wildoptions=pum wildcharm=<C-@>
-set mouse=a incsearch hlsearch ignorecase smartcase showmatch nomodelineexpr
+set mouse=a incsearch hlsearch ignorecase smartcase showmatch nomle
 set completefunc=keyword,files,whole_line titlestring=%t\ -\ %l:%c\ (%p%%)
 packadd! termdebug
 packadd! nohlsearch
