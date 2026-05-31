@@ -2,7 +2,7 @@ set nocompatible backspace=2 noshowcmd laststatus=- smartcase showmatch nobackup
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu nowritebackup
 set wildignore=*.o,*.obj,*.pyc,*.git titlestring=%t\ -\ %l:%c\ (%p%%) noshowcmd noshowmode
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent autoindent title incsearch
-set fillchars+=eob:\  noerrorbells novisualbell belloff=all shortmess-=S shortmess+=I
+set fillchars+=eob:\  noerrorbells novisualbell belloff=all shortmess-=S shortmess+=I nomle
 inoremap <silent> ş <Esc>
 vnoremap <silent> ş <Esc>
 cnoremap <silent> ş <Esc>
