@@ -3,7 +3,7 @@ set nocompatible backspace=2 noshowcmd laststatus=- smartcase showmatch nobackup
 set completeopt=menuone,popup,fuzzy,noselect completepopup=highlight:Pmenu nowritebackup
 set wildignore=*.o,*.obj,*.pyc,*.git titlestring=%t\ -\ %l:%c\ (%p%%) noshowcmd noshowmode
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent autoindent title incsearch
-set fillchars+=eob:\  noerrorbells novisualbell belloff=all shortmess-=S shortmess+=I
+set fillchars+=eob:\  noerrorbells novisualbell belloff=all shortmess-=S shortmess+=I noru
 inoremap <silent> ş <Esc>
 vnoremap <silent> ş <Esc>
 cnoremap <silent> ş <Esc>
@@ -19,4 +19,4 @@ cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
-# ./configure --with-features=tiny --disable-acl --disable-libsodium --disable-channel --disable-arabic --disable-canberra --disable-darwin --disable-desktop-database-update --without-x --disable-gtktest --disable-icon-cache-update --disable-largefile --disable-netbeans --disable-nls --disable-option-checking --disable-rightleft --disable-selinux --disable-smack --disable-sysmouse --disable-xattr --disable-xsmp --disable-xsmp-interact
+# ./configure  --with-features=tiny  --disable-acl  --disable-selinux  --disable-gpm  --disable-sysmouse  --disable-nls  --disable-xsmp  --disable-xsmp-interact  --disable-canberra  --disable-libsodium  --disable-luainterp  --disable-mzschemeinterp  --disable-perlinterp  --disable-python3interp  --disable-pythoninterp  --disable-tclinterp  --disable-rubyinterp  --disable-cscope  --disable-netbeans  --disable-channel  --disable-terminal  --disable-autoservername  --disable-rightleft  --disable-arabic  --disable-gui  --without-x  --with-tlib=ncurses
