@@ -38,3 +38,4 @@ nnoremap <silent> <leader>g :tab term lazygit<CR>
 nnoremap <silent> <C-a> :tab term bash<CR>
 nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 nmap <silent> s :ptag <C-r><C-w><CR>
+# ./configure --with-features=normal --disable-gpm --disable-arabic --disable-canberra --disable-channel --disable-darwin --disable-selinux --disable-sysmouse --disable-smack --disable-rightleft --disable-netbeans --disable-nls --disable-xsmp --disable-xsmp-interact --disable-canberra --disable-acl --disable-gui --disable-libsodium --disable-largefile --disable-gtktest --disable-farsi --disable-icon-cache-update --disable-xattr --without-x --disable-luainterp --disable-perlinterp --disable-python3interp --disable-pythoninterp --disable-rubyinterp --disable-tclinterp
