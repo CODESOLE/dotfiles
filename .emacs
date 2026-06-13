@@ -61,6 +61,21 @@
 (use-package zig-mode :ensure t :defer t)
 (use-package magit :ensure t :defer t)
 (use-package consult :ensure t)
+(use-package auctex
+  :ensure t
+  :defer t
+  :config
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq-default TeX-master nil)
+  (add-hook 'LaTeX-mode-hook (lambda ()
+                               (visual-line-mode 1)
+                               (flyspell-mode 1)
+                               (LaTeX-math-mode 1)
+                               (turn-on-reftex)
+                               ))
+  (setq reftex-plug-into-AUCTeX t)
+  (setq TeX-view-program-selection '((output-pdf "Evince"))))
 (use-package cape
   :ensure t
   :bind ("C-c p" . cape-prefix-map)
