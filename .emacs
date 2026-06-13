@@ -14,7 +14,7 @@
 (electric-indent-mode 0)
 (delete-selection-mode 1)
 (which-function-mode)
-(editorconfig-mode)
+(editorconfig-mode 1)
 (load-theme 'modus-vivendi t)
 (column-number-mode 1)
 (setopt treesit-font-lock-level 4)
