@@ -9,6 +9,7 @@
 (setq-default tab-width 2)
 (add-hook 'compilation-filter-hook #'ansi-color-compilation-filter)
 (menu-bar-mode 0)
+(setq gdb-many-windows t)
 (savehist-mode 1)
 (electric-pair-mode 1)
 (electric-indent-mode 0)
@@ -43,28 +44,11 @@
 (global-set-key (kbd "C-,") #'xref-go-forward)
 (global-set-key (kbd "C-c C-v") 'duplicate-dwim)
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
-(global-set-key (kbd "C-c h") 'windmove-left)
-(global-set-key (kbd "C-c j") 'windmove-down)
-(global-set-key (kbd "C-c k") 'windmove-up)
-(global-set-key (kbd "C-c l") 'windmove-right)
+(repeat-mode 1)
+(recentf-mode 1)
+(set-face-attribute 'mode-line-active nil :background "black")
+(set-face-attribute 'mode-line-inactive nil :background "black")
 (with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-c C-f") 'eglot-format))
-(use-package gdscript-mode
-  :vc (:url "https://github.com/godotengine/emacs-gdscript-mode")
-  :ensure t
-  :defer t
-  :mode ("\\.gd\\'" . gdscript-mode))
-(use-package odin-mode
-  :ensure t
-  :defer t
-  :vc (:url "https://git.sr.ht/~mgmarlow/odin-mode"))
-(use-package treesit-auto
-  :ensure t
-  :vc (:url "https://github.com/renzmann/treesit-auto.git")
-  :custom
-  (treesit-auto-install 'prompt)
-  :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
 (use-package markdown-mode :ensure t :defer t)
 (use-package rust-mode :ensure t :defer t)
 (use-package zig-mode :ensure t :defer t)
@@ -120,10 +104,6 @@
   (setq dape-inlay-hints t)
   (add-hook 'dape-compile-hook 'kill-buffer))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(eglot-highlight-symbol-face ((t (:inherit bold :background "gray14"))))
  '(eglot-inlay-hint-face ((t (:inherit shadow :background "gray2" :height 0.7))))
  '(font-lock-number-face ((t (:foreground "lightslateblue"))))
@@ -132,20 +112,5 @@
  '(font-lock-property-use-face ((t (:foreground "chocolate"))))
  '(font-lock-type-face ((t (:inherit modus-themes-bold :foreground "sea green"))))
  '(font-lock-variable-name-face ((t (:foreground "skyblue")))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(avy cape consult corfu dape gdscript-mode magit marginalia
-	 markdown-mode multiple-cursors odin-mode orderless rust-mode
-	 treesit-auto vertico zig-mode))
- '(package-vc-selected-packages
-   '((gdscript-mode :url
-		    "https://github.com/godotengine/emacs-gdscript-mode")
-     (treesit-auto :vc-backend Git :url
-		   "https://github.com/renzmann/treesit-auto.git")))
- '(visible-bell t))
 (put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
