@@ -48,6 +48,8 @@
 (setq-default xref-show-xrefs-function #'consult-xref)
 (setq-default xref-show-definitions-function #'consult-xref)
 (setq completion-ignore-case t)
+(require 'compile)
+(global-set-key (kbd "C-c c") #'recompile)
 (global-set-key (kbd "C-,") #'xref-go-forward)
 (global-set-key (kbd "C-c v") 'duplicate-dwim)
 (global-set-key (kbd "C-c f") 'consult-fd)
