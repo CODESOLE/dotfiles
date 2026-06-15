@@ -28,7 +28,7 @@
 (global-set-key (kbd "M-p") #'minibuffer-previous-completion)
 (global-set-key (kbd "M-n") #'minibuffer-next-completion)
 (global-set-key (kbd "C-,") #'xref-go-forward)
-(global-set-key (kbd "C-c C-v") 'duplicate-dwim)
+(global-set-key (kbd "C-c v") 'duplicate-dwim)
 (which-key-mode 1)
 (setq isearch-lazy-count t)
 (setq completion-ignore-case t)
