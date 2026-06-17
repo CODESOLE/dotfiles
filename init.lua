@@ -68,8 +68,8 @@ require('lualine').setup { options = { icons_enabled = false, section_separators
   lualine_y = { 'location' },
   lualine_z = { 'searchcount' },
 } }
-vim.keymap.set('n', '<C-p>', ':FzfLua global<CR>', {silent = true, noremap = true})
-vim.keymap.set('n', '<C-l>',  ':FzfLua live_grep<CR>', {silent = true, noremap = true})
+vim.keymap.set('n', '<leader><leader>', ':FzfLua global<CR>', {silent = true, noremap = true})
+vim.keymap.set('n', '<leader>g',  ':FzfLua live_grep<CR>', {silent = true, noremap = true})
 require('mini.pairs').setup()
 require'mini.files'.setup{ windows = { preview = true } }
 vim.keymap.set("n", "<leader>o", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
