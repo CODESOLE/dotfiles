@@ -13,6 +13,7 @@ vim.keymap.set('c', '<C-l>', '<Right>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
+vim.keymap.set("v", "gw", ":!column -t -s \"\" -o \"\"", {})
 vim.keymap.set("n", "<C-t>", ":vs | term<CR>", {noremap = true})
 vim.keymap.set({'n', 'v', 'i', 'c' }, 'ş', '<Esc>')
 vim.keymap.set('t', 'ş', '<C-\\><C-N>')
@@ -21,8 +22,8 @@ vim.wo.list = true
 vim.wo.listchars = "tab:> ,trail:-,nbsp:+,extends:>,precedes:<"
 vim.o.showmode     = false
 vim.o.swapfile     = false
-vim.o.backup     = false
-vim.o.writebackup = false
+vim.o.backup       = false
+vim.o.writebackup  = false
 vim.o.smartcase    = true
 vim.o.ignorecase   = true
 vim.o.smartindent  = true
@@ -33,7 +34,8 @@ vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank {higroup="IncSearch", timeout=500}')
-vim.o.autocomplete = true
+vim.g.vimtex_view_method = "zathura"
+vim.o.autocomplete      = true
 vim.o.autocompletedelay = 200
 vim.o.complete = ".,w,b,o"
 vim.o.completeopt = "menuone,noselect,fuzzy"
@@ -41,6 +43,7 @@ vim.o.pumheight = 10
 vim.o.pummaxwidth = 80
 vim.opt.shortmess:append("c")
 vim.pack.add({
+  "https://github.com/lervag/vimtex",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/bluz71/vim-moonfly-colors",
   "https://github.com/neovim/nvim-lspconfig",
@@ -107,5 +110,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 vim.lsp.inlay_hint.enable(true)
-vim.lsp.enable({'ols', 'clangd'})
+vim.lsp.enable({ 'texlab', 'ols', 'clangd'})
 vim.api.nvim_set_hl(0, 'Normal', {bg='#000000'})
