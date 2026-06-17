@@ -1,11 +1,3 @@
-if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
-  vim.o.shell = vim.fs.joinpath(vim.loop.os_homedir(), "scoop", "apps", "git", "2.49.0", "usr", "bin", "bash.exe")
-  vim.o.shellcmdflag = '-ic'
-  vim.o.shellredir = '>%s 2>&1'
-  vim.o.shellpipe = '2>&1 | tee'
-  vim.o.shellquote = ''
-  vim.o.shellxquote = ''
-end
 vim.keymap.set('n', 'gl', '$')
 vim.keymap.set('n', 'gh', '0')
 vim.keymap.set('n', 'gn', ':bn<CR>')
@@ -27,7 +19,6 @@ vim.keymap.set('t', 'ş', '<C-\\><C-N>')
 vim.wo.wrap = false
 vim.wo.list = true
 vim.wo.listchars = "tab:> ,trail:-,nbsp:+,extends:>,precedes:<"
-vim.o.updatetime = 200
 vim.o.showmode     = false
 vim.o.swapfile     = false
 vim.o.backup     = false
@@ -42,7 +33,6 @@ vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank {higroup="IncSearch", timeout=500}')
-vim.cmd('packadd! nohlsearch')
 vim.o.autocomplete = true
 vim.o.autocompletedelay = 200
 vim.o.complete = ".,w,b,o"
@@ -53,8 +43,6 @@ vim.opt.shortmess:append("c")
 vim.pack.add({
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/bluz71/vim-moonfly-colors",
-  "https://github.com/nvim-treesitter/nvim-treesitter-context",
-  "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/echasnovski/mini.pairs",
   "https://github.com/echasnovski/mini.files",
