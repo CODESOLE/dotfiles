@@ -18,8 +18,6 @@ vim.keymap.set("n", "q", "<nop>", {})
 vim.keymap.set({'n', 'v', 'i', 'c' }, 'ş', '<Esc>')
 vim.keymap.set('t', 'ş', '<C-\\><C-N>')
 vim.wo.wrap = false
-vim.wo.list = true
-vim.wo.listchars = "tab:> ,trail:-,nbsp:+,extends:>,precedes:<"
 vim.o.showmode     = false
 vim.o.swapfile     = false
 vim.o.backup       = false
