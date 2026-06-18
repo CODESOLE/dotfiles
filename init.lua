@@ -34,6 +34,7 @@ vim.g.mapleader    = ' '
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank {higroup="IncSearch", timeout=500}')
 vim.g.vimtex_view_method = "zathura"
+vim.cmd.colorscheme("vim")
 vim.o.autocomplete       = true
 vim.o.autocompletedelay  = 200
 vim.o.complete = ".,w,b,o"
@@ -44,14 +45,12 @@ vim.opt.shortmess:append("c")
 vim.pack.add({
   "https://github.com/lervag/vimtex",
   "https://github.com/nvim-lualine/lualine.nvim",
-  "https://github.com/nvim-mini/mini.align",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/echasnovski/mini.pairs",
   "https://github.com/echasnovski/mini.files",
   "https://codeberg.org/andyg/leap.nvim",
   "https://github.com/ibhagwan/fzf-lua",
 })
-require('mini.align').setup()
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'fileformat', 'encoding', 'filetype' },
@@ -81,30 +80,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.bo[ev.buf].complete = ".,w,b,o"
     local opts = { buffer = ev.buf }
     vim.keymap.set({'n', 'v'}, '<space>F', vim.lsp.buf.format, opts)
-    if vim.lsp.get_client_by_id(ev.data.client_id).server_capabilities.documentHighlightProvider then
-          vim.cmd [[
-            hi! LspReferenceRead cterm=bold ctermbg=Gray guibg=#323437
-            hi! LspReferenceText cterm=bold ctermbg=Gray guibg=#323437
-            hi! LspReferenceWrite cterm=bold ctermbg=Gray guibg=#323437
-          ]]
-          vim.api.nvim_create_augroup('lsp_document_highlight', { clear = false })
-          vim.api.nvim_clear_autocmds({
-            buffer = ev.buf,
-            group = 'lsp_document_highlight',
-          })
-          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-            group = 'lsp_document_highlight',
-            buffer = ev.buf,
-            callback = vim.lsp.buf.document_highlight,
-          })
-          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-            group = 'lsp_document_highlight',
-            buffer = ev.buf,
-            callback = vim.lsp.buf.clear_references,
-          })
-    end
   end,
 })
 vim.lsp.inlay_hint.enable(true)
 vim.lsp.enable({ 'texlab', 'ols', 'clangd'})
-vim.api.nvim_set_hl(0, 'Normal', {bg='#000000'})
