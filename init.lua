@@ -31,7 +31,7 @@ vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
 vim.g.mapleader    = ' '
 vim.diagnostic.config({ virtual_text = true })
--- vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank {higroup="IncSearch", timeout=500}')
+vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank {higroup="IncSearch", timeout=500}')
 vim.g.vimtex_view_method = "zathura"
 vim.o.autocomplete       = true
 vim.o.autocompletedelay  = 200
