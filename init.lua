@@ -13,7 +13,6 @@ vim.keymap.set('c', '<C-l>', '<Right>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
 vim.keymap.set("n", "q", "<nop>", {})
-vim.keymap.set("v", "gw", ":!column -t -s \"<C-r>\"\" -o \"<C-r>\"\"", {})
 vim.keymap.set("n", "<C-t>", ":vs | term<CR>", {noremap = true})
 vim.keymap.set({'n', 'v', 'i', 'c' }, 'ş', '<Esc>')
 vim.keymap.set('t', 'ş', '<C-\\><C-N>')
@@ -35,8 +34,8 @@ vim.g.mapleader    = ' '
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank {higroup="IncSearch", timeout=500}')
 vim.g.vimtex_view_method = "zathura"
-vim.o.autocomplete      = true
-vim.o.autocompletedelay = 200
+vim.o.autocomplete       = true
+vim.o.autocompletedelay  = 200
 vim.o.complete = ".,w,b,o"
 vim.o.completeopt = "menuone,noselect,fuzzy"
 vim.o.pumheight = 10
@@ -45,17 +44,14 @@ vim.opt.shortmess:append("c")
 vim.pack.add({
   "https://github.com/lervag/vimtex",
   "https://github.com/nvim-lualine/lualine.nvim",
-  "https://github.com/bluz71/vim-moonfly-colors",
+  "https://github.com/nvim-mini/mini.align",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/echasnovski/mini.pairs",
   "https://github.com/echasnovski/mini.files",
   "https://codeberg.org/andyg/leap.nvim",
   "https://github.com/ibhagwan/fzf-lua",
 })
-vim.g.moonflyWinSeparator = 2
-vim.g.moonflyItalics = false
-vim.g.moonflyVirtualTextColor = true
-vim.cmd.colorscheme('moonfly')
+require('mini.align').setup()
 require('lualine').setup { options = { icons_enabled = false, section_separators = '', component_separators = '' }, sections = {
   lualine_a = { 'branch' },
   lualine_b = { 'fileformat', 'encoding', 'filetype' },
