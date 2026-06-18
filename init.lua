@@ -4,14 +4,16 @@ vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
 vim.keymap.set('i', '<C-k>', '<Up>')
 vim.keymap.set('i', '<C-j>', '<Down>')
-vim.keymap.set('i', '<C-g>', '<Left>')
+vim.keymap.set('i', '<C-h>', '<Left>')
 vim.keymap.set('i', '<C-l>', '<Right>')
 vim.keymap.set('c', '<C-j>', '<Down>')
 vim.keymap.set('c', '<C-k>', '<Up>')
-vim.keymap.set('c', '<C-g>', '<Left>')
+vim.keymap.set('c', '<C-h>', '<Left>')
 vim.keymap.set('c', '<C-l>', '<Right>')
 vim.keymap.set('n', '<leader>l', ':cn<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>h', ':cp<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>t', ':tabe | term<CR>', {silent = true, noremap = true})
+vim.keymap.set('n', '<leader>g',  ':tabe | term lazygit<CR>', {silent = true, noremap = true})
 vim.keymap.set("n", "q", "<nop>", {})
 vim.keymap.set({'n', 'v', 'i', 'c' }, 'ş', '<Esc>')
 vim.keymap.set('t', 'ş', '<C-\\><C-N>')
@@ -26,6 +28,10 @@ vim.o.smartcase    = true
 vim.o.ignorecase   = true
 vim.o.smartindent  = true
 vim.o.autoindent   = true
+vim.o.expandtab   = true
+vim.o.tabstop     = 2
+vim.o.shiftwidth  = 2
+vim.o.softtabstop = 2
 vim.o.showmatch    = true
 vim.o.cmdheight    = 0
 vim.o.signcolumn   = "no"
@@ -37,16 +43,8 @@ vim.o.autocomplete       = true
 vim.o.autocompletedelay  = 200
 vim.o.complete = ".,w,b,o"
 vim.o.completeopt = "menuone,noselect,fuzzy"
-vim.o.pumheight = 10
-vim.o.pummaxwidth = 80
 vim.opt.shortmess:append("c")
-vim.pack.add({
-  "https://github.com/lervag/vimtex",
-  "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/ibhagwan/fzf-lua",
-})
-vim.keymap.set('n', '<leader><leader>', ':FzfLua global<CR>', {silent = true, noremap = true})
-vim.keymap.set('n', '<leader>g',  ':FzfLua live_grep<CR>', {silent = true, noremap = true})
+vim.pack.add({"https://github.com/lervag/vimtex", "https://github.com/neovim/nvim-lspconfig"})
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -57,4 +55,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 vim.lsp.inlay_hint.enable(true)
-vim.lsp.enable({ 'texlab', 'ols', 'clangd'})
+vim.lsp.enable({'texlab', 'ols', 'clangd'})
