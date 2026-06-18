@@ -43,13 +43,10 @@ vim.opt.shortmess:append("c")
 vim.pack.add({
   "https://github.com/lervag/vimtex",
   "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/echasnovski/mini.files",
   "https://github.com/ibhagwan/fzf-lua",
 })
 vim.keymap.set('n', '<leader><leader>', ':FzfLua global<CR>', {silent = true, noremap = true})
 vim.keymap.set('n', '<leader>g',  ':FzfLua live_grep<CR>', {silent = true, noremap = true})
-require'mini.files'.setup{ windows = { preview = true } }
-vim.keymap.set("n", "<leader>o", "<CMD>lua MiniFiles.open()<CR>", { silent = true })
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
