@@ -1,3 +1,25 @@
+vim.wo.wrap              = false
+vim.o.showmode           = false
+vim.o.swapfile           = false
+vim.o.backup             = false
+vim.o.writebackup        = false
+vim.o.smartcase          = true
+vim.o.ignorecase         = true
+vim.o.smartindent        = true
+vim.o.autoindent         = true
+vim.o.expandtab          = true
+vim.o.tabstop            = 2
+vim.o.shiftwidth         = 2
+vim.o.softtabstop        = 2
+vim.o.showmatch          = true
+vim.o.cmdheight          = 0
+vim.o.signcolumn         = "no"
+vim.g.mapleader          = ' '
+vim.g.vimtex_view_method = "zathura"
+vim.o.autocomplete       = true
+vim.o.autocompletedelay  = 200
+vim.o.complete           = ".,w,b,o"
+vim.o.completeopt        = "menuone,noselect,fuzzy"
 vim.keymap.set('n', 'gl', '$')
 vim.keymap.set('n', 'gh', '0')
 vim.keymap.set('n', 'gn', ':bn<CR>')
@@ -10,45 +32,29 @@ vim.keymap.set('c', '<C-j>', '<Down>')
 vim.keymap.set('c', '<C-k>', '<Up>')
 vim.keymap.set('c', '<C-h>', '<Left>')
 vim.keymap.set('c', '<C-l>', '<Right>')
+vim.keymap.set('n', '<leader>l', ':cn<CR>', {silent = true, noremap = true})
+vim.keymap.set('n', '<leader>h',  ':cp<CR>', {silent = true, noremap = true})
 vim.keymap.set('n', '<leader>t', ':tabe | term<CR>', {silent = true, noremap = true})
 vim.keymap.set('n', '<leader>g',  ':tabe | term lazygit<CR>', {silent = true, noremap = true})
 vim.keymap.set("n", "q", "<nop>", {})
 vim.keymap.set({'n', 'v', 'i', 'c' }, 'ş', '<Esc>')
 vim.keymap.set('t', 'ş', '<C-\\><C-N>')
-vim.wo.wrap = false
-vim.o.showmode     = false
-vim.o.swapfile     = false
-vim.o.backup       = false
-vim.o.writebackup  = false
-vim.o.smartcase    = true
-vim.o.ignorecase   = true
-vim.o.smartindent  = true
-vim.o.autoindent   = true
-vim.o.expandtab   = true
-vim.o.tabstop     = 2
-vim.o.shiftwidth  = 2
-vim.o.softtabstop = 2
-vim.o.showmatch    = true
-vim.o.cmdheight    = 0
-vim.o.signcolumn   = "no"
-vim.g.mapleader    = ' '
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank {higroup="IncSearch", timeout=500}')
-vim.g.vimtex_view_method = "zathura"
-vim.o.autocomplete       = true
-vim.o.autocompletedelay  = 200
-vim.o.complete = ".,w,b,o"
-vim.o.completeopt = "menuone,noselect,fuzzy"
-vim.opt.shortmess:append("c")
 vim.pack.add({"https://github.com/lervag/vimtex", "https://github.com/neovim/nvim-lspconfig"})
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    vim.lsp.completion.enable(true, ev.data.client_id, ev.buf)
-    vim.bo[ev.buf].complete = ".,w,b,o"
-    local opts = { buffer = ev.buf }
-    vim.keymap.set({'n', 'v'}, '<space>F', vim.lsp.buf.format, opts)
-  end,
-})
+group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+callback = function(ev)
+  vim.lsp.completion.enable(true, ev.data.client_id, ev.buf)
+  vim.bo[ev.buf].complete = ".,w,b,o"
+  vim.keymap.set({'n', 'v'}, '<space>F', vim.lsp.buf.format, { buffer = ev.buf })
+end})
 vim.lsp.inlay_hint.enable(true)
 vim.lsp.enable({'texlab', 'ols', 'clangd'})
+vim.cmd.colorscheme("habamax")
+vim.api.nvim_set_hl(0, "@lsp.type.property", { fg = "#6d54b7" })
+vim.api.nvim_set_hl(0, "Function", { fg = "#436e99" })
+vim.api.nvim_set_hl(0, "WinSeparator", { bg = "#000000" })
+vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#000000", fg = "#999999" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#000000", fg = "#222222" })
