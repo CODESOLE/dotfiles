@@ -45,4 +45,5 @@ vim.pack.add({"https://github.com/lervag/vimtex", "https://github.com/neovim/nvi
 vim.lsp.inlay_hint.enable(true)
 vim.lsp.enable({'texlab', 'ols', 'clangd'})
 vim.cmd.colorscheme("catppuccin")
+vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
 vim.api.nvim_set_hl(0, "@lsp.type.property", { fg = "#926ffc" })
