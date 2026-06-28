@@ -44,3 +44,5 @@ vim.cmd.colorscheme("moonfly")
 local term = require("floatty").setup{window = { width = 0.9, height = 0.9 }}
 vim.keymap.set('n', '<C-t>', function() term.toggle() end)
 vim.keymap.set('t', '<C-t>', function() term.toggle() end)
+vim.api.nvim_set_hl(0, "@lsp.type.macro", {fg = '#e65e72'})
+vim.api.nvim_set_hl(0, "@lsp.type.operator", {fg = '#ff0000'})
