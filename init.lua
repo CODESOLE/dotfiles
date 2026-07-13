@@ -15,7 +15,6 @@ vim.o.showmatch          = true
 vim.o.cmdheight          = 0
 vim.o.signcolumn         = "no"
 vim.g.mapleader          = ' '
-vim.g.vimtex_view_method = "zathura"
 vim.o.autocomplete       = true
 vim.o.autocompletedelay  = 200
 vim.o.complete           = ".,w,b,o"
@@ -38,12 +37,9 @@ vim.keymap.set({'n', 'v', 'i', 'c' }, 'ş', '<Esc>')
 vim.keymap.set('t', 'ş', '<C-\\><C-N>')
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank {higroup="IncSearch", timeout=500}')
-vim.pack.add({"https://codeberg.org/andyg/leap.nvim", "https://github.com/ingur/floatty.nvim", "https://github.com/lervag/vimtex", "https://github.com/neovim/nvim-lspconfig"})
+vim.pack.add({"https://codeberg.org/andyg/leap.nvim", "https://github.com/neovim/nvim-lspconfig"})
 vim.lsp.inlay_hint.enable(true)
-vim.lsp.enable({'texlab', 'ols', 'clangd'})
-local term = require("floatty").setup{window = { width = 0.9, height = 0.9 }}
-vim.keymap.set('n', '<C-t>', function() term.toggle() end)
-vim.keymap.set('t', '<C-t>', function() term.toggle() end)
+vim.lsp.enable({'pylsp', 'texlab', 'ols', 'clangd'})
 vim.cmd.colorscheme("catppuccin")
 vim.api.nvim_set_hl(0, 'Normal', {bg='#000000'})
 vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap)')
