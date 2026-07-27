@@ -1,24 +1,6 @@
-vim.wo.wrap              = false
-vim.o.showmode           = false
-vim.o.swapfile           = false
-vim.o.backup             = false
-vim.o.writebackup        = false
-vim.o.smartcase          = true
-vim.o.ignorecase         = true
-vim.o.smartindent        = true
-vim.o.autoindent         = true
-vim.o.expandtab          = true
-vim.o.tabstop            = 2
-vim.o.shiftwidth         = 2
-vim.o.softtabstop        = 2
-vim.o.showmatch          = true
-vim.o.cmdheight          = 0
-vim.o.signcolumn         = "no"
-vim.g.mapleader          = ' '
-vim.o.autocomplete       = true
-vim.o.autocompletedelay  = 200
-vim.o.complete           = ".,w,b,o"
-vim.o.completeopt        = "menuone,noselect,fuzzy"
+vim.cmd[[set completeopt=menuone,noselect,fuzzy complete=.,w,b,o tabstop=2 shiftwidth=2 softtabstop=2 cmdheight=0 signcolumn=no guicursor=a:block nowrap noshowmode noswapfile nobackup nowritebackup smartcase ignorecase smartindent autoindent expandtab showmatch autocomplete]]
+vim.g.mapleader = ' '
+vim.g.vimtex_view_method = 'zathura'
 vim.keymap.set('n', 'gn', ':bn<CR>')
 vim.keymap.set('n', 'gp', ':bp<CR>')
 vim.keymap.set('n', 'go', ':lua vim.lsp.buf.workspace_symbol()<CR>')
@@ -37,8 +19,8 @@ vim.keymap.set({'n', 'v', 'i', 'c' }, 'ş', '<Esc>')
 vim.keymap.set('t', 'ş', '<C-\\><C-N>')
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd('au TextYankPost * silent! lua vim.hl.on_yank {higroup="IncSearch", timeout=500}')
-vim.pack.add({"https://github.com/neovim/nvim-lspconfig"})
+vim.pack.add({"https://github.com/lervag/vimtex", "https://github.com/neovim/nvim-lspconfig"})
 vim.lsp.inlay_hint.enable(true)
-vim.lsp.enable({'pylsp', 'texlab', 'ols', 'clangd'})
+vim.lsp.enable({'pylsp', 'texlab', 'clangd'})
 vim.cmd.colorscheme("catppuccin")
 vim.api.nvim_set_hl(0, 'Normal', {bg='#000000'})
