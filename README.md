@@ -8,7 +8,7 @@ or
 ```
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Keyboard Layout' -Name 'Scancode Map' -Type Binary -Value ([byte[]](0,0,0,0,0,0,0,0,2,0,0,0,29,0,58,0,0,0,0,0))
 ```
-for undo `Set-ItemProperty`:
+for undo :
 ```
 Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Keyboard Layout' -Name 'Scancode Map'
 ```
