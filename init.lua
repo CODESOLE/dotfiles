@@ -79,17 +79,7 @@ local function build_and_run()
   local row = math.floor((stats.height - height) / 2)
   local col = math.floor((stats.width - width) / 2)
   local buf = vim.api.nvim_create_buf(false, true)
-  local win = vim.api.nvim_open_win(buf, true, {
-    relative = "editor",
-    width = width,
-    height = height,
-    row = row,
-    col = col,
-    style = "minimal",
-    border = "rounded",
-    title = " Program Output (Press ESC to close) ",
-    title_pos = "center"
-  })
+  local win = vim.api.nvim_open_win(buf, true, { relative = "editor", width = width, height = height, row = row, col = col, style = "minimal", border = "rounded", title = " Program Output (Press ESC to close) ", title_pos = "center" })
   vim.fn.termopen(run_command)
   vim.cmd("startinsert")
   vim.keymap.set({ "n", "t" }, "<Esc>", function()
