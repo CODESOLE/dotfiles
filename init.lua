@@ -87,5 +87,5 @@ local function build_and_run()
     end
   end, { buffer = buf, silent = true, desc = "Close output window" })
 end
-vim.keymap.set("n", "<leader>r", build_and_run, { desc = "Build and run in floating window" })
+vim.keymap.set("n", "<C-v>", build_and_run, { desc = "Build and run in floating window" })
 vim.keymap.set("n", "<C-c>", "<cmd>mak<CR>", { desc = "Build" })
