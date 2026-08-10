@@ -69,6 +69,7 @@ local function build_and_run()
       end
     end
   end
+  if run_command == nil then return end
   local ui_segments = vim.api.nvim_list_uis()
   if #ui_segments == 0 then return end
   local stats = ui_segments[1]
