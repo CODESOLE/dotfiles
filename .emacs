@@ -56,6 +56,7 @@
 (global-set-key (kbd "C-c r") 'consult-ripgrep)
 (global-set-key (kbd "C-c d") 'consult-flymake)
 (with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-c l") 'eglot-format))
+(with-eval-after-load 'org (org-link-set-parameters "attachment" :image-data-fun #'org-file-image-p))
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 (repeat-mode 1)
 (recentf-mode 1)
