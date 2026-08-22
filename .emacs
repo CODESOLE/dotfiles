@@ -50,6 +50,7 @@
 (setq search-whitespace-regexp ".*?")
 (setq-default xref-show-xrefs-function #'consult-xref)
 (setq-default xref-show-definitions-function #'consult-xref)
+(global-set-key [remap imenu] #'consult-imenu)
 (setq completion-ignore-case t)
 (require 'compile)
 (global-set-key (kbd "C-c c") #'recompile)
