@@ -5,7 +5,7 @@
 (setq lock-file-name-transforms '((".*" "~/.emacs.d/emacs-saves/" t)))
 (setq backup-directory-alist '((".*" . "~/.emacs.d/emacs-saves/")))
 (load "~/.emacs.d/hexl-inspector-minor-mode.el")
-(load "~/.emacs.d/odin-mode.el")
+(load "~/.emacs.d/org-embed-image-clipboard.el")
 (setq read-process-output-max (* 4 1024 1024))
 (setq save-interprogram-paste-before-kill t)
 (setq kill-do-not-save-duplicates t)
