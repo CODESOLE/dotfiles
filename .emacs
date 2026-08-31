@@ -1,4 +1,5 @@
 ;;; -*- lexical-binding: t -*-
+(setq compilation-scroll-output t)
 (setq desktop-path '("." "~/.emacs.d" "~"))
 (setq default-directory "~/code/")
 (setq auto-save-file-name-transforms '((".*" "~/.emacs-saves/" t)))
