@@ -11,6 +11,7 @@
 (load "~/.emacs.d/hexl-inspector-minor-mode.el")
 (load "~/.emacs.d/org-embed-image-clipboard.el")
 (setq read-process-output-max (* 4 1024 1024))
+(setq gc-cons-threshold (* 4 1024 1024))
 (setq save-interprogram-paste-before-kill t)
 (setq kill-do-not-save-duplicates t)
 (add-hook 'before-save-hook 'whitespace-cleanup)
