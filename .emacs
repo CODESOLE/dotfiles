@@ -9,6 +9,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq read-process-output-max (* 4 1024 1024))
+(setq gc-cons-threshold (* 4 1024 1024))
 (setq save-interprogram-paste-before-kill t)
 (setq kill-do-not-save-duplicates t)
 (add-hook 'compilation-filter-hook #'ansi-color-compilation-filter)
