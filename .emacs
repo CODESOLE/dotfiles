@@ -67,6 +67,29 @@
 (recentf-mode 1)
 (set-face-attribute 'mode-line-active nil :background "black")
 (set-face-attribute 'mode-line-inactive nil :background "black")
+(add-to-list 'auto-mode-alist '("\\.docx\\'" . docx-to-pdf-view-mode))
+(add-to-list 'auto-mode-alist '("\\.pptx\\'" . docx-to-pdf-view-mode))
+(defun docx-to-pdf-view-mode ()
+  "Convert .docx/.pptx to a temporary PDF and view with pdf-view-mode."
+  (let* ((orig-file (buffer-file-name))
+         (pdf-file (concat (file-name-sans-extension orig-file) ".pdf")))
+    ;; Convert if PDF doesn't exist or is older than source file
+    (when (or (not (file-exists-p pdf-file))
+              (file-newer-than-file-p orig-file pdf-file))
+      (call-process "libreoffice" nil nil nil "--headless" "--convert-to" "pdf" orig-file "--outdir" (file-name-directory orig-file)))
+    ;; Kill current buffer and visit the generated PDF in pdf-view-mode
+    (kill-buffer (current-buffer))
+    (find-file pdf-file)
+    (pdf-view-mode)))
+(use-package ess :ensure t)
+(use-package eglot :hook (ess-r-mode . eglot-ensure) :config (add-to-list 'eglot-server-programs  '(ess-r-mode . ("R" "--slave" "-e" "languageserver::run()"))))
+(use-package pdf-tools
+  :ensure t
+  :config
+  (pdf-tools-install)
+  (setq-default pdf-view-display-size 'fit-page)
+  (setq pdf-annot-activate-created-annotations t))
+(use-package v-mode :vc (:url "https://github.com/damon-kwok/v-mode" :rev :newest))
 (use-package markdown-mode :ensure t :defer t)
 (use-package rust-mode :ensure t :defer t)
 (use-package zig-mode :ensure t :defer t)
