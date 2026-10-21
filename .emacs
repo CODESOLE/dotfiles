@@ -27,7 +27,7 @@
 (setopt treesit-font-lock-level 4)
 (with-eval-after-load 'org (org-babel-do-load-languages 'org-babel-load-languages '((python . t))))
 (with-eval-after-load 'org (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0)))
-(with-eval-after-load 'org (org-link-set-parameters "attachment" :image-data-fun #'org-file-image-p))
+(with-eval-after-load 'org (setq org-confirm-babel-evaluate nil))
 (if (eq system-type 'windows-nt)
   (setq explicit-shell-file-name "~/scoop/apps/git/current/bin/bash.exe")
   (setq shell-file-name explicit-shell-file-name)
